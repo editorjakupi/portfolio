@@ -19,7 +19,7 @@ export interface Project {
   featured: boolean;
   category: ProjectCategory;
   accent: string;
-  copy: Record<Locale, ProjectCopy>;
+  copy: Record<'en' | 'sv' | 'sq', ProjectCopy>;
 }
 
 const ph = (color: string, text: string) =>
@@ -885,6 +885,10 @@ export function projectImage(project: Project) {
   return ph(project.accent, project.title.replace(/\s+/g, '+'));
 }
 
+type ProjectLocale = 'en' | 'sv' | 'sq';
+
 export function getProjectCopy(project: Project, locale: Locale): ProjectCopy {
-  return project.copy[locale];
+  const key: ProjectLocale =
+    locale === 'sv' || locale === 'sq' ? locale : 'en';
+  return project.copy[key];
 }

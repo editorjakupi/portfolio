@@ -1,12 +1,17 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import type { Locale, Translations } from './types';
+import { LOCALE_STORAGE_KEY } from './types';
+import { detectBrowserLocale, isLocale } from './utils';
 import en from './locales/en';
+import de from './locales/de';
+import fr from './locales/fr';
+import es from './locales/es';
+import it from './locales/it';
+import pl from './locales/pl';
 import sv from './locales/sv';
 import sq from './locales/sq';
 
-const STORAGE_KEY = 'portfolio-locale';
-
-const catalogs: Record<Locale, Translations> = { en, sv, sq };
+const catalogs: Record<Locale, Translations> = { en, de, fr, es, it, pl, sv, sq };
 
 interface LocaleContextValue {
   locale: Locale;
@@ -17,13 +22,9 @@ interface LocaleContextValue {
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
 function detectInitialLocale(): Locale {
-  const stored = localStorage.getItem(STORAGE_KEY);
-  if (stored === 'en' || stored === 'sv' || stored === 'sq') return stored;
-
-  const browser = navigator.language.toLowerCase();
-  if (browser.startsWith('sv')) return 'sv';
-  if (browser.startsWith('sq')) return 'sq';
-  return 'en';
+  const stored = localStorage.getItem(LOCALE_STORAGE_KEY);
+  if (isLocale(stored)) return stored;
+  return detectBrowserLocale();
 }
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
@@ -31,7 +32,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
 
   const setLocale = (next: Locale) => {
     setLocaleState(next);
-    localStorage.setItem(STORAGE_KEY, next);
+    localStorage.setItem(LOCALE_STORAGE_KEY, next);
     document.documentElement.lang = next;
   };
 

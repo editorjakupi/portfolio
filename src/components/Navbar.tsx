@@ -34,22 +34,27 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <a href="/cv.html" target="_blank" rel="noopener noreferrer">
+            {t.nav.cv}
+          </a>
         </nav>
 
         <div className="nav-actions">
-          <div className="lang-switch" role="group" aria-label="Language">
-            {locales.map((item) => (
-              <button
-                key={item.code}
-                type="button"
-                className={locale === item.code ? 'active' : ''}
-                onClick={() => setLocale(item.code)}
-                aria-pressed={locale === item.code}
-              >
-                {item.code.toUpperCase()}
-              </button>
-            ))}
-          </div>
+          <label className="lang-select-wrap">
+            <span className="sr-only">Language</span>
+            <select
+              className="lang-select"
+              value={locale}
+              onChange={(event) => setLocale(event.target.value as typeof locale)}
+              aria-label="Language"
+            >
+              {locales.map((item) => (
+                <option key={item.code} value={item.code}>
+                  {item.label}
+                </option>
+              ))}
+            </select>
+          </label>
 
           <a
             className="nav-github"
@@ -80,6 +85,9 @@ export default function Navbar() {
             {link.label}
           </a>
         ))}
+        <a href="/cv.html" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
+          {t.nav.cv}
+        </a>
         <a href={profile.github} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
           {t.nav.github}
         </a>

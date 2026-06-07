@@ -21,6 +21,14 @@ export default function Hero() {
             <a className="btn btn-secondary" href="#contact">
               {t.hero.getInTouch}
             </a>
+            <a
+              className="btn btn-secondary"
+              href="/cv.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t.hero.downloadCv}
+            </a>
           </div>
           <div className="hero-meta">
             <span>
@@ -31,7 +39,16 @@ export default function Hero() {
           </div>
         </div>
         <div className="hero-visual reveal reveal-delay-2">
-          <div className="hero-orb" aria-hidden="true" />
+          <div className="hero-photo-wrap">
+            <img
+              className="hero-photo"
+              src="/me.jpg"
+              alt="Editor Jakupi"
+              width={320}
+              height={320}
+            />
+            <div className="hero-photo-ring" aria-hidden="true" />
+          </div>
         </div>
       </div>
     </section>

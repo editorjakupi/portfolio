@@ -1,21 +1,36 @@
 # Editor Jakupi — Portfolio
 
-Multilingual developer portfolio built with **React 18 + TypeScript + Vite**. Inspired by modern single-page layouts with project case-study modals, deployed on Render.
+Multilingual developer portfolio built with **React 18 + TypeScript + Vite**. Single-page layout with hero, about, project grid with case-study modals, references, and contact. Deployed on Render.
 
-## Languages
+## Live site
 
-- **English** (default)
-- **Svenska**
-- **Shqip** (Albanian)
+After connecting the repo on Render, your site will be at:
+
+`https://editor-jakupi-portfolio.onrender.com` (or your custom domain)
+
+## Languages (8)
+
+| Code | Language |
+|------|----------|
+| en | English (default) |
+| de | Deutsch |
+| fr | Français |
+| es | Español |
+| it | Italiano |
+| pl | Polski |
+| sv | Svenska |
+| sq | Shqip (Albanian) |
+
+Project case studies are fully translated in **EN / SV / SQ**; other UI languages fall back to English for project descriptions.
 
 ## Local development
 
 ```bash
-npm install
+NODE_OPTIONS=--use-system-ca npm install
 npm run dev
 ```
 
-Open `http://localhost:5173`.
+Open `http://localhost:5173`
 
 ## Build
 
@@ -24,22 +39,20 @@ npm run build
 npm run preview
 ```
 
-## Deploy on Render
+## Deploy on Render (one-time setup)
 
-1. Push this repo to GitHub.
-2. Create a new **Static Site** on [render.com](https://render.com).
-3. Connect the repo — `render.yaml` is included for automatic config.
-4. Build command: `npm install && npm run build`
-5. Publish directory: `dist`
+1. Go to [dashboard.render.com](https://dashboard.render.com) → **New** → **Blueprint**
+2. Connect GitHub repo: `editorjakupi/portfolio`
+3. Render reads `render.yaml` automatically
+4. After deploy, optional: **Settings → Custom Domains** to add your domain
 
-## Structure
+## CV
 
-- `src/i18n/` — locale files (EN, SV, SQ)
-- `src/data/projects.ts` — all GitHub repos + LIA projects
-- `src/data/profile.ts` — contact info and references
-- `src/components/` — Hero, About, Projects, References, Contact
+- On-site: [/cv.html](public/cv.html) — EN / SV / SQ, printable to PDF
+- Profile photo: GitHub avatar (`public/me.jpg`) — replace with your own photo anytime
 
 ## Links
 
-- GitHub: https://github.com/editorjakupi
+- Portfolio repo: https://github.com/editorjakupi/portfolio
+- GitHub profile: https://github.com/editorjakupi
 - LinkedIn: https://www.linkedin.com/in/editorjakupi/

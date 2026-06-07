@@ -1,5 +1,5 @@
 import { useLocale } from '../i18n/LocaleContext';
-import { references } from '../data/references';
+import { getReferenceContext, getReferenceRole, references } from '../data/references';
 
 export default function References() {
   const { locale, t } = useLocale();
@@ -15,8 +15,8 @@ export default function References() {
           {references.map((ref) => (
             <article key={ref.id} className="ref-card reveal">
               <h3>{ref.name}</h3>
-              <p className="ref-role">{ref.role[locale]}</p>
-              <p className="ref-context">{ref.context[locale]}</p>
+              <p className="ref-role">{getReferenceRole(ref, locale)}</p>
+              <p className="ref-context">{getReferenceContext(ref, locale)}</p>
               <p className="ref-langs">{ref.languages}</p>
             </article>
           ))}

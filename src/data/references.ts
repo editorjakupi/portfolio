@@ -1,11 +1,20 @@
 import type { Locale } from '../i18n/types';
+import { pickLocalized } from '../i18n/utils';
 
 export interface Reference {
   id: string;
   name: string;
-  role: Record<Locale, string>;
-  context: Record<Locale, string>;
+  role: Partial<Record<Locale, string>> & { en: string };
+  context: Partial<Record<Locale, string>> & { en: string };
   languages: string;
+}
+
+export function getReferenceRole(ref: Reference, locale: Locale) {
+  return pickLocalized(ref.role, locale);
+}
+
+export function getReferenceContext(ref: Reference, locale: Locale) {
+  return pickLocalized(ref.context, locale);
 }
 
 export const references: Reference[] = [

@@ -7,6 +7,7 @@ const sq: Translations = {
     references: 'Referencat',
     contact: 'Kontakt',
     github: 'GitHub',
+    cv: 'CV',
   },
   hero: {
     greeting: 'Përshëndetje, unë jam Editor Jakupi',
@@ -16,6 +17,7 @@ const sq: Translations = {
       'Zhvillues softueri me bazë në Halmstad, Suedi. Ndërtoj aplikacione web full-stack, mjete me AI dhe API të forta — nga asistentët e restoranteve dhe platformat e audios deri te pipeline-et ML dhe sistemet .NET të testuara.',
     viewWork: 'Shiko punën time',
     getInTouch: 'Kontakto',
+    downloadCv: 'Shkarko CV',
     location: 'Me bazë në Halmstad, SE',
     status: 'I hapur për mundësi',
   },

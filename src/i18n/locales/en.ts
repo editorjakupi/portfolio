@@ -7,6 +7,7 @@ const en: Translations = {
     references: 'References',
     contact: 'Contact',
     github: 'GitHub',
+    cv: 'CV',
   },
   hero: {
     greeting: "Hi, I'm Editor Jakupi",
@@ -16,6 +17,7 @@ const en: Translations = {
       'Software developer based in Halmstad, Sweden. I build full-stack web applications, AI-powered tools, and robust APIs — from restaurant assistants and podcast platforms to ML pipelines and tested .NET systems.',
     viewWork: 'View my work',
     getInTouch: 'Get in touch',
+    downloadCv: 'Download CV',
     location: 'Based in Halmstad, SE',
     status: 'Open to opportunities',
   },
