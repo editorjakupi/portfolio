@@ -864,6 +864,99 @@
         });
       }
 
+      function collectTextRuns(clone) {
+        const cloneRect = clone.getBoundingClientRect();
+        const runs = [];
+        const elements = clone.querySelectorAll(
+          'h1, h2, h3, p, li, span.lang-name, span.lang-level, a, .cv-aside.cv-date, .tl-role, .tl-org, .tl-desc, .cv-contact-list span, .cv-contact-list a',
+        );
+
+        elements.forEach((el) => {
+          const style = window.getComputedStyle(el);
+          if (style.display === 'none' || style.visibility === 'hidden') return;
+
+          const text = el.textContent.replace(/\s+/g, ' ').trim();
+          if (!text) return;
+
+          const bold = parseInt(style.fontWeight, 10) >= 600 || style.fontWeight === 'bold';
+          const fontSize = parseFloat(style.fontSize) || 12;
+          const range = document.createRange();
+          range.selectNodeContents(el);
+          const rects = [...range.getClientRects()].filter((r) => r.width > 0 && r.height > 0);
+
+          if (rects.length <= 1) {
+            const rect = rects[0] || el.getBoundingClientRect();
+            runs.push({
+              text,
+              top: rect.top - cloneRect.top,
+              left: rect.left - cloneRect.left,
+              width: rect.width,
+              height: rect.height,
+              bottom: rect.bottom - cloneRect.top,
+              fontSize,
+              bold,
+            });
+            return;
+          }
+
+          const totalWidth = rects.reduce((sum, r) => sum + r.width, 0);
+          const words = text.split(' ');
+          let wordIdx = 0;
+
+          rects.forEach((rect) => {
+            const targetChars = Math.max(
+              1,
+              Math.round(text.length * (rect.width / Math.max(totalWidth, 1))),
+            );
+            let lineText = '';
+            while (wordIdx < words.length && (lineText.length < targetChars || !lineText)) {
+              lineText += (lineText ? ' ' : '') + words[wordIdx++];
+            }
+            lineText = lineText.trim();
+            if (!lineText) return;
+
+            runs.push({
+              text: lineText,
+              top: rect.top - cloneRect.top,
+              left: rect.left - cloneRect.left,
+              width: rect.width,
+              height: rect.height,
+              bottom: rect.bottom - cloneRect.top,
+              fontSize,
+              bold,
+            });
+          });
+        });
+
+        return runs;
+      }
+
+      function addSelectableTextForSlice(pdf, runs, slice, margin, contentW, cssWidth, sliceH_mm) {
+        const cssSliceH = slice.endCss - slice.startCss;
+        if (cssSliceH <= 0 || !runs.length) return;
+
+        const mmPerCssX = contentW / cssWidth;
+        const mmPerCssY = sliceH_mm / cssSliceH;
+
+        pdf.saveGraphicsState();
+        pdf.internal.write('3 Tr\n');
+
+        runs.forEach((run) => {
+          if (run.bottom <= slice.startCss || run.top >= slice.endCss) return;
+
+          const x = margin + run.left * mmPerCssX;
+          const y = margin + (run.top - slice.startCss + run.height * 0.8) * mmPerCssY;
+          const fontPt = Math.max(4, (run.fontSize * mmPerCssX) / 0.352778);
+
+          pdf.setFont('helvetica', run.bold ? 'bold' : 'normal');
+          pdf.setFontSize(fontPt);
+          pdf.text(run.text, x, y, { maxWidth: Math.max(run.width * mmPerCssX, 1) });
+        });
+
+        pdf.internal.write('0 Tr\n');
+        pdf.restoreGraphicsState();
+      }
+
       async function generatePdfDocument() {
         if (typeof html2canvas !== 'function') {
           throw new Error('html2canvas not loaded');
@@ -880,6 +973,7 @@
           const exportH = clone.scrollHeight;
           const blocks = collectBlockRanges(clone);
           const links = collectLinks(clone);
+          const textRuns = collectTextRuns(clone);
           const scale = 2;
 
           const canvas = await html2canvas(clone, {
@@ -921,6 +1015,7 @@
             const sliceH_mm = (sliceHPx * contentW) / canvas.width;
             pdf.addImage(sliceCanvas.toDataURL('image/jpeg', 0.98), 'JPEG', margin, margin, contentW, sliceH_mm);
             addLinksForSlice(pdf, links, slice, margin, contentW, cssTotalW, sliceH_mm);
+            addSelectableTextForSlice(pdf, textRuns, slice, margin, contentW, cssTotalW, sliceH_mm);
           });
 
           return pdf;
