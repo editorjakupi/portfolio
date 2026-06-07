@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import profilePhoto from '../assets/profile.jpg';
+import fallbackPhoto from '../../public/me.svg?url';
 import { useLocale } from '../i18n/LocaleContext';
+import { useState } from 'react';
 
 export default function Hero() {
   const { t } = useLocale();
-  const [photoSrc, setPhotoSrc] = useState('/me.jpg');
+  const [photoSrc, setPhotoSrc] = useState(profilePhoto);
 
   return (
     <section className="hero" id="top">
@@ -45,7 +47,7 @@ export default function Hero() {
             <img
               className="hero-photo"
               src={photoSrc}
-              onError={() => setPhotoSrc('/me.svg')}
+              onError={() => setPhotoSrc(fallbackPhoto)}
               alt="Editor Jakupi"
               width={320}
               height={320}
