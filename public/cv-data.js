@@ -128,7 +128,7 @@ window.CV_DATA = {
         'Kreativ mjukvaruutvecklare med stark problemlösningsförmåga och fokus på användarvänliga och effektiva system. Jag arbetar bra i team, kommunicerar tydligt och anpassar mig snabbt till nya tekniker och arbetsflöden. Erfarenhet från säkerhetsbranschen genom parkeringsövervakning och väktarutbildning.',
       sections: {
         profile: 'Sammanfattning',
-        experience: 'Arbetslivserfarenhet',
+        experience: 'Erfarenhet',
         education: 'Utbildning',
         skills: 'Kompetenser',
         languages: 'Språk',
