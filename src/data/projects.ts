@@ -877,6 +877,19 @@ const allProjects: Project[] = [
   },
 ];
 
+const coursePalette = [
+  '2563eb', '059669', 'dc2626', '0891b2', 'db2777', '7c3aed', 'f59e0b',
+  '16a34a', '6366f1', 'b45309', '0284c7', '65a30d', '9333ea', 'c2410c',
+  '0d9488', 'ca8a04', '5b21b6',
+];
+let paletteIndex = 0;
+for (const project of allProjects) {
+  if (project.accent === '64748b') {
+    project.accent = coursePalette[paletteIndex % coursePalette.length];
+    paletteIndex += 1;
+  }
+}
+
 export const projects: Project[] = [...allProjects].sort(
   (a, b) => Number(b.year) - Number(a.year) || Number(b.featured) - Number(a.featured),
 );

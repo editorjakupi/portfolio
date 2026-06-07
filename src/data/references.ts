@@ -48,4 +48,19 @@ export const references: Reference[] = [
     },
     languages: 'EN · DA',
   },
+  {
+    id: 'sebbe',
+    name: 'Sebastian Larsson',
+    role: {
+      en: 'Classmate · NBI Handelsakademin',
+      sv: 'Klasskamrat · NBI Handelsakademin',
+      sq: 'Shok klasse · NBI Handelsakademin',
+    },
+    context: {
+      en: 'Fellow student at NBI Handelsakademin — frequent collaborator on projects and coursework in software development with AI.',
+      sv: 'Studiekamrat vid NBI Handelsakademin — tätt samarbete kring projekt och kursarbete inom mjukvaruutveckling med AI.',
+      sq: 'Student bashkë në NBI Handelsakademin — bashkëpunim i shpeshtë në projekte dhe punë kursi për zhvillimin e softuerit me AI.',
+    },
+    languages: 'SV · EN',
+  },
 ];

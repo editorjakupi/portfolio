@@ -27,7 +27,7 @@ const de: Translations = {
     p1:
       'Bevor ich Software entwickelte, arbeitete ich in Lagern, der Parküberwachung und im IT-Support — Tätigkeiten, die mir Disziplin, Fehlersuche unter Druck und zuverlässige Lieferung lehrten. Diese praktische Einstellung prägt heute, wie ich Code schreibe: strukturiert, getestet und für echte Nutzer gebaut.',
     p2:
-      'Derzeit schließe ich meine KI-orientierte Ausbildung an der NBI Handelsakademin ab (Abschluss Juni 2026) parallel zu Ingenieurstudien in Computertechnik an der Universität Halmstad. Praktika bei PodManager.AI (Full-Stack Audio/KI) und Swiiftly (Restaurant-KI mit RAG, OCR und Governance).',
+      'Ich habe meine KI-orientierte Ausbildung an der NBI Handelsakademin abgeschlossen (Juni 2026) und setze mein Ingenieurstudium in Computertechnik an der Universität Halmstad fort. Praktika bei PodManager.AI (Full-Stack Audio/KI) und Swiiftly (Restaurant-KI mit RAG, OCR und Governance).',
     skillsTitle: 'Technische Fähigkeiten',
     skillGroups: [
       {

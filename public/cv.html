@@ -36,7 +36,12 @@
         cursor: pointer;
         font: inherit;
       }
-      .toolbar button.active { background: #ccfbf1; border-color: #5eead4; color: var(--accent); font-weight: 600; }
+      .toolbar button.active {
+        background: #ccfbf1;
+        border-color: #5eead4;
+        color: var(--accent);
+        font-weight: 600;
+      }
       .page {
         max-width: 820px;
         margin: 0 auto;
@@ -44,20 +49,43 @@
         border: 1px solid var(--border);
         border-radius: 12px;
         padding: 2.5rem;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
       }
-      header { border-bottom: 2px solid var(--accent); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+      header {
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 1rem;
+        margin-bottom: 1.5rem;
+      }
       h1 { font-size: 2rem; letter-spacing: -0.02em; }
       .subtitle { color: var(--accent); font-weight: 600; margin-top: 0.25rem; }
       .contact { margin-top: 0.75rem; color: var(--muted); font-size: 0.92rem; }
       .contact a { color: var(--accent); }
-      h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin: 1.5rem 0 0.75rem; }
+      h2 {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+        margin: 1.5rem 0 0.75rem;
+      }
       .entry { margin-bottom: 1rem; }
-      .entry-head { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-weight: 600; }
+      .entry-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+        font-weight: 600;
+      }
+      .entry-period { color: var(--muted); font-weight: 600; white-space: nowrap; }
       .entry-sub { color: var(--muted); font-size: 0.92rem; margin: 0.15rem 0 0.35rem; }
       .entry p { color: var(--muted); font-size: 0.95rem; }
       .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.35rem; }
-      .tag { font-size: 0.78rem; padding: 0.2rem 0.55rem; border-radius: 999px; background: #f1f5f9; color: #334155; }
+      .tag {
+        font-size: 0.78rem;
+        padding: 0.2rem 0.55rem;
+        border-radius: 999px;
+        background: #f1f5f9;
+        color: #334155;
+      }
       ul.compact { padding-left: 1.1rem; color: var(--muted); font-size: 0.95rem; }
       ul.compact li { margin-bottom: 0.25rem; }
       @media print {
@@ -65,196 +93,103 @@
         .toolbar { display: none; }
         .page { box-shadow: none; border: none; border-radius: 0; padding: 0; max-width: none; }
       }
-      [data-lang] { display: none; }
-      [data-lang].visible { display: block; }
     </style>
   </head>
   <body>
-    <div class="toolbar">
-      <button type="button" data-switch="en" class="active">English</button>
-      <button type="button" data-switch="sv">Svenska</button>
-      <button type="button" data-switch="sq">Shqip</button>
-      <button type="button" onclick="window.print()">Print / Save PDF</button>
-      <a href="/">← Portfolio</a>
-    </div>
+    <div class="toolbar" id="toolbar"></div>
+    <article class="page" id="cv-root"></article>
 
-    <article class="page">
-      <div data-lang="en" class="visible">
-        <header>
-          <h1>Editor Jakupi</h1>
-          <p class="subtitle">Software Developer · AI Specialist</p>
-          <p class="contact">
-            Blyglansvägen 12, 30259 Halmstad ·
-            <a href="tel:+46707912457">070-791 24 57</a> ·
-            <a href="mailto:editorjakupi@outlook.com">editorjakupi@outlook.com</a> ·
-            <a href="https://www.linkedin.com/in/editorjakupi/">LinkedIn</a> ·
-            <a href="https://github.com/editorjakupi">GitHub</a>
-          </p>
-        </header>
-
-        <h2>Profile</h2>
-        <p style="color:#4b5563;margin-bottom:1rem;">
-          Full-stack developer completing AI-focused software development at NBI Handelsakademin (June 2026),
-          with hands-on experience from LIA at PodManager.AI and Swiiftly. Builds React/TypeScript frontends,
-          FastAPI/.NET backends, ML pipelines, and production-minded AI systems with RAG and governance.
-        </p>
-
-        <h2>Experience</h2>
-        <div class="entry">
-          <div class="entry-head"><span>Software Developer — Swiiftly (LIA 2)</span><span>2026</span></div>
-          <p class="entry-sub">Restaurant AI assistant · React, TypeScript, Express, RAG, OCR/ASR</p>
-          <p>Built hybrid retrieval, grounded synthesis, sensitivity governance, and upload pipelines for operational knowledge.</p>
-        </div>
-        <div class="entry">
-          <div class="entry-head"><span>Software Developer — PodManager.AI</span><span>Sep 2025 – Dec 2025</span></div>
-          <p class="entry-sub">The Knowledge Formula · Remote</p>
-          <p>Full-stack LIA: Next.js, React, TypeScript, FastAPI, MongoDB. AI audio editing, Whisper/Azure Speech transcription, Socket.io recording, Azure Blob Storage.</p>
-        </div>
-        <div class="entry">
-          <div class="entry-head"><span>IT Support Technician — Simple Solutions IT</span><span>Jul 2022 – May 2024</span></div>
-          <p>Halmstad · Customer support, internet installation, Windows administration.</p>
-        </div>
-        <div class="entry">
-          <div class="entry-head"><span>Parking Attendant — Aimo Park</span><span>Jul 2022 – May 2024</span></div>
-          <p>Monitoring, enforcement, ticket machine maintenance, signage setup.</p>
-        </div>
-        <div class="entry">
-          <div class="entry-head"><span>Warehouse Worker — Biltema</span><span>Sep 2018 – Jul 2021</span></div>
-          <p>Loading/unloading trucks, pallet stacking by order and item numbers.</p>
-        </div>
-
-        <h2>Education</h2>
-        <div class="entry">
-          <div class="entry-head"><span>Software Developer specializing in AI — NBI Handelsakademin</span><span>2015 – Jun 2026</span></div>
-          <p>OOP, databases, agile development, project management, data-driven applications.</p>
-        </div>
-        <div class="entry">
-          <div class="entry-head"><span>M.Sc. Computer Engineering — Halmstad University</span><span>Aug 2024 – Present</span></div>
-          <p>Algebra, discrete mathematics, digital technology, Java programming.</p>
-        </div>
-
-        <h2>Skills</h2>
-        <div class="tags">
-          <span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Next.js</span>
-          <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">C#</span><span class="tag">.NET</span>
-          <span class="tag">Node.js</span><span class="tag">SQL</span><span class="tag">MongoDB</span><span class="tag">PostgreSQL</span>
-          <span class="tag">Docker</span><span class="tag">RAG</span><span class="tag">Machine Learning</span>
-          <span class="tag">Postman</span><span class="tag">HTTPie</span><span class="tag">REST APIs</span>
-          <span class="tag">React Native</span><span class="tag">Vite</span><span class="tag">WebRTC</span>
-          <span class="tag">Git</span><span class="tag">Scrum</span>
-        </div>
-
-        <h2>Languages</h2>
-        <ul class="compact"><li>Swedish</li><li>English</li><li>Albanian</li></ul>
-      </div>
-
-      <div data-lang="sv">
-        <header>
-          <h1>Editor Jakupi</h1>
-          <p class="subtitle">Mjukvaruutvecklare · AI-specialist</p>
-          <p class="contact">
-            Blyglansvägen 12, 30259 Halmstad ·
-            <a href="tel:+46707912457">070-791 24 57</a> ·
-            <a href="mailto:editorjakupi@outlook.com">editorjakupi@outlook.com</a> ·
-            <a href="https://www.linkedin.com/in/editorjakupi/">LinkedIn</a>
-          </p>
-        </header>
-
-        <h2>Profil</h2>
-        <p style="color:#4b5563;margin-bottom:1rem;">
-          Fullstackutvecklare som slutför AI-inriktad utbildning vid NBI Handelsakademin (juni 2026),
-          med praktisk erfarenhet från LIA hos PodManager.AI och Swiiftly.
-        </p>
-
-        <h2>Arbetslivserfarenhet</h2>
-        <div class="entry">
-          <div class="entry-head"><span>Utvecklare — Swiiftly (LIA 2)</span><span>2026</span></div>
-          <p>Restaurang-AI · React, TypeScript, Express, RAG, OCR/ASR, styrning och kunskapsindex.</p>
-        </div>
-        <div class="entry">
-          <div class="entry-head"><span>Utvecklare — PodManager.AI</span><span>sep 2025 – dec 2025</span></div>
-          <p>Fullstack-LIA: Next.js, React, TypeScript, FastAPI, MongoDB, Whisper, Azure Speech, Socket.io.</p>
-        </div>
-        <div class="entry">
-          <div class="entry-head"><span>IT-supporttekniker — Simple Solutions IT</span><span>juli 2022 – maj 2024</span></div>
-          <p>Kundsupport, internetinstallation, Windows-hantering.</p>
-        </div>
-        <div class="entry">
-          <div class="entry-head"><span>Parkeringsvakt — Aimo Park</span><span>juli 2022 – maj 2024</span></div>
-        </div>
-        <div class="entry">
-          <div class="entry-head"><span>Lagerarbetare — Biltema</span><span>sep 2018 – juli 2021</span></div>
-        </div>
-
-        <h2>Utbildning</h2>
-        <div class="entry">
-          <div class="entry-head"><span>Mjukvaruutvecklare med AI — NBI Handelsakademin</span><span>jun 2026</span></div>
-        </div>
-        <div class="entry">
-          <div class="entry-head"><span>Civilingenjör datateknik — Halmstads högskola</span><span>aug 2024 –</span></div>
-        </div>
-
-        <h2>Kompetenser</h2>
-        <div class="tags">
-          <span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Python</span>
-          <span class="tag">FastAPI</span><span class="tag">C#</span><span class="tag">Docker</span>
-          <span class="tag">Postman</span><span class="tag">REST API</span><span class="tag">Vite</span><span class="tag">WebRTC</span>
-        </div>
-
-        <h2>Språk</h2>
-        <ul class="compact"><li>Svenska</li><li>Engelska</li><li>Albanska</li></ul>
-      </div>
-
-      <div data-lang="sq">
-        <header>
-          <h1>Editor Jakupi</h1>
-          <p class="subtitle">Zhvillues Softueri · Specialist AI</p>
-          <p class="contact">
-            Blyglansvägen 12, 30259 Halmstad ·
-            <a href="mailto:editorjakupi@outlook.com">editorjakupi@outlook.com</a> ·
-            <a href="https://www.linkedin.com/in/editorjakupi/">LinkedIn</a>
-          </p>
-        </header>
-
-        <h2>Profili</h2>
-        <p style="color:#4b5563;margin-bottom:1rem;">
-          Zhvillues full-stack që përfundon studimet e AI në NBI Handelsakademin (qershor 2026),
-          me përvojë praktike në PodManager.AI dhe Swiiftly.
-        </p>
-
-        <h2>Përvoja</h2>
-        <div class="entry">
-          <div class="entry-head"><span>Zhvillues — Swiiftly (LIA 2)</span><span>2026</span></div>
-          <p>Asistent AI restorantesh · React, TypeScript, RAG, OCR/ASR.</p>
-        </div>
-        <div class="entry">
-          <div class="entry-head"><span>Zhvillues — PodManager.AI</span><span>sht 2025 – dhj 2025</span></div>
-          <p>Next.js, FastAPI, MongoDB, Whisper, Azure Speech, Socket.io.</p>
-        </div>
-
-        <h2>Aftësi</h2>
-        <div class="tags">
-          <span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Python</span>
-          <span class="tag">FastAPI</span><span class="tag">Docker</span><span class="tag">REST API</span>
-        </div>
-
-        <h2>Gjuhë</h2>
-        <ul class="compact"><li>Suedisht</li><li>Anglisht</li><li>Shqip</li></ul>
-      </div>
-    </article>
-
+    <script src="/cv-data.js"></script>
     <script>
-      document.querySelectorAll('[data-switch]').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const lang = btn.getAttribute('data-switch');
-          document.querySelectorAll('[data-switch]').forEach((b) => b.classList.remove('active'));
-          btn.classList.add('active');
-          document.querySelectorAll('[data-lang]').forEach((block) => {
-            block.classList.toggle('visible', block.getAttribute('data-lang') === lang);
+      const CONTACT = {
+        address: 'Blyglansvägen 12, 30259 Halmstad',
+        phone: '070-791 24 57',
+        phoneHref: '+46707912457',
+        email: 'editorjakupi@outlook.com',
+        linkedin: 'https://www.linkedin.com/in/editorjakupi/',
+        github: 'https://github.com/editorjakupi',
+      };
+
+      function renderEntry(item) {
+        return `
+          <div class="entry">
+            <div class="entry-head">
+              <span>${item.title}</span>
+              <span class="entry-period">${item.period}</span>
+            </div>
+            ${item.sub ? `<p class="entry-sub">${item.sub}</p>` : ''}
+            <p>${item.desc}</p>
+          </div>`;
+      }
+
+      function renderCv(lang) {
+        const data = window.CV_DATA.entries[lang];
+        const s = data.sections;
+        document.documentElement.lang = lang;
+        document.getElementById('cv-root').innerHTML = `
+          <header>
+            <h1>Editor Jakupi</h1>
+            <p class="subtitle">${data.subtitle}</p>
+            <p class="contact">
+              ${CONTACT.address} ·
+              <a href="tel:${CONTACT.phoneHref}">${CONTACT.phone}</a> ·
+              <a href="mailto:${CONTACT.email}">${CONTACT.email}</a> ·
+              <a href="${CONTACT.linkedin}">LinkedIn</a> ·
+              <a href="${CONTACT.github}">GitHub</a>
+            </p>
+          </header>
+          <h2>${s.profile}</h2>
+          <p style="color:#4b5563;margin-bottom:1rem;">${data.profile}</p>
+          <h2>${s.experience}</h2>
+          ${data.experience.map(renderEntry).join('')}
+          <h2>${s.education}</h2>
+          ${data.education.map(renderEntry).join('')}
+          <h2>${s.skills}</h2>
+          <div class="tags">${data.skills.map((t) => `<span class="tag">${t}</span>`).join('')}</div>
+          <h2>${s.languages}</h2>
+          <ul class="compact">${data.spokenLanguages.map((l) => `<li>${l}</li>`).join('')}</ul>
+          <h2>${s.interests}</h2>
+          <ul class="compact">${data.interests.map((l) => `<li>${l}</li>`).join('')}</ul>
+          <h2>${s.traits}</h2>
+          <ul class="compact">${data.traits.map((l) => `<li>${l}</li>`).join('')}</ul>`;
+      }
+
+      function init() {
+        const toolbar = document.getElementById('toolbar');
+        const stored = localStorage.getItem('cv-lang');
+        let active = stored && window.CV_DATA.entries[stored] ? stored : 'en';
+
+        window.CV_DATA.langs.forEach(({ code, label }) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.textContent = label;
+          btn.dataset.lang = code;
+          btn.addEventListener('click', () => {
+            active = code;
+            localStorage.setItem('cv-lang', code);
+            toolbar.querySelectorAll('button[data-lang]').forEach((b) => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderCv(code);
           });
-          document.documentElement.lang = lang;
+          if (code === active) btn.classList.add('active');
+          toolbar.appendChild(btn);
         });
-      });
+
+        const printBtn = document.createElement('button');
+        printBtn.type = 'button';
+        printBtn.textContent = 'Print / Save PDF';
+        printBtn.addEventListener('click', () => window.print());
+        toolbar.appendChild(printBtn);
+
+        const back = document.createElement('a');
+        back.href = '/';
+        back.textContent = '← Portfolio';
+        toolbar.appendChild(back);
+
+        renderCv(active);
+      }
+
+      init();
     </script>
   </body>
 </html>

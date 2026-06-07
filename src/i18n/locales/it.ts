@@ -27,7 +27,7 @@ const it: Translations = {
     p1:
       'Prima dello sviluppo software ho lavorato in magazzino, sorveglianza parcheggi e supporto IT — ruoli che mi hanno insegnato disciplina, troubleshooting sotto pressione e affidabilità. Questo approccio pratico guida oggi il mio modo di scrivere codice: strutturato, testato e pensato per utenti reali.',
     p2:
-      'Sto completando la formazione in sviluppo software con focus IA alla NBI Handelsakademin (diploma giugno 2026) parallelamente agli studi di ingegneria informatica all\'Università di Halmstad. Tirocinio LIA presso PodManager.AI (piattaforma full-stack audio/IA) e Swiiftly (assistente IA ristoranti con RAG, OCR e governance).',
+      'Ho completato la formazione in sviluppo software con focus IA alla NBI Handelsakademin (giugno 2026) e continuo gli studi di ingegneria informatica all\'Università di Halmstad. Tirocinio LIA presso PodManager.AI (piattaforma full-stack audio/IA) e Swiiftly (assistente IA ristoranti con RAG, OCR e governance).',
     skillsTitle: 'Competenze tecniche',
     skillGroups: [
       {
