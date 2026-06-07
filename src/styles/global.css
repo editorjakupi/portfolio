@@ -443,6 +443,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 28%;
   border-radius: 50%;
   border: 3px solid rgba(45, 212, 191, 0.35);
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
