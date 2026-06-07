@@ -78,6 +78,7 @@ const en: Translations = {
     label: 'References',
     title: "People I've worked with",
     subtitle: 'Contact details available on request — reach out via email.',
+    languagesLabel: 'Speaks',
   },
   contact: {
     label: 'Contact',

@@ -17,7 +17,16 @@ export default function References() {
               <h3>{ref.name}</h3>
               <p className="ref-role">{getReferenceRole(ref, locale)}</p>
               <p className="ref-context">{getReferenceContext(ref, locale)}</p>
-              <p className="ref-langs">{ref.languages}</p>
+              <div className="ref-footer">
+                <span className="ref-langs-label">{t.references.languagesLabel}</span>
+                <div className="ref-lang-chips" aria-label={t.references.languagesLabel}>
+                  {ref.languages.map((lang) => (
+                    <span key={lang} className="ref-lang-chip">
+                      {lang}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </article>
           ))}
         </div>

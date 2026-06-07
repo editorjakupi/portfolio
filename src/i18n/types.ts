@@ -66,6 +66,7 @@ export interface Translations {
     label: string;
     title: string;
     subtitle: string;
+    languagesLabel: string;
   };
   contact: {
     label: string;

@@ -78,6 +78,7 @@ const it: Translations = {
     label: 'Referenze',
     title: 'Persone con cui ho lavorato',
     subtitle: 'Contatti disponibili su richiesta — scrivimi via e-mail.',
+    languagesLabel: 'Lingue',
   },
   contact: {
     label: 'Contatto',

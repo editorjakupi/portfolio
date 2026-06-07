@@ -78,6 +78,7 @@ const sq: Translations = {
     label: 'Referencat',
     title: 'Persona me të cilët kam punuar',
     subtitle: 'Detajet e kontaktit në dispozicion me kërkesë — kontaktoni përmes email-it.',
+    languagesLabel: 'Gjuhët',
   },
   contact: {
     label: 'Kontakt',

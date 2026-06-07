@@ -78,6 +78,7 @@ const sv: Translations = {
     label: 'Referenser',
     title: 'Personer jag arbetat med',
     subtitle: 'Kontaktuppgifter lämnas på begäran — hör av dig via e-post.',
+    languagesLabel: 'Talar',
   },
   contact: {
     label: 'Kontakt',

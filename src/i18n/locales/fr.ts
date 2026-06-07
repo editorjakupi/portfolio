@@ -78,6 +78,7 @@ const fr: Translations = {
     label: 'Références',
     title: 'Personnes avec qui j\'ai travaillé',
     subtitle: 'Coordonnées disponibles sur demande — contactez-moi par e-mail.',
+    languagesLabel: 'Parle',
   },
   contact: {
     label: 'Contact',

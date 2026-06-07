@@ -6,7 +6,7 @@ export interface Reference {
   name: string;
   role: Partial<Record<Locale, string>> & { en: string };
   context: Partial<Record<Locale, string>> & { en: string };
-  languages: string;
+  languages: string[];
 }
 
 export function getReferenceRole(ref: Reference, locale: Locale) {
@@ -31,7 +31,7 @@ export const references: Reference[] = [
       sv: 'Lärare och mentor under utbildningen i mjukvaruutveckling med AI vid NBI Handelsakademin.',
       sq: 'Mësues dhe mentor gjatë studimeve të zhvillimit të softuerit me AI në NBI Handelsakademin.',
     },
-    languages: 'SV · EN',
+    languages: ['SV', 'EN'],
   },
   {
     id: 'prasad',
@@ -46,7 +46,7 @@ export const references: Reference[] = [
       sv: 'Handledare och mentor under min andra LIA-praktik hos Swiiftly.',
       sq: 'Supervizor dhe mentor gjatë praktikës së dytë LIA në Swiiftly.',
     },
-    languages: 'EN · DA',
+    languages: ['EN', 'DA'],
   },
   {
     id: 'sebbe',
@@ -61,6 +61,6 @@ export const references: Reference[] = [
       sv: 'Studiekamrat vid NBI Handelsakademin — tätt samarbete kring projekt och kursarbete inom mjukvaruutveckling med AI.',
       sq: 'Student bashkë në NBI Handelsakademin — bashkëpunim i shpeshtë në projekte dhe punë kursi për zhvillimin e softuerit me AI.',
     },
-    languages: 'SV · EN',
+    languages: ['SV', 'EN'],
   },
 ];
