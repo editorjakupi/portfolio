@@ -1,11 +1,8 @@
-import profilePhoto from '../assets/profile.jpg';
-import fallbackPhoto from '../../public/me.svg?url';
+import ProfileAvatar from './ProfileAvatar';
 import { useLocale } from '../i18n/LocaleContext';
-import { useState } from 'react';
 
 export default function Hero() {
   const { t } = useLocale();
-  const [photoSrc, setPhotoSrc] = useState(profilePhoto);
 
   return (
     <section className="hero" id="top">
@@ -44,14 +41,7 @@ export default function Hero() {
         </div>
         <div className="hero-visual reveal reveal-delay-2">
           <div className="hero-photo-wrap">
-            <img
-              className="hero-photo"
-              src={photoSrc}
-              onError={() => setPhotoSrc(fallbackPhoto)}
-              alt="Editor Jakupi"
-              width={320}
-              height={320}
-            />
+            <ProfileAvatar className="hero-photo" width={320} height={320} />
             <div className="hero-photo-ring" aria-hidden="true" />
           </div>
         </div>

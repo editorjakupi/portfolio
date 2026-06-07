@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocale } from '../i18n/LocaleContext';
 import { locales } from '../i18n/types';
 import { profile } from '../data/profile';
+import ProfileAvatar from './ProfileAvatar';
 
 export default function Navbar() {
   const { locale, setLocale, t } = useLocale();
@@ -25,7 +26,10 @@ export default function Navbar() {
     <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-inner">
         <a href="#" className="nav-brand" onClick={() => setOpen(false)}>
-          Editor <span>Jakupi</span>
+          <ProfileAvatar className="nav-avatar" width={34} height={34} />
+          <span className="nav-brand-text">
+            Editor <span>Jakupi</span>
+          </span>
         </a>
 
         <nav className="nav-links" aria-label="Main">

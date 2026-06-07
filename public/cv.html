@@ -52,9 +52,27 @@
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
       }
       header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1.5rem;
         border-bottom: 2px solid var(--accent);
         padding-bottom: 1rem;
         margin-bottom: 1.5rem;
+      }
+      .cv-header-main {
+        flex: 1;
+        min-width: 0;
+      }
+      .cv-photo {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center 90%;
+        border: 2px solid var(--accent);
+        flex-shrink: 0;
+        background: #f1f5f9;
       }
       h1 { font-size: 2rem; letter-spacing: -0.02em; }
       .subtitle { color: var(--accent); font-weight: 600; margin-top: 0.25rem; }
@@ -92,6 +110,11 @@
         body { background: white; padding: 0; }
         .toolbar { display: none; }
         .page { box-shadow: none; border: none; border-radius: 0; padding: 0; max-width: none; }
+        .cv-photo { width: 84px; height: 84px; }
+      }
+      @media (max-width: 520px) {
+        header { flex-direction: column-reverse; align-items: center; text-align: center; }
+        .cv-photo { width: 88px; height: 88px; }
       }
     </style>
   </head>
@@ -128,16 +151,19 @@
         document.documentElement.lang = lang;
         document.getElementById('cv-root').innerHTML = `
           <header>
-            <h1>Editor Jakupi</h1>
-            <p class="subtitle">${data.subtitle}</p>
-            <p class="contact">
-              ${CONTACT.address} ·
-              <a href="tel:${CONTACT.phoneHref}">${CONTACT.phone}</a> ·
-              <a href="mailto:${CONTACT.email}">${CONTACT.email}</a> ·
-              <a href="${CONTACT.linkedin}">LinkedIn</a> ·
-              <a href="${CONTACT.github}">GitHub</a> ·
-              Driving licence B
-            </p>
+            <div class="cv-header-main">
+              <h1>Editor Jakupi</h1>
+              <p class="subtitle">${data.subtitle}</p>
+              <p class="contact">
+                ${CONTACT.address} ·
+                <a href="tel:${CONTACT.phoneHref}">${CONTACT.phone}</a> ·
+                <a href="mailto:${CONTACT.email}">${CONTACT.email}</a> ·
+                <a href="${CONTACT.linkedin}">LinkedIn</a> ·
+                <a href="${CONTACT.github}">GitHub</a> ·
+                Driving licence B
+              </p>
+            </div>
+            <img class="cv-photo" src="/me.jpg" alt="Editor Jakupi" width="96" height="96" />
           </header>
           <h2>${s.profile}</h2>
           <p style="color:#4b5563;margin-bottom:1rem;">${data.profile}</p>
