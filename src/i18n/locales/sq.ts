@@ -27,7 +27,7 @@ const sq: Translations = {
     p1:
       'Para zhvillimit të softuerit punova në magazina, monitorimin e parkimit dhe IT support — role që më mësojnë disiplinë, zgjidhjen e problemeve nën presion dhe dorëzimin e besueshëm. Ky mentalitet praktik formon mënyrën si shkruaj kod sot: i strukturuar, i testuar dhe i ndërtuar për përdorues realë.',
     p2:
-      'Kam përfunduar edukimin tim të fokusuar në AI në NBI Handelsakademin (qershor 2026) dhe vazhdoj studimet e inxhinierisë kompjuterike në Universitetin e Halmstad. Kam kryer praktika LIA në PodManager.AI (platformë full-stack audio/AI) dhe Swiiftly (asistent AI për restorante me RAG, OCR dhe qeverisje).',
+      'Kam përfunduar arsimin profesional të lartë si zhvillues softueri me AI në NBI Handelsakademin (qershor 2026) dhe një vit të programit M.Sc. in Inxhinieri Kompjuterike në Universitetin e Halmstad (2021–2022). Praktika LIA në PodManager.AI dhe Swiiftly.',
     skillsTitle: 'Aftësi teknike',
     skillGroups: [
       {

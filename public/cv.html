@@ -118,7 +118,7 @@
               <span class="entry-period">${item.period}</span>
             </div>
             ${item.sub ? `<p class="entry-sub">${item.sub}</p>` : ''}
-            <p>${item.desc}</p>
+            ${item.desc ? `<p>${item.desc}</p>` : ''}
           </div>`;
       }
 
@@ -135,7 +135,8 @@
               <a href="tel:${CONTACT.phoneHref}">${CONTACT.phone}</a> ·
               <a href="mailto:${CONTACT.email}">${CONTACT.email}</a> ·
               <a href="${CONTACT.linkedin}">LinkedIn</a> ·
-              <a href="${CONTACT.github}">GitHub</a>
+              <a href="${CONTACT.github}">GitHub</a> ·
+              Driving licence B
             </p>
           </header>
           <h2>${s.profile}</h2>

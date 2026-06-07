@@ -27,7 +27,7 @@ const es: Translations = {
     p1:
       'Antes del desarrollo de software trabajé en almacenes, control de aparcamiento y soporte IT — roles que me enseñaron disciplina, resolución de problemas bajo presión y entrega fiable. Esa mentalidad práctica define hoy cómo escribo código: estructurado, probado y pensado para usuarios reales.',
     p2:
-      'He completado mi formación en desarrollo de software con enfoque en IA en NBI Handelsakademin (junio 2026) y continúo ingeniería informática en la Universidad de Halmstad. Prácticas LIA en PodManager.AI (plataforma full-stack audio/IA) y Swiiftly (asistente IA para restaurantes con RAG, OCR y gobernanza).',
+      'He completado mi formación profesional superior como desarrollador de software con enfoque en IA en NBI Handelsakademin (junio 2026) y un año del M.Sc. en ingeniería informática en la Universidad de Halmstad (2021–2022). Prácticas LIA en PodManager.AI y Swiiftly.',
     skillsTitle: 'Habilidades técnicas',
     skillGroups: [
       {

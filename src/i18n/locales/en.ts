@@ -27,7 +27,7 @@ const en: Translations = {
     p1:
       'Before software development, I worked in warehouses, parking enforcement, and IT support — roles that taught me discipline, troubleshooting under pressure, and how to deliver reliably. That hands-on mindset now shapes how I write code: structured, tested, and built for real users.',
     p2:
-      'I have completed my AI-focused software development education at NBI Handelsakademin (June 2026) and continue computer engineering studies at Halmstad University. I have completed LIA internships at PodManager.AI (full-stack audio/AI platform) and Swiiftly (restaurant AI assistant with RAG, OCR, and governance).',
+      'I have completed my higher vocational education in software development with AI at NBI Handelsakademin (June 2026) and one year of the M.Sc. in Computer Engineering program at Halmstad University (2021–2022). LIA internships at PodManager.AI and Swiiftly.',
     skillsTitle: 'Technical skills',
     skillGroups: [
       {

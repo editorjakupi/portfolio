@@ -27,7 +27,7 @@ const pl: Translations = {
     p1:
       'Zanim zająłem się programowaniem, pracowałem w magazynie, przy nadzorze parkingów i wsparcia IT — role, które nauczyły mnie dyscypliny, rozwiązywania problemów pod presją i niezawodnej realizacji. To praktyczne podejście kształtuje dziś mój sposób pisania kodu: uporządkowany, testowany i stworzony dla prawdziwych użytkowników.',
     p2:
-      'Ukończyłem kierunek programowania z naciskiem na AI w NBI Handelsakademin (czerwiec 2026) i kontynuuję inżynierię komputerową na Uniwersytecie w Halmstad. Praktyki LIA w PodManager.AI (platforma full-stack audio/AI) i Swiiftly (asystent AI dla restauracji z RAG, OCR i governance).',
+      'Ukończyłem wykształcenie zawodowe wyższe jako programista AI w NBI Handelsakademin (czerwiec 2026) oraz jeden rok programu M.Sc. inżynierii komputerowej na Uniwersytecie w Halmstad (2021–2022). Praktyki LIA w PodManager.AI i Swiiftly.',
     skillsTitle: 'Umiejętności techniczne',
     skillGroups: [
       {

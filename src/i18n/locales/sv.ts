@@ -27,7 +27,7 @@ const sv: Translations = {
     p1:
       'Innan mjukvaruutveckling arbetade jag på lager, med parkeringsövervakning och IT-support — roller som lärde mig disciplin, felsökning under press och att leverera pålitligt. Det praktiska arbetssättet präglar hur jag skriver kod idag: strukturerat, testat och byggt för riktiga användare.',
     p2:
-      'Jag har avslutat min AI-inriktade utbildning vid NBI Handelsakademin (examens juni 2026) och studerar vidare civilingenjör datateknik vid Halmstads högskola. Jag har genomfört LIA hos PodManager.AI (fullstack ljud/AI-plattform) och Swiiftly (restaurang-AI med RAG, OCR och styrning).',
+      'Jag har avslutat min yrkeshögskoleutbildning som mjukvaruutvecklare med AI vid NBI Handelsakademin (juni 2026) samt ett år på civilingenjörsprogrammet i datateknik vid Halmstads högskola (2021–2022). LIA hos PodManager.AI och Swiiftly.',
     skillsTitle: 'Tekniska färdigheter',
     skillGroups: [
       {

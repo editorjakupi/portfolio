@@ -27,7 +27,7 @@ const fr: Translations = {
     p1:
       'Avant le développement logiciel, j\'ai travaillé en entrepôt, dans la surveillance du stationnement et le support IT — des rôles qui m\'ont appris la discipline, le dépannage sous pression et la fiabilité. Cet état d\'esprit pratique guide aujourd\'hui ma façon d\'écrire du code : structuré, testé et conçu pour de vrais utilisateurs.',
     p2:
-      'J\'ai terminé ma formation orientée IA à la NBI Handelsakademin (juin 2026) et poursuis mes études d\'ingénierie informatique à l\'université de Halmstad. Stages LIA chez PodManager.AI (plateforme audio/IA full-stack) et Swiiftly (assistant IA restaurant avec RAG, OCR et gouvernance).',
+      'J\'ai terminé ma formation professionnelle supérieure de développeur logiciel orientée IA à la NBI Handelsakademin (juin 2026) et une année du M.Sc. en génie informatique à l\'université de Halmstad (2021–2022). Stages LIA chez PodManager.AI et Swiiftly.',
     skillsTitle: 'Compétences techniques',
     skillGroups: [
       {
