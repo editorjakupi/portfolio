@@ -249,6 +249,16 @@ img {
   border: 2px solid rgba(45, 212, 191, 0.45);
   flex-shrink: 0;
   background: #0f172a;
+  transition:
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.nav-brand:hover .nav-avatar {
+  transform: scale(1.12) rotate(-8deg);
+  border-color: rgba(45, 212, 191, 0.9);
+  box-shadow: 0 0 16px rgba(45, 212, 191, 0.35);
 }
 
 .nav-links {
@@ -451,6 +461,23 @@ img {
   position: relative;
   width: min(100%, 320px);
   aspect-ratio: 1;
+  cursor: pointer;
+}
+
+.hero-photo-wrap::after {
+  content: '';
+  position: absolute;
+  inset: -24px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.22), transparent 68%);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-photo-wrap:hover::after {
+  opacity: 1;
 }
 
 .hero-photo {
@@ -464,6 +491,17 @@ img {
   position: relative;
   z-index: 1;
   background: #0f172a;
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.hero-photo-wrap:hover .hero-photo {
+  animation: hero-photo-hover 2.8s ease-in-out infinite;
+  border-color: rgba(45, 212, 191, 0.8);
+  box-shadow:
+    0 28px 56px rgba(0, 0, 0, 0.5),
+    0 0 42px rgba(45, 212, 191, 0.22);
 }
 
 .hero-photo-ring {
@@ -472,6 +510,15 @@ img {
   border-radius: 50%;
   border: 1px solid rgba(129, 140, 248, 0.35);
   animation: float 8s ease-in-out infinite;
+  transition: border-color 0.4s ease, inset 0.4s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-photo-wrap:hover .hero-photo-ring {
+  inset: -18px;
+  border-color: rgba(129, 140, 248, 0.7);
+  animation: hero-ring-spin 10s linear infinite;
 }
 
 .hero-orb {
@@ -488,6 +535,17 @@ img {
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-16px); }
+}
+
+@keyframes hero-photo-hover {
+  0%, 100% { transform: scale(1.04) rotate(0deg); }
+  33% { transform: scale(1.06) rotate(2deg); }
+  66% { transform: scale(1.04) rotate(-2deg); }
+}
+
+@keyframes hero-ring-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* About */
@@ -1006,5 +1064,21 @@ img {
 
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo-wrap:hover .hero-photo,
+  .hero-photo-wrap:hover .hero-photo-ring,
+  .hero-photo-ring {
+    animation: none !important;
+  }
+
+  .hero-photo-wrap:hover .hero-photo {
+    transform: scale(1.03);
+  }
+
+  .nav-brand:hover .nav-avatar {
+    transform: scale(1.06);
   }
 }

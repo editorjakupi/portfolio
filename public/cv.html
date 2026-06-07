@@ -73,6 +73,12 @@
         border: 2px solid var(--accent);
         flex-shrink: 0;
         background: #f1f5f9;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        cursor: pointer;
+      }
+      .cv-photo:hover {
+        transform: scale(1.06) rotate(-3deg);
+        box-shadow: 0 8px 24px rgba(15, 118, 110, 0.22);
       }
       h1 { font-size: 2rem; letter-spacing: -0.02em; }
       .subtitle { color: var(--accent); font-weight: 600; margin-top: 0.25rem; }
