@@ -1,0 +1,39 @@
+import { useLocale } from '../i18n/LocaleContext';
+
+export default function Hero() {
+  const { t } = useLocale();
+
+  return (
+    <section className="hero" id="top">
+      <div className="container hero-grid">
+        <div className="reveal">
+          <p className="hero-greeting">{t.hero.greeting}</p>
+          <h1 className="hero-title">
+            {t.hero.titleLine1}
+            <br />
+            <em>{t.hero.titleLine2}</em>
+          </h1>
+          <p className="hero-subtitle">{t.hero.subtitle}</p>
+          <div className="hero-actions">
+            <a className="btn btn-primary" href="#projects">
+              {t.hero.viewWork}
+            </a>
+            <a className="btn btn-secondary" href="#contact">
+              {t.hero.getInTouch}
+            </a>
+          </div>
+          <div className="hero-meta">
+            <span>
+              <strong>{t.hero.location}</strong>
+            </span>
+            <span>·</span>
+            <span>{t.hero.status}</span>
+          </div>
+        </div>
+        <div className="hero-visual reveal reveal-delay-2">
+          <div className="hero-orb" aria-hidden="true" />
+        </div>
+      </div>
+    </section>
+  );
+}
