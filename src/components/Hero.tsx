@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { useLocale } from '../i18n/LocaleContext';
 
 export default function Hero() {
   const { t } = useLocale();
+  const [photoSrc, setPhotoSrc] = useState('/me.jpg');
 
   return (
     <section className="hero" id="top">
@@ -42,7 +44,8 @@ export default function Hero() {
           <div className="hero-photo-wrap">
             <img
               className="hero-photo"
-              src="/me.jpg"
+              src={photoSrc}
+              onError={() => setPhotoSrc('/me.svg')}
               alt="Editor Jakupi"
               width={320}
               height={320}

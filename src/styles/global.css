@@ -448,6 +448,7 @@ img {
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
   position: relative;
   z-index: 1;
+  background: #0f172a;
 }
 
 .hero-photo-ring {

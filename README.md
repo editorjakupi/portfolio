@@ -49,7 +49,7 @@ npm run preview
 ## CV
 
 - On-site: [/cv.html](public/cv.html) — EN / SV / SQ, printable to PDF
-- Profile photo: GitHub avatar (`public/me.jpg`) — replace with your own photo anytime
+- Profile photo: branded avatar (`public/me.svg`) — drop in `public/me.jpg` to use your own photo
 
 ## Links
 
