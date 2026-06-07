@@ -83,7 +83,7 @@ const fr: Translations = {
     label: 'Contact',
     title: 'Construisons quelque chose ensemble',
     subtitle:
-      'Vous cherchez un développeur pour un stage, un poste junior ou une collaboration ? Écrivez-moi.',
+      "Vous cherchez un développeur pour un stage, un poste junior ou une collaboration projet ? N'hésitez pas à me contacter.",
     email: 'E-mail',
     phone: 'Téléphone',
     linkedin: 'LinkedIn',

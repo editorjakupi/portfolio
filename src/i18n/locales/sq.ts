@@ -83,7 +83,7 @@ const sq: Translations = {
     label: 'Kontakt',
     title: 'Le të ndërtojmë diçka së bashku',
     subtitle:
-      'Po kërkoni një zhvillues për praktikë, rol junior ose bashkëpunim projekti? Do të dëgjoja me kënaqësi.',
+      'Po kërkoni një zhvillues për praktikë, rol junior ose bashkëpunim projekti? Më kontaktoni pa hezitim.',
     email: 'Email',
     phone: 'Telefon',
     linkedin: 'LinkedIn',

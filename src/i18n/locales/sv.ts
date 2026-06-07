@@ -83,7 +83,7 @@ const sv: Translations = {
     label: 'Kontakt',
     title: 'Låt oss bygga något tillsammans',
     subtitle:
-      'Söker du en utvecklare för LIA, junior roll eller projektsamarbete? Jag hör gärna av dig.',
+      'Söker du en utvecklare för LIA, juniorroll eller projektsamarbete? Hör gärna av dig.',
     email: 'E-post',
     phone: 'Telefon',
     linkedin: 'LinkedIn',
