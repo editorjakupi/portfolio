@@ -18,9 +18,9 @@ const it: Translations = {
     viewWork: 'Vedi il mio lavoro',
     getInTouch: 'Contattami',
     downloadCv: 'Scarica CV',
-    location: 'Basato a Halmstad, SE',
+    location: 'Basato a Halmstad, Svezia',
     status: 'Aperto a opportunità',
-    languages: 'Svedese · inglese · albanese (C2)',
+    languages: 'Svedese · inglese · albanese',
   },
   about: {
     label: 'Chi sono',
@@ -94,9 +94,6 @@ const it: Translations = {
     phone: 'Telefono',
     linkedin: 'LinkedIn',
     github: 'GitHub',
-    location: 'Sede',
-    languages: 'Lingue',
-    drivingLicence: 'Patente di guida',
   },
   footer: {
     rights: 'Tutti i diritti riservati.',

@@ -18,9 +18,9 @@ const sv: Translations = {
     viewWork: 'Se mitt arbete',
     getInTouch: 'Kontakta mig',
     downloadCv: 'Ladda ner CV',
-    location: 'Baserad i Halmstad, SE',
+    location: 'Baserad i Halmstad, Sverige',
     status: 'Öppen för möjligheter',
-    languages: 'Svenska · engelska · albanska (C2)',
+    languages: 'Svenska · engelska · albanska',
   },
   about: {
     label: 'Om mig',
@@ -94,9 +94,6 @@ const sv: Translations = {
     phone: 'Telefon',
     linkedin: 'LinkedIn',
     github: 'GitHub',
-    location: 'Plats',
-    languages: 'Språk',
-    drivingLicence: 'Körkort',
   },
   footer: {
     rights: 'Alla rättigheter förbehållna.',

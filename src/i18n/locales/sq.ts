@@ -18,9 +18,9 @@ const sq: Translations = {
     viewWork: 'Shiko punën time',
     getInTouch: 'Kontakto',
     downloadCv: 'Shkarko CV',
-    location: 'Me bazë në Halmstad, SE',
+    location: 'Me bazë në Halmstad, Suedi',
     status: 'I hapur për mundësi',
-    languages: 'Suedisht · anglisht · shqip (C2)',
+    languages: 'Suedisht · anglisht · shqip',
   },
   about: {
     label: 'Rreth meje',
@@ -94,9 +94,6 @@ const sq: Translations = {
     phone: 'Telefon',
     linkedin: 'LinkedIn',
     github: 'GitHub',
-    location: 'Vendndodhja',
-    languages: 'Gjuhët',
-    drivingLicence: 'Patentë shoferi',
   },
   footer: {
     rights: 'Të gjitha të drejtat e rezervuara.',

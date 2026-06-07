@@ -18,9 +18,9 @@ const es: Translations = {
     viewWork: 'Ver mi trabajo',
     getInTouch: 'Contactar',
     downloadCv: 'Descargar CV',
-    location: 'Ubicado en Halmstad, SE',
+    location: 'Ubicado en Halmstad, Suecia',
     status: 'Abierto a oportunidades',
-    languages: 'Sueco · inglés · albanés (C2)',
+    languages: 'Sueco · inglés · albanés',
   },
   about: {
     label: 'Sobre mí',
@@ -94,9 +94,6 @@ const es: Translations = {
     phone: 'Teléfono',
     linkedin: 'LinkedIn',
     github: 'GitHub',
-    location: 'Ubicación',
-    languages: 'Idiomas',
-    drivingLicence: 'Carnet de conducir',
   },
   footer: {
     rights: 'Todos los derechos reservados.',

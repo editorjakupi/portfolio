@@ -77,9 +77,6 @@ export interface Translations {
     phone: string;
     linkedin: string;
     github: string;
-    location: string;
-    languages: string;
-    drivingLicence: string;
   };
   footer: {
     rights: string;
