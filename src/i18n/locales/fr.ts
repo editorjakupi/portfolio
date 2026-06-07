@@ -20,6 +20,7 @@ const fr: Translations = {
     downloadCv: 'Télécharger le CV',
     location: 'Basé à Halmstad, SE',
     status: 'Ouvert aux opportunités',
+    languages: 'Suédois · anglais · albanais (C2)',
   },
   about: {
     label: 'À propos',
@@ -44,15 +45,19 @@ const fr: Translations = {
       },
       {
         title: 'IA & données',
-        items: ['Machine Learning', 'RAG', 'Intégration LLM', 'TensorFlow/Keras', 'Streamlit'],
+        items: ['Machine Learning', 'RAG', 'Intégration LLM', 'Whisper', 'Azure Speech', 'TensorFlow/Keras', 'Streamlit'],
       },
       {
         title: 'Outils & DevOps',
-        items: ['Docker', 'Git', 'GitHub', 'Postman', 'HTTPie', 'VS Code', 'JetBrains', 'Scrum'],
+        items: ['Docker', 'Git', 'GitHub', 'Git Bash', 'Postman', 'HTTPie', 'VS Code', 'JetBrains Toolbox', 'Cursor', 'Scrum', 'CI/CD'],
       },
       {
         title: 'Temps réel & cloud',
         items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Azure Blob Storage'],
+      },
+      {
+        title: 'Autre',
+        items: ['Support IT', 'Microsoft Office'],
       },
     ],
   },
@@ -89,6 +94,9 @@ const fr: Translations = {
     phone: 'Téléphone',
     linkedin: 'LinkedIn',
     github: 'GitHub',
+    location: 'Lieu',
+    languages: 'Langues',
+    drivingLicence: 'Permis de conduire',
   },
   footer: {
     rights: 'Tous droits réservés.',

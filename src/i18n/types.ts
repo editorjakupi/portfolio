@@ -32,6 +32,7 @@ export interface Translations {
     downloadCv: string;
     location: string;
     status: string;
+    languages: string;
   };
   about: {
     label: string;
@@ -76,6 +77,9 @@ export interface Translations {
     phone: string;
     linkedin: string;
     github: string;
+    location: string;
+    languages: string;
+    drivingLicence: string;
   };
   footer: {
     rights: string;

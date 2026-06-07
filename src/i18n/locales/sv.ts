@@ -20,6 +20,7 @@ const sv: Translations = {
     downloadCv: 'Ladda ner CV',
     location: 'Baserad i Halmstad, SE',
     status: 'Öppen för möjligheter',
+    languages: 'Svenska · engelska · albanska (C2)',
   },
   about: {
     label: 'Om mig',
@@ -44,15 +45,19 @@ const sv: Translations = {
       },
       {
         title: 'AI & data',
-        items: ['Maskininlärning', 'RAG', 'LLM-integration', 'TensorFlow/Keras', 'Streamlit'],
+        items: ['Maskininlärning', 'RAG', 'LLM-integration', 'Whisper', 'Azure Speech', 'TensorFlow/Keras', 'Streamlit'],
       },
       {
         title: 'Verktyg & DevOps',
-        items: ['Docker', 'Git', 'GitHub', 'Postman', 'HTTPie', 'VS Code', 'JetBrains', 'Scrum'],
+        items: ['Docker', 'Git', 'GitHub', 'Git Bash', 'Postman', 'HTTPie', 'VS Code', 'JetBrains Toolbox', 'Cursor', 'Scrum', 'CI/CD'],
       },
       {
         title: 'Realtid & moln',
         items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Azure Blob Storage'],
+      },
+      {
+        title: 'Övrigt',
+        items: ['IT-support', 'Microsoft Office'],
       },
     ],
   },
@@ -89,6 +94,9 @@ const sv: Translations = {
     phone: 'Telefon',
     linkedin: 'LinkedIn',
     github: 'GitHub',
+    location: 'Plats',
+    languages: 'Språk',
+    drivingLicence: 'Körkort',
   },
   footer: {
     rights: 'Alla rättigheter förbehållna.',

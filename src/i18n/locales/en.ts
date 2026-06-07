@@ -20,6 +20,7 @@ const en: Translations = {
     downloadCv: 'Download CV',
     location: 'Based in Halmstad, SE',
     status: 'Open to opportunities',
+    languages: 'Swedish · English · Albanian (C2)',
   },
   about: {
     label: 'About',
@@ -44,15 +45,19 @@ const en: Translations = {
       },
       {
         title: 'AI & Data',
-        items: ['Machine Learning', 'RAG', 'LLM Integration', 'TensorFlow/Keras', 'Streamlit'],
+        items: ['Machine Learning', 'RAG', 'LLM Integration', 'Whisper', 'Azure Speech', 'TensorFlow/Keras', 'Streamlit'],
       },
       {
         title: 'Tools & DevOps',
-        items: ['Docker', 'Git', 'GitHub', 'Postman', 'HTTPie', 'VS Code', 'JetBrains', 'Scrum'],
+        items: ['Docker', 'Git', 'GitHub', 'Git Bash', 'Postman', 'HTTPie', 'VS Code', 'JetBrains Toolbox', 'Cursor', 'Scrum', 'CI/CD'],
       },
       {
         title: 'Real-time & Cloud',
         items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Azure Blob Storage'],
+      },
+      {
+        title: 'Professional',
+        items: ['IT Support', 'Microsoft Office'],
       },
     ],
   },
@@ -89,6 +94,9 @@ const en: Translations = {
     phone: 'Phone',
     linkedin: 'LinkedIn',
     github: 'GitHub',
+    location: 'Location',
+    languages: 'Languages',
+    drivingLicence: 'Driving licence',
   },
   footer: {
     rights: 'All rights reserved.',

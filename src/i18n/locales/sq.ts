@@ -20,6 +20,7 @@ const sq: Translations = {
     downloadCv: 'Shkarko CV',
     location: 'Me bazë në Halmstad, SE',
     status: 'I hapur për mundësi',
+    languages: 'Suedisht · anglisht · shqip (C2)',
   },
   about: {
     label: 'Rreth meje',
@@ -44,15 +45,19 @@ const sq: Translations = {
       },
       {
         title: 'AI & të dhëna',
-        items: ['Mësim makinerik', 'RAG', 'Integrim LLM', 'TensorFlow/Keras', 'Streamlit'],
+        items: ['Mësim makinerik', 'RAG', 'Integrim LLM', 'Whisper', 'Azure Speech', 'TensorFlow/Keras', 'Streamlit'],
       },
       {
         title: 'Mjete & DevOps',
-        items: ['Docker', 'Git', 'GitHub', 'Postman', 'HTTPie', 'VS Code', 'JetBrains', 'Scrum'],
+        items: ['Docker', 'Git', 'GitHub', 'Git Bash', 'Postman', 'HTTPie', 'VS Code', 'JetBrains Toolbox', 'Cursor', 'Scrum', 'CI/CD'],
       },
       {
         title: 'Real-time & cloud',
         items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Azure Blob Storage'],
+      },
+      {
+        title: 'Të tjera',
+        items: ['Support IT', 'Microsoft Office'],
       },
     ],
   },
@@ -89,6 +94,9 @@ const sq: Translations = {
     phone: 'Telefon',
     linkedin: 'LinkedIn',
     github: 'GitHub',
+    location: 'Vendndodhja',
+    languages: 'Gjuhët',
+    drivingLicence: 'Patentë shoferi',
   },
   footer: {
     rights: 'Të gjitha të drejtat e rezervuara.',

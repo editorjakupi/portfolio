@@ -36,6 +36,8 @@ export default function Hero() {
               <strong>{t.hero.location}</strong>
             </span>
             <span>·</span>
+            <span>{t.hero.languages}</span>
+            <span>·</span>
             <span>{t.hero.status}</span>
           </div>
         </div>
