@@ -46,9 +46,9 @@ const allProjects: Project[] = [
     ],
     copy: {
       en: {
-        tagline: 'Restaurant operations AI — RAG, governance, OCR/ASR, and self-learning Q&A.',
+        tagline: 'In-app AI Staff Assistant for restaurant POS — daily support for staff and managers.',
         description:
-          'Standalone LIA project: a production-minded restaurant AI assistant with hybrid retrieval, grounded synthesis, dual sensitivity models, guest chat, schedule actions, and a full upload pipeline for PDFs and video. Built mock-first for demos with a clear path to OpenAI and platform merge.',
+          'Second LIA internship at Swiiftly (Denmark): developed an AI Staff Assistant inside restaurant POS workflows. The assistant answers operational questions with role-based access, knowledge retrieval (RAG), grounded chat responses, and uploads for PDFs and video — with guardrails for sensitive data. Built mock-first for demos, with a clear path to OpenAI and integration into Swiiftly’s platform.',
         highlights: [
           'Unified assistant brain powering chat and REST query API',
           'Hybrid RAG with RBAC, citations, and readiness gate (GO/HOLD/NO-GO)',
@@ -59,9 +59,9 @@ const allProjects: Project[] = [
         ],
       },
       sv: {
-        tagline: 'Restaurang-AI — RAG, styrning, OCR/ASR och självlärande Q&A.',
+        tagline: 'In-app AI Staff Assistant för restaurang-POS — vardagsstöd för personal och chefer.',
         description:
-          'Fristående LIA-projekt: en produktionsinriktad restaurangassistent med hybrid retrieval, grounded synthesis, dual sensitivity-modeller, gästchatt, schemaläggningsåtgärder och upload-pipeline för PDF och video. Mock-first för demo med tydlig väg till OpenAI och plattformsmerge.',
+          'Andra LIA-praktiken hos Swiiftly (Danmark): utvecklade en AI Staff Assistant integrerad i restaurang-POS. Assistenten ger rollanpassade svar från operativ kunskap via RAG, grounded chatt, uppladdning av PDF och video samt skydd för känslig data. Mock-first för demo, med tydlig väg till OpenAI och integration i Swiiftlys plattform.',
         highlights: [
           'Enhetlig assistenthjärna för chatt och REST query API',
           'Hybrid RAG med RBAC, citat och readiness gate (GO/HOLD/NO-GO)',
@@ -72,9 +72,9 @@ const allProjects: Project[] = [
         ],
       },
       sq: {
-        tagline: 'AI për operacionet e restoranteve — RAG, qeverisje, OCR/ASR dhe Q&A vetë-mësim.',
+        tagline: 'AI Staff Assistant in-app për POS restoranti — mbështetje ditore për stafin dhe menaxherët.',
         description:
-          'Projekt LIA i pavarur: asistent AI për restorante me retrieval hibrid, grounded synthesis, modele dual sensitivity, chat për mysafirë, veprime orari dhe pipeline upload për PDF dhe video. Mock-first për demo me rrugë të qartë drejt OpenAI dhe merge në platformë.',
+          'Praktika e dytë LIA në Swiiftly (Danimarkë): zhvillova një AI Staff Assistant të integruar në rrjedhat e punës POS të restoranteve. Asistenti jep përgjigje të bazuara në rol, retrieval (RAG), chat të grounded, ngarkim PDF/video dhe mbrojtje për të dhëna sensitive. Mock-first për demo, me rrugë të qartë drejt OpenAI dhe integrimit në platformën Swiiftly.',
         highlights: [
           'Truri i unifikuar i asistentit për chat dhe REST query API',
           'RAG hibrid me RBAC, citime dhe readiness gate (GO/HOLD/NO-GO)',
@@ -149,7 +149,7 @@ const allProjects: Project[] = [
     title: 'SmartFood',
     year: '2026',
     featured: true,
-    category: 'featured',
+    category: 'course',
     accent: 'ea580c',
     github: 'https://github.com/editorjakupi/smartfood',
     demo: 'https://smartfood-ten.vercel.app',
@@ -198,7 +198,7 @@ const allProjects: Project[] = [
     title: 'Telco Churn Prediction',
     year: '2026',
     featured: true,
-    category: 'featured',
+    category: 'course',
     accent: '0369a1',
     github: 'https://github.com/editorjakupi/telco-customer-churn-prediction',
     demo: 'https://telco-customer-churn-prediction-editorjakupi.streamlit.app',
@@ -244,7 +244,7 @@ const allProjects: Project[] = [
     title: 'CRM System',
     year: '2025',
     featured: true,
-    category: 'featured',
+    category: 'course',
     accent: '4f46e5',
     github: 'https://github.com/editorjakupi/testning-av-crmsystem',
     tech: ['React', 'C#', 'ASP.NET Core', 'PostgreSQL', 'xUnit', 'Playwright', 'Postman'],
@@ -289,7 +289,7 @@ const allProjects: Project[] = [
     title: 'AI Knowledge Check',
     year: '2026',
     featured: true,
-    category: 'featured',
+    category: 'course',
     accent: 'be123c',
     github: 'https://github.com/editorjakupi/del1-kod',
     tech: ['Python', 'TensorFlow/Keras', 'KerasTuner', 'Streamlit', 'RAG', 'Google GenAI'],
