@@ -40,6 +40,8 @@ export interface Translations {
     p1: string;
     p2: string;
     skillsTitle: string;
+    timelineTitle: string;
+    educationTitle: string;
     skillGroups: {
       title: string;
       items: string[];

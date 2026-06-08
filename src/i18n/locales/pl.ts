@@ -28,8 +28,10 @@ const pl: Translations = {
     p1:
       'Zanim zająłem się programowaniem, pracowałem w magazynie, przy nadzorze parkingów i wsparcia IT — role, które nauczyły mnie dyscypliny, rozwiązywania problemów pod presją i niezawodnej realizacji. To praktyczne podejście kształtuje dziś mój sposób pisania kodu: uporządkowany, testowany i stworzony dla prawdziwych użytkowników.',
     p2:
-      'Ukończyłem wykształcenie zawodowe wyższe jako programista AI w NBI Handelsakademin (czerwiec 2026) oraz jeden rok programu M.Sc. inżynierii komputerowej na Uniwersytecie w Halmstad (2021–2022). Praktyki LIA w PodManager.AI i Swiiftly.',
+      'Po roku programu M.Sc. inżynierii komputerowej na Uniwersytecie w Halmstad (2021–2022) ukończyłem wykształcenie zawodowe wyższe jako programista AI w NBI Handelsakademin (czerwiec 2026), w tym praktyki LIA w PodManager.AI i Swiiftly.',
     skillsTitle: 'Umiejętności techniczne',
+    timelineTitle: 'Doświadczenie',
+    educationTitle: 'Edukacja',
     skillGroups: [
       {
         title: 'Języki',

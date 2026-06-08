@@ -28,8 +28,10 @@ const it: Translations = {
     p1:
       'Prima dello sviluppo software ho lavorato in magazzino, sorveglianza parcheggi e supporto IT — ruoli che mi hanno insegnato disciplina, troubleshooting sotto pressione e affidabilità. Questo approccio pratico guida oggi il mio modo di scrivere codice: strutturato, testato e pensato per utenti reali.',
     p2:
-      'Ho completato la formazione professionale superiore come sviluppatore software con focus IA alla NBI Handelsakademin (giugno 2026) e un anno del M.Sc. in ingegneria informatica all\'Università di Halmstad (2021–2022). Tirocinio LIA presso PodManager.AI e Swiiftly.',
+      'Dopo un anno del M.Sc. in ingegneria informatica all\'Università di Halmstad (2021–2022), ho completato la formazione professionale superiore come sviluppatore software con focus IA alla NBI Handelsakademin (giugno 2026), incluse le LIA presso PodManager.AI e Swiiftly.',
     skillsTitle: 'Competenze tecniche',
+    timelineTitle: 'Esperienza',
+    educationTitle: 'Formazione',
     skillGroups: [
       {
         title: 'Linguaggi',

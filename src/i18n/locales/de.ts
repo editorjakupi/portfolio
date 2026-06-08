@@ -28,8 +28,10 @@ const de: Translations = {
     p1:
       'Bevor ich Software entwickelte, arbeitete ich in Lagern, der Parküberwachung und im IT-Support — Tätigkeiten, die mir Disziplin, Fehlersuche unter Druck und zuverlässige Lieferung lehrten. Diese praktische Einstellung prägt heute, wie ich Code schreibe: strukturiert, getestet und für echte Nutzer gebaut.',
     p2:
-      'Ich habe meine höhere Berufsausbildung als Softwareentwickler mit KI an der NBI Handelsakademin abgeschlossen (Juni 2026) sowie ein Jahr im M.Sc.-Programm Computertechnik an der Universität Halmstad (2021–2022). LIA-Praktika bei PodManager.AI und Swiiftly.',
+      'Nach einem Jahr im M.Sc.-Programm Computertechnik an der Universität Halmstad (2021–2022) habe ich meine höhere Berufsausbildung als Softwareentwickler mit KI an der NBI Handelsakademin abgeschlossen (Juni 2026), einschließlich LIA-Praktika bei PodManager.AI und Swiiftly.',
     skillsTitle: 'Technische Fähigkeiten',
+    timelineTitle: 'Berufserfahrung',
+    educationTitle: 'Ausbildung',
     skillGroups: [
       {
         title: 'Sprachen',
