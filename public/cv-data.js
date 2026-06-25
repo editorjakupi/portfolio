@@ -34,6 +34,9 @@ const CV_SKILLS = [
   'VU1 Security Training',
 ];
 
+const NBI_DIPLOMA_URL =
+  'https://true.nbi-handelsakademin.se/examensbevis-nbi-356401-8604/?zone=truecrt&lang=se';
+
 window.CV_DATA = {
   langs: [
     { code: 'en', label: 'English' },
@@ -97,6 +100,7 @@ window.CV_DATA = {
           period: 'Aug 2024 – Jun 2026',
           sub: 'Halmstad, Sweden',
           desc: 'Combined modern development in C#, Python and JavaScript with AI and machine learning. Completed courses in OOP, databases, agile development, project management and data-driven applications, along with 24 weeks of internship (LIA).',
+          verifyUrl: NBI_DIPLOMA_URL,
         },
         {
           title: 'M.Sc. Computer Engineering — Halmstad University',
@@ -173,6 +177,7 @@ window.CV_DATA = {
           period: 'aug 2024 – jun 2026',
           sub: 'Halmstad',
           desc: 'Kombinerade modern utveckling i C#, Python och JavaScript med AI och maskininlärning. Kurser i OOP, databaser, agil utveckling, projektledning och datadrivna applikationer, samt 24 veckors LIA.',
+          verifyUrl: NBI_DIPLOMA_URL,
         },
         {
           title: 'Civilingenjör datateknik — Halmstads högskola',
@@ -249,6 +254,7 @@ window.CV_DATA = {
           period: 'gus 2024 – qer 2026',
           sub: 'Halmstad',
           desc: 'Zhvillim modern në C#, Python, JavaScript me AI/ML. Kurse OOP, databaza, agile, menaxhim projektesh dhe 24 javë LIA.',
+          verifyUrl: NBI_DIPLOMA_URL,
         },
         {
           title: 'M.Sc. Inxhinieri Kompjuterike — Universiteti i Halmstad',
@@ -287,7 +293,7 @@ window.CV_DATA = {
         { title: 'Lagerarbeiter — Biltema', period: 'Sep 2015 – Jul 2018', sub: 'Halmstad · Teilzeit', desc: 'Lagerarbeit: Be- und Entladen von LKW sowie Palettenverwaltung nach Artikelnummern und Bestellungen.' },
       ],
       education: [
-        { title: 'Higher Vocational Education — Softwareentwickler KI, NBI Handelsakademin', period: 'Aug 2024 – Jun 2026', sub: 'Halmstad', desc: 'C#, Python, JavaScript mit KI/ML. OOP, Datenbanken, Agile, Projektmanagement, 24 Wochen LIA.' },
+        { title: 'Higher Vocational Education — Softwareentwickler KI, NBI Handelsakademin', period: 'Aug 2024 – Jun 2026', sub: 'Halmstad', desc: 'C#, Python, JavaScript mit KI/ML. OOP, Datenbanken, Agile, Projektmanagement, 24 Wochen LIA.', verifyUrl: NBI_DIPLOMA_URL },
         { title: 'M.Sc. Computertechnik — Universität Halmstad', period: 'Aug 2021 – Jun 2022', sub: 'Halmstad', desc: 'Ein Jahr abgeschlossen. Algebra, diskrete Mathematik, Digitaltechnik, Java.' },
         { title: 'Sicherheitsausbildung — Väktarskolan', period: 'Jun 2021', sub: 'Göteborg', desc: 'Mit Zertifikaten abgeschlossen.' },
         { title: 'Gymnasium — Naturwissenschaften, Sannarpsgymnasiet', period: 'Aug 2011 – Jun 2014', sub: 'Halmstad', desc: '' },
@@ -310,7 +316,7 @@ window.CV_DATA = {
         { title: 'Magasinier — Biltema', period: 'Sep 2015 – Jul 2018', sub: 'Halmstad · Temps partiel', desc: 'Opérations d’entrepôt : chargement et déchargement de camions, gestion des palettes selon numéros d’articles et commandes.' },
       ],
       education: [
-        { title: 'Formation professionnelle supérieure — Développeur IA, NBI Handelsakademin', period: 'Aoû 2024 – Jun 2026', sub: 'Halmstad', desc: 'C#, Python, JavaScript avec IA/ML. POO, bases de données, agile, gestion de projet, 24 semaines LIA.' },
+        { title: 'Formation professionnelle supérieure — Développeur IA, NBI Handelsakademin', period: 'Aoû 2024 – Jun 2026', sub: 'Halmstad', desc: 'C#, Python, JavaScript avec IA/ML. POO, bases de données, agile, gestion de projet, 24 semaines LIA.', verifyUrl: NBI_DIPLOMA_URL },
         { title: 'M.Sc. génie informatique — Université de Halmstad', period: 'Aoû 2021 – Jun 2022', sub: 'Halmstad', desc: 'Une année complétée. Algèbre, mathématiques discrètes, technologie numérique, Java.' },
         { title: 'Formation sécurité — Väktarskolan', period: 'Jun 2021', sub: 'Göteborg', desc: 'Certificats obtenus.' },
         { title: 'Baccalauréat — Sciences naturelles, Sannarpsgymnasiet', period: 'Aoû 2011 – Jun 2014', sub: 'Halmstad', desc: '' },
@@ -333,7 +339,7 @@ window.CV_DATA = {
         { title: 'Operario de almacén — Biltema', period: 'Sep 2015 – Jul 2018', sub: 'Halmstad · Tiempo parcial', desc: 'Operaciones de almacén: carga y descarga de camiones, y gestión de palés según números de artículo y pedidos.' },
       ],
       education: [
-        { title: 'Formación profesional superior — Desarrollador IA, NBI Handelsakademin', period: 'Ago 2024 – Jun 2026', sub: 'Halmstad', desc: 'C#, Python, JavaScript con IA/ML. POO, bases de datos, agile, gestión de proyectos, 24 semanas LIA.' },
+        { title: 'Formación profesional superior — Desarrollador IA, NBI Handelsakademin', period: 'Ago 2024 – Jun 2026', sub: 'Halmstad', desc: 'C#, Python, JavaScript con IA/ML. POO, bases de datos, agile, gestión de proyectos, 24 semanas LIA.', verifyUrl: NBI_DIPLOMA_URL },
         { title: 'M.Sc. ingeniería informática — Universidad de Halmstad', period: 'Ago 2021 – Jun 2022', sub: 'Halmstad', desc: 'Un año completado. Álgebra, matemática discreta, tecnología digital, Java.' },
         { title: 'Formación seguridad — Väktarskolan', period: 'Jun 2021', sub: 'Göteborg', desc: 'Certificados obtenidos.' },
         { title: 'Bachillerato — Ciencias naturales, Sannarpsgymnasiet', period: 'Ago 2011 – Jun 2014', sub: 'Halmstad', desc: '' },
@@ -356,7 +362,7 @@ window.CV_DATA = {
         { title: 'Magazziniere — Biltema', period: 'Set 2015 – Lug 2018', sub: 'Halmstad · Part-time', desc: 'Operazioni di magazzino: carico e scarico camion, gestione pallet in base a codici articolo e ordini.' },
       ],
       education: [
-        { title: 'Formazione professionale superiore — Sviluppatore IA, NBI Handelsakademin', period: 'Ago 2024 – Giu 2026', sub: 'Halmstad', desc: 'C#, Python, JavaScript con IA/ML. OOP, database, agile, project management, 24 settimane LIA.' },
+        { title: 'Formazione professionale superiore — Sviluppatore IA, NBI Handelsakademin', period: 'Ago 2024 – Giu 2026', sub: 'Halmstad', desc: 'C#, Python, JavaScript con IA/ML. OOP, database, agile, project management, 24 settimane LIA.', verifyUrl: NBI_DIPLOMA_URL },
         { title: 'M.Sc. ingegneria informatica — Università di Halmstad', period: 'Ago 2021 – Giu 2022', sub: 'Halmstad', desc: 'Un anno completato. Algebra, matematica discreta, tecnologia digitale, Java.' },
         { title: 'Formazione sicurezza — Väktarskolan', period: 'Giu 2021', sub: 'Göteborg', desc: 'Certificati ottenuti.' },
         { title: 'Diploma scuola superiore — Scienze naturali, Sannarpsgymnasiet', period: 'Ago 2011 – Giu 2014', sub: 'Halmstad', desc: '' },
@@ -379,7 +385,7 @@ window.CV_DATA = {
         { title: 'Pracownik magazynu — Biltema', period: 'Wrz 2015 – Lip 2018', sub: 'Halmstad · Część etatu', desc: 'Praca magazynowa: za- i rozładunek ciężarówek oraz zarządzanie paletami według numerów artykułów i zamówień.' },
       ],
       education: [
-        { title: 'Wykształcenie zawodowe wyższe — Programista AI, NBI Handelsakademin', period: 'Sie 2024 – Cze 2026', sub: 'Halmstad', desc: 'C#, Python, JavaScript z AI/ML. OOP, bazy danych, agile, zarządzanie projektami, 24 tygodnie LIA.' },
+        { title: 'Wykształcenie zawodowe wyższe — Programista AI, NBI Handelsakademin', period: 'Sie 2024 – Cze 2026', sub: 'Halmstad', desc: 'C#, Python, JavaScript z AI/ML. OOP, bazy danych, agile, zarządzanie projektami, 24 tygodnie LIA.', verifyUrl: NBI_DIPLOMA_URL },
         { title: 'M.Sc. inżynieria komputerowa — Uniw. Halmstad', period: 'Sie 2021 – Cze 2022', sub: 'Halmstad', desc: 'Ukończony jeden rok. Algebra, matematyka dyskretna, technologia cyfrowa, Java.' },
         { title: 'Szkolenie ochrony — Väktarskolan', period: 'Cze 2021', sub: 'Göteborg', desc: 'Ukończone z certyfikatami.' },
         { title: 'Matura — Nauki przyrodnicze, Sannarpsgymnasiet', period: 'Sie 2011 – Cze 2014', sub: 'Halmstad', desc: '' },

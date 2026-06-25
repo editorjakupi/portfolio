@@ -1,3 +1,4 @@
+import DiplomaQrBadge from './DiplomaQrBadge';
 import ProfileAvatar from './ProfileAvatar';
 import { useLocale } from '../i18n/LocaleContext';
 
@@ -30,6 +31,7 @@ export default function Hero() {
             >
               {t.hero.downloadCv}
             </a>
+            <DiplomaQrBadge className="hero-diploma-qr" />
           </div>
           <div className="hero-meta">
             <span>
@@ -43,7 +45,7 @@ export default function Hero() {
         </div>
         <div className="hero-visual reveal reveal-delay-2">
           <div className="hero-photo-wrap">
-            <ProfileAvatar className="hero-photo" width={320} height={320} />
+            <ProfileAvatar className="hero-photo" />
             <div className="hero-photo-ring" aria-hidden="true" />
           </div>
         </div>

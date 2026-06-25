@@ -1,10 +1,21 @@
 import type { Locale } from '../i18n/types';
+import { nbiDiploma } from './credentials';
 
 export type TimelineItem = {
   period: string;
   title: string;
   place: string;
+  verifyUrl?: string;
+  verifyLabel?: string;
 };
+
+function withNbiVerify(locale: Locale, item: TimelineItem): TimelineItem {
+  return {
+    ...item,
+    verifyUrl: nbiDiploma.url,
+    verifyLabel: nbiDiploma.verifyLabel[locale],
+  };
+}
 
 /** Synced with public/cv-data.js — experience section */
 export const aboutExperience: Record<Locale, TimelineItem[]> = {
@@ -69,11 +80,11 @@ export const aboutExperience: Record<Locale, TimelineItem[]> = {
 /** Synced with public/cv-data.js — education section */
 export const aboutEducation: Record<Locale, TimelineItem[]> = {
   en: [
-    {
+    withNbiVerify('en', {
       period: 'Aug 2024 – Jun 2026',
       title: 'Higher Vocational Education — Software Developer specialized in AI, NBI Handelsakademin',
       place: 'Halmstad, Sweden',
-    },
+    }),
     {
       period: 'Aug 2021 – Jun 2022',
       title: 'M.Sc. Computer Engineering — Halmstad University',
@@ -91,11 +102,11 @@ export const aboutEducation: Record<Locale, TimelineItem[]> = {
     },
   ],
   sv: [
-    {
+    withNbiVerify('sv', {
       period: 'aug 2024 – jun 2026',
       title: 'Yrkeshögskoleexamen — Mjukvaruutvecklare med AI, NBI Handelsakademin',
       place: 'Halmstad',
-    },
+    }),
     {
       period: 'aug 2021 – jun 2022',
       title: 'Civilingenjör datateknik — Halmstads högskola',
@@ -113,61 +124,61 @@ export const aboutEducation: Record<Locale, TimelineItem[]> = {
     },
   ],
   de: [
-    {
+    withNbiVerify('de', {
       period: 'Aug 2024 – Jun 2026',
       title: 'Higher Vocational Education — Softwareentwickler KI, NBI Handelsakademin',
       place: 'Halmstad',
-    },
+    }),
     { period: 'Aug 2021 – Jun 2022', title: 'M.Sc. Computertechnik — Universität Halmstad', place: 'Halmstad' },
     { period: 'Jun 2021', title: 'Sicherheitsausbildung — Väktarskolan', place: 'Göteborg' },
     { period: 'Aug 2011 – Jun 2014', title: 'Gymnasium — Naturwissenschaften, Sannarpsgymnasiet', place: 'Halmstad' },
   ],
   fr: [
-    {
+    withNbiVerify('fr', {
       period: 'Aoû 2024 – Jun 2026',
       title: 'Formation professionnelle supérieure — Développeur IA, NBI Handelsakademin',
       place: 'Halmstad',
-    },
+    }),
     { period: 'Aoû 2021 – Jun 2022', title: 'M.Sc. génie informatique — Université de Halmstad', place: 'Halmstad' },
     { period: 'Jun 2021', title: 'Formation sécurité — Väktarskolan', place: 'Göteborg' },
     { period: 'Aoû 2011 – Jun 2014', title: 'Baccalauréat — Sciences naturelles, Sannarpsgymnasiet', place: 'Halmstad' },
   ],
   es: [
-    {
+    withNbiVerify('es', {
       period: 'Ago 2024 – Jun 2026',
       title: 'Formación profesional superior — Desarrollador IA, NBI Handelsakademin',
       place: 'Halmstad',
-    },
+    }),
     { period: 'Ago 2021 – Jun 2022', title: 'M.Sc. ingeniería informática — Universidad de Halmstad', place: 'Halmstad' },
     { period: 'Jun 2021', title: 'Formación seguridad — Väktarskolan', place: 'Göteborg' },
     { period: 'Ago 2011 – Jun 2014', title: 'Bachillerato — Ciencias naturales, Sannarpsgymnasiet', place: 'Halmstad' },
   ],
   it: [
-    {
+    withNbiVerify('it', {
       period: 'Ago 2024 – Giu 2026',
       title: 'Formazione professionale superiore — Sviluppatore IA, NBI Handelsakademin',
       place: 'Halmstad',
-    },
+    }),
     { period: 'Ago 2021 – Giu 2022', title: 'M.Sc. ingegneria informatica — Università di Halmstad', place: 'Halmstad' },
     { period: 'Giu 2021', title: 'Formazione sicurezza — Väktarskolan', place: 'Göteborg' },
     { period: 'Ago 2011 – Giu 2014', title: 'Diploma scuola superiore — Scienze naturali, Sannarpsgymnasiet', place: 'Halmstad' },
   ],
   pl: [
-    {
+    withNbiVerify('pl', {
       period: 'Sie 2024 – Cze 2026',
       title: 'Wykształcenie zawodowe wyższe — Programista AI, NBI Handelsakademin',
       place: 'Halmstad',
-    },
+    }),
     { period: 'Sie 2021 – Cze 2022', title: 'M.Sc. inżynieria komputerowa — Uniw. Halmstad', place: 'Halmstad' },
     { period: 'Cze 2021', title: 'Szkolenie ochrony — Väktarskolan', place: 'Göteborg' },
     { period: 'Sie 2011 – Cze 2014', title: 'Matura — Nauki przyrodnicze, Sannarpsgymnasiet', place: 'Halmstad' },
   ],
   sq: [
-    {
+    withNbiVerify('sq', {
       period: 'gus 2024 – qer 2026',
       title: 'Arsim i Lartë Profesional — Zhvillues Softueri me AI, NBI Handelsakademin',
       place: 'Halmstad',
-    },
+    }),
     { period: 'gus 2021 – qer 2022', title: 'M.Sc. Inxhinieri Kompjuterike — Universiteti i Halmstad', place: 'Halmstad' },
     { period: 'qer 2021', title: 'Trajnim sigurie & parkimi — Väktarskolan', place: 'Göteborg' },
     { period: 'gus 2011 – qer 2014', title: 'Diplomë shkolle mesme — Shkenca natyrore, Sannarpsgymnasiet', place: 'Halmstad' },

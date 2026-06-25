@@ -192,13 +192,32 @@
       /* Header — photo left, name + contact right */
       .cv-top {
         display: grid;
-        grid-template-columns: 108px 1fr;
+        grid-template-columns: 108px 1fr auto;
         gap: 1.5rem;
         align-items: start;
         margin-bottom: 2rem;
         padding-bottom: 0.25rem;
         break-inside: avoid;
         page-break-inside: avoid;
+      }
+      .cv-qr-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.35rem;
+        border: 1px solid #ccfbf1;
+        border-radius: 10px;
+        background: #f0fdfa;
+        text-decoration: none;
+        justify-self: end;
+      }
+      .cv-qr-badge img {
+        display: block;
+        width: 76px;
+        height: 76px;
+        border-radius: 4px;
+        background: #fff;
+        padding: 2px;
       }
       .cv-photo {
         width: 108px;
@@ -370,6 +389,16 @@
         word-break: break-all;
       }
       .link-list a:hover { text-decoration: underline; }
+      .tl-verify {
+        margin-top: 0.35rem;
+        font-size: 0.78rem;
+        font-weight: 600;
+      }
+      .tl-verify a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      .tl-verify a:hover { text-decoration: underline; }
 
       /* Skills — two columns like PDF */
       .skills-cols {
@@ -420,7 +449,7 @@
           max-width: none;
         }
         .cv-photo { width: 108px; height: 108px; }
-        .cv-top { grid-template-columns: 108px 1fr; margin-bottom: 1.1rem; }
+        .cv-top { grid-template-columns: 108px 1fr auto; margin-bottom: 1.1rem; }
         .cv-block { margin-bottom: 0.65rem; break-inside: auto; page-break-inside: auto; }
         .cv-block--section-head { margin-bottom: 0.3rem; }
         .cv-row,
@@ -451,6 +480,10 @@
           text-align: center;
         }
         .cv-photo { margin: 0 auto; }
+        .cv-qr-badge {
+          justify-self: center;
+          margin-top: 0.25rem;
+        }
         .cv-contact-list { align-items: center; }
         .cv-flow::before { display: none; }
         .cv-row {
@@ -534,6 +567,10 @@
         portfolio: 'https://editor-jakupi-portfolio.onrender.com',
         linkedin: 'https://www.linkedin.com/in/editorjakupi/',
         github: 'https://github.com/editorjakupi',
+        nbiDiploma: 'https://true.nbi-handelsakademin.se/examensbevis-nbi-356401-8604/?zone=truecrt&lang=se',
+        nbiVerify: 'https://verify.trueoriginal.com/BD37A33A-C66B-1B25-C8AA-0244C8B7F720/?ref=badge',
+        nbiQrImage:
+          'https://cdn.truecrt.com/cdn/full/qrcode-raw-BD37A33A-C66B-1B25-C8AA-0244C8B7F720.png?ref=qrcode&key=X9dRTsX622&s=0',
       };
 
       const UI = {
@@ -543,6 +580,9 @@
           referencesNote: 'References available upon request.',
           drivingLicence: 'Driving licence B',
           proficient: 'Proficient',
+          verifyDiploma: 'Verify diploma (TRUE)',
+          diplomaLink: 'NBI diploma — verified (TRUE)',
+          qrScan: 'Click or scan to verify diploma',
         },
         sv: {
           websites: 'Webb & profiler',
@@ -550,6 +590,9 @@
           referencesNote: 'Referenser lämnas på begäran.',
           drivingLicence: 'Körkort B',
           proficient: 'Proficient',
+          verifyDiploma: 'Verifiera examensbevis (TRUE)',
+          diplomaLink: 'Examensbevis NBI — verifierat (TRUE)',
+          qrScan: 'Klicka eller skanna för att verifiera examensbevis',
         },
         de: {
           websites: 'Websites, Portfolios, Profile',
@@ -557,6 +600,9 @@
           referencesNote: 'Referenzen auf Anfrage.',
           drivingLicence: 'Führerschein B',
           proficient: 'Proficient',
+          verifyDiploma: 'Zeugnis verifizieren (TRUE)',
+          diplomaLink: 'NBI-Zeugnis — verifiziert (TRUE)',
+          qrScan: 'Klicken oder scannen zum Verifizieren',
         },
         fr: {
           websites: 'Sites, portfolios, profils',
@@ -564,6 +610,9 @@
           referencesNote: 'Références disponibles sur demande.',
           drivingLicence: 'Permis B',
           proficient: 'Proficient',
+          verifyDiploma: 'Vérifier le diplôme (TRUE)',
+          diplomaLink: 'Diplôme NBI — vérifié (TRUE)',
+          qrScan: 'Cliquer ou scanner pour vérifier',
         },
         es: {
           websites: 'Webs, portfolios, perfiles',
@@ -571,6 +620,9 @@
           referencesNote: 'Referencias disponibles bajo solicitud.',
           drivingLicence: 'Carnet B',
           proficient: 'Proficient',
+          verifyDiploma: 'Verificar título (TRUE)',
+          diplomaLink: 'Título NBI — verificado (TRUE)',
+          qrScan: 'Clic o escanear para verificar',
         },
         it: {
           websites: 'Siti, portfolio, profili',
@@ -578,6 +630,9 @@
           referencesNote: 'Referenze disponibili su richiesta.',
           drivingLicence: 'Patente B',
           proficient: 'Proficient',
+          verifyDiploma: 'Verifica diploma (TRUE)',
+          diplomaLink: 'Diploma NBI — verificato (TRUE)',
+          qrScan: 'Clicca o scansiona per verificare',
         },
         pl: {
           websites: 'Strony, portfolio, profile',
@@ -585,6 +640,9 @@
           referencesNote: 'Referencje dostępne na życzenie.',
           drivingLicence: 'Prawo jazdy B',
           proficient: 'Proficient',
+          verifyDiploma: 'Zweryfikuj dyplom (TRUE)',
+          diplomaLink: 'Dyplom NBI — zweryfikowany (TRUE)',
+          qrScan: 'Kliknij lub zeskanuj, aby zweryfikować',
         },
         sq: {
           websites: 'Faqe, portofol, profile',
@@ -592,6 +650,9 @@
           referencesNote: 'Referencat ofrohen me kërkesë.',
           drivingLicence: 'Patentë shoferi B',
           proficient: 'Proficient',
+          verifyDiploma: 'Verifiko diplomën (TRUE)',
+          diplomaLink: 'Diploma NBI — e verifikuar (TRUE)',
+          qrScan: 'Kliko ose skano për të verifikuar',
         },
       };
 
@@ -610,7 +671,7 @@
           </div>`;
       }
 
-      function timelineSection(label, items) {
+      function timelineSection(label, items, labels) {
         const head = `
           <div class="cv-block cv-block--section-head">
             <div class="cv-row">
@@ -630,6 +691,7 @@
                 <p class="tl-role">${item.title}</p>
                 ${item.sub ? `<p class="tl-org">${item.sub}</p>` : ''}
                 ${item.desc ? `<p class="tl-desc">${item.desc}</p>` : ''}
+                ${item.verifyUrl ? `<p class="tl-verify"><a href="${item.verifyUrl}" target="_blank" rel="noopener noreferrer">${labels.verifyDiploma}</a></p>` : ''}
               </div>
             </div>
           </div>`,
@@ -679,6 +741,9 @@
                 <li><span class="cv-icon">⛟</span><span>${labels.drivingLicence}</span></li>
               </ul>
             </div>
+            <a class="cv-qr-badge" href="${CONTACT.nbiVerify}" target="_blank" rel="noopener noreferrer" aria-label="${labels.qrScan}" title="${labels.qrScan}">
+              <img src="${CONTACT.nbiQrImage}" alt="" width="76" height="76" />
+            </a>
           </header>
 
           <div class="cv-flow">
@@ -695,6 +760,7 @@
                 <li><a href="${CONTACT.portfolio}">editor-jakupi-portfolio.onrender.com</a></li>
                 <li><a href="${CONTACT.linkedin}">www.linkedin.com/in/editorjakupi/</a></li>
                 <li><a href="${CONTACT.github}">github.com/editorjakupi</a></li>
+                <li><a href="${CONTACT.nbiDiploma}">${labels.diplomaLink}</a></li>
               </ul>`,
             )}
 
@@ -708,9 +774,9 @@
 
             ${section(labels.references, `<p>${labels.referencesNote}</p>`)}
 
-            ${timelineSection(s.experience, data.experience)}
+            ${timelineSection(s.experience, data.experience, labels)}
 
-            ${timelineSection(s.education, data.education)}
+            ${timelineSection(s.education, data.education, labels)}
           </div>`;
       }
 

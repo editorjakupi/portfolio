@@ -436,8 +436,56 @@ img {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.75rem;
   margin-bottom: 2rem;
+}
+
+.hero-diploma-qr.diploma-qr-badge {
+  padding: 0.28rem;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.hero-diploma-qr .diploma-qr-badge__img {
+  width: 52px;
+  height: 52px;
+  padding: 2px;
+}
+
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  order: -1;
+  margin-bottom: 0.25rem;
+}
+
+.diploma-qr-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.65rem 0.5rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(45, 212, 191, 0.28);
+  text-decoration: none;
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.diploma-qr-badge:hover {
+  border-color: rgba(45, 212, 191, 0.55);
+  box-shadow: 0 8px 24px rgba(45, 212, 191, 0.12);
+  transform: translateY(-1px);
+}
+
+.diploma-qr-badge__img {
+  display: block;
+  width: 72px;
+  height: 72px;
+  border-radius: 6px;
+  background: #fff;
+  padding: 3px;
 }
 
 .hero-meta {
@@ -453,18 +501,11 @@ img {
   font-weight: 600;
 }
 
-.hero-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  order: -1;
-  margin-bottom: 0.25rem;
-}
-
 .hero-photo-wrap {
   position: relative;
-  width: min(72vw, 168px);
-  aspect-ratio: 1;
+  width: min(68vw, 180px);
+  height: min(68vw, 180px);
+  flex-shrink: 0;
   cursor: pointer;
 }
 
@@ -485,6 +526,7 @@ img {
 }
 
 .hero-photo {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -795,6 +837,19 @@ img {
 .timeline-compact .timeline-place {
   font-size: 0.68rem;
   line-height: 1.3;
+}
+
+.timeline-verify {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.timeline-verify:hover {
+  text-decoration: underline;
 }
 
 /* Projects */
@@ -1214,8 +1269,14 @@ img {
     margin-bottom: 0;
   }
 
+  .hero-diploma-qr .diploma-qr-badge__img {
+    width: 56px;
+    height: 56px;
+  }
+
   .hero-photo-wrap {
-    width: min(100%, 320px);
+    width: 320px;
+    height: 320px;
   }
 
   .section-about .container {
