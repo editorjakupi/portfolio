@@ -1,9 +1,12 @@
 import DiplomaQrBadge from './DiplomaQrBadge';
 import ProfileAvatar from './ProfileAvatar';
+import { europassUrlForLocale, nbiEuropass } from '../data/credentials';
 import { useLocale } from '../i18n/LocaleContext';
 
 export default function Hero() {
-  const { t } = useLocale();
+  const { locale, t } = useLocale();
+  const europassUrl = europassUrlForLocale(locale);
+  const europassLabel = nbiEuropass.timelineLabel[locale];
 
   return (
     <section className="hero" id="top">
@@ -30,6 +33,14 @@ export default function Hero() {
               rel="noopener noreferrer"
             >
               {t.hero.downloadCv}
+            </a>
+            <a
+              className="hero-europass-badge"
+              href={europassUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {europassLabel}
             </a>
             <DiplomaQrBadge className="hero-diploma-qr" />
           </div>

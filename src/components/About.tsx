@@ -12,15 +12,29 @@ function TimelineBlock({ title, items }: { title: string; items: TimelineItem[] 
               <p className="timeline-period">{item.period}</p>
               <p className="timeline-title">{item.title}</p>
               <p className="timeline-place">{item.place}</p>
-              {item.verifyUrl ? (
-                <a
-                  className="timeline-verify"
-                  href={item.verifyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {item.verifyLabel}
-                </a>
+              {item.verifyUrl || item.europassUrl ? (
+                <div className="timeline-links">
+                  {item.verifyUrl ? (
+                    <a
+                      className="timeline-verify"
+                      href={item.verifyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {item.verifyLabel}
+                    </a>
+                  ) : null}
+                  {item.europassUrl ? (
+                    <a
+                      className="timeline-verify"
+                      href={item.europassUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {item.europassLabel}
+                    </a>
+                  ) : null}
+                </div>
               ) : null}
             </div>
           </li>

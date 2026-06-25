@@ -1,5 +1,5 @@
 import type { Locale } from '../i18n/types';
-import { nbiDiploma } from './credentials';
+import { europassUrlForLocale, nbiDiploma, nbiEuropass } from './credentials';
 
 export type TimelineItem = {
   period: string;
@@ -7,13 +7,17 @@ export type TimelineItem = {
   place: string;
   verifyUrl?: string;
   verifyLabel?: string;
+  europassUrl?: string;
+  europassLabel?: string;
 };
 
-function withNbiVerify(locale: Locale, item: TimelineItem): TimelineItem {
+function withNbiCredentials(locale: Locale, item: TimelineItem): TimelineItem {
   return {
     ...item,
     verifyUrl: nbiDiploma.url,
     verifyLabel: nbiDiploma.verifyLabel[locale],
+    europassUrl: europassUrlForLocale(locale),
+    europassLabel: nbiEuropass.timelineLabel[locale],
   };
 }
 
@@ -80,7 +84,7 @@ export const aboutExperience: Record<Locale, TimelineItem[]> = {
 /** Synced with public/cv-data.js — education section */
 export const aboutEducation: Record<Locale, TimelineItem[]> = {
   en: [
-    withNbiVerify('en', {
+    withNbiCredentials('en', {
       period: 'Aug 2024 – Jun 2026',
       title: 'Higher Vocational Education — Software Developer specialized in AI, NBI Handelsakademin',
       place: 'Halmstad, Sweden',
@@ -102,7 +106,7 @@ export const aboutEducation: Record<Locale, TimelineItem[]> = {
     },
   ],
   sv: [
-    withNbiVerify('sv', {
+    withNbiCredentials('sv', {
       period: 'aug 2024 – jun 2026',
       title: 'Yrkeshögskoleexamen — Mjukvaruutvecklare med AI, NBI Handelsakademin',
       place: 'Halmstad',
@@ -124,7 +128,7 @@ export const aboutEducation: Record<Locale, TimelineItem[]> = {
     },
   ],
   de: [
-    withNbiVerify('de', {
+    withNbiCredentials('de', {
       period: 'Aug 2024 – Jun 2026',
       title: 'Higher Vocational Education — Softwareentwickler KI, NBI Handelsakademin',
       place: 'Halmstad',
@@ -134,7 +138,7 @@ export const aboutEducation: Record<Locale, TimelineItem[]> = {
     { period: 'Aug 2011 – Jun 2014', title: 'Gymnasium — Naturwissenschaften, Sannarpsgymnasiet', place: 'Halmstad' },
   ],
   fr: [
-    withNbiVerify('fr', {
+    withNbiCredentials('fr', {
       period: 'Aoû 2024 – Jun 2026',
       title: 'Formation professionnelle supérieure — Développeur IA, NBI Handelsakademin',
       place: 'Halmstad',
@@ -144,7 +148,7 @@ export const aboutEducation: Record<Locale, TimelineItem[]> = {
     { period: 'Aoû 2011 – Jun 2014', title: 'Baccalauréat — Sciences naturelles, Sannarpsgymnasiet', place: 'Halmstad' },
   ],
   es: [
-    withNbiVerify('es', {
+    withNbiCredentials('es', {
       period: 'Ago 2024 – Jun 2026',
       title: 'Formación profesional superior — Desarrollador IA, NBI Handelsakademin',
       place: 'Halmstad',
@@ -154,7 +158,7 @@ export const aboutEducation: Record<Locale, TimelineItem[]> = {
     { period: 'Ago 2011 – Jun 2014', title: 'Bachillerato — Ciencias naturales, Sannarpsgymnasiet', place: 'Halmstad' },
   ],
   it: [
-    withNbiVerify('it', {
+    withNbiCredentials('it', {
       period: 'Ago 2024 – Giu 2026',
       title: 'Formazione professionale superiore — Sviluppatore IA, NBI Handelsakademin',
       place: 'Halmstad',
@@ -164,7 +168,7 @@ export const aboutEducation: Record<Locale, TimelineItem[]> = {
     { period: 'Ago 2011 – Giu 2014', title: 'Diploma scuola superiore — Scienze naturali, Sannarpsgymnasiet', place: 'Halmstad' },
   ],
   pl: [
-    withNbiVerify('pl', {
+    withNbiCredentials('pl', {
       period: 'Sie 2024 – Cze 2026',
       title: 'Wykształcenie zawodowe wyższe — Programista AI, NBI Handelsakademin',
       place: 'Halmstad',
@@ -174,7 +178,7 @@ export const aboutEducation: Record<Locale, TimelineItem[]> = {
     { period: 'Sie 2011 – Cze 2014', title: 'Matura — Nauki przyrodnicze, Sannarpsgymnasiet', place: 'Halmstad' },
   ],
   sq: [
-    withNbiVerify('sq', {
+    withNbiCredentials('sq', {
       period: 'gus 2024 – qer 2026',
       title: 'Arsim i Lartë Profesional — Zhvillues Softueri me AI, NBI Handelsakademin',
       place: 'Halmstad',
