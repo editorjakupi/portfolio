@@ -7,6 +7,7 @@ const sq: Translations = {
     references: 'Referencat',
     contact: 'Kontakt',
     github: 'GitHub',
+    linkedin: 'LinkedIn',
     cv: 'CV',
   },
   hero: {

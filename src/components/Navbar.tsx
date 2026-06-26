@@ -3,6 +3,7 @@ import { useLocale } from '../i18n/LocaleContext';
 import { locales } from '../i18n/types';
 import { profile } from '../data/profile';
 import ProfileAvatar from './ProfileAvatar';
+import NavSocialLink, { GitHubIcon, LinkedInIcon } from './NavSocialLink';
 
 export default function Navbar() {
   const { locale, setLocale, t } = useLocale();
@@ -60,14 +61,14 @@ export default function Navbar() {
             </select>
           </label>
 
-          <a
-            className="nav-github"
-            href={profile.github}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t.nav.github}
-          </a>
+          <div className="nav-socials">
+            <NavSocialLink href={profile.github} label={t.nav.github}>
+              <GitHubIcon />
+            </NavSocialLink>
+            <NavSocialLink href={profile.linkedin} label={t.nav.linkedin}>
+              <LinkedInIcon />
+            </NavSocialLink>
+          </div>
 
           <button
             type="button"
@@ -94,6 +95,9 @@ export default function Navbar() {
         </a>
         <a href={profile.github} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
           {t.nav.github}
+        </a>
+        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
+          {t.nav.linkedin}
         </a>
       </nav>
     </header>

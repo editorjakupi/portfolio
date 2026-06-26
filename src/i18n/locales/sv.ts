@@ -7,6 +7,7 @@ const sv: Translations = {
     references: 'Referenser',
     contact: 'Kontakt',
     github: 'GitHub',
+    linkedin: 'LinkedIn',
     cv: 'CV',
   },
   hero: {

@@ -20,6 +20,7 @@ export interface Translations {
     references: string;
     contact: string;
     github: string;
+    linkedin: string;
     cv: string;
   };
   hero: {

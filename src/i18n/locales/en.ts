@@ -7,6 +7,7 @@ const en: Translations = {
     references: 'References',
     contact: 'Contact',
     github: 'GitHub',
+    linkedin: 'LinkedIn',
     cv: 'CV',
   },
   hero: {
