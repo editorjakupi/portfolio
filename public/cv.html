@@ -823,6 +823,9 @@
     const UI = {
       en: {
         websites: 'Websites & profiles',
+        linkPortfolio: 'Portfolio',
+        linkLinkedin: 'LinkedIn',
+        linkGithub: 'GitHub',
         references: 'Custom',
         referencesNote: 'References available upon request.',
         drivingLicence: 'Driving licence B',
@@ -835,6 +838,9 @@
       },
       sv: {
         websites: 'Webb & profiler',
+        linkPortfolio: 'Portfolio',
+        linkLinkedin: 'LinkedIn',
+        linkGithub: 'GitHub',
         references: 'Referenser',
         referencesNote: 'Referenser lämnas på begäran.',
         drivingLicence: 'Körkort B',
@@ -847,6 +853,9 @@
       },
       de: {
         websites: 'Websites, Portfolios, Profile',
+        linkPortfolio: 'Portfolio',
+        linkLinkedin: 'LinkedIn',
+        linkGithub: 'GitHub',
         references: 'Referenzen',
         referencesNote: 'Referenzen auf Anfrage.',
         drivingLicence: 'Führerschein B',
@@ -859,6 +868,9 @@
       },
       fr: {
         websites: 'Sites, portfolios, profils',
+        linkPortfolio: 'Portfolio',
+        linkLinkedin: 'LinkedIn',
+        linkGithub: 'GitHub',
         references: 'Références',
         referencesNote: 'Références disponibles sur demande.',
         drivingLicence: 'Permis B',
@@ -871,6 +883,9 @@
       },
       es: {
         websites: 'Webs, portfolios, perfiles',
+        linkPortfolio: 'Portfolio',
+        linkLinkedin: 'LinkedIn',
+        linkGithub: 'GitHub',
         references: 'Referencias',
         referencesNote: 'Referencias disponibles bajo solicitud.',
         drivingLicence: 'Carnet B',
@@ -883,6 +898,9 @@
       },
       it: {
         websites: 'Siti, portfolio, profili',
+        linkPortfolio: 'Portfolio',
+        linkLinkedin: 'LinkedIn',
+        linkGithub: 'GitHub',
         references: 'Referenze',
         referencesNote: 'Referenze disponibili su richiesta.',
         drivingLicence: 'Patente B',
@@ -895,6 +913,9 @@
       },
       pl: {
         websites: 'Strony, portfolio, profile',
+        linkPortfolio: 'Portfolio',
+        linkLinkedin: 'LinkedIn',
+        linkGithub: 'GitHub',
         references: 'Referencje',
         referencesNote: 'Referencje dostępne na życzenie.',
         drivingLicence: 'Prawo jazdy B',
@@ -907,6 +928,9 @@
       },
       sq: {
         websites: 'Faqe, portofol, profile',
+        linkPortfolio: 'Portofol',
+        linkLinkedin: 'LinkedIn',
+        linkGithub: 'GitHub',
         references: 'Referencat',
         referencesNote: 'Referencat ofrohen me kërkesë.',
         drivingLicence: 'Patentë shoferi B',
@@ -1027,11 +1051,11 @@
             ${section(
         labels.websites,
         `<ul class="link-list">
-                <li><a href="${CONTACT.portfolio}">editor-jakupi-portfolio.onrender.com</a></li>
-                <li><a href="${CONTACT.linkedin}">www.linkedin.com/in/editorjakupi/</a></li>
-                <li><a href="${CONTACT.github}">github.com/editorjakupi</a></li>
-                <li><a href="${CONTACT.nbiDiploma}">${labels.diplomaLink}</a></li>
-                <li><a href="${europassPdfForLang(lang)}">${labels.europassLink}</a></li>
+                <li><a href="${CONTACT.portfolio}" title="${CONTACT.portfolio}">${labels.linkPortfolio}</a></li>
+                <li><a href="${CONTACT.linkedin}" title="${CONTACT.linkedin}">${labels.linkLinkedin}</a></li>
+                <li><a href="${CONTACT.github}" title="${CONTACT.github}">${labels.linkGithub}</a></li>
+                <li><a href="${CONTACT.nbiDiploma}" title="${CONTACT.nbiDiploma}">${labels.diplomaLink}</a></li>
+                <li><a href="${europassPdfForLang(lang)}" title="${europassPdfForLang(lang)}">${labels.europassLink}</a></li>
               </ul>`,
       )}
 
