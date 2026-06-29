@@ -667,7 +667,11 @@ img {
 }
 
 .section-about .section-title {
-  font-size: clamp(1.65rem, 2.8vw, 2.15rem);
+  font-size: clamp(1.7rem, 2.8vw, 2.2rem);
+}
+
+.section-about .section-label {
+  font-size: 0.83rem;
 }
 
 .about-header {
@@ -716,7 +720,7 @@ img {
 .section-about .about-text p {
   color: var(--text-muted);
   margin-bottom: 0.65rem;
-  font-size: clamp(0.8rem, 1.05vw, 0.92rem);
+  font-size: clamp(0.85rem, 1.05vw, 0.97rem);
   line-height: 1.55;
 }
 
@@ -782,7 +786,7 @@ img {
 }
 
 .section-about .skill-group h4 {
-  font-size: 0.66rem;
+  font-size: 0.71rem;
   margin-bottom: 0.35rem;
   letter-spacing: 0.06em;
 }
@@ -807,7 +811,7 @@ img {
 }
 
 .section-about .skill-tags span {
-  font-size: 0.69rem;
+  font-size: 0.74rem;
   padding: 0.14rem 0.38rem;
   border-radius: 6px;
 }
@@ -875,7 +879,7 @@ img {
 }
 
 .timeline-compact .timeline-period {
-  font-size: 0.63rem;
+  font-size: 0.68rem;
   letter-spacing: 0.05em;
   margin-bottom: 0.12rem;
 }
@@ -889,7 +893,7 @@ img {
 }
 
 .timeline-compact .timeline-title {
-  font-size: 0.77rem;
+  font-size: 0.82rem;
   line-height: 1.28;
   margin-bottom: 0.08rem;
 }
@@ -901,14 +905,14 @@ img {
 }
 
 .timeline-compact .timeline-place {
-  font-size: 0.69rem;
+  font-size: 0.74rem;
   line-height: 1.3;
 }
 
 .timeline-verify {
   display: inline-block;
   margin-top: 0.3rem;
-  font-size: 0.67rem;
+  font-size: 0.72rem;
   font-weight: 600;
   color: var(--accent);
   text-decoration: none;
@@ -1334,6 +1338,42 @@ img {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 
+  .section-about .section-label {
+    font-size: 0.83rem;
+  }
+
+  .section-about .section-title {
+    font-size: clamp(1.7rem, 2.8vw, 2.2rem);
+  }
+
+  .section-about .about-text p {
+    font-size: clamp(0.85rem, 1.05vw, 0.97rem);
+  }
+
+  .section-about .skill-group h4 {
+    font-size: 0.71rem;
+  }
+
+  .section-about .skill-tags span {
+    font-size: 0.74rem;
+  }
+
+  .section-about .timeline-compact .timeline-period {
+    font-size: 0.68rem;
+  }
+
+  .section-about .timeline-compact .timeline-title {
+    font-size: 0.82rem;
+  }
+
+  .section-about .timeline-compact .timeline-place {
+    font-size: 0.74rem;
+  }
+
+  .section-about .timeline-verify {
+    font-size: 0.72rem;
+  }
+
   .hero-actions {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1447,11 +1487,11 @@ img {
   }
 
   .section-about .section-title {
-    font-size: 1.55rem;
+    font-size: 1.6rem;
   }
 
   .section-about .about-text p {
-    font-size: 0.78rem;
+    font-size: 0.83rem;
     line-height: 1.48;
     margin-bottom: 0.45rem;
   }
@@ -1461,7 +1501,7 @@ img {
   }
 
   .timeline-compact .timeline-title {
-    font-size: 0.71rem;
+    font-size: 0.76rem;
   }
 
   .section-about .skill-group {
