@@ -30,6 +30,8 @@ const fr: Translations = {
       'Avant le développement logiciel, j\'ai travaillé en entrepôt, dans la surveillance du stationnement et le support IT — des rôles qui m\'ont appris la discipline, le dépannage sous pression et la fiabilité. Cet état d\'esprit pratique guide aujourd\'hui ma façon d\'écrire du code : structuré, testé et conçu pour de vrais utilisateurs.',
     p2:
       'Après une année en M.Sc. génie informatique à l\'université de Halmstad (2021–2022), j\'ai terminé ma formation professionnelle supérieure de développeur logiciel orientée IA à la NBI Handelsakademin (juin 2026), incluant les stages LIA chez PodManager.AI et Swiiftly.',
+    p3:
+      'En dehors du développement, je pratique le trading retail sur matières premières — analyse de marché, discipline du risque et prise de décision structurée dans l\'incertitude.',
     skillsTitle: 'Compétences techniques',
     timelineTitle: 'Expérience',
     educationTitle: 'Formation',
@@ -61,6 +63,10 @@ const fr: Translations = {
       {
         title: 'Autre',
         items: ['Support IT', 'Microsoft Office'],
+      },
+      {
+        title: 'Au-delà du code',
+        items: ['Matières premières', 'Analyse de marché', 'Discipline du risque'],
       },
     ],
   },

@@ -30,6 +30,8 @@ const pl: Translations = {
       'Zanim zająłem się programowaniem, pracowałem w magazynie, przy nadzorze parkingów i wsparcia IT — role, które nauczyły mnie dyscypliny, rozwiązywania problemów pod presją i niezawodnej realizacji. To praktyczne podejście kształtuje dziś mój sposób pisania kodu: uporządkowany, testowany i stworzony dla prawdziwych użytkowników.',
     p2:
       'Po roku programu M.Sc. inżynierii komputerowej na Uniwersytecie w Halmstad (2021–2022) ukończyłem wykształcenie zawodowe wyższe jako programista AI w NBI Handelsakademin (czerwiec 2026), w tym praktyki LIA w PodManager.AI i Swiiftly.',
+    p3:
+      'Poza programowaniem zajmuję się handlem detalicznym surowcami — analiza rynku, dyscyplina ryzyka i uporządkowane decyzje w warunkach niepewności.',
     skillsTitle: 'Umiejętności techniczne',
     timelineTitle: 'Doświadczenie',
     educationTitle: 'Edukacja',
@@ -61,6 +63,10 @@ const pl: Translations = {
       {
         title: 'Inne',
         items: ['Wsparcie IT', 'Microsoft Office'],
+      },
+      {
+        title: 'Poza kodem',
+        items: ['Surowce', 'Analiza rynku', 'Dyscyplina ryzyka'],
       },
     ],
   },

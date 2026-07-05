@@ -63,6 +63,7 @@ export default function About() {
               <div className="about-text">
                 <p>{t.about.p1}</p>
                 <p>{t.about.p2}</p>
+                <p className="about-text-note">{t.about.p3}</p>
               </div>
             </div>
 

@@ -30,6 +30,8 @@ const sv: Translations = {
       'Innan mjukvaruutveckling arbetade jag på lager, med parkeringsövervakning och IT-support — roller som lärde mig disciplin, felsökning under press och att leverera pålitligt. Det praktiska arbetssättet präglar hur jag skriver kod idag: strukturerat, testat och byggt för riktiga användare.',
     p2:
       'Efter ett år på civilingenjörsprogrammet i datateknik vid Halmstads högskola (2021–2022) avslutade jag yrkeshögskoleutbildningen som mjukvaruutvecklare med AI vid NBI Handelsakademin (juni 2026), inklusive LIA hos PodManager.AI och Swiiftly.',
+    p3:
+      'Utöver utveckling ägnar jag mig åt privat retail-handel med fokus på råvaror och CFD — med betoning på riskhantering, marknadsanalys och disciplinerat beslutsfattande under osäkerhet.',
     skillsTitle: 'Tekniska färdigheter',
     timelineTitle: 'Erfarenhet',
     educationTitle: 'Utbildning',
@@ -61,6 +63,10 @@ const sv: Translations = {
       {
         title: 'Övrigt',
         items: ['IT-support', 'Microsoft Office'],
+      },
+      {
+        title: 'Utöver utveckling',
+        items: ['Råvaror', 'Marknadsanalys', 'Riskdisciplin'],
       },
     ],
   },

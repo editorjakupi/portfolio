@@ -30,6 +30,8 @@ const it: Translations = {
       'Prima dello sviluppo software ho lavorato in magazzino, sorveglianza parcheggi e supporto IT — ruoli che mi hanno insegnato disciplina, troubleshooting sotto pressione e affidabilità. Questo approccio pratico guida oggi il mio modo di scrivere codice: strutturato, testato e pensato per utenti reali.',
     p2:
       'Dopo un anno del M.Sc. in ingegneria informatica all\'Università di Halmstad (2021–2022), ho completato la formazione professionale superiore come sviluppatore software con focus IA alla NBI Handelsakademin (giugno 2026), incluse le LIA presso PodManager.AI e Swiiftly.',
+    p3:
+      'Oltre allo sviluppo, mi dedico al trading retail su materie prime — analisi di mercato, disciplina del rischio e decisioni strutturate nell\'incertezza.',
     skillsTitle: 'Competenze tecniche',
     timelineTitle: 'Esperienza',
     educationTitle: 'Formazione',
@@ -61,6 +63,10 @@ const it: Translations = {
       {
         title: 'Altro',
         items: ['Supporto IT', 'Microsoft Office'],
+      },
+      {
+        title: 'Oltre allo sviluppo',
+        items: ['Materie prime', 'Analisi di mercato', 'Disciplina del rischio'],
       },
     ],
   },

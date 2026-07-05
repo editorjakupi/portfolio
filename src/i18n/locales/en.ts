@@ -30,6 +30,8 @@ const en: Translations = {
       'Before software development, I worked in warehouses, parking enforcement, and IT support — roles that taught me discipline, troubleshooting under pressure, and how to deliver reliably. That hands-on mindset now shapes how I write code: structured, tested, and built for real users.',
     p2:
       'After one year in the M.Sc. in Computer Engineering program at Halmstad University (2021–2022), I completed my higher vocational education in software development with AI at NBI Handelsakademin (June 2026), including LIA internships at PodManager.AI and Swiiftly.',
+    p3:
+      'Beyond development, I pursue retail commodities trading with a focus on market analysis, risk discipline, and structured decision-making under uncertainty.',
     skillsTitle: 'Technical skills',
     timelineTitle: 'Experience',
     educationTitle: 'Education',
@@ -61,6 +63,10 @@ const en: Translations = {
       {
         title: 'Professional',
         items: ['IT Support', 'Microsoft Office'],
+      },
+      {
+        title: 'Beyond development',
+        items: ['Commodities', 'Market analysis', 'Risk discipline'],
       },
     ],
   },

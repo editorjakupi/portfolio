@@ -30,6 +30,8 @@ const sq: Translations = {
       'Para zhvillimit të softuerit punova në magazina, monitorimin e parkimit dhe IT support — role që më mësojnë disiplinë, zgjidhjen e problemeve nën presion dhe dorëzimin e besueshëm. Ky mentalitet praktik formon mënyrën si shkruaj kod sot: i strukturuar, i testuar dhe i ndërtuar për përdorues realë.',
     p2:
       'Pas një viti në programin M.Sc. in Inxhinieri Kompjuterike në Universitetin e Halmstad (2021–2022), kam përfunduar arsimin profesional të lartë si zhvillues softueri me AI në NBI Handelsakademin (qershor 2026), përfshirë praktikat LIA në PodManager.AI dhe Swiiftly.',
+    p3:
+      'Përveç zhvillimit, merrem me tregtinë retail të lëndëve të para — analizë tregu, disiplinë rreziku dhe vendime të strukturuara në pasiguri.',
     skillsTitle: 'Aftësi teknike',
     timelineTitle: 'Përvoja',
     educationTitle: 'Edukimi',
@@ -61,6 +63,10 @@ const sq: Translations = {
       {
         title: 'Të tjera',
         items: ['Support IT', 'Microsoft Office'],
+      },
+      {
+        title: 'Përtej zhvillimit',
+        items: ['Lëndë të para', 'Analizë tregu', 'Disiplinë rreziku'],
       },
     ],
   },
