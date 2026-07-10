@@ -19,21 +19,6 @@ export function getReferenceContext(ref: Reference, locale: Locale) {
 
 export const references: Reference[] = [
   {
-    id: 'antonio',
-    name: 'Antonio Prgomet',
-    role: {
-      en: 'AI Teacher · NBI Handelsakademin',
-      sv: 'AI-lärare · NBI Handelsakademin',
-      sq: 'Mësues AI · NBI Handelsakademin',
-    },
-    context: {
-      en: 'Teacher and mentor during software development with AI studies at NBI Handelsakademin.',
-      sv: 'Lärare och mentor under utbildningen i mjukvaruutveckling med AI vid NBI Handelsakademin.',
-      sq: 'Mësues dhe mentor gjatë studimeve të zhvillimit të softuerit me AI në NBI Handelsakademin.',
-    },
-    languages: ['SV', 'EN'],
-  },
-  {
     id: 'prasad',
     name: 'Prasad Chougule',
     role: {
