@@ -34,6 +34,7 @@ const bannerIds = new Set([
   'swiiftly-ai',
   'podmanager-lia',
   'telco-churn',
+  'diamonds-analysis',
 ]);
 
 export function projectImage(project: Project) {
@@ -112,6 +113,7 @@ const allProjects: Project[] = [
     category: 'featured',
     accent: '0f766e',
     isPrivate: true,
+    demo: 'https://swiiftly.dk/',
     tech: [
       'React 18',
       'TypeScript',
@@ -172,6 +174,7 @@ const allProjects: Project[] = [
     category: 'featured',
     accent: '7c3aed',
     isPrivate: true,
+    demo: 'https://podmanager.ai',
     tech: [
       'Next.js',
       'React',
@@ -968,9 +971,12 @@ for (const project of allProjects) {
   }
 }
 
-export const projects: Project[] = [...allProjects].sort(
-  (a, b) => Number(b.year) - Number(a.year) || Number(b.featured) - Number(a.featured),
-);
+export const projects: Project[] = [...allProjects].sort((a, b) => {
+  const aLive = a.demo ? 1 : 0;
+  const bLive = b.demo ? 1 : 0;
+  if (bLive !== aLive) return bLive - aLive;
+  return Number(b.year) - Number(a.year) || Number(b.featured) - Number(a.featured);
+});
 
 type ProjectLocale = 'en' | 'sv' | 'sq';
 
