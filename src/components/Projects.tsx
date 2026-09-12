@@ -9,7 +9,7 @@ interface Props {
 type Filter = 'all' | 'featured' | 'course';
 
 export default function Projects({ onOpen }: Props) {
-  const { locale, t } = useLocale();
+  const { t } = useLocale();
   const [filter, setFilter] = useState<Filter>('all');
 
   const filtered = useMemo(() => {
@@ -46,7 +46,7 @@ export default function Projects({ onOpen }: Props) {
 
         <div className="projects-grid">
           {filtered.map((project) => {
-            const copy = getProjectCopy(project, locale);
+            const copy = getProjectCopy(project);
             return (
               <article
                 key={project.id}

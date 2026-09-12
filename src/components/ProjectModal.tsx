@@ -8,9 +8,9 @@ interface Props {
 }
 
 export default function ProjectModal({ project, onClose }: Props) {
-  const { locale, t } = useLocale();
+  const { t } = useLocale();
   const closeBtn = useRef<HTMLButtonElement>(null);
-  const copy = getProjectCopy(project, locale);
+  const copy = getProjectCopy(project);
 
   useEffect(() => {
     closeBtn.current?.focus();

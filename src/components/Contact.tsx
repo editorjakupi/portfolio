@@ -28,7 +28,9 @@ export default function Contact() {
               rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
             >
               <span>{item.label}</span>
-              <p>{item.text}</p>
+              <p className="notranslate" translate="no">
+                {item.text}
+              </p>
             </a>
           ))}
         </div>

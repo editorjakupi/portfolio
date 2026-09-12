@@ -2,7 +2,7 @@ import { useLocale } from '../i18n/LocaleContext';
 import { getReferenceContext, getReferenceRole, references } from '../data/references';
 
 export default function References() {
-  const { locale, t } = useLocale();
+  const { t } = useLocale();
 
   return (
     <section className="section" id="references">
@@ -14,14 +14,16 @@ export default function References() {
         <div className="refs-grid">
           {references.map((ref) => (
             <article key={ref.id} className="ref-card reveal">
-              <h3>{ref.name}</h3>
-              <p className="ref-role">{getReferenceRole(ref, locale)}</p>
-              <p className="ref-context">{getReferenceContext(ref, locale)}</p>
+              <h3 className="notranslate" translate="no">
+                {ref.name}
+              </h3>
+              <p className="ref-role">{getReferenceRole(ref)}</p>
+              <p className="ref-context">{getReferenceContext(ref)}</p>
               <div className="ref-footer">
                 <span className="ref-langs-label">{t.references.languagesLabel}</span>
                 <div className="ref-lang-chips" aria-label={t.references.languagesLabel}>
                   {ref.languages.map((lang) => (
-                    <span key={lang} className="ref-lang-chip">
+                    <span key={lang} className="ref-lang-chip notranslate" translate="no">
                       {lang}
                     </span>
                   ))}

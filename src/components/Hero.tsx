@@ -4,9 +4,9 @@ import { europassUrlForLocale, nbiEuropass } from '../data/credentials';
 import { useLocale } from '../i18n/LocaleContext';
 
 export default function Hero() {
-  const { locale, t } = useLocale();
-  const europassUrl = europassUrlForLocale(locale);
-  const europassLabel = nbiEuropass.timelineLabel[locale];
+  const { t } = useLocale();
+  const europassUrl = europassUrlForLocale();
+  const europassLabel = nbiEuropass.timelineLabel;
 
   return (
     <section className="hero" id="top">

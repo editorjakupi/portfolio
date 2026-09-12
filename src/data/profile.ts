@@ -1,5 +1,6 @@
 export const profile = {
   name: 'Editor Jakupi',
+  siteUrl: 'https://editorjakupi.com',
   email: 'editorjakupi@outlook.com',
   phone: '+46 70 791 24 57',
   github: 'https://github.com/editorjakupi',

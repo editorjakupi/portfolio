@@ -19,6 +19,7 @@ export interface Project {
   featured: boolean;
   category: ProjectCategory;
   accent: string;
+  /** English is the source; Google Translate covers other languages in the UI. */
   copy: Record<'en' | 'sv' | 'sq', ProjectCopy>;
 }
 
@@ -26,6 +27,67 @@ const ph = (color: string, text: string) =>
   `https://placehold.co/800x420/${color}/f8fafc?text=${encodeURIComponent(text)}&font=dm-sans`;
 
 const allProjects: Project[] = [
+  {
+    id: 'gematrior',
+    title: 'Gematrior',
+    year: '2026',
+    featured: true,
+    category: 'featured',
+    accent: '1e3a5f',
+    github: 'https://github.com/editorjakupi/gematrior',
+    demo: 'https://gematrior.com',
+    tech: [
+      'Next.js 15',
+      'TypeScript',
+      'Prisma',
+      'PostgreSQL',
+      'Stripe',
+      'Docker',
+      'Caddy',
+      'OpenAI',
+    ],
+    copy: {
+      en: {
+        tagline:
+          'Universal gematria workspace — multi-cipher engine, calendars, numerology, and esoteric tools.',
+        description:
+          'Full-stack web app for gematria and isopsephy across Albanian, English/Latin, Greek, Hebrew, and more. Compare phrases, match word banks, run Direct Check and Matrix in Sync tools, plus auth, Stripe billing, and production hosting on a Hetzner VPS.',
+        highlights: [
+          '20+ cipher systems with digraph-aware Albanian gematria',
+          'Compare mode, matching words, and community phrase bank',
+          'Date/number tools, sacred texts, and Matrix in Sync (owner tools)',
+          'Auth (JWT), Stripe live billing, AdSense-ready ads',
+          'Live at gematrior.com (Docker + Postgres + Caddy)',
+        ],
+      },
+      sv: {
+        tagline:
+          'Universell gematria-workspace — flerciphersystem, kalendrar, numerologi och esoteriska verktyg.',
+        description:
+          'Fullstack-webbapp för gematria och isopsephy över albanska, engelska/latin, grekiska, hebreiska m.m. Jämför fraser, matcha ordlistor, Direct Check och Matrix in Sync, plus auth, Stripe-betalning och produktion på Hetzner VPS.',
+        highlights: [
+          '20+ ciphersystem med digrafmedveten albansk gematria',
+          'Jämförläge, matchande ord och community-fraser',
+          'Datum-/nummerverktyg, heliga texter och Matrix in Sync',
+          'Auth (JWT), Stripe live-betalning, AdSense-redo',
+          'Live på gematrior.com (Docker + Postgres + Caddy)',
+        ],
+      },
+      sq: {
+        tagline:
+          'Hapësirë universale gematrie — motor shifrash, kalendarë, numerologji dhe mjete ezoterike.',
+        description:
+          'Aplikacion web full-stack për gematria dhe isopsephy në shqip, anglisht/latin, greqisht, hebraisht e më shumë. Krahaso fraza, përputh banka fjalësh, Direct Check dhe Matrix in Sync, plus auth, Stripe dhe hosting në Hetzner VPS.',
+        highlights: [
+          '20+ sisteme shifrash me gematria shqipe digraf-aware',
+          'Modalitet krahasimi, fjalë matching dhe bankë fraza',
+          'Mjete date/numër, tekste të shenjta dhe Matrix in Sync',
+          'Auth (JWT), Stripe live, ads AdSense-ready',
+          'Live te gematrior.com (Docker + Postgres + Caddy)',
+        ],
+      },
+    },
+  },
   {
     id: 'swiiftly-ai',
     title: 'Swiiftly AI Assistant',
@@ -900,8 +962,8 @@ export function projectImage(project: Project) {
 
 type ProjectLocale = 'en' | 'sv' | 'sq';
 
-export function getProjectCopy(project: Project, locale: Locale): ProjectCopy {
-  const key: ProjectLocale =
-    locale === 'sv' || locale === 'sq' ? locale : 'en';
+/** Always use English source copy — page translation is handled by Google Translate. */
+export function getProjectCopy(project: Project, _locale: Locale = 'en'): ProjectCopy {
+  const key: ProjectLocale = 'en';
   return project.copy[key];
 }
