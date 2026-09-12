@@ -595,6 +595,7 @@ const allProjects: Project[] = [
     category: 'course',
     accent: '64748b',
     github: 'https://github.com/editorjakupi/diamonds-analysis-app',
+    demo: 'https://diamonds-analysis-app-uae8lqradky68cntkehd8j.streamlit.app/',
     tech: ['Python', 'Jupyter', 'Pandas', 'Data Analysis'],
     copy: {
       en: {
