@@ -19,12 +19,28 @@ export interface Project {
   featured: boolean;
   category: ProjectCategory;
   accent: string;
-  /** English is the source; Google Translate covers other languages in the UI. */
+  /** Optional local banner under /project-banners/{id}.png|jpg|webp */
+  image?: string;
   copy: Record<'en' | 'sv' | 'sq', ProjectCopy>;
 }
 
 const ph = (color: string, text: string) =>
   `https://placehold.co/800x420/${color}/f8fafc?text=${encodeURIComponent(text)}&font=dm-sans`;
+
+/** Prefer a local banner when present; otherwise colored placeholder. */
+const bannerIds = new Set([
+  'gematrior',
+  'smartfood',
+  'swiiftly-ai',
+  'podmanager-lia',
+  'telco-churn',
+]);
+
+export function projectImage(project: Project) {
+  if (project.image) return project.image;
+  if (bannerIds.has(project.id)) return `/project-banners/${project.id}.png`;
+  return ph(project.accent, project.title.replace(/\s+/g, '+'));
+}
 
 const allProjects: Project[] = [
   {
@@ -956,14 +972,10 @@ export const projects: Project[] = [...allProjects].sort(
   (a, b) => Number(b.year) - Number(a.year) || Number(b.featured) - Number(a.featured),
 );
 
-export function projectImage(project: Project) {
-  return ph(project.accent, project.title.replace(/\s+/g, '+'));
-}
-
 type ProjectLocale = 'en' | 'sv' | 'sq';
 
-/** Always use English source copy — page translation is handled by Google Translate. */
-export function getProjectCopy(project: Project, _locale: Locale = 'en'): ProjectCopy {
-  const key: ProjectLocale = 'en';
+export function getProjectCopy(project: Project, locale: Locale): ProjectCopy {
+  const key: ProjectLocale =
+    locale === 'sv' || locale === 'sq' ? locale : 'en';
   return project.copy[key];
 }

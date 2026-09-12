@@ -9,11 +9,20 @@ Multilingual developer portfolio built with **React 18 + TypeScript + Vite**. Si
 **Legacy (redirects to primary):** `https://editor-jakupi-portfolio.onrender.com`  
 Skip redirect while testing DNS: append `?noredirect=1`
 
-## Languages
+## Languages (8)
 
-Source content is **English**. The language dropdown uses **Google Website Translator** (same language set as Google Translate) — no hardcoded UI catalogs per language.
+| Code | Language |
+|------|----------|
+| en | English (default) |
+| de | Deutsch |
+| fr | Français |
+| es | Español |
+| it | Italiano |
+| pl | Polski |
+| sv | Svenska |
+| sq | Shqip (Albanian) |
 
-CV (`/cv.html`) still offers curated **EN / SV / SQ** layouts for print/PDF quality.
+Project case studies are fully translated in **EN / SV / SQ**; other UI languages fall back to English for project descriptions.
 
 ## Local development
 

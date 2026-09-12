@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useLocale } from '../i18n/LocaleContext';
+import { locales } from '../i18n/types';
 import { profile } from '../data/profile';
 import ProfileAvatar from './ProfileAvatar';
-import GoogleTranslateSelect from './GoogleTranslateSelect';
 import NavSocialLink, { GitHubIcon, LinkedInIcon } from './NavSocialLink';
 
 export default function Navbar() {
-  const { t } = useLocale();
+  const { locale, setLocale, t } = useLocale();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -26,7 +26,7 @@ export default function Navbar() {
   return (
     <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-inner">
-        <a href="#" className="nav-brand notranslate" translate="no" onClick={() => setOpen(false)}>
+        <a href="#" className="nav-brand" onClick={() => setOpen(false)}>
           <ProfileAvatar className="nav-avatar" width={34} height={34} />
           <span className="nav-brand-text">
             Editor <span>Jakupi</span>
@@ -45,7 +45,21 @@ export default function Navbar() {
         </nav>
 
         <div className="nav-actions">
-          <GoogleTranslateSelect />
+          <label className="lang-select-wrap">
+            <span className="sr-only">Language</span>
+            <select
+              className="lang-select"
+              value={locale}
+              onChange={(event) => setLocale(event.target.value as typeof locale)}
+              aria-label="Language"
+            >
+              {locales.map((item) => (
+                <option key={item.code} value={item.code}>
+                  {item.label}
+                </option>
+              ))}
+            </select>
+          </label>
 
           <div className="nav-socials">
             <NavSocialLink href={profile.github} label={t.nav.github}>

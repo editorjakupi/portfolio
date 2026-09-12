@@ -1,23 +1,55 @@
-import { createContext, useContext, useEffect, type ReactNode } from 'react';
-import type { Translations } from './types';
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import type { Locale, Translations } from './types';
+import { LOCALE_STORAGE_KEY } from './types';
+import { detectBrowserLocale, isLocale } from './utils';
 import en from './locales/en';
+import de from './locales/de';
+import fr from './locales/fr';
+import es from './locales/es';
+import it from './locales/it';
+import pl from './locales/pl';
+import sv from './locales/sv';
+import sq from './locales/sq';
+
+const catalogs: Record<Locale, Translations> = { en, de, fr, es, it, pl, sv, sq };
 
 interface LocaleContextValue {
-  locale: 'en';
+  locale: Locale;
+  setLocale: (locale: Locale) => void;
   t: Translations;
 }
 
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
-/** English is the source language; Google Translate handles other languages in the DOM. */
-export function LocaleProvider({ children }: { children: ReactNode }) {
-  useEffect(() => {
-    document.documentElement.lang = 'en';
-  }, []);
+function detectInitialLocale(): Locale {
+  const stored = localStorage.getItem(LOCALE_STORAGE_KEY);
+  if (isLocale(stored)) return stored;
+  return detectBrowserLocale();
+}
 
-  return (
-    <LocaleContext.Provider value={{ locale: 'en', t: en }}>{children}</LocaleContext.Provider>
+export function LocaleProvider({ children }: { children: ReactNode }) {
+  const [locale, setLocaleState] = useState<Locale>(() => detectInitialLocale());
+
+  const setLocale = (next: Locale) => {
+    setLocaleState(next);
+    localStorage.setItem(LOCALE_STORAGE_KEY, next);
+    document.documentElement.lang = next;
+  };
+
+  useEffect(() => {
+    document.documentElement.lang = locale;
+  }, [locale]);
+
+  const value = useMemo(
+    () => ({
+      locale,
+      setLocale,
+      t: catalogs[locale],
+    }),
+    [locale],
   );
+
+  return <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>;
 }
 
 export function useLocale() {

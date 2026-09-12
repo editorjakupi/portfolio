@@ -1,4 +1,15 @@
-export type Locale = 'en';
+export type Locale = 'en' | 'de' | 'fr' | 'es' | 'it' | 'pl' | 'sv' | 'sq';
+
+export const locales: { code: Locale; label: string }[] = [
+  { code: 'en', label: 'English' },
+  { code: 'de', label: 'Deutsch' },
+  { code: 'fr', label: 'Français' },
+  { code: 'es', label: 'Español' },
+  { code: 'it', label: 'Italiano' },
+  { code: 'pl', label: 'Polski' },
+  { code: 'sv', label: 'Svenska' },
+  { code: 'sq', label: 'Shqip' },
+];
 
 export const LOCALE_STORAGE_KEY = 'portfolio-locale';
 

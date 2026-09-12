@@ -45,9 +45,9 @@ function TimelineBlock({ title, items }: { title: string; items: TimelineItem[] 
 }
 
 export default function About() {
-  const { t } = useLocale();
-  const experience = aboutExperience;
-  const education = aboutEducation;
+  const { t, locale } = useLocale();
+  const experience = aboutExperience[locale];
+  const education = aboutEducation[locale];
 
   return (
     <section className="section section-about" id="about">
