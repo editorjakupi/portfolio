@@ -28,6 +28,8 @@ const ph = (color: string, text: string) =>
   `https://placehold.co/800x420/${color}/f8fafc?text=${encodeURIComponent(text)}&font=dm-sans`;
 
 /** Prefer a local banner when present; otherwise colored placeholder. */
+const BANNER_VERSION = '3';
+
 const bannerIds = new Set([
   'gematrior',
   'smartfood',
@@ -39,7 +41,9 @@ const bannerIds = new Set([
 
 export function projectImage(project: Project) {
   if (project.image) return project.image;
-  if (bannerIds.has(project.id)) return `/project-banners/${project.id}.png`;
+  if (bannerIds.has(project.id)) {
+    return `/project-banners/${project.id}.png?v=${BANNER_VERSION}`;
+  }
   return ph(project.accent, project.title.replace(/\s+/g, '+'));
 }
 
