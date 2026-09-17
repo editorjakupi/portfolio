@@ -70,41 +70,41 @@ const allProjects: Project[] = [
     copy: {
       en: {
         tagline:
-          'Universal gematria workspace — multi-cipher engine, calendars, numerology, and esoteric tools.',
+          'Explore the numbers behind words — gematria, calendars, and guided readings in one place.',
         description:
-          'Full-stack web app for gematria and isopsephy across Albanian, English/Latin, Greek, Hebrew, and more. Compare phrases, match word banks, run Direct Check and Matrix in Sync tools, plus auth, Stripe billing, and production hosting on a Hetzner VPS.',
+          'Gematrior is a live full-stack product I built and run myself: type a name or phrase and see its value across many letter–number systems (including Albanian, English/Latin, Greek, and Hebrew). Compare two phrases, browse matching words, explore dates and world calendars, and unlock AI-assisted readings. Behind the scenes it is a real SaaS stack — accounts, Stripe payments, a Postgres database, and Docker hosting on a VPS — showing end-to-end ownership from idea to production.',
         highlights: [
-          '20+ cipher systems with digraph-aware Albanian gematria',
-          'Compare mode, matching words, and community phrase bank',
-          'Date/number tools, sacred texts, and Matrix in Sync (owner tools)',
-          'Auth (JWT), Stripe live billing, AdSense-ready ads',
-          'Live at gematrior.com (Docker + Postgres + Caddy)',
+          '20+ letter–number ciphers with digraph-aware Albanian gematria',
+          'Compare phrases, word matching, and a community phrase bank',
+          'Date & calendar tools plus scripture / history lookups',
+          'User accounts, Stripe billing (credits & Pro), and OpenAI readings',
+          'Self-hosted live at gematrior.com (Next.js, Prisma, Postgres, Docker)',
         ],
       },
       sv: {
         tagline:
-          'Universell gematria-workspace — flerciphersystem, kalendrar, numerologi och esoteriska verktyg.',
+          'Utforska siffrorna bakom orden — gematria, kalendrar och guidade läsningar på ett ställe.',
         description:
-          'Fullstack-webbapp för gematria och isopsephy över albanska, engelska/latin, grekiska, hebreiska m.m. Jämför fraser, matcha ordlistor, Direct Check och Matrix in Sync, plus auth, Stripe-betalning och produktion på Hetzner VPS.',
+          'Gematrior är en live fullstack-produkt jag byggt och driver själv: skriv ett namn eller en fras och se dess värde i många bokstav–siffer-system (bl.a. albanska, engelska/latin, grekiska och hebreiska). Jämför två fraser, hitta matchande ord, utforska datum och världskalendrar och lås upp AI-assisterade läsningar. Bakom kulisserna är det en riktig SaaS-stack — konton, Stripe-betalning, Postgres-databas och Docker-hosting på VPS — från idé till produktion.',
         highlights: [
-          '20+ ciphersystem med digrafmedveten albansk gematria',
-          'Jämförläge, matchande ord och community-fraser',
-          'Datum-/nummerverktyg, heliga texter och Matrix in Sync',
-          'Auth (JWT), Stripe live-betalning, AdSense-redo',
-          'Live på gematrior.com (Docker + Postgres + Caddy)',
+          '20+ bokstav–siffer-system med digrafmedveten albansk gematria',
+          'Jämför fraser, ordmatchning och community-fraser',
+          'Datum- och kalenderverktyg plus skrift-/historikuppslag',
+          'Konton, Stripe-betalning (krediter & Pro) och OpenAI-läsningar',
+          'Självhostad live på gematrior.com (Next.js, Prisma, Postgres, Docker)',
         ],
       },
       sq: {
         tagline:
-          'Hapësirë universale gematrie — motor shifrash, kalendarë, numerologji dhe mjete ezoterike.',
+          'Eksploro numrat pas fjalëve — gematria, kalendarë dhe leximë të udhëzuara në një vend.',
         description:
-          'Aplikacion web full-stack për gematria dhe isopsephy në shqip, anglisht/latin, greqisht, hebraisht e më shumë. Krahaso fraza, përputh banka fjalësh, Direct Check dhe Matrix in Sync, plus auth, Stripe dhe hosting në Hetzner VPS.',
+          'Gematrior është një produkt full-stack live që e kam ndërtuar dhe e menaxhoj vetë: shkruaj një emër ose frazë dhe shih vlerën e saj në shumë sisteme shkronjë–numër (përfshirë shqip, anglisht/latin, greqisht dhe hebraisht). Krahaso dy fraza, gjej fjalë që përputhen, eksploro data dhe kalendarë botërorë, dhe hap leximë me ndihmë AI. Pas skenës është një stack SaaS i vërtetë — llogari, pagesa Stripe, databazë Postgres dhe hosting Docker në VPS — nga ideja te prodhimi.',
         highlights: [
-          '20+ sisteme shifrash me gematria shqipe digraf-aware',
-          'Modalitet krahasimi, fjalë matching dhe bankë fraza',
-          'Mjete date/numër, tekste të shenjta dhe Matrix in Sync',
-          'Auth (JWT), Stripe live, ads AdSense-ready',
-          'Live te gematrior.com (Docker + Postgres + Caddy)',
+          '20+ sisteme shkronjë–numër me gematria shqipe digraf-aware',
+          'Krahasim frazash, matching fjalësh dhe bankë fraza komuniteti',
+          'Mjete date/kalendarë plus kërkime shkrimi/historie',
+          'Llogari, Stripe (kredi & Pro) dhe leximë OpenAI',
+          'Live self-hosted te gematrior.com (Next.js, Prisma, Postgres, Docker)',
         ],
       },
     },
@@ -976,10 +976,17 @@ for (const project of allProjects) {
   }
 }
 
+/** Showcase order: Swiiftly → SmartFood → Gematrior, then other live demos, then the rest. */
+const showcaseOrder: Record<string, number> = {
+  'swiiftly-ai': 1,
+  smartfood: 2,
+  gematrior: 3,
+};
+
 export const projects: Project[] = [...allProjects].sort((a, b) => {
-  const aLive = a.demo ? 1 : 0;
-  const bLive = b.demo ? 1 : 0;
-  if (bLive !== aLive) return bLive - aLive;
+  const aRank = showcaseOrder[a.id] ?? (a.demo ? 50 : 100);
+  const bRank = showcaseOrder[b.id] ?? (b.demo ? 50 : 100);
+  if (aRank !== bRank) return aRank - bRank;
   return Number(b.year) - Number(a.year) || Number(b.featured) - Number(a.featured);
 });
 
