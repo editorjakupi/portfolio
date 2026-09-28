@@ -1,13 +1,13 @@
-/** Primary public site — update here when the domain changes. */
+/** Primary public site on Hetzner (editorjakupi.com). */
 export const SITE = {
   url: 'https://editorjakupi.com',
   host: 'editorjakupi.com',
-  /** Old cloud hostnames — redirect bookmarks to SITE.url. */
+  /** Retired PaaS hostnames — client-redirect bookmarks to SITE.url. */
   legacyHosts: ['editor-jakupi-portfolio.onrender.com'] as const,
 } as const;
 
 /**
- * Send visitors from retired cloud URLs to the custom domain on Hetzner.
+ * Send visitors from retired cloud URLs to the Hetzner custom domain.
  * Add `?noredirect=1` to skip (useful while testing DNS/SSL).
  */
 export function maybeRedirectLegacyHost(): void {

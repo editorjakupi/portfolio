@@ -2,6 +2,7 @@
   "name": "editor-jakupi-portfolio",
   "private": true,
   "version": "1.0.0",
+  "description": "Multilingual developer portfolio (React + Vite), self-hosted on Hetzner behind Caddy",
   "type": "module",
   "scripts": {
     "dev": "node scripts/free-dev-ports.mjs && vite",

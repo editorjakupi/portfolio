@@ -1,21 +1,24 @@
 # Editor Jakupi — Portfolio
 
-Multilingual developer portfolio built with **React 18 + TypeScript + Vite**. Single-page layout with hero, about, project grid with case-study modals, references, and contact. Hosted on a **Hetzner CX23** (`apps-nbg1`) behind shared **Caddy + Let's Encrypt**, with the static Vite build served via nginx in Docker.
+Multilingual developer portfolio built with **React 18 + TypeScript + Vite**. Single-page layout with hero, about, project grid with case-study modals, references, and contact.
+
+**Hosting:** this site runs on my **Hetzner CX23** VPS (`apps-nbg1`, `23.88.100.144`) — Vite static build → nginx in Docker → shared **Caddy** (TLS via Let's Encrypt). Not on Render, Vercel, or other PaaS.
 
 ## Live site
 
-**Primary:** [https://editorjakupi.com](https://editorjakupi.com) (also `www`)
+**Portfolio:** [https://editorjakupi.com](https://editorjakupi.com) (also `www`)
 
-Showcase apps on the same VPS:
+Same VPS / Caddy edge:
 
 | App | URL |
 |-----|-----|
+| Portfolio (this repo) | https://editorjakupi.com |
 | Diamonds Intelligence | https://diamonds.editorjakupi.com |
 | Telco Churn | https://churn.editorjakupi.com |
 | SmartFood | https://smartfood.editorjakupi.com |
 | Gematrior | https://gematrior.com |
 
-Render / Streamlit Cloud / Vercel hosting for these showcase apps has been removed — live traffic is Hetzner only.
+Cloudflare DNS points these names at the VPS (prefer DNS-only for hosts terminated by Caddy).
 
 ## Languages (8)
 
@@ -31,6 +34,13 @@ Render / Streamlit Cloud / Vercel hosting for these showcase apps has been remov
 | sq | Shqip (Albanian) |
 
 Project case studies are fully translated in **EN / SV / SQ**; other UI languages fall back to English for project descriptions.
+
+## Stack
+
+- React 18 + TypeScript + Vite
+- Static `dist/` served by nginx (`Dockerfile` + `nginx.conf`)
+- `docker-compose.yml` → container `portfolio-prod-web` on Docker network `deploy_gematrior`
+- Edge: shared Caddy reverse proxy (same stack as the showcase apps)
 
 ## Local development
 
@@ -50,18 +60,19 @@ npm run preview
 
 ## Deploy on Hetzner
 
-Production path: `/opt/portfolio` on `apps-nbg1` (`portfolio-prod-web` on Docker network `deploy_gematrior`). Caddy terminates TLS and reverse-proxies `editorjakupi.com` / `www`.
+Production tree: **`/opt/portfolio`** on `apps-nbg1` (no git clone on the server — sync the repo tree, then rebuild).
 
 ```bash
-# From this repo (after commit/push), on the VPS:
-cd /opt/portfolio
-git pull   # or rsync the tree
-docker compose up -d --build
-docker exec gematrior-prod-caddy caddy reload --config /etc/caddy/Caddyfile
+# From your machine (after commit/push), sync sources then rebuild on the VPS:
+# e.g. tar | scp, or rsync if available
+ssh root@23.88.100.144 'cd /opt/portfolio && docker compose up -d --build'
+ssh root@23.88.100.144 'docker exec gematrior-prod-caddy caddy reload --config /etc/caddy/Caddyfile'
 curl -sI https://editorjakupi.com/ | head -5
 ```
 
-Cloudflare DNS for `editorjakupi.com` / `www` and app subdomains should point at the VPS (prefer DNS-only for apex/subdomains served by Caddy).
+`Dockerfile` multi-stage: `npm ci` + `vite build` → copy `dist/` into nginx alpine. Caddy terminates HTTPS for `editorjakupi.com` / `www` and proxies to `portfolio-prod-web:80`.
+
+Legacy bookmarks on `editor-jakupi-portfolio.onrender.com` still client-redirect to `https://editorjakupi.com` (`src/site.ts`).
 
 ## CV
 
