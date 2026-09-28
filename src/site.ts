@@ -2,12 +2,12 @@
 export const SITE = {
   url: 'https://editorjakupi.com',
   host: 'editorjakupi.com',
-  /** Old hosts that should bounce to SITE.url (bookmarks / residual DNS). */
+  /** Old cloud hostnames — redirect bookmarks to SITE.url. */
   legacyHosts: ['editor-jakupi-portfolio.onrender.com'] as const,
 } as const;
 
 /**
- * Send visitors from a legacy host to the Hetzner custom domain.
+ * Send visitors from retired cloud URLs to the custom domain on Hetzner.
  * Add `?noredirect=1` to skip (useful while testing DNS/SSL).
  */
 export function maybeRedirectLegacyHost(): void {

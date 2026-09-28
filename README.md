@@ -1,20 +1,20 @@
 # Editor Jakupi — Portfolio
 
-Multilingual developer portfolio built with **React 18 + TypeScript + Vite**. Single-page layout with hero, about, project grid with case-study modals, references, and contact.
-
-**Hosted on Hetzner** (`apps-nbg1`) with Docker + nginx behind Caddy/Let’s Encrypt — same VPS stack as my showcase apps under `*.editorjakupi.com`.
+Multilingual developer portfolio built with **React 18 + TypeScript + Vite**. Single-page layout with hero, about, project grid with case-study modals, references, and contact. Hosted on a **Hetzner CX23** (`apps-nbg1`) behind shared **Caddy + Let's Encrypt**, with the static Vite build served via nginx in Docker.
 
 ## Live site
 
 **Primary:** [https://editorjakupi.com](https://editorjakupi.com) (also `www`)
 
+Showcase apps on the same VPS:
+
 | App | URL |
 |-----|-----|
-| Portfolio | https://editorjakupi.com |
-| SmartFood | https://smartfood.editorjakupi.com |
-| Telco Churn | https://churn.editorjakupi.com |
 | Diamonds Intelligence | https://diamonds.editorjakupi.com |
-| Gematrior | https://gematrior.com |
+| Telco Churn | https://churn.editorjakupi.com |
+| SmartFood | https://smartfood.editorjakupi.com |
+
+Legacy bookmarks on `*.onrender.com` still redirect to the primary domain.
 
 ## Languages (8)
 
@@ -49,26 +49,18 @@ npm run preview
 
 ## Deploy on Hetzner
 
-Live path on VPS: **`/opt/portfolio`** · container `portfolio-prod-web` · edge via `gematrior-prod-caddy` on Docker network `deploy_gematrior`.
+Production path: `/opt/portfolio` on `apps-nbg1` (`portfolio-prod-web` on Docker network `deploy_gematrior`). Caddy terminates TLS and reverse-proxies `editorjakupi.com` / `www`.
 
 ```bash
-# From this repo (example sync + rebuild)
-tar -czf /tmp/portfolio-deploy.tgz \
-  --exclude=node_modules --exclude=dist --exclude=.git \
-  .
-scp /tmp/portfolio-deploy.tgz root@23.88.100.144:/tmp/portfolio-deploy.tgz
-
-ssh root@23.88.100.144 '
-  tar -xzf /tmp/portfolio-deploy.tgz -C /opt/portfolio
-  cd /opt/portfolio && docker compose up -d --build
-  docker exec gematrior-prod-caddy caddy reload --config /etc/caddy/Caddyfile
-  curl -sI https://editorjakupi.com/ | head -5
-'
+# From this repo (after commit/push), on the VPS:
+cd /opt/portfolio
+git pull   # or rsync the tree
+docker compose up -d --build
+docker exec gematrior-prod-caddy caddy reload --config /etc/caddy/Caddyfile
+curl -sI https://editorjakupi.com/ | head -5
 ```
 
-DNS: `editorjakupi.com` / `www` and app subdomains → `23.88.100.144` (Cloudflare DNS-only recommended for apex). TLS is handled by Caddy.
-
-GitHub push alone does **not** update the live site — deploy is an SSH rebuild of `/opt/portfolio`.
+Cloudflare DNS for `editorjakupi.com` / `www` and app subdomains should point at the VPS (prefer DNS-only for apex/subdomains served by Caddy).
 
 ## CV
 
