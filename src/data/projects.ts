@@ -28,7 +28,7 @@ const ph = (color: string, text: string) =>
   `https://placehold.co/800x420/${color}/f8fafc?text=${encodeURIComponent(text)}&font=dm-sans`;
 
 /** Prefer a local banner when present; otherwise colored placeholder. */
-const BANNER_VERSION = '3';
+const BANNER_VERSION = '4';
 
 const bannerIds = new Set([
   'gematrior',
@@ -70,41 +70,41 @@ const allProjects: Project[] = [
     copy: {
       en: {
         tagline:
-          'Explore the numbers behind words — gematria, calendars, and guided readings in one place.',
+          'Universal gematria product — many ciphers, tools, and AI readings in one live SaaS.',
         description:
-          'Gematrior is a live full-stack product I built and run myself: type a name or phrase and see its value across many letter–number systems (including Albanian, English/Latin, Greek, and Hebrew). Compare two phrases, browse matching words, explore dates and world calendars, and unlock AI-assisted readings. Behind the scenes it is a real SaaS stack — accounts, Stripe payments, a Postgres database, and Docker hosting on a VPS — showing end-to-end ownership from idea to production.',
+          'Gematrior is a production web app I designed, built, and host myself. Visitors enter a word or phrase and instantly see values across 20+ letter–number systems (Albanian, English/Latin, Greek, Hebrew, and more), with letter breakdowns and cipher keys. The product also includes compare mode, text scan, number/date tools, astrology and scripture lookups, plus accounts, Stripe billing, and OpenAI-powered readings — a full journey from UX to VPS deployment.',
         highlights: [
-          '20+ letter–number ciphers with digraph-aware Albanian gematria',
-          'Compare phrases, word matching, and a community phrase bank',
-          'Date & calendar tools plus scripture / history lookups',
-          'User accounts, Stripe billing (credits & Pro), and OpenAI readings',
-          'Self-hosted live at gematrior.com (Next.js, Prisma, Postgres, Docker)',
+          '20+ ciphers with digraph-aware Albanian gematria and on-screen cipher keys',
+          'Compare phrases, text scan, date/number tools, and guided AI readings',
+          'Auth, Stripe (credits & Pro), and a polished dark multilingual UI',
+          'Self-hosted SaaS: Next.js, Prisma, Postgres, Docker, Caddy',
+          'Live at gematrior.com — owned end-to-end from idea to production',
         ],
       },
       sv: {
         tagline:
-          'Utforska siffrorna bakom orden — gematria, kalendrar och guidade läsningar på ett ställe.',
+          'Universell gematria-produkt — många system, verktyg och AI-läsningar i en live SaaS.',
         description:
-          'Gematrior är en live fullstack-produkt jag byggt och driver själv: skriv ett namn eller en fras och se dess värde i många bokstav–siffer-system (bl.a. albanska, engelska/latin, grekiska och hebreiska). Jämför två fraser, hitta matchande ord, utforska datum och världskalendrar och lås upp AI-assisterade läsningar. Bakom kulisserna är det en riktig SaaS-stack — konton, Stripe-betalning, Postgres-databas och Docker-hosting på VPS — från idé till produktion.',
+          'Gematrior är en produktionswebbapp jag designat, byggt och hostar själv. Besökare skriver ett ord eller en fras och ser direkt värden i 20+ bokstav–siffer-system (albanska, engelska/latin, grekiska, hebreiska m.m.), med bokstavsuppdelning och cipher-nycklar. Produkten har även jämförläge, textscan, datum-/nummerverktyg, astrologi- och skriftuppslag, plus konton, Stripe-betalning och OpenAI-läsningar — hela vägen från UX till VPS-deploy.',
         highlights: [
-          '20+ bokstav–siffer-system med digrafmedveten albansk gematria',
-          'Jämför fraser, ordmatchning och community-fraser',
-          'Datum- och kalenderverktyg plus skrift-/historikuppslag',
-          'Konton, Stripe-betalning (krediter & Pro) och OpenAI-läsningar',
-          'Självhostad live på gematrior.com (Next.js, Prisma, Postgres, Docker)',
+          '20+ system med digrafmedveten albansk gematria och synliga cipher-nycklar',
+          'Jämför fraser, textscan, datum-/nummerverktyg och AI-läsningar',
+          'Auth, Stripe (krediter & Pro) och polerad mörk flerspråkig UI',
+          'Självhostad SaaS: Next.js, Prisma, Postgres, Docker, Caddy',
+          'Live på gematrior.com — från idé till produktion',
         ],
       },
       sq: {
         tagline:
-          'Eksploro numrat pas fjalëve — gematria, kalendarë dhe leximë të udhëzuara në një vend.',
+          'Produkt universale gematrie — shumë sisteme, mjete dhe leximë AI në një SaaS live.',
         description:
-          'Gematrior është një produkt full-stack live që e kam ndërtuar dhe e menaxhoj vetë: shkruaj një emër ose frazë dhe shih vlerën e saj në shumë sisteme shkronjë–numër (përfshirë shqip, anglisht/latin, greqisht dhe hebraisht). Krahaso dy fraza, gjej fjalë që përputhen, eksploro data dhe kalendarë botërorë, dhe hap leximë me ndihmë AI. Pas skenës është një stack SaaS i vërtetë — llogari, pagesa Stripe, databazë Postgres dhe hosting Docker në VPS — nga ideja te prodhimi.',
+          'Gematrior është një aplikacion web prodhimi që e kam dizajnuar, ndërtuar dhe hostuar vetë. Vizitorët shkruajnë një fjalë ose frazë dhe shohin menjëherë vlera në 20+ sisteme shkronjë–numër (shqip, anglisht/latin, greqisht, hebraisht etj.), me ndarje shkronjash dhe çelësa cipher. Produkti përfshin krahasim, text scan, mjete date/numër, kërkime astrologjie/shkrimi, plus llogari, Stripe dhe leximë OpenAI — nga UX te deploy në VPS.',
         highlights: [
-          '20+ sisteme shkronjë–numër me gematria shqipe digraf-aware',
-          'Krahasim frazash, matching fjalësh dhe bankë fraza komuniteti',
-          'Mjete date/kalendarë plus kërkime shkrimi/historie',
-          'Llogari, Stripe (kredi & Pro) dhe leximë OpenAI',
-          'Live self-hosted te gematrior.com (Next.js, Prisma, Postgres, Docker)',
+          '20+ sisteme me gematria shqipe digraf-aware dhe çelësa cipher në ekran',
+          'Krahasim frazash, text scan, mjete date/numër dhe leximë AI',
+          'Auth, Stripe (kredi & Pro) dhe UI e errët shumëgjuhëshe',
+          'SaaS self-hosted: Next.js, Prisma, Postgres, Docker, Caddy',
+          'Live te gematrior.com — nga ideja te prodhimi',
         ],
       },
     },
@@ -241,39 +241,39 @@ const allProjects: Project[] = [
     tech: ['Next.js 14', 'TypeScript', 'Tailwind', 'Google Vision', 'Groq LLM', 'TensorFlow.js', 'SQLite/Postgres'],
     copy: {
       en: {
-        tagline: 'AI food classification with nutrition tracking, predictions, and chat assistant.',
+        tagline: 'See your plate clearly — AI meal logging from photo, ingredients, or barcode.',
         description:
-          'Full-stack web app that identifies food from images, shows nutrition data (per 100g and per serving), predicts eating patterns with LSTM when enough history exists, and includes a nutrition chatbot powered by Groq (Llama).',
+          'SmartFood is a polished full-stack nutrition app: classify meals from an image, typed ingredients, or barcode, then track calories, macros, water, streaks, and goals in a calm dark UI. It combines Google Cloud Vision (with CNN fallback), Livsmedelsverket / Open Food Facts data, LSTM pattern predictions when history allows, and a Groq-powered nutrition chat — shipped live on Vercel with i18n.',
         highlights: [
-          'Google Cloud Vision primary classifier with CNN fallback',
-          'Livsmedelsverket & Open Food Facts nutrition APIs',
-          'Meal history, CSV export, profiles, and daily goals',
-          'Dark mode, water tracker, and streak tracking',
-          'Deployed live on Vercel',
+          'Multimodal input: photo upload/camera, free-text ingredients, barcode lookup',
+          'Vision AI + nutrition APIs with daily goals, streaks, and water tracking',
+          'LSTM eating-pattern predictions and Groq (Llama) nutrition assistant',
+          'Modern dark UI, language switch, and auth-ready flows',
+          'Live on Vercel — product-minded UX plus real ML/API integration',
         ],
       },
       sv: {
-        tagline: 'AI-matklassificering med näringsuppföljning, prediktioner och chattassistent.',
+        tagline: 'See your plate clearly — AI-måltidslogning via foto, ingredienser eller streckkod.',
         description:
-          'Fullstack-webbapp som identifierar mat från bilder, visar näringsdata (per 100g och portion), förutsäger ätmönster med LSTM vid tillräcklig historik, och inkluderar en näringschattbot driven av Groq (Llama).',
+          'SmartFood är en polerad fullstack-näringsapp: klassificera måltider från bild, ingredienstext eller streckkod och följ kalorier, makro, vatten, streaks och mål i ett lugnt mörkt UI. Den kombinerar Google Cloud Vision (med CNN-fallback), Livsmedelsverket / Open Food Facts, LSTM-prediktioner vid tillräcklig historik och en Groq-driven näringschatt — live på Vercel med i18n.',
         highlights: [
-          'Google Cloud Vision primär klassificerare med CNN-fallback',
-          'Livsmedelsverket & Open Food Facts närings-API:er',
-          'Måltidshistorik, CSV-export, profiler och dagliga mål',
-          'Mörkt läge, vatten-tracker och streak',
-          'Deployad live på Vercel',
+          'Multimodal inmatning: foto/kamera, fri text, streckkodsuppslag',
+          'Vision-AI + närings-API:er med dagliga mål, streaks och vatten',
+          'LSTM-ätmönster och Groq (Llama) näringsassistent',
+          'Modern mörk UI, språkväxling och auth-redo flöden',
+          'Live på Vercel — produkt-UX plus riktig ML/API-integration',
         ],
       },
       sq: {
-        tagline: 'Klasifikim ushqimi me AI, ndjekje ushqyese, parashikime dhe asistent chat.',
+        tagline: 'See your plate clearly — regjistrim ushqimi me AI nga foto, përbërës ose barkod.',
         description:
-          'Aplikacion web full-stack që identifikon ushqimin nga imazhet, shfaq të dhëna ushqyese (për 100g dhe porcion), parashikon modelet e ngrënies me LSTM kur ka histori të mjaftueshme, dhe përfshin chatbot ushqyes të fuqizuar nga Groq (Llama).',
+          'SmartFood është një app ushqyes full-stack i rafinuar: klasifiko vakte nga imazhi, përbërës të shkruar ose barkod, pastaj ndjek kalori, makro, ujë, streak dhe objektiva në një UI të qetë të errët. Kombinon Google Cloud Vision (me fallback CNN), Livsmedelsverket / Open Food Facts, parashikime LSTM dhe chat ushqyes me Groq — live në Vercel me i18n.',
         highlights: [
-          'Google Cloud Vision klasifikues primar me fallback CNN',
-          'API Livsmedelsverket & Open Food Facts',
-          'Histori vakte, eksport CSV, profile dhe objektiva ditore',
-          'Dark mode, tracker uji dhe streak',
-          'Deploy live në Vercel',
+          'Hyrje multimodale: foto/kamerë, tekst përbërësish, lookup barkodi',
+          'Vision AI + API ushqyese me objektiva, streak dhe ujë',
+          'Parashikime LSTM dhe asistent Groq (Llama)',
+          'UI moderne e errët, ndërrim gjuhe dhe flukse auth',
+          'Live në Vercel — UX produkti plus integrim real ML/API',
         ],
       },
     },
@@ -290,36 +290,39 @@ const allProjects: Project[] = [
     tech: ['Python', 'Jupyter', 'Random Forest', 'Streamlit', 'scikit-learn', 'Pandas'],
     copy: {
       en: {
-        tagline: 'ML pipeline predicting telecom customer churn with a live Streamlit app.',
+        tagline: 'From customer data to a clear HIGH RISK decision — live churn dashboard.',
         description:
-          'Machine learning solution for predicting customer churn in telecommunications using Random Forest. Includes a comprehensive Jupyter notebook for model development and a Streamlit web application for real-time predictions.',
+          'End-to-end machine learning project that predicts telecom customer churn with Random Forest, then surfaces results in a dark Streamlit dashboard: churn vs retention probability, a color risk gauge, and a concrete recommended action (e.g. offer a special deal). Shows the full path from Jupyter model work to an interactive app recruiters can click and try.',
         highlights: [
-          'End-to-end ML workflow in Jupyter Notebook',
-          'Random Forest classifier with evaluation metrics',
-          'Interactive Streamlit deployment for live predictions',
-          'Kaggle Telco Customer Churn dataset',
+          'Random Forest pipeline trained and evaluated in Jupyter',
+          'Live Streamlit UI: risk banner, probabilities, and gauge visualization',
+          'Actionable output — not just a score, but a recommended next step',
+          'scikit-learn + Pandas on the classic Telco Customer Churn dataset',
+          'Deployed on Streamlit Cloud for real demos',
         ],
       },
       sv: {
-        tagline: 'ML-pipeline som förutsäger telekom-kundchurn med live Streamlit-app.',
+        tagline: 'Från kunddata till tydligt HIGH RISK-beslut — live churn-dashboard.',
         description:
-          'Maskininlärningslösning för att förutsäga kundchurn inom telekom med Random Forest. Inkluderar Jupyter notebook för modellutveckling och Streamlit-app för realtidsprediktioner.',
+          'End-to-end maskininlärningsprojekt som förutsäger telekom-kundchurn med Random Forest och visar resultatet i en mörk Streamlit-dashboard: churn- vs retentionssannolikhet, färgriskmätare och konkret rekommenderad åtgärd (t.ex. erbjud specialdeal). Visar hela vägen från Jupyter-modell till en interaktiv app rekryterare kan testa.',
         highlights: [
-          'End-to-end ML-arbetsflöde i Jupyter Notebook',
-          'Random Forest-klassificerare med utvärderingsmått',
-          'Interaktiv Streamlit-deploy för live-prediktioner',
-          'Kaggle Telco Customer Churn dataset',
+          'Random Forest-pipeline tränad och utvärderad i Jupyter',
+          'Live Streamlit-UI: riskbanner, sannolikheter och gauge',
+          'Handlingsbart resultat — poäng plus rekommenderad nästa åtgärd',
+          'scikit-learn + Pandas på Telco Customer Churn-dataset',
+          'Deployad på Streamlit Cloud för riktiga demos',
         ],
       },
       sq: {
-        tagline: 'Pipeline ML që parashikon churn klientësh telekom me app Streamlit live.',
+        tagline: 'Nga të dhënat e klientit te vendim HIGH RISK — dashboard churn live.',
         description:
-          'Zgjidhje mësimi makinerik për parashikimin e churn-it të klientëve telekom me Random Forest. Përfshin notebook Jupyter për zhvillimin e modelit dhe aplikacion Streamlit për parashikime në kohë reale.',
+          'Projekt ML end-to-end që parashikon churn klientësh telekom me Random Forest dhe e shfaq në një dashboard Streamlit të errët: probabilitet churn vs retention, matës risku me ngjyra dhe veprim i rekomanduar (p.sh. ofertë speciale). Tregon rrugën e plotë nga modeli Jupyter te një app interaktiv që rekrutuesit mund ta provojnë.',
         highlights: [
-          'Workflow ML end-to-end në Jupyter Notebook',
-          'Klasifikues Random Forest me metrika vlerësimi',
-          'Deploy interaktiv Streamlit për parashikime live',
-          'Dataset Kaggle Telco Customer Churn',
+          'Pipeline Random Forest i trajnuar dhe vlerësuar në Jupyter',
+          'UI Streamlit live: banner risku, probabilitete dhe gauge',
+          'Rezultat actionable — jo vetëm score, por hapi i radhës',
+          'scikit-learn + Pandas mbi dataset-in Telco Customer Churn',
+          'Deploy në Streamlit Cloud për demo reale',
         ],
       },
     },
@@ -593,43 +596,49 @@ const allProjects: Project[] = [
   },
   {
     id: 'diamonds-analysis',
-    title: 'Diamonds Analysis',
+    title: 'Diamonds Intelligence',
     year: '2025',
-    featured: false,
+    featured: true,
     category: 'course',
     accent: '64748b',
     github: 'https://github.com/editorjakupi/diamonds-analysis-app',
     demo: 'https://diamonds-analysis-app-uae8lqradky68cntkehd8j.streamlit.app/',
-    tech: ['Python', 'Jupyter', 'Pandas', 'Data Analysis'],
+    tech: ['Python', 'Streamlit', 'Pandas', 'Data Analysis', 'Jupyter'],
     copy: {
       en: {
-        tagline: 'Exploratory data analysis on diamond pricing dataset.',
+        tagline: 'Decision support for diamond buying — from the 4Cs to a clear recommendation.',
         description:
-          'Jupyter notebook project analyzing diamond characteristics and their relationship to price. Includes statistical analysis, visualizations, and data cleaning workflows.',
+          'Interactive Streamlit app (Guldfynd portfolio) that turns diamond market data into purchasing decisions. Stakeholders filter and explore the assortment, then score a single stone on carat, price, cut, color, clarity and dimensions to get a data-driven recommendation — bridging exploratory analysis with board-ready decision support.',
         highlights: [
-          'Exploratory data analysis with Pandas',
-          'Statistical visualizations',
-          'Data cleaning and feature exploration',
+          'Interactive filters and stats on a large diamond dataset',
+          'Decision-support form for individual purchase recommendations',
+          'Clear product UI aimed at assortment, pricing and purchasing',
+          'Python + Pandas analysis packaged as a live Streamlit app',
+          'Shows analytical thinking and stakeholder-friendly delivery',
         ],
       },
       sv: {
-        tagline: 'Explorativ dataanalys på diamantprisdataset.',
+        tagline: 'Beslutstöd för diamantköp — från 4C till tydlig rekommendation.',
         description:
-          'Jupyter notebook-projekt som analyserar diamantegenskaper och deras relation till pris. Inkluderar statistisk analys, visualiseringar och datastädningsflöden.',
+          'Interaktiv Streamlit-app (Guldfynd-portfolio) som gör diamantmarknadsdata till inköpsbeslut. Intressenter filtrerar och utforskar sortimentet, och kan sedan bedöma en enskild sten utifrån carat, pris, slipning, färg, klarhet och mått för en datadriven rekommendation — från explorativ analys till styrelseredovisat beslutstöd.',
         highlights: [
-          'Explorativ dataanalys med Pandas',
-          'Statistiska visualiseringar',
-          'Datastädning och feature-utforskning',
+          'Interaktiva filter och statistik på stort diamantdataset',
+          'Beslutstödsformulär för rekommendation per enskild sten',
+          'Tydlig produkt-UI för sortiment, prissättning och inköp',
+          'Python + Pandas packat som live Streamlit-app',
+          'Visar analytiskt tänk och leverans som intressenter förstår',
         ],
       },
       sq: {
-        tagline: 'Analizë eksploruese e të dhënave për çmimet e diamanteve.',
+        tagline: 'Mbështetje vendimi për blerje diamantesh — nga 4C te rekomandim i qartë.',
         description:
-          'Projekt notebook Jupyter që analizon karakteristikat e diamanteve dhe lidhjen me çmimin. Përfshin analizë statistikore, vizualizime dhe workflow pastrimi të dhënash.',
+          'App interaktiv Streamlit (portfolio Guldfynd) që e kthen të dhënat e tregut të diamanteve në vendime blerjeje. Palët filtrojnë dhe eksplorojnë sortimentin, pastaj vlerësojnë një gur të vetëm sipas carat, çmimit, cut, color, clarity dhe dimensioneve për një rekomandim të bazuar në të dhëna — nga analizë eksploruese te vendimmarrje për bord.',
         highlights: [
-          'Analizë eksploruese me Pandas',
-          'Vizualizime statistikore',
-          'Pastrim të dhënash dhe eksplorim features',
+          'Filtra dhe statistika interaktive mbi dataset të madh diamantesh',
+          'Formular vendimi për rekomandim blerjeje individuale',
+          'UI produkti për sortiment, çmim dhe blerje',
+          'Python + Pandas i paketuar si app Streamlit live',
+          'Tregon mendim analitik dhe dorëzim që e kuptojnë stakeholder-ët',
         ],
       },
     },
