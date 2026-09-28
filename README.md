@@ -13,8 +13,9 @@ Showcase apps on the same VPS:
 | Diamonds Intelligence | https://diamonds.editorjakupi.com |
 | Telco Churn | https://churn.editorjakupi.com |
 | SmartFood | https://smartfood.editorjakupi.com |
+| Gematrior | https://gematrior.com |
 
-Legacy bookmarks on `*.onrender.com` still redirect to the primary domain.
+Render / Streamlit Cloud / Vercel hosting for these showcase apps has been removed — live traffic is Hetzner only.
 
 ## Languages (8)
 
