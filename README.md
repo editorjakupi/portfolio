@@ -1,13 +1,20 @@
 # Editor Jakupi — Portfolio
 
-Multilingual developer portfolio built with **React 18 + TypeScript + Vite**. Single-page layout with hero, about, project grid with case-study modals, references, and contact. Deployed on Render with custom domain on Cloudflare.
+Multilingual developer portfolio built with **React 18 + TypeScript + Vite**. Single-page layout with hero, about, project grid with case-study modals, references, and contact.
+
+**Hosted on Hetzner** (`apps-nbg1`) with Docker + nginx behind Caddy/Let’s Encrypt — same VPS stack as my showcase apps under `*.editorjakupi.com`.
 
 ## Live site
 
-**Primary:** [https://editorjakupi.com](https://editorjakupi.com)
+**Primary:** [https://editorjakupi.com](https://editorjakupi.com) (also `www`)
 
-**Legacy (redirects to primary):** `https://editor-jakupi-portfolio.onrender.com`  
-Skip redirect while testing DNS: append `?noredirect=1`
+| App | URL |
+|-----|-----|
+| Portfolio | https://editorjakupi.com |
+| SmartFood | https://smartfood.editorjakupi.com |
+| Telco Churn | https://churn.editorjakupi.com |
+| Diamonds Intelligence | https://diamonds.editorjakupi.com |
+| Gematrior | https://gematrior.com |
 
 ## Languages (8)
 
@@ -40,20 +47,28 @@ npm run build
 npm run preview
 ```
 
-## Deploy on Render
+## Deploy on Hetzner
 
-Already wired via `render.yaml` (static site → `./dist`).
+Live path on VPS: **`/opt/portfolio`** · container `portfolio-prod-web` · edge via `gematrior-prod-caddy` on Docker network `deploy_gematrior`.
 
-### Custom domain (Cloudflare → Render)
+```bash
+# From this repo (example sync + rebuild)
+tar -czf /tmp/portfolio-deploy.tgz \
+  --exclude=node_modules --exclude=dist --exclude=.git \
+  .
+scp /tmp/portfolio-deploy.tgz root@23.88.100.144:/tmp/portfolio-deploy.tgz
 
-1. **Render** → your static site → **Settings → Custom Domains** → add `editorjakupi.com` and `www.editorjakupi.com`
-2. **Cloudflare** → DNS for `editorjakupi.com`:
-   - `CNAME` `@` → `editor-jakupi-portfolio.onrender.com` (proxied or DNS-only; Cloudflare flattens apex CNAME)
-   - `CNAME` `www` → `editor-jakupi-portfolio.onrender.com`
-3. Wait for Render SSL + Cloudflare DNS to go green
-4. Optional: Cloudflare **Redirect Rule** `www` → `https://editorjakupi.com` (301)
+ssh root@23.88.100.144 '
+  tar -xzf /tmp/portfolio-deploy.tgz -C /opt/portfolio
+  cd /opt/portfolio && docker compose up -d --build
+  docker exec gematrior-prod-caddy caddy reload --config /etc/caddy/Caddyfile
+  curl -sI https://editorjakupi.com/ | head -5
+'
+```
 
-The app also redirects the old `*.onrender.com` host to `https://editorjakupi.com` so bookmarks keep working during the transition.
+DNS: `editorjakupi.com` / `www` and app subdomains → `23.88.100.144` (Cloudflare DNS-only recommended for apex). TLS is handled by Caddy.
+
+GitHub push alone does **not** update the live site — deploy is an SSH rebuild of `/opt/portfolio`.
 
 ## CV
 

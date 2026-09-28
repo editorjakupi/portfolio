@@ -241,43 +241,52 @@ const allProjects: Project[] = [
     accent: 'ea580c',
     bannerPosition: 'center top',
     github: 'https://github.com/editorjakupi/smartfood',
-    demo: 'https://smartfood-ten.vercel.app',
-    tech: ['Next.js 14', 'TypeScript', 'Tailwind', 'Google Vision', 'Groq LLM', 'TensorFlow.js', 'SQLite/Postgres'],
+    demo: 'https://smartfood.editorjakupi.com',
+    tech: [
+      'Next.js 14',
+      'TypeScript',
+      'Tailwind',
+      'SQLite',
+      'Google Vision',
+      'Groq LLM',
+      'Docker',
+      'Caddy',
+    ],
     copy: {
       en: {
         tagline: 'See your plate clearly — AI meal logging from photo, ingredients, or barcode.',
         description:
-          'SmartFood is a polished full-stack nutrition app: classify meals from an image, typed ingredients, or barcode, then track calories, macros, water, streaks, and goals in a calm dark UI. It combines Google Cloud Vision (with CNN fallback), Livsmedelsverket / Open Food Facts data, LSTM pattern predictions when history allows, and a Groq-powered nutrition chat — shipped live on Vercel with i18n.',
+          'SmartFood is a polished full-stack nutrition app: classify meals from an image, typed ingredients, or barcode, then track calories, macros, water, streaks, and goals in a calm dark UI. It combines Google Cloud Vision (with CNN fallback), Livsmedelsverket / Open Food Facts data, LSTM pattern predictions when history allows, and a Groq-powered nutrition chat. Auth covers email/password, Google OAuth, and Facebook Login (Facebook Live after Meta business verification). Self-hosted on my Hetzner VPS at smartfood.editorjakupi.com — Next.js + SQLite behind Caddy/Let’s Encrypt.',
         highlights: [
           'Multimodal input: photo upload/camera, free-text ingredients, barcode lookup',
           'Vision AI + nutrition APIs with daily goals, streaks, and water tracking',
           'LSTM eating-pattern predictions and Groq (Llama) nutrition assistant',
-          'Modern dark UI, language switch, and auth-ready flows',
-          'Live on Vercel — product-minded UX plus real ML/API integration',
+          'Email/password + Google OAuth + Facebook Login',
+          'Live at smartfood.editorjakupi.com — Docker, Caddy TLS, own subdomain',
         ],
       },
       sv: {
         tagline: 'See your plate clearly — AI-måltidslogning via foto, ingredienser eller streckkod.',
         description:
-          'SmartFood är en polerad fullstack-näringsapp: klassificera måltider från bild, ingredienstext eller streckkod och följ kalorier, makro, vatten, streaks och mål i ett lugnt mörkt UI. Den kombinerar Google Cloud Vision (med CNN-fallback), Livsmedelsverket / Open Food Facts, LSTM-prediktioner vid tillräcklig historik och en Groq-driven näringschatt — live på Vercel med i18n.',
+          'SmartFood är en polerad fullstack-näringsapp: klassificera måltider från bild, ingredienstext eller streckkod och följ kalorier, makro, vatten, streaks och mål i ett lugnt mörkt UI. Den kombinerar Google Cloud Vision (med CNN-fallback), Livsmedelsverket / Open Food Facts, LSTM-prediktioner vid tillräcklig historik och en Groq-driven näringschatt. Auth: e-post/lösenord, Google OAuth och Facebook Login (Facebook Live efter Meta business-verifiering). Self-hostad på min Hetzner-VPS på smartfood.editorjakupi.com — Next.js + SQLite bakom Caddy/Let’s Encrypt.',
         highlights: [
           'Multimodal inmatning: foto/kamera, fri text, streckkodsuppslag',
           'Vision-AI + närings-API:er med dagliga mål, streaks och vatten',
           'LSTM-ätmönster och Groq (Llama) näringsassistent',
-          'Modern mörk UI, språkväxling och auth-redo flöden',
-          'Live på Vercel — produkt-UX plus riktig ML/API-integration',
+          'E-post/lösenord + Google OAuth + Facebook Login',
+          'Live på smartfood.editorjakupi.com — Docker, Caddy TLS, egen subdomän',
         ],
       },
       sq: {
         tagline: 'See your plate clearly — regjistrim ushqimi me AI nga foto, përbërës ose barkod.',
         description:
-          'SmartFood është një app ushqyes full-stack i rafinuar: klasifiko vakte nga imazhi, përbërës të shkruar ose barkod, pastaj ndjek kalori, makro, ujë, streak dhe objektiva në një UI të qetë të errët. Kombinon Google Cloud Vision (me fallback CNN), Livsmedelsverket / Open Food Facts, parashikime LSTM dhe chat ushqyes me Groq — live në Vercel me i18n.',
+          'SmartFood është një app ushqyes full-stack i rafinuar: klasifiko vakte nga imazhi, përbërës të shkruar ose barkod, pastaj ndjek kalori, makro, ujë, streak dhe objektiva në një UI të qetë të errët. Kombinon Google Cloud Vision (me fallback CNN), Livsmedelsverket / Open Food Facts, parashikime LSTM dhe chat ushqyes me Groq. Auth: email/fjalëkalim, Google OAuth dhe Facebook Login (Facebook Live pas verifikimit Meta business). Self-hosted në VPS-in tim Hetzner te smartfood.editorjakupi.com — Next.js + SQLite pas Caddy/Let’s Encrypt.',
         highlights: [
           'Hyrje multimodale: foto/kamerë, tekst përbërësish, lookup barkodi',
           'Vision AI + API ushqyese me objektiva, streak dhe ujë',
           'Parashikime LSTM dhe asistent Groq (Llama)',
-          'UI moderne e errët, ndërrim gjuhe dhe flukse auth',
-          'Live në Vercel — UX produkti plus integrim real ML/API',
+          'Email/fjalëkalim + Google OAuth + Facebook Login',
+          'Live te smartfood.editorjakupi.com — Docker, Caddy TLS, nëndomain i vet',
         ],
       },
     },
@@ -290,43 +299,43 @@ const allProjects: Project[] = [
     category: 'course',
     accent: '0369a1',
     github: 'https://github.com/editorjakupi/telco-customer-churn-prediction',
-    demo: 'https://telco-customer-churn-prediction-editorjakupi.streamlit.app',
-    tech: ['Python', 'Jupyter', 'Random Forest', 'Streamlit', 'scikit-learn', 'Pandas'],
+    demo: 'https://churn.editorjakupi.com',
+    tech: ['Python', 'Jupyter', 'Random Forest', 'Streamlit', 'scikit-learn', 'Pandas', 'Docker', 'Caddy'],
     copy: {
       en: {
         tagline: 'From customer data to a clear HIGH RISK decision — live churn dashboard.',
         description:
-          'End-to-end machine learning project that predicts telecom customer churn with Random Forest, then surfaces results in a dark Streamlit dashboard: churn vs retention probability, a color risk gauge, and a concrete recommended action (e.g. offer a special deal). Shows the full path from Jupyter model work to an interactive app recruiters can click and try.',
+          'End-to-end machine learning project that predicts telecom customer churn with Random Forest, then surfaces results in a dark Streamlit dashboard: churn vs retention probability, a color risk gauge, and a concrete recommended action (e.g. offer a special deal). Live at churn.editorjakupi.com on my Hetzner VPS behind Caddy — from Jupyter model work to a real subdomain recruiters can open.',
         highlights: [
           'Random Forest pipeline trained and evaluated in Jupyter',
           'Live Streamlit UI: risk banner, probabilities, and gauge visualization',
           'Actionable output — not just a score, but a recommended next step',
           'scikit-learn + Pandas on the classic Telco Customer Churn dataset',
-          'Deployed on Streamlit Cloud for real demos',
+          'Self-hosted at churn.editorjakupi.com — Docker + Caddy on Hetzner',
         ],
       },
       sv: {
         tagline: 'Från kunddata till tydligt HIGH RISK-beslut — live churn-dashboard.',
         description:
-          'End-to-end maskininlärningsprojekt som förutsäger telekom-kundchurn med Random Forest och visar resultatet i en mörk Streamlit-dashboard: churn- vs retentionssannolikhet, färgriskmätare och konkret rekommenderad åtgärd (t.ex. erbjud specialdeal). Visar hela vägen från Jupyter-modell till en interaktiv app rekryterare kan testa.',
+          'End-to-end maskininlärningsprojekt som förutsäger telekom-kundchurn med Random Forest och visar resultatet i en mörk Streamlit-dashboard: churn- vs retentionssannolikhet, färgriskmätare och konkret rekommenderad åtgärd (t.ex. erbjud specialdeal). Live på churn.editorjakupi.com på min Hetzner-VPS bakom Caddy — från Jupyter-modell till en riktig subdomän rekryterare kan öppna.',
         highlights: [
           'Random Forest-pipeline tränad och utvärderad i Jupyter',
           'Live Streamlit-UI: riskbanner, sannolikheter och gauge',
           'Handlingsbart resultat — poäng plus rekommenderad nästa åtgärd',
           'scikit-learn + Pandas på Telco Customer Churn-dataset',
-          'Deployad på Streamlit Cloud för riktiga demos',
+          'Self-hostad på churn.editorjakupi.com — Docker + Caddy på Hetzner',
         ],
       },
       sq: {
         tagline: 'Nga të dhënat e klientit te vendim HIGH RISK — dashboard churn live.',
         description:
-          'Projekt ML end-to-end që parashikon churn klientësh telekom me Random Forest dhe e shfaq në një dashboard Streamlit të errët: probabilitet churn vs retention, matës risku me ngjyra dhe veprim i rekomanduar (p.sh. ofertë speciale). Tregon rrugën e plotë nga modeli Jupyter te një app interaktiv që rekrutuesit mund ta provojnë.',
+          'Projekt ML end-to-end që parashikon churn klientësh telekom me Random Forest dhe e shfaq në një dashboard Streamlit të errët: probabilitet churn vs retention, matës risku me ngjyra dhe veprim i rekomanduar (p.sh. ofertë speciale). Live te churn.editorjakupi.com në VPS-in tim Hetzner pas Caddy — nga modeli Jupyter te një nëndomain real që rekrutuesit mund ta hapin.',
         highlights: [
           'Pipeline Random Forest i trajnuar dhe vlerësuar në Jupyter',
           'UI Streamlit live: banner risku, probabilitete dhe gauge',
           'Rezultat actionable — jo vetëm score, por hapi i radhës',
           'scikit-learn + Pandas mbi dataset-in Telco Customer Churn',
-          'Deploy në Streamlit Cloud për demo reale',
+          'Self-hosted te churn.editorjakupi.com — Docker + Caddy në Hetzner',
         ],
       },
     },
@@ -607,43 +616,43 @@ const allProjects: Project[] = [
     accent: '64748b',
     bannerPosition: 'center top',
     github: 'https://github.com/editorjakupi/diamonds-analysis-app',
-    demo: 'https://diamonds-analysis-app-uae8lqradky68cntkehd8j.streamlit.app/',
-    tech: ['Python', 'Streamlit', 'Pandas', 'Data Analysis', 'Jupyter'],
+    demo: 'https://diamonds.editorjakupi.com',
+    tech: ['Python', 'Streamlit', 'Pandas', 'Data Analysis', 'Jupyter', 'Docker', 'Caddy'],
     copy: {
       en: {
         tagline: 'Decision support for diamond buying — from the 4Cs to a clear recommendation.',
         description:
-          'Interactive Streamlit app (Guldfynd portfolio) that turns diamond market data into purchasing decisions. Stakeholders filter and explore the assortment, then score a single stone on carat, price, cut, color, clarity and dimensions to get a data-driven recommendation — bridging exploratory analysis with board-ready decision support.',
+          'Interactive Streamlit app (Guldfynd portfolio) that turns diamond market data into purchasing decisions. Stakeholders filter and explore the assortment, then score a single stone on carat, price, cut, color, clarity and dimensions to get a data-driven recommendation. Live dashboard at diamonds.editorjakupi.com on the same Hetzner VPS as my other demos — exploratory analysis packaged as board-ready decision support behind Caddy.',
         highlights: [
           'Interactive filters and stats on a large diamond dataset',
           'Decision-support form for individual purchase recommendations',
           'Clear product UI aimed at assortment, pricing and purchasing',
-          'Python + Pandas analysis packaged as a live Streamlit app',
-          'Shows analytical thinking and stakeholder-friendly delivery',
+          'Python + Pandas packaged as a live Streamlit dashboard',
+          'Self-hosted at diamonds.editorjakupi.com — Docker + Caddy on Hetzner',
         ],
       },
       sv: {
         tagline: 'Beslutstöd för diamantköp — från 4C till tydlig rekommendation.',
         description:
-          'Interaktiv Streamlit-app (Guldfynd-portfolio) som gör diamantmarknadsdata till inköpsbeslut. Intressenter filtrerar och utforskar sortimentet, och kan sedan bedöma en enskild sten utifrån carat, pris, slipning, färg, klarhet och mått för en datadriven rekommendation — från explorativ analys till styrelseredovisat beslutstöd.',
+          'Interaktiv Streamlit-app (Guldfynd-portfolio) som gör diamantmarknadsdata till inköpsbeslut. Intressenter filtrerar och utforskar sortimentet, och kan sedan bedöma en enskild sten utifrån carat, pris, slipning, färg, klarhet och mått för en datadriven rekommendation. Live-dashboard på diamonds.editorjakupi.com på samma Hetzner-VPS som mina övriga demos — explorativ analys packad som styrelseredovisat beslutstöd bakom Caddy.',
         highlights: [
           'Interaktiva filter och statistik på stort diamantdataset',
           'Beslutstödsformulär för rekommendation per enskild sten',
           'Tydlig produkt-UI för sortiment, prissättning och inköp',
-          'Python + Pandas packat som live Streamlit-app',
-          'Visar analytiskt tänk och leverans som intressenter förstår',
+          'Python + Pandas packat som live Streamlit-dashboard',
+          'Self-hostad på diamonds.editorjakupi.com — Docker + Caddy på Hetzner',
         ],
       },
       sq: {
         tagline: 'Mbështetje vendimi për blerje diamantesh — nga 4C te rekomandim i qartë.',
         description:
-          'App interaktiv Streamlit (portfolio Guldfynd) që e kthen të dhënat e tregut të diamanteve në vendime blerjeje. Palët filtrojnë dhe eksplorojnë sortimentin, pastaj vlerësojnë një gur të vetëm sipas carat, çmimit, cut, color, clarity dhe dimensioneve për një rekomandim të bazuar në të dhëna — nga analizë eksploruese te vendimmarrje për bord.',
+          'App interaktiv Streamlit (portfolio Guldfynd) që e kthen të dhënat e tregut të diamanteve në vendime blerjeje. Palët filtrojnë dhe eksplorojnë sortimentin, pastaj vlerësojnë një gur të vetëm sipas carat, çmimit, cut, color, clarity dhe dimensioneve për një rekomandim të bazuar në të dhëna. Dashboard live te diamonds.editorjakupi.com në të njëjtin VPS Hetzner si demo-t e tjera — analizë eksploruese e paketuar si mbështetje vendimi për bord pas Caddy.',
         highlights: [
           'Filtra dhe statistika interaktive mbi dataset të madh diamantesh',
           'Formular vendimi për rekomandim blerjeje individuale',
           'UI produkti për sortiment, çmim dhe blerje',
-          'Python + Pandas i paketuar si app Streamlit live',
-          'Tregon mendim analitik dhe dorëzim që e kuptojnë stakeholder-ët',
+          'Python + Pandas i paketuar si dashboard Streamlit live',
+          'Self-hosted te diamonds.editorjakupi.com — Docker + Caddy në Hetzner',
         ],
       },
     },

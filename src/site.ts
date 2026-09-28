@@ -2,12 +2,12 @@
 export const SITE = {
   url: 'https://editorjakupi.com',
   host: 'editorjakupi.com',
-  /** Render default hostname — redirects to SITE.url during the transition window. */
+  /** Old hosts that should bounce to SITE.url (bookmarks / residual DNS). */
   legacyHosts: ['editor-jakupi-portfolio.onrender.com'] as const,
 } as const;
 
 /**
- * Send visitors from the old Render URL to the custom domain.
+ * Send visitors from a legacy host to the Hetzner custom domain.
  * Add `?noredirect=1` to skip (useful while testing DNS/SSL).
  */
 export function maybeRedirectLegacyHost(): void {

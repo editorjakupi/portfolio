@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    image: portfolio-prod:latest
+    container_name: portfolio-prod-web
+    restart: unless-stopped
+    networks:
+      - edge
+
+networks:
+  edge:
+    external: true
+    name: deploy_gematrior

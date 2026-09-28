@@ -1,0 +1,11 @@
+# Build context for Hetzner / Docker
+node_modules
+dist
+.git
+.gitignore
+*.md
+.env
+.env.*
+scripts
+.vscode
+.idea
