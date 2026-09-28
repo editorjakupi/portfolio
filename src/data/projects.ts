@@ -135,7 +135,7 @@ const allProjects: Project[] = [
       en: {
         tagline: 'In-app AI Staff Assistant for restaurant POS — daily support for staff and managers.',
         description:
-          'Second LIA internship at Swiiftly (Denmark): developed an AI Staff Assistant inside restaurant POS workflows. The assistant answers operational questions with role-based access, knowledge retrieval (RAG), grounded chat responses, and uploads for PDFs and video — with guardrails for sensitive data. Built mock-first for demos, with a clear path to OpenAI and integration into Swiiftly's platform.',
+          'Second LIA internship at Swiiftly (Denmark): developed an AI Staff Assistant inside restaurant POS workflows. The assistant answers operational questions with role-based access, knowledge retrieval (RAG), grounded chat responses, and uploads for PDFs and video — with guardrails for sensitive data. Built mock-first for demos, with a clear path to OpenAI and integration into the Swiiftly platform.',
         highlights: [
           'Unified assistant brain powering chat and REST query API',
           'Hybrid RAG with RBAC, citations, and readiness gate (GO/HOLD/NO-GO)',
@@ -307,7 +307,7 @@ const allProjects: Project[] = [
       en: {
         tagline: 'From customer data to a clear HIGH RISK decision — live churn dashboard.',
         description:
-          'End-to-end machine learning project that predicts telecom customer churn with Random Forest, then surfaces results in a dark Streamlit dashboard: churn vs retention probability, a color risk gauge, and a concrete recommended action (e.g. offer a special deal). Live at churn.editorjakupi.com on my Hetzner VPS behind shared Caddy + Let's Encrypt — from Jupyter model work to a production-style demo recruiters can click.',
+          'End-to-end machine learning project that predicts telecom customer churn with Random Forest, then surfaces results in a dark Streamlit dashboard: churn vs retention probability, a color risk gauge, and a concrete recommended action (e.g. offer a special deal). Live at churn.editorjakupi.com on my Hetzner VPS behind shared Caddy + TLS — from Jupyter model work to a production-style demo recruiters can click.',
         highlights: [
           'Random Forest pipeline trained and evaluated in Jupyter',
           'Live Streamlit UI: risk banner, probabilities, and gauge visualization',
@@ -319,7 +319,7 @@ const allProjects: Project[] = [
       sv: {
         tagline: 'Från kunddata till tydligt HIGH RISK-beslut — live churn-dashboard.',
         description:
-          'End-to-end maskininlärningsprojekt som förutsäger telekom-kundchurn med Random Forest och visar resultatet i en mörk Streamlit-dashboard: churn- vs retentionssannolikhet, färgriskmätare och konkret rekommenderad åtgärd (t.ex. erbjud specialdeal). Live på churn.editorjakupi.com på min Hetzner-VPS bakom delad Caddy + Let's Encrypt — från Jupyter-modell till produktionslik demo rekryterare kan testa.',
+          'End-to-end maskininlärningsprojekt som förutsäger telekom-kundchurn med Random Forest och visar resultatet i en mörk Streamlit-dashboard: churn- vs retentionssannolikhet, färgriskmätare och konkret rekommenderad åtgärd (t.ex. erbjud specialdeal). Live på churn.editorjakupi.com på min Hetzner-VPS bakom delad Caddy + TLS — från Jupyter-modell till produktionslik demo rekryterare kan testa.',
         highlights: [
           'Random Forest-pipeline tränad och utvärderad i Jupyter',
           'Live Streamlit-UI: riskbanner, sannolikheter och gauge',
@@ -331,7 +331,7 @@ const allProjects: Project[] = [
       sq: {
         tagline: 'Nga të dhënat e klientit te vendim HIGH RISK — dashboard churn live.',
         description:
-          'Projekt ML end-to-end që parashikon churn klientësh telekom me Random Forest dhe e shfaq në një dashboard Streamlit të errët: probabilitet churn vs retention, matës risku me ngjyra dhe veprim i rekomanduar (p.sh. ofertë speciale). Live në churn.editorjakupi.com në VPS-in tim Hetzner pas Caddy + Let's Encrypt — nga modeli Jupyter te një demo prodhimi që rekrutuesit mund ta provojnë.',
+          'Projekt ML end-to-end që parashikon churn klientësh telekom me Random Forest dhe e shfaq në një dashboard Streamlit të errët: probabilitet churn vs retention, matës risku me ngjyra dhe veprim i rekomanduar (p.sh. ofertë speciale). Live në churn.editorjakupi.com në VPS-in tim Hetzner pas Caddy + TLS — nga modeli Jupyter te një demo prodhimi që rekrutuesit mund ta provojnë.',
         highlights: [
           'Pipeline Random Forest i trajnuar dhe vlerësuar në Jupyter',
           'UI Streamlit live: banner risku, probabilitete dhe gauge',
