@@ -67,6 +67,11 @@ export default function Projects({ onOpen }: Props) {
                   src={projectImage(project)}
                   alt=""
                   loading="lazy"
+                  style={
+                    project.bannerPosition
+                      ? { objectPosition: project.bannerPosition }
+                      : undefined
+                  }
                 />
                 <div className="project-body">
                   <div className="project-head">

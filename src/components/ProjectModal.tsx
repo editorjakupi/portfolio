@@ -31,7 +31,16 @@ export default function ProjectModal({ project, onClose }: Props) {
     >
       <div className="modal" onClick={(event) => event.stopPropagation()}>
         <div className="modal-header">
-          <img className="modal-image" src={projectImage(project)} alt="" />
+          <img
+            className="modal-image"
+            src={projectImage(project)}
+            alt=""
+            style={
+              project.bannerPosition
+                ? { objectPosition: project.bannerPosition }
+                : undefined
+            }
+          />
           <button
             ref={closeBtn}
             type="button"

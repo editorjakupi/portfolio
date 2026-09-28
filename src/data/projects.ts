@@ -21,6 +21,8 @@ export interface Project {
   accent: string;
   /** Optional local banner under /project-banners/{id}.png|jpg|webp */
   image?: string;
+  /** CSS object-position for cropped banner (e.g. "center top") */
+  bannerPosition?: string;
   copy: Record<'en' | 'sv' | 'sq', ProjectCopy>;
 }
 
@@ -55,6 +57,7 @@ const allProjects: Project[] = [
     featured: true,
     category: 'featured',
     accent: '1e3a5f',
+    bannerPosition: 'center top',
     github: 'https://github.com/editorjakupi/gematrior',
     demo: 'https://gematrior.com',
     tech: [
@@ -236,6 +239,7 @@ const allProjects: Project[] = [
     featured: true,
     category: 'course',
     accent: 'ea580c',
+    bannerPosition: 'center top',
     github: 'https://github.com/editorjakupi/smartfood',
     demo: 'https://smartfood-ten.vercel.app',
     tech: ['Next.js 14', 'TypeScript', 'Tailwind', 'Google Vision', 'Groq LLM', 'TensorFlow.js', 'SQLite/Postgres'],
@@ -601,6 +605,7 @@ const allProjects: Project[] = [
     featured: true,
     category: 'course',
     accent: '64748b',
+    bannerPosition: 'center top',
     github: 'https://github.com/editorjakupi/diamonds-analysis-app',
     demo: 'https://diamonds-analysis-app-uae8lqradky68cntkehd8j.streamlit.app/',
     tech: ['Python', 'Streamlit', 'Pandas', 'Data Analysis', 'Jupyter'],
