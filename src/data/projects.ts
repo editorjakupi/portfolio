@@ -243,11 +243,11 @@ const allProjects: Project[] = [
     github: 'https://github.com/editorjakupi/smartfood',
     demo: 'https://smartfood.editorjakupi.com',
     tech: [
-      'Next.js 14',
+      'Next.js 16',
       'TypeScript',
       'Tailwind',
       'Google Vision',
-      'Groq LLM',
+      'OpenAI',
       'TensorFlow.js',
       'SQLite',
       'OAuth',
@@ -258,11 +258,11 @@ const allProjects: Project[] = [
       en: {
         tagline: 'See your plate clearly — AI meal logging from photo, ingredients, or barcode.',
         description:
-          'SmartFood is a polished full-stack nutrition app: classify meals from an image, typed ingredients, or barcode, then track calories, macros, water, streaks, and goals in a calm dark UI. It combines Google Cloud Vision (with CNN fallback), Livsmedelsverket / Open Food Facts, LSTM predictions when history allows, and a Groq-powered nutrition chat. Live as a Next.js standalone + SQLite app on my Hetzner VPS behind Caddy (smartfood.editorjakupi.com), with Google OAuth and Facebook Login wired for production redirects.',
+          'SmartFood is a polished full-stack nutrition app: classify meals from an image, typed ingredients, or barcode, then track calories, macros, water, streaks, and goals in a calm dark UI. It combines Google Cloud Vision (with CNN fallback), Livsmedelsverket / Open Food Facts, LSTM predictions when history allows, and an OpenAI-powered nutrition chat. Live as a Next.js standalone + SQLite app on my Hetzner VPS behind Caddy (smartfood.editorjakupi.com), with Google OAuth and Facebook Login wired for production redirects.',
         highlights: [
           'Multimodal input: photo upload/camera, free-text ingredients, barcode lookup',
           'Vision AI + nutrition APIs with daily goals, streaks, and water tracking',
-          'LSTM eating-pattern predictions and Groq (Llama) nutrition assistant',
+          'LSTM eating-pattern predictions and OpenAI nutrition assistant',
           'Google OAuth + Facebook Login (Meta app ready; Live after business verification)',
           'Self-hosted on Hetzner: Next.js standalone, SQLite, Docker, shared Caddy + TLS',
         ],
@@ -270,11 +270,11 @@ const allProjects: Project[] = [
       sv: {
         tagline: 'See your plate clearly — AI-måltidslogning via foto, ingredienser eller streckkod.',
         description:
-          'SmartFood är en polerad fullstack-näringsapp: klassificera måltider från bild, ingredienstext eller streckkod och följ kalorier, makro, vatten, streaks och mål i ett lugnt mörkt UI. Den kombinerar Google Cloud Vision (med CNN-fallback), Livsmedelsverket / Open Food Facts, LSTM-prediktioner vid tillräcklig historik och en Groq-driven näringschatt. Live som Next.js standalone + SQLite på min Hetzner-VPS bakom Caddy (smartfood.editorjakupi.com), med Google OAuth och Facebook Login kopplade för produktions-redirects.',
+          'SmartFood är en polerad fullstack-näringsapp: klassificera måltider från bild, ingredienstext eller streckkod och följ kalorier, makro, vatten, streaks och mål i ett lugnt mörkt UI. Den kombinerar Google Cloud Vision (med CNN-fallback), Livsmedelsverket / Open Food Facts, LSTM-prediktioner vid tillräcklig historik och en OpenAI-driven näringschatt. Live som Next.js standalone + SQLite på min Hetzner-VPS bakom Caddy (smartfood.editorjakupi.com), med Google OAuth och Facebook Login kopplade för produktions-redirects.',
         highlights: [
           'Multimodal inmatning: foto/kamera, fri text, streckkodsuppslag',
           'Vision-AI + närings-API:er med dagliga mål, streaks och vatten',
-          'LSTM-ätmönster och Groq (Llama) näringsassistent',
+          'LSTM-ätmönster och OpenAI näringsassistent',
           'Google OAuth + Facebook Login (Meta-app redo; Live efter företagsverifiering)',
           'Self-hostad på Hetzner: Next.js standalone, SQLite, Docker, delad Caddy + TLS',
         ],
@@ -282,11 +282,11 @@ const allProjects: Project[] = [
       sq: {
         tagline: 'See your plate clearly — regjistrim ushqimi me AI nga foto, përbërës ose barkod.',
         description:
-          'SmartFood është një app ushqyes full-stack i rafinuar: klasifiko vakte nga imazhi, përbërës të shkruar ose barkod, pastaj ndjek kalori, makro, ujë, streak dhe objektiva në një UI të qetë të errët. Kombinon Google Cloud Vision (me fallback CNN), Livsmedelsverket / Open Food Facts, parashikime LSTM dhe chat ushqyes me Groq. Live si Next.js standalone + SQLite në VPS-in tim Hetzner pas Caddy (smartfood.editorjakupi.com), me Google OAuth dhe Facebook Login të lidhura për redirect-e prodhimi.',
+          'SmartFood është një app ushqyes full-stack i rafinuar: klasifiko vakte nga imazhi, përbërës të shkruar ose barkod, pastaj ndjek kalori, makro, ujë, streak dhe objektiva në një UI të qetë të errët. Kombinon Google Cloud Vision (me fallback CNN), Livsmedelsverket / Open Food Facts, parashikime LSTM dhe chat ushqyes me OpenAI. Live si Next.js standalone + SQLite në VPS-in tim Hetzner pas Caddy (smartfood.editorjakupi.com), me Google OAuth dhe Facebook Login të lidhura për redirect-e prodhimi.',
         highlights: [
           'Hyrje multimodale: foto/kamerë, tekst përbërësish, lookup barkodi',
           'Vision AI + API ushqyese me objektiva, streak dhe ujë',
-          'Parashikime LSTM dhe asistent Groq (Llama)',
+          'Parashikime LSTM dhe asistent OpenAI',
           'Google OAuth + Facebook Login (Meta app gati; Live pas verifikimit të biznesit)',
           'Self-hosted në Hetzner: Next.js standalone, SQLite, Docker, Caddy + TLS i përbashkët',
         ],
