@@ -72,6 +72,7 @@ export default function Projects({ onOpen }: Props) {
                       ? { objectPosition: project.bannerPosition }
                       : {}),
                     ...(project.bannerFit ? { objectFit: project.bannerFit } : {}),
+                    ...(project.bannerBg ? { backgroundColor: project.bannerBg } : {}),
                   }}
                 />
                 <div className="project-body">

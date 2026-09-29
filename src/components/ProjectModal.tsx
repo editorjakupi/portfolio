@@ -40,6 +40,7 @@ export default function ProjectModal({ project, onClose }: Props) {
                 ? { objectPosition: project.bannerPosition }
                 : {}),
               ...(project.bannerFit ? { objectFit: project.bannerFit } : {}),
+              ...(project.bannerBg ? { backgroundColor: project.bannerBg } : {}),
             }}
           />
           <button
