@@ -30,7 +30,7 @@ const ph = (color: string, text: string) =>
   `https://placehold.co/800x420/${color}/f8fafc?text=${encodeURIComponent(text)}&font=dm-sans`;
 
 /** Prefer a local banner when present; otherwise colored placeholder. */
-const BANNER_VERSION = '5';
+const BANNER_VERSION = '6';
 
 const bannerIds = new Set([
   'gematrior',
@@ -239,7 +239,7 @@ const allProjects: Project[] = [
     featured: true,
     category: 'course',
     accent: 'ea580c',
-    bannerPosition: 'center top',
+    bannerPosition: 'center center',
     github: 'https://github.com/editorjakupi/smartfood',
     demo: 'https://smartfood.editorjakupi.com',
     tech: [
