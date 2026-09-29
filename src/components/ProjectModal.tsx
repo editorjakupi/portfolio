@@ -35,11 +35,12 @@ export default function ProjectModal({ project, onClose }: Props) {
             className="modal-image"
             src={projectImage(project)}
             alt=""
-            style={
-              project.bannerPosition
+            style={{
+              ...(project.bannerPosition
                 ? { objectPosition: project.bannerPosition }
-                : undefined
-            }
+                : {}),
+              ...(project.bannerFit ? { objectFit: project.bannerFit } : {}),
+            }}
           />
           <button
             ref={closeBtn}

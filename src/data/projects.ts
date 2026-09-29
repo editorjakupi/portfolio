@@ -23,6 +23,8 @@ export interface Project {
   image?: string;
   /** CSS object-position for cropped banner (e.g. "center top") */
   bannerPosition?: string;
+  /** CSS object-fit override (default cover) — use "contain" to avoid cropping key UI */
+  bannerFit?: 'cover' | 'contain';
   copy: Record<'en' | 'sv' | 'sq', ProjectCopy>;
 }
 
@@ -30,7 +32,7 @@ const ph = (color: string, text: string) =>
   `https://placehold.co/800x420/${color}/f8fafc?text=${encodeURIComponent(text)}&font=dm-sans`;
 
 /** Prefer a local banner when present; otherwise colored placeholder. */
-const BANNER_VERSION = '5';
+const BANNER_VERSION = '6';
 
 const bannerIds = new Set([
   'gematrior',
@@ -239,7 +241,8 @@ const allProjects: Project[] = [
     featured: true,
     category: 'course',
     accent: 'ea580c',
-    bannerPosition: 'center center',
+    bannerPosition: 'center top',
+    bannerFit: 'contain',
     github: 'https://github.com/editorjakupi/smartfood',
     demo: 'https://smartfood.editorjakupi.com',
     tech: [

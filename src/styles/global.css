@@ -994,9 +994,11 @@ img {
 }
 
 .project-thumb {
+  width: 100%;
+  display: block;
   aspect-ratio: 16 / 8.5;
   object-fit: cover;
-  background: var(--bg-elevated);
+  background: #0a140f;
 }
 
 .project-body {
@@ -1101,6 +1103,7 @@ img {
   width: 100%;
   aspect-ratio: 16 / 7;
   object-fit: cover;
+  background: #0a140f;
 }
 
 .modal-close {
