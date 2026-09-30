@@ -47,6 +47,9 @@
       border-radius: 14px;
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
       backdrop-filter: blur(10px);
+      overflow: visible;
+      position: relative;
+      z-index: 20;
     }
 
     .cv-toolbar__back {
@@ -165,6 +168,68 @@
       opacity: 0.75;
       cursor: wait;
       transform: none;
+    }
+
+    .cv-toolbar__save-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .cv-toolbar__save-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: calc(100% + 0.35rem);
+      min-width: 11.5rem;
+      padding: 0.35rem;
+      margin: 0;
+      list-style: none;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
+      z-index: 1000;
+    }
+
+    .cv-toolbar__save-menu.is-open {
+      display: block;
+    }
+
+    .cv-toolbar__save-menu button {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 0.7rem;
+      border: none;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--text);
+      font: inherit;
+      font-size: 0.84rem;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .cv-toolbar__save-menu button:hover,
+    .cv-toolbar__save-menu button:focus-visible {
+      background: #f0fdfa;
+      color: var(--accent-dark);
+      outline: none;
+    }
+
+    .cv-toolbar__save-menu button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    .cv-toolbar__save-menu .fmt-ext {
+      margin-left: auto;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.02em;
     }
 
     .page {
@@ -788,15 +853,49 @@
             <path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
             <rect x="6" y="14" width="12" height="8" />
           </svg>
-          Print
+          <span data-i18n-print>Print</span>
         </button>
-        <button type="button" class="cv-toolbar__print" id="toolbar-save-pdf">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M12 3v12M8 11l4 4 4-4" />
-            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
-          </svg>
-          Save PDF
-        </button>
+        <div class="cv-toolbar__save-wrap">
+          <button
+            type="button"
+            class="cv-toolbar__print"
+            id="toolbar-save"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="toolbar-save-menu"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M12 3v12M8 11l4 4 4-4" />
+              <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+            </svg>
+            <span data-i18n-save>Save</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="width:0.85rem;height:0.85rem">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+          <ul class="cv-toolbar__save-menu" id="toolbar-save-menu" role="menu">
+            <li role="none">
+              <button type="button" role="menuitem" data-save-format="pdf">
+                PDF <span class="fmt-ext">.pdf</span>
+              </button>
+            </li>
+            <li role="none">
+              <button type="button" role="menuitem" data-save-format="word">
+                Word <span class="fmt-ext">.docx</span>
+              </button>
+            </li>
+            <li role="none">
+              <button type="button" role="menuitem" data-save-format="html">
+                HTML <span class="fmt-ext">.html</span>
+              </button>
+            </li>
+            <li role="none">
+              <button type="button" role="menuitem" data-save-format="png">
+                Image <span class="fmt-ext">.png</span>
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </header>
@@ -804,6 +903,7 @@
 
   <script src="/vendor/html2canvas.min.js"></script>
   <script src="/vendor/jspdf.umd.min.js"></script>
+  <script src="/vendor/jszip.min.js"></script>
   <script src="/cv-data.js"></script>
   <script>
     const CONTACT = {
@@ -835,6 +935,20 @@
         europassTimeline: 'Europass (English)',
         europassLink: 'Europass — Software Developer AI (EN)',
         qrScan: 'Click or scan to verify diploma',
+
+        print: 'Print',
+        save: 'Save',
+        generatingPdf: 'Generating PDF…',
+        generatingWord: 'Generating Word…',
+        generatingHtml: 'Preparing HTML…',
+        generatingPng: 'Generating image…',
+        preparingPrint: 'Preparing…',
+        errPdf: 'Could not generate PDF. Check your connection and try again.',
+        errWord: 'Could not generate Word file. Try again.',
+        errHtml: 'Could not export HTML. Try again.',
+        errPng: 'Could not generate image. Try again.',
+        errPrintPopup: 'Allow popups to print your CV, or use Save → PDF instead.',
+        errPrint: 'Could not prepare print. Try Save → PDF instead.',
       },
       sv: {
         websites: 'Webb & profiler',
@@ -850,6 +964,20 @@
         europassTimeline: 'Europass (svenska)',
         europassLink: 'Europass — Mjukvaruutvecklare AI (SV)',
         qrScan: 'Klicka eller skanna för att verifiera examensbevis',
+
+        print: 'Skriv ut',
+        save: 'Spara',
+        generatingPdf: 'Skapar PDF…',
+        generatingWord: 'Skapar Word…',
+        generatingHtml: 'Förbereder HTML…',
+        generatingPng: 'Skapar bild…',
+        preparingPrint: 'Förbereder…',
+        errPdf: 'Kunde inte skapa PDF. Kontrollera anslutningen och försök igen.',
+        errWord: 'Kunde inte skapa Word-fil. Försök igen.',
+        errHtml: 'Kunde inte exportera HTML. Försök igen.',
+        errPng: 'Kunde inte skapa bild. Försök igen.',
+        errPrintPopup: 'Tillåt popups för att skriva ut, eller använd Spara → PDF.',
+        errPrint: 'Kunde inte förbereda utskrift. Prova Spara → PDF.',
       },
       de: {
         websites: 'Websites, Portfolios, Profile',
@@ -865,6 +993,20 @@
         europassTimeline: 'Europass (English)',
         europassLink: 'Europass — Software Developer AI (EN)',
         qrScan: 'Klicken oder scannen zum Verifizieren',
+
+        print: 'Print',
+        save: 'Save',
+        generatingPdf: 'Generating PDF…',
+        generatingWord: 'Generating Word…',
+        generatingHtml: 'Preparing HTML…',
+        generatingPng: 'Generating image…',
+        preparingPrint: 'Preparing…',
+        errPdf: 'Could not generate PDF. Check your connection and try again.',
+        errWord: 'Could not generate Word file. Try again.',
+        errHtml: 'Could not export HTML. Try again.',
+        errPng: 'Could not generate image. Try again.',
+        errPrintPopup: 'Allow popups to print your CV, or use Save → PDF instead.',
+        errPrint: 'Could not prepare print. Try Save → PDF instead.',
       },
       fr: {
         websites: 'Sites, portfolios, profils',
@@ -880,6 +1022,20 @@
         europassTimeline: 'Europass (English)',
         europassLink: 'Europass — Software Developer AI (EN)',
         qrScan: 'Cliquer ou scanner pour vérifier',
+
+        print: 'Print',
+        save: 'Save',
+        generatingPdf: 'Generating PDF…',
+        generatingWord: 'Generating Word…',
+        generatingHtml: 'Preparing HTML…',
+        generatingPng: 'Generating image…',
+        preparingPrint: 'Preparing…',
+        errPdf: 'Could not generate PDF. Check your connection and try again.',
+        errWord: 'Could not generate Word file. Try again.',
+        errHtml: 'Could not export HTML. Try again.',
+        errPng: 'Could not generate image. Try again.',
+        errPrintPopup: 'Allow popups to print your CV, or use Save → PDF instead.',
+        errPrint: 'Could not prepare print. Try Save → PDF instead.',
       },
       es: {
         websites: 'Webs, portfolios, perfiles',
@@ -895,6 +1051,20 @@
         europassTimeline: 'Europass (English)',
         europassLink: 'Europass — Software Developer AI (EN)',
         qrScan: 'Clic o escanear para verificar',
+
+        print: 'Print',
+        save: 'Save',
+        generatingPdf: 'Generating PDF…',
+        generatingWord: 'Generating Word…',
+        generatingHtml: 'Preparing HTML…',
+        generatingPng: 'Generating image…',
+        preparingPrint: 'Preparing…',
+        errPdf: 'Could not generate PDF. Check your connection and try again.',
+        errWord: 'Could not generate Word file. Try again.',
+        errHtml: 'Could not export HTML. Try again.',
+        errPng: 'Could not generate image. Try again.',
+        errPrintPopup: 'Allow popups to print your CV, or use Save → PDF instead.',
+        errPrint: 'Could not prepare print. Try Save → PDF instead.',
       },
       it: {
         websites: 'Siti, portfolio, profili',
@@ -910,6 +1080,20 @@
         europassTimeline: 'Europass (English)',
         europassLink: 'Europass — Software Developer AI (EN)',
         qrScan: 'Clicca o scansiona per verificare',
+
+        print: 'Print',
+        save: 'Save',
+        generatingPdf: 'Generating PDF…',
+        generatingWord: 'Generating Word…',
+        generatingHtml: 'Preparing HTML…',
+        generatingPng: 'Generating image…',
+        preparingPrint: 'Preparing…',
+        errPdf: 'Could not generate PDF. Check your connection and try again.',
+        errWord: 'Could not generate Word file. Try again.',
+        errHtml: 'Could not export HTML. Try again.',
+        errPng: 'Could not generate image. Try again.',
+        errPrintPopup: 'Allow popups to print your CV, or use Save → PDF instead.',
+        errPrint: 'Could not prepare print. Try Save → PDF instead.',
       },
       pl: {
         websites: 'Strony, portfolio, profile',
@@ -925,6 +1109,20 @@
         europassTimeline: 'Europass (English)',
         europassLink: 'Europass — Software Developer AI (EN)',
         qrScan: 'Kliknij lub zeskanuj, aby zweryfikować',
+
+        print: 'Print',
+        save: 'Save',
+        generatingPdf: 'Generating PDF…',
+        generatingWord: 'Generating Word…',
+        generatingHtml: 'Preparing HTML…',
+        generatingPng: 'Generating image…',
+        preparingPrint: 'Preparing…',
+        errPdf: 'Could not generate PDF. Check your connection and try again.',
+        errWord: 'Could not generate Word file. Try again.',
+        errHtml: 'Could not export HTML. Try again.',
+        errPng: 'Could not generate image. Try again.',
+        errPrintPopup: 'Allow popups to print your CV, or use Save → PDF instead.',
+        errPrint: 'Could not prepare print. Try Save → PDF instead.',
       },
       sq: {
         websites: 'Faqe, portofol, profile',
@@ -940,6 +1138,20 @@
         europassTimeline: 'Europass (English)',
         europassLink: 'Europass — Software Developer AI (EN)',
         qrScan: 'Kliko ose skano për të verifikuar',
+
+        print: 'Print',
+        save: 'Save',
+        generatingPdf: 'Generating PDF…',
+        generatingWord: 'Generating Word…',
+        generatingHtml: 'Preparing HTML…',
+        generatingPng: 'Generating image…',
+        preparingPrint: 'Preparing…',
+        errPdf: 'Could not generate PDF. Check your connection and try again.',
+        errWord: 'Could not generate Word file. Try again.',
+        errHtml: 'Could not export HTML. Try again.',
+        errPng: 'Could not generate image. Try again.',
+        errPrintPopup: 'Allow popups to print your CV, or use Save → PDF instead.',
+        errPrint: 'Could not prepare print. Try Save → PDF instead.',
       },
     };
 
@@ -1314,18 +1526,15 @@
       pdf.restoreGraphicsState();
     }
 
-    async function generatePdfDocument() {
+    async function renderExportPages() {
       if (typeof html2canvas !== 'function') {
         throw new Error('html2canvas not loaded');
       }
 
       window.scrollTo(0, 0);
-      let exportRoot = null;
+      const { wrapper, clone } = await buildExportNode();
 
       try {
-        const { wrapper, clone } = await buildExportNode();
-        exportRoot = wrapper;
-
         const exportW = clone.offsetWidth;
         const exportH = clone.scrollHeight;
         const blocks = collectBlockRanges(clone);
@@ -1345,10 +1554,8 @@
           windowHeight: exportH,
         });
 
-        const jsPDF = getJsPDF();
-        const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-        const pageW = pdf.internal.pageSize.getWidth();
-        const pageH = pdf.internal.pageSize.getHeight();
+        const pageW = 210;
+        const pageH = 297;
         const margin = 8;
         const contentW = pageW - margin * 2;
         const contentH_mm = pageH - margin * 2;
@@ -1357,10 +1564,9 @@
         const imgH_mm = (canvas.height * contentW) / canvas.width;
         const maxCssPageH = cssTotalH * (contentH_mm / imgH_mm);
         const slices = buildPageSlices(cssTotalH, maxCssPageH, blocks);
+        const pxPerMm = canvas.width / contentW;
 
-        slices.forEach((slice, index) => {
-          if (index > 0) pdf.addPage();
-
+        const pages = slices.map((slice) => {
           const startPx = Math.round(slice.startCss * scale);
           const sliceHPx = Math.max(1, Math.round((slice.endCss - slice.startCss) * scale));
           const sliceCanvas = document.createElement('canvas');
@@ -1370,49 +1576,531 @@
           ctx.drawImage(canvas, 0, startPx, canvas.width, sliceHPx, 0, 0, canvas.width, sliceHPx);
 
           const sliceH_mm = (sliceHPx * contentW) / canvas.width;
-          pdf.addImage(sliceCanvas.toDataURL('image/jpeg', 0.98), 'JPEG', margin, margin, contentW, sliceH_mm);
-          addLinksForSlice(pdf, links, slice, margin, contentW, cssTotalW, sliceH_mm);
-          addSelectableTextForSlice(pdf, textRuns, slice, margin, contentW, cssTotalW, sliceH_mm);
+          const pageCanvas = document.createElement('canvas');
+          pageCanvas.width = Math.round(pageW * pxPerMm);
+          pageCanvas.height = Math.round(pageH * pxPerMm);
+          const pageCtx = pageCanvas.getContext('2d');
+          pageCtx.fillStyle = '#ffffff';
+          pageCtx.fillRect(0, 0, pageCanvas.width, pageCanvas.height);
+          pageCtx.drawImage(
+            sliceCanvas,
+            Math.round(margin * pxPerMm),
+            Math.round(margin * pxPerMm),
+            Math.round(contentW * pxPerMm),
+            Math.round(sliceH_mm * pxPerMm),
+          );
+
+          const cssSliceH = slice.endCss - slice.startCss;
+          const mmPerCssX = contentW / cssTotalW;
+          const mmPerCssY = sliceH_mm / Math.max(cssSliceH, 0.001);
+          const pageLinks = [];
+          links.forEach((link) => {
+            if (link.bottom <= slice.startCss || link.top >= slice.endCss) return;
+            pageLinks.push({
+              href: link.href,
+              xMm: margin + link.left * mmPerCssX,
+              yMm: margin + (link.top - slice.startCss) * mmPerCssY,
+              wMm: Math.max(link.width * mmPerCssX, 1),
+              hMm: Math.max(link.height * mmPerCssY, 1),
+            });
+          });
+
+          return { slice, sliceCanvas, pageCanvas, sliceH_mm, links: pageLinks };
+        });
+
+        return { wrapper, pages, textRuns, cssTotalW, contentW, margin, pageW, pageH };
+      } catch (err) {
+        wrapper.remove();
+        throw err;
+      }
+    }
+
+    async function generatePdfDocument() {
+      const model = await renderExportPages();
+      try {
+        const jsPDF = getJsPDF();
+        const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+        model.pages.forEach((page, index) => {
+          if (index > 0) pdf.addPage();
+          pdf.addImage(
+            page.sliceCanvas.toDataURL('image/jpeg', 0.98),
+            'JPEG',
+            model.margin,
+            model.margin,
+            model.contentW,
+            page.sliceH_mm,
+          );
+          page.links.forEach((link) => {
+            pdf.link(link.xMm, link.yMm, link.wMm, link.hMm, { url: link.href });
+          });
+          addSelectableTextForSlice(
+            pdf,
+            model.textRuns,
+            page.slice,
+            model.margin,
+            model.contentW,
+            model.cssTotalW,
+            page.sliceH_mm,
+          );
         });
 
         return pdf;
       } finally {
-        if (exportRoot) exportRoot.remove();
+        model.wrapper.remove();
       }
     }
 
-    function setPdfButtonsBusy(busy, label) {
+    function currentUi() {
+      const lang = localStorage.getItem('cv-lang') || 'en';
+      return UI[lang] || UI.en;
+    }
+
+    function setExportBusy(busy, label) {
       const printBtn = document.getElementById('toolbar-print');
-      const saveBtn = document.getElementById('toolbar-save-pdf');
+      const saveBtn = document.getElementById('toolbar-save');
+      const menuBtns = document.querySelectorAll('#toolbar-save-menu button');
       printBtn.disabled = busy;
       saveBtn.disabled = busy;
-      if (label) saveBtn.textContent = label;
+      menuBtns.forEach((b) => {
+        b.disabled = busy;
+      });
+      if (label) {
+        const labelEl = saveBtn.querySelector('[data-i18n-save]');
+        if (labelEl) labelEl.textContent = label;
+      }
+    }
+
+    function restoreSaveLabel() {
+      const saveBtn = document.getElementById('toolbar-save');
+      const labelEl = saveBtn.querySelector('[data-i18n-save]');
+      if (labelEl) labelEl.textContent = currentUi().save;
+    }
+
+    function closeSaveMenu() {
+      const menu = document.getElementById('toolbar-save-menu');
+      const saveBtn = document.getElementById('toolbar-save');
+      menu.classList.remove('is-open');
+      saveBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleSaveMenu() {
+      const menu = document.getElementById('toolbar-save-menu');
+      const saveBtn = document.getElementById('toolbar-save');
+      const open = !menu.classList.contains('is-open');
+      menu.classList.toggle('is-open', open);
+      saveBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    function downloadBlob(blob, filename) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 2000);
+    }
+
+    function cvFileBase() {
+      return `Editor-Jakupi-CV-${localStorage.getItem('cv-lang') || 'en'}`;
+    }
+
+    function blobToDataUrl(blob) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      });
+    }
+
+    async function fetchAsDataUrl(url) {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`Could not fetch ${url}`);
+      return blobToDataUrl(await res.blob());
+    }
+
+    function canvasImageToDataUrl(img, type = 'image/png') {
+      if (!img || !img.complete || !img.naturalWidth) return null;
+      try {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        canvas.getContext('2d').drawImage(img, 0, 0);
+        return canvas.toDataURL(type);
+      } catch {
+        return null;
+      }
+    }
+
+    async function inlineExportImages(root) {
+      const liveRoot = document.getElementById('cv-root');
+      await waitForImages(liveRoot);
+
+      const livePhoto = liveRoot.querySelector('.cv-photo');
+      const photo = root.querySelector('.cv-photo');
+      if (photo) {
+        const data =
+          renderPhotoDataUrl(livePhoto) ||
+          canvasImageToDataUrl(livePhoto, 'image/jpeg') ||
+          (await fetchAsDataUrl(livePhoto?.currentSrc || livePhoto?.src || '/me.jpg').catch(() => null));
+        if (data) photo.setAttribute('src', data);
+      }
+
+      const liveImgs = [...liveRoot.querySelectorAll('img:not(.cv-photo)')];
+      const cloneImgs = [...root.querySelectorAll('img:not(.cv-photo)')];
+      await Promise.all(
+        cloneImgs.map(async (img, i) => {
+          const live = liveImgs[i];
+          const data =
+            canvasImageToDataUrl(live) ||
+            (await fetchAsDataUrl(live?.currentSrc || live?.src || img.getAttribute('src') || '').catch(
+              () => null,
+            ));
+          if (data) img.setAttribute('src', data);
+        }),
+      );
+    }
+
+    async function buildExportHtmlDocument() {
+      const styleEl = document.querySelector('style');
+      const styleText = styleEl ? styleEl.textContent : '';
+      const root = document.getElementById('cv-root').cloneNode(true);
+      root.classList.add('page--export');
+      root.querySelectorAll('a[href]').forEach((a) => {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      });
+      await inlineExportImages(root);
+
+      return `<!DOCTYPE html>
+<html lang="${localStorage.getItem('cv-lang') || 'en'}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>${cvFileBase()}</title>
+  <style>
+${styleText}
+body { background: #fff; margin: 0; padding: 1rem; }
+.cv-toolbar { display: none !important; }
+.page { box-shadow: none; border: none; margin: 0 auto; }
+  </style>
+</head>
+<body>
+${root.outerHTML}
+</body>
+</html>`;
+    }
+
+    function escapeXml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function mmToEmu(mm) {
+      return Math.round(mm * 36000);
+    }
+
+    function canvasToJpegBytes(canvas, quality = 0.92) {
+      return new Promise((resolve, reject) => {
+        canvas.toBlob(
+          (blob) => {
+            if (!blob) {
+              reject(new Error('Could not encode page image'));
+              return;
+            }
+            blob.arrayBuffer().then((buf) => resolve(new Uint8Array(buf)), reject);
+          },
+          'image/jpeg',
+          quality,
+        );
+      });
+    }
+
+    function wordPagePictureXml(imgRid, docPrId) {
+      const cx = mmToEmu(210);
+      const cy = mmToEmu(297);
+      return `<w:p>
+  <w:r>
+    <w:drawing>
+      <wp:anchor distT="0" distB="0" distL="0" distR="0" simplePos="0" relativeHeight="0" behindDoc="1" locked="0" layoutInCell="1" allowOverlap="1">
+        <wp:simplePos x="0" y="0"/>
+        <wp:positionH relativeFrom="page"><wp:posOffset>0</wp:posOffset></wp:positionH>
+        <wp:positionV relativeFrom="page"><wp:posOffset>0</wp:posOffset></wp:positionV>
+        <wp:extent cx="${cx}" cy="${cy}"/>
+        <wp:effectExtent l="0" t="0" r="0" b="0"/>
+        <wp:wrapNone/>
+        <wp:docPr id="${docPrId}" name="CV page ${docPrId}"/>
+        <wp:cNvGraphicFramePr/>
+        <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+          <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+            <pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+              <pic:nvPicPr>
+                <pic:cNvPr id="${docPrId}" name=""/>
+                <pic:cNvPicPr/>
+              </pic:nvPicPr>
+              <pic:blipFill>
+                <a:blip r:embed="${imgRid}"/>
+                <a:stretch><a:fillRect/></a:stretch>
+              </pic:blipFill>
+              <pic:spPr>
+                <a:xfrm>
+                  <a:off x="0" y="0"/>
+                  <a:ext cx="${cx}" cy="${cy}"/>
+                </a:xfrm>
+                <a:prstGeom prst="rect"><a:avLst/></a:prstGeom>
+              </pic:spPr>
+            </pic:pic>
+          </a:graphicData>
+        </a:graphic>
+      </wp:anchor>
+    </w:drawing>
+  </w:r>
+</w:p>`;
+    }
+
+    function wordHotspotXml(linkRid, xMm, yMm, wMm, hMm, docPrId) {
+      const x = mmToEmu(xMm);
+      const y = mmToEmu(yMm);
+      const cx = mmToEmu(Math.max(wMm, 2));
+      const cy = mmToEmu(Math.max(hMm, 2));
+      return `<w:p>
+  <w:r>
+    <w:drawing>
+      <wp:anchor distT="0" distB="0" distL="0" distR="0" simplePos="0" relativeHeight="${docPrId}" behindDoc="0" locked="0" layoutInCell="1" allowOverlap="1">
+        <wp:simplePos x="0" y="0"/>
+        <wp:positionH relativeFrom="page"><wp:posOffset>${x}</wp:posOffset></wp:positionH>
+        <wp:positionV relativeFrom="page"><wp:posOffset>${y}</wp:posOffset></wp:positionV>
+        <wp:extent cx="${cx}" cy="${cy}"/>
+        <wp:effectExtent l="0" t="0" r="0" b="0"/>
+        <wp:wrapNone/>
+        <wp:docPr id="${docPrId}" name="Link ${docPrId}">
+          <a:hlinkClick xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" r:id="${linkRid}"/>
+        </wp:docPr>
+        <wp:cNvGraphicFramePr/>
+        <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+          <a:graphicData uri="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+            <wps:wsp xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+              <wps:cNvSpPr/>
+              <wps:spPr>
+                <a:xfrm>
+                  <a:off x="0" y="0"/>
+                  <a:ext cx="${cx}" cy="${cy}"/>
+                </a:xfrm>
+                <a:prstGeom prst="rect"><a:avLst/></a:prstGeom>
+                <a:solidFill>
+                  <a:srgbClr val="FFFFFF"><a:alpha val="1000"/></a:srgbClr>
+                </a:solidFill>
+                <a:ln><a:noFill/></a:ln>
+              </wps:spPr>
+              <wps:bodyPr/>
+            </wps:wsp>
+          </a:graphicData>
+        </a:graphic>
+      </wp:anchor>
+    </w:drawing>
+  </w:r>
+</w:p>`;
+    }
+
+    async function buildExactDocxBlob(pages) {
+      if (typeof JSZip === 'undefined') throw new Error('JSZip not loaded');
+
+      const zip = new JSZip();
+      const word = zip.folder('word');
+      const media = word.folder('media');
+      const rels = [];
+      const bodyParts = [];
+      const hrefToRid = new Map();
+      let nextRid = 1;
+      let docPrId = 1;
+
+      const allocRid = () => {
+        const id = `rId${nextRid}`;
+        nextRid += 1;
+        return id;
+      };
+
+      const linkRidFor = (href) => {
+        if (hrefToRid.has(href)) return hrefToRid.get(href);
+        const rid = allocRid();
+        hrefToRid.set(href, rid);
+        rels.push(
+          `<Relationship Id="${rid}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink" Target="${escapeXml(href)}" TargetMode="External"/>`,
+        );
+        return rid;
+      };
+
+      for (let i = 0; i < pages.length; i += 1) {
+        const page = pages[i];
+        const imgRid = allocRid();
+        const fileName = `image${i + 1}.jpeg`;
+        media.file(fileName, await canvasToJpegBytes(page.pageCanvas));
+        rels.push(
+          `<Relationship Id="${imgRid}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/${fileName}"/>`,
+        );
+
+        if (i > 0) {
+          bodyParts.push('<w:p><w:r><w:br w:type="page"/></w:r></w:p>');
+        }
+        bodyParts.push(wordPagePictureXml(imgRid, docPrId));
+        docPrId += 1;
+
+        page.links.forEach((link) => {
+          if (!link.href) return;
+          bodyParts.push(
+            wordHotspotXml(linkRidFor(link.href), link.xMm, link.yMm, link.wMm, link.hMm, docPrId),
+          );
+          docPrId += 1;
+        });
+      }
+
+      bodyParts.push(`<w:sectPr>
+  <w:pgSz w:w="11906" w:h="16838"/>
+  <w:pgMar w:top="0" w:right="0" w:bottom="0" w:left="0" w:header="0" w:footer="0" w:gutter="0"/>
+</w:sectPr>`);
+
+      zip.file(
+        '[Content_Types].xml',
+        `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Default Extension="jpeg" ContentType="image/jpeg"/>
+  <Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>
+</Types>`,
+      );
+      zip.folder('_rels').file(
+        '.rels',
+        `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+</Relationships>`,
+      );
+      word.file(
+        'document.xml',
+        `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document
+  xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+  xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+  xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"
+  xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"
+  xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"
+  xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+  <w:body>
+${bodyParts.join('\n')}
+  </w:body>
+</w:document>`,
+      );
+      word.folder('_rels').file(
+        'document.xml.rels',
+        `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+${rels.join('\n')}
+</Relationships>`,
+      );
+
+      return zip.generateAsync({
+        type: 'blob',
+        mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      });
     }
 
     async function savePdf() {
-      const saveBtn = document.getElementById('toolbar-save-pdf');
-      const stored = localStorage.getItem('cv-lang') || 'en';
-      const originalSaveHtml = saveBtn.innerHTML;
-
-      setPdfButtonsBusy(true, 'Generating PDF…');
-
+      const labels = currentUi();
+      setExportBusy(true, labels.generatingPdf);
       try {
         const pdf = await generatePdfDocument();
-        pdf.save(`Editor-Jakupi-CV-${stored}.pdf`);
+        pdf.save(`${cvFileBase()}.pdf`);
       } catch {
-        alert('Could not generate PDF. Check your connection and try again.');
+        alert(labels.errPdf);
       } finally {
-        setPdfButtonsBusy(false);
-        saveBtn.innerHTML = originalSaveHtml;
+        setExportBusy(false);
+        restoreSaveLabel();
+      }
+    }
+
+    async function saveWord() {
+      const labels = currentUi();
+      setExportBusy(true, labels.generatingWord);
+      try {
+        const model = await renderExportPages();
+        try {
+          const blob = await buildExactDocxBlob(model.pages);
+          downloadBlob(blob, `${cvFileBase()}.docx`);
+        } finally {
+          model.wrapper.remove();
+        }
+      } catch {
+        alert(labels.errWord);
+      } finally {
+        setExportBusy(false);
+        restoreSaveLabel();
+      }
+    }
+
+    async function saveHtml() {
+      const labels = currentUi();
+      setExportBusy(true, labels.generatingHtml);
+      try {
+        const html = await buildExportHtmlDocument();
+        const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+        downloadBlob(blob, `${cvFileBase()}.html`);
+      } catch {
+        alert(labels.errHtml);
+      } finally {
+        setExportBusy(false);
+        restoreSaveLabel();
+      }
+    }
+
+    async function savePng() {
+      const labels = currentUi();
+      setExportBusy(true, labels.generatingPng);
+      let exportRoot = null;
+      try {
+        const page = document.getElementById('cv-root');
+        const clone = page.cloneNode(true);
+        clone.classList.add('page', 'page--export');
+        exportRoot = document.createElement('div');
+        exportRoot.className = 'pdf-export-root';
+        exportRoot.style.cssText =
+          'position:fixed;left:-10000px;top:0;width:900px;background:#fff;z-index:-1;';
+        exportRoot.appendChild(clone);
+        document.body.appendChild(exportRoot);
+        const canvas = await window.html2canvas(clone, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: '#ffffff',
+          logging: false,
+        });
+        const blob = await new Promise((resolve, reject) => {
+          canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('toBlob failed'))), 'image/png');
+        });
+        downloadBlob(blob, `${cvFileBase()}.png`);
+      } catch {
+        alert(labels.errPng);
+      } finally {
+        if (exportRoot) exportRoot.remove();
+        setExportBusy(false);
+        restoreSaveLabel();
       }
     }
 
     async function printCv() {
       const printBtn = document.getElementById('toolbar-print');
       const originalPrintHtml = printBtn.innerHTML;
+      const labels = currentUi();
 
-      setPdfButtonsBusy(true);
-      printBtn.textContent = 'Preparing…';
+      setExportBusy(true);
+      const printLabel = printBtn.querySelector('[data-i18n-print]');
+      if (printLabel) printLabel.textContent = labels.preparingPrint;
+      else printBtn.textContent = labels.preparingPrint;
 
       try {
         const pdf = await generatePdfDocument();
@@ -1422,7 +2110,7 @@
 
         if (!printWindow) {
           URL.revokeObjectURL(url);
-          alert('Allow popups to print your CV, or use Save PDF instead.');
+          alert(labels.errPrintPopup);
           return;
         }
 
@@ -1439,21 +2127,49 @@
         setTimeout(triggerPrint, 900);
         setTimeout(() => URL.revokeObjectURL(url), 120000);
       } catch {
-        alert('Could not prepare print. Try Save PDF instead.');
+        alert(labels.errPrint);
       } finally {
-        setPdfButtonsBusy(false);
+        setExportBusy(false);
         printBtn.innerHTML = originalPrintHtml;
+        restoreSaveLabel();
       }
     }
 
+    function applyToolbarLabels(lang) {
+      const labels = UI[lang] || UI.en;
+      const printLabel = document.querySelector('[data-i18n-print]');
+      const saveLabel = document.querySelector('[data-i18n-save]');
+      if (printLabel) printLabel.textContent = labels.print;
+      if (saveLabel) saveLabel.textContent = labels.save;
+    }
+
+    async function handleSaveFormat(format) {
+      closeSaveMenu();
+      if (format === 'pdf') await savePdf();
+      else if (format === 'word') await saveWord();
+      else if (format === 'html') await saveHtml();
+      else if (format === 'png') await savePng();
+    }
+
+    let toolbarReady = false;
+
     function init() {
+      if (toolbarReady) return;
+      toolbarReady = true;
+
       const langGroup = document.getElementById('toolbar-langs');
       const printBtn = document.getElementById('toolbar-print');
-      const saveBtn = document.getElementById('toolbar-save-pdf');
+      const saveBtn = document.getElementById('toolbar-save');
+      const saveMenu = document.getElementById('toolbar-save-menu');
       const stored = localStorage.getItem('cv-lang');
       let active = stored && window.CV_DATA.entries[stored] ? stored : 'en';
 
+      // One button per language — clear first so a re-run never stacks duplicates
+      langGroup.replaceChildren();
+      const seen = new Set();
       window.CV_DATA.langs.forEach(({ code, label }) => {
+        if (seen.has(code)) return;
+        seen.add(code);
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.textContent = label;
@@ -1468,19 +2184,42 @@
           });
           btn.classList.add('active');
           btn.setAttribute('aria-pressed', 'true');
+          applyToolbarLabels(code);
           renderCv(code);
         });
         if (code === active) btn.classList.add('active');
         langGroup.appendChild(btn);
       });
 
-      printBtn.addEventListener('click', () => printCv());
-      saveBtn.addEventListener('click', () => savePdf());
+      printBtn.onclick = () => printCv();
+      saveBtn.onclick = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        toggleSaveMenu();
+      };
+      saveMenu.querySelectorAll('[data-save-format]').forEach((btn) => {
+        btn.onclick = (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          handleSaveFormat(btn.getAttribute('data-save-format'));
+        };
+      });
+      document.addEventListener('click', (event) => {
+        if (!event.target.closest('.cv-toolbar__save-wrap')) closeSaveMenu();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeSaveMenu();
+      });
 
+      applyToolbarLabels(active);
       renderCv(active);
     }
 
-    init();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init, { once: true });
+    } else {
+      init();
+    }
   </script>
 </body>
 
