@@ -34,7 +34,7 @@ const ph = (color: string, text: string) =>
   `https://placehold.co/800x420/${color}/f8fafc?text=${encodeURIComponent(text)}&font=dm-sans`;
 
 /** Prefer a local banner when present; otherwise colored placeholder. */
-const BANNER_VERSION = '9';
+const BANNER_VERSION = '10';
 
 const bannerIds = new Set([
   'gematrior',
