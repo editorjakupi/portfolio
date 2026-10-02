@@ -85,7 +85,7 @@ export default function ProjectModal({ project, onClose }: Props) {
           </div>
 
           <div className="modal-actions">
-            {project.github ? (
+            {project.github && !project.isPrivate ? (
               <a
                 className="btn btn-primary"
                 href={project.github}
@@ -94,9 +94,9 @@ export default function ProjectModal({ project, onClose }: Props) {
               >
                 {t.modal.viewGithub}
               </a>
-            ) : (
+            ) : project.isPrivate ? (
               <p className="modal-note">{t.modal.privateRepo}</p>
-            )}
+            ) : null}
             {project.demo && (
               <a
                 className="btn btn-secondary"

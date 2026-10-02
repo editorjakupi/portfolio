@@ -63,7 +63,7 @@ const allProjects: Project[] = [
     category: 'featured',
     accent: '1e3a5f',
     bannerPosition: 'center top',
-    github: 'https://github.com/editorjakupi/gematrior',
+    isPrivate: true,
     demo: 'https://gematrior.com',
     tech: [
       'Next.js 15',
@@ -247,7 +247,7 @@ const allProjects: Project[] = [
     bannerPosition: 'center center',
     bannerFit: 'contain',
     bannerBg: '#d1dcd2',
-    github: 'https://github.com/editorjakupi/smartfood',
+    isPrivate: true,
     demo: 'https://smartfood.editorjakupi.com',
     tech: [
       'Next.js 16',
