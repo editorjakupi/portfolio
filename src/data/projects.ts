@@ -1008,11 +1008,14 @@ for (const project of allProjects) {
   }
 }
 
-/** Showcase order: Swiiftly → SmartFood → Gematrior, then other live demos, then the rest. */
+/** Showcase order, then other live demos, then the rest. */
 const showcaseOrder: Record<string, number> = {
-  'swiiftly-ai': 1,
-  smartfood: 2,
-  gematrior: 3,
+  smartfood: 1,
+  gematrior: 2,
+  'telco-churn': 3,
+  'diamonds-analysis': 4,
+  'swiiftly-ai': 5,
+  'podmanager-lia': 6,
 };
 
 export const projects: Project[] = [...allProjects].sort((a, b) => {
