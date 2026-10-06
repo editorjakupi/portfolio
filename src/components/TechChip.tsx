@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useId, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { Locale } from '../i18n/types';
 import { getTechTip } from '../data/techTips';
+import { usePortalTip } from '../hooks/usePortalTip';
 
 interface Props {
   projectId: string;
@@ -10,25 +11,12 @@ interface Props {
   className?: string;
 }
 
-/** Tech pill with a portal tooltip so it never clips behind cards/images. */
+/** Tech pill with a portal tooltip so it never clips behind cards/images or the viewport. */
 export default function TechChip({ projectId, tech, locale, className = 'chip chip-muted' }: Props) {
   const tip = getTechTip(projectId, tech, locale);
-  const chipRef = useRef<HTMLSpanElement>(null);
   const tipId = useId();
   const [open, setOpen] = useState(false);
-  const [coords, setCoords] = useState({ top: 0, left: 0, below: false });
-
-  const place = useCallback(() => {
-    const el = chipRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const below = rect.top < 140;
-    setCoords({
-      top: below ? rect.bottom : rect.top,
-      left: rect.left + rect.width / 2,
-      below,
-    });
-  }, []);
+  const { anchorRef, tipRef, coords, place } = usePortalTip(open);
 
   const show = useCallback(() => {
     place();
@@ -37,21 +25,14 @@ export default function TechChip({ projectId, tech, locale, className = 'chip ch
 
   const hide = useCallback(() => setOpen(false), []);
 
-  useEffect(() => {
-    if (!open) return;
-    const onReposition = () => place();
-    window.addEventListener('scroll', onReposition, true);
-    window.addEventListener('resize', onReposition);
-    return () => {
-      window.removeEventListener('scroll', onReposition, true);
-      window.removeEventListener('resize', onReposition);
-    };
-  }, [open, place]);
+  const tipTransform = coords.below
+    ? `translate(calc(-50% + ${coords.shiftX}px), 0.55rem)`
+    : `translate(calc(-50% + ${coords.shiftX}px), calc(-100% - 0.55rem))`;
 
   return (
     <>
       <span
-        ref={chipRef}
+        ref={anchorRef}
         className={`tech-chip ${className}${tip ? ' tech-chip--tip' : ''}`}
         tabIndex={tip ? 0 : undefined}
         aria-describedby={tip && open ? tipId : undefined}
@@ -68,10 +49,11 @@ export default function TechChip({ projectId, tech, locale, className = 'chip ch
         open &&
         createPortal(
           <span
+            ref={tipRef}
             id={tipId}
             className={`tech-tip tech-tip--portal${coords.below ? ' tech-tip--below' : ''}`}
             role="tooltip"
-            style={{ top: coords.top, left: coords.left }}
+            style={{ top: coords.top, left: coords.left, transform: tipTransform }}
           >
             <span className="tech-tip__what">{tip.what}</span>
             <span className="tech-tip__use">{tip.use}</span>

@@ -244,7 +244,7 @@ export default function Projects({ onOpen }: Props) {
 
         {subFilters.length > 1 && (
           <div
-            className="projects-toolbar projects-toolbar--sub reveal"
+            className="projects-subfilters reveal"
             role="tablist"
             aria-label={`${filters.find((f) => f.key === filter)?.label ?? ''} subsections`}
           >
