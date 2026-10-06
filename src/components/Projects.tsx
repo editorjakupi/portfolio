@@ -44,7 +44,25 @@ function subLabel(t: ReturnType<typeof useLocale>['t'], group: Filter, key: Grou
     ml: t.projects.filterAiMl,
     dl: t.projects.filterAiDl,
     llm: t.projects.filterAiLlm,
-    // languages
+    // language frameworks / libraries
+    reactlib: t.projects.filterSubReactLib,
+    scikit: t.projects.filterSubScikit,
+    tensorflow: t.projects.filterSubTensorflow,
+    streamlit: t.projects.filterSubStreamlit,
+    pandas: t.projects.filterSubPandas,
+    aspnet: t.projects.filterSubAspnet,
+    efcore: t.projects.filterSubEfcore,
+    xunit: t.projects.filterSubXunit,
+    selenium: t.projects.filterSubSelenium,
+    nextjs: t.projects.filterSubNextjs,
+    nodejs: t.projects.filterSubNodejs,
+    typescript: t.projects.filterSubTypescript,
+    // databases & docker
+    postgresql: t.projects.filterSubPostgresql,
+    sqlite: t.projects.filterSubSqlite,
+    mongodb: t.projects.filterSubMongodb,
+    docker: t.projects.filterSubDocker,
+    // legacy keys still used in other sections
     live: t.projects.filterSubLive,
     course: t.projects.filterSubCourse,
     apps: t.projects.filterSubApps,
@@ -73,6 +91,22 @@ function subBlurb(t: ReturnType<typeof useLocale>['t'], group: Filter, key: Grou
     testing: t.projects.filterDescSubTesting,
     react: t.projects.filterDescSubReact,
     csharp: t.projects.filterDescSubCsharpBasics,
+    reactlib: t.projects.filterDescSubReactLib,
+    scikit: t.projects.filterDescSubScikit,
+    tensorflow: t.projects.filterDescSubTensorflow,
+    streamlit: t.projects.filterDescSubStreamlit,
+    pandas: t.projects.filterDescSubPandas,
+    aspnet: t.projects.filterDescSubAspnet,
+    efcore: t.projects.filterDescSubEfcore,
+    xunit: t.projects.filterDescSubXunit,
+    selenium: t.projects.filterDescSubSelenium,
+    nextjs: t.projects.filterDescSubNextjs,
+    nodejs: t.projects.filterDescSubNodejs,
+    typescript: t.projects.filterDescSubTypescript,
+    postgresql: t.projects.filterDescSubPostgresql,
+    sqlite: t.projects.filterDescSubSqlite,
+    mongodb: t.projects.filterDescSubMongodb,
+    docker: t.projects.filterDescSubDocker,
     live: t.projects.filterDescSubLive,
     course: t.projects.filterDescSubCourse,
     apps: t.projects.filterDescSubApps,
@@ -110,6 +144,7 @@ export default function Projects({ onOpen }: Props) {
     { key: 'lang-csharp', label: t.projects.filterLangCsharp },
     { key: 'lang-javascript', label: t.projects.filterLangJavascript },
     { key: 'lang-java', label: t.projects.filterLangJava },
+    { key: 'databases', label: t.projects.filterDatabases },
   ];
 
   const primaryBlurb: Record<Filter, string> = {
@@ -124,6 +159,7 @@ export default function Projects({ onOpen }: Props) {
     'lang-csharp': t.projects.filterDescLangCsharp,
     'lang-javascript': t.projects.filterDescLangJavascript,
     'lang-java': t.projects.filterDescLangJava,
+    databases: t.projects.filterDescDatabases,
   };
 
   const filterBlurb = subBlurb(t, filter, sub) ?? primaryBlurb[filter];

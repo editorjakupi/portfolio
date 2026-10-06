@@ -13,7 +13,8 @@ export type ProjectGroup =
   | 'lang-python'
   | 'lang-csharp'
   | 'lang-javascript'
-  | 'lang-java';
+  | 'lang-java'
+  | 'databases';
 
 /** AI sub-filters shown when the AI group is active. */
 export type AiSubFilter = 'all' | 'ml' | 'dl' | 'llm';
@@ -46,9 +47,12 @@ export interface Project {
   copy: Record<'en' | 'sv' | 'sq', ProjectCopy>;
 }
 
-/** Context groups (a project can appear in AI / language filters as well). */
+/** Context groups (a project can appear in AI / language / databases filters as well). */
 export const PROJECT_GROUPS: Record<
-  Exclude<ProjectGroup, 'ai' | 'lang-python' | 'lang-csharp' | 'lang-javascript' | 'lang-java'>,
+  Exclude<
+    ProjectGroup,
+    'ai' | 'lang-python' | 'lang-csharp' | 'lang-javascript' | 'lang-java' | 'databases'
+  >,
   readonly string[]
 > = {
   'own-live': ['smartfood', 'gematrior', 'telco-churn', 'diamonds-analysis'],
@@ -89,6 +93,7 @@ export const AI_TAGS: Record<string, readonly Exclude<AiSubFilter, 'all'>[]> = {
 };
 
 type LangGroup = 'lang-python' | 'lang-csharp' | 'lang-javascript' | 'lang-java';
+type TechMatchGroup = LangGroup | 'databases';
 
 const LANG_NEEDLES: Record<LangGroup, readonly string[]> = {
   'lang-python': [
@@ -114,6 +119,25 @@ const LANG_NEEDLES: Record<LangGroup, readonly string[]> = {
     'jquery',
   ],
   'lang-java': ['java'],
+};
+
+/** Databases + Docker (Docker is infra, not a DB — grouped for deploy/data stack browsing). */
+const DATABASES_NEEDLES = [
+  'postgresql',
+  'postgres',
+  'sqlite',
+  'mongodb',
+  'mongo',
+  'docker',
+  'prisma',
+  'sql',
+  'ef core',
+  'azure blob',
+] as const;
+
+const TECH_GROUP_NEEDLES: Record<TechMatchGroup, readonly string[]> = {
+  ...LANG_NEEDLES,
+  databases: DATABASES_NEEDLES,
 };
 
 /** Escape a string for use inside a RegExp. */
@@ -145,14 +169,22 @@ export function techMatchesNeedle(tech: string, needle: string): boolean {
   return new RegExp(`(^|[^a-z0-9+#])${escapeRegExp(n)}([^a-z0-9+#]|$)`, 'i').test(tech);
 }
 
-export function projectMatchesLanguage(project: Project, group: LangGroup): boolean {
-  const needles = LANG_NEEDLES[group];
+export function projectMatchesTechNeedles(
+  project: Project,
+  needles: readonly string[],
+): boolean {
   return project.tech.some((tech) => needles.some((n) => techMatchesNeedle(tech, n)));
+}
+
+export function projectMatchesLanguage(project: Project, group: LangGroup): boolean {
+  return projectMatchesTechNeedles(project, LANG_NEEDLES[group]);
 }
 
 export function projectInGroup(project: Project, group: ProjectGroup): boolean {
   if (group === 'ai') return Boolean(AI_TAGS[project.id]);
-  if (group.startsWith('lang-')) return projectMatchesLanguage(project, group as LangGroup);
+  if (group.startsWith('lang-') || group === 'databases') {
+    return projectMatchesTechNeedles(project, TECH_GROUP_NEEDLES[group as TechMatchGroup]);
+  }
   const ids = PROJECT_GROUPS[group as keyof typeof PROJECT_GROUPS];
   return ids ? ids.includes(project.id) : false;
 }
@@ -172,6 +204,8 @@ type GroupSubDef = {
   /** If omitted, all projects already in the primary group match. */
   ids?: readonly string[];
   aiTag?: Exclude<AiSubFilter, 'all'>;
+  /** Match against project.tech labels (frameworks, libraries, DBs, …). */
+  needles?: readonly string[];
 };
 
 export const GROUP_SUBFILTERS: Partial<Record<ProjectGroup | 'all', readonly GroupSubDef[]>> = {
@@ -224,43 +258,33 @@ export const GROUP_SUBFILTERS: Partial<Record<ProjectGroup | 'all', readonly Gro
   ],
   'lang-python': [
     { key: 'all' },
-    { key: 'live', ids: ['telco-churn', 'diamonds-analysis'] },
-    { key: 'course', ids: ['ai-ml-exercises', 'del1-kod', 'python-skript'] },
+    { key: 'scikit', needles: ['scikit', 'sklearn'] },
+    { key: 'tensorflow', needles: ['tensorflow', 'keras'] },
+    { key: 'streamlit', needles: ['streamlit'] },
+    { key: 'pandas', needles: ['pandas'] },
   ],
   'lang-csharp': [
     { key: 'all' },
-    {
-      key: 'testing',
-      ids: ['crm-system', 'shoptester', 'bankomat', 'uitestning-shoptester'],
-    },
-    { key: 'apps', ids: ['husmanskors', 'holidaymaker'] },
-    { key: 'course', ids: ['programming1-csharp', 'csharp-example'] },
+    { key: 'aspnet', needles: ['asp.net'] },
+    { key: 'efcore', needles: ['ef core'] },
+    { key: 'xunit', needles: ['xunit'] },
+    { key: 'selenium', needles: ['selenium', 'playwright'] },
   ],
   'lang-javascript': [
     { key: 'all' },
-    {
-      key: 'products',
-      ids: [
-        'smartfood',
-        'gematrior',
-        'swiiftly-ai',
-        'podmanager-lia',
-        'dissatisfiedcustomer',
-        'crm-system',
-      ],
-    },
-    {
-      key: 'learning',
-      ids: [
-        'react-context',
-        'react-router',
-        'first-react',
-        'first-rest-api',
-        'nodejs-course',
-      ],
-    },
+    { key: 'reactlib', needles: ['react'] },
+    { key: 'nextjs', needles: ['next.js'] },
+    { key: 'nodejs', needles: ['node.js', 'express'] },
+    { key: 'typescript', needles: ['typescript'] },
   ],
   'lang-java': [{ key: 'all' }],
+  databases: [
+    { key: 'all' },
+    { key: 'postgresql', needles: ['postgresql', 'postgres', 'prisma'] },
+    { key: 'sqlite', needles: ['sqlite'] },
+    { key: 'mongodb', needles: ['mongodb', 'mongo'] },
+    { key: 'docker', needles: ['docker'] },
+  ],
 };
 
 export function projectMatchesSub(
@@ -274,6 +298,7 @@ export function projectMatchesSub(
   const def = subs.find((s) => s.key === subKey);
   if (!def) return true;
   if (def.aiTag) return projectMatchesAi(project, def.aiTag);
+  if (def.needles) return projectMatchesTechNeedles(project, def.needles);
   if (def.ids) return def.ids.includes(project.id);
   return true;
 }
