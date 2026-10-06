@@ -44,7 +44,6 @@ export const PROJECT_GROUPS: Record<ProjectGroup, readonly string[]> = {
     'nodejs-course',
     'java-course',
     'c-introduction',
-    'csharp-example',
   ],
   learning: [
     'shoptester',
@@ -54,6 +53,7 @@ export const PROJECT_GROUPS: Record<ProjectGroup, readonly string[]> = {
     'react-router',
     'first-react',
     'first-rest-api',
+    'csharp-example',
   ],
 };
 
