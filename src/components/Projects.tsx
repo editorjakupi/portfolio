@@ -4,7 +4,9 @@ import {
   getProjectCopy,
   projectImage,
   projectInGroup,
+  projectMatchesAi,
   projects,
+  type AiSubFilter,
   type Project,
   type ProjectGroup,
 } from '../data/projects';
@@ -18,11 +20,16 @@ type Filter = 'all' | ProjectGroup;
 export default function Projects({ onOpen }: Props) {
   const { locale, t } = useLocale();
   const [filter, setFilter] = useState<Filter>('all');
+  const [aiSub, setAiSub] = useState<AiSubFilter>('all');
 
   const filtered = useMemo(() => {
     if (filter === 'all') return projects;
-    return projects.filter((p) => projectInGroup(p, filter));
-  }, [filter]);
+    let list = projects.filter((p) => projectInGroup(p, filter));
+    if (filter === 'ai') {
+      list = list.filter((p) => projectMatchesAi(p, aiSub));
+    }
+    return list;
+  }, [filter, aiSub]);
 
   const filters: { key: Filter; label: string }[] = [
     { key: 'all', label: t.projects.filterAll },
@@ -31,7 +38,42 @@ export default function Projects({ onOpen }: Props) {
     { key: 'group', label: t.projects.filterGroup },
     { key: 'course-material', label: t.projects.filterCourseMaterial },
     { key: 'learning', label: t.projects.filterLearning },
+    { key: 'ai', label: t.projects.filterAi },
+    { key: 'lang-python', label: t.projects.filterLangPython },
+    { key: 'lang-csharp', label: t.projects.filterLangCsharp },
+    { key: 'lang-javascript', label: t.projects.filterLangJavascript },
+    { key: 'lang-java', label: t.projects.filterLangJava },
   ];
+
+  const aiSubs: { key: AiSubFilter; label: string }[] = [
+    { key: 'all', label: t.projects.filterAiAll },
+    { key: 'ml', label: t.projects.filterAiMl },
+    { key: 'dl', label: t.projects.filterAiDl },
+    { key: 'llm', label: t.projects.filterAiLlm },
+  ];
+
+  const filterBlurb = (() => {
+    if (filter === 'ai') {
+      if (aiSub === 'ml') return t.projects.filterDescAiMl;
+      if (aiSub === 'dl') return t.projects.filterDescAiDl;
+      if (aiSub === 'llm') return t.projects.filterDescAiLlm;
+      return t.projects.filterDescAi;
+    }
+    const map: Record<Filter, string> = {
+      all: t.projects.filterDescAll,
+      'own-live': t.projects.filterDescOwnLive,
+      lia: t.projects.filterDescLia,
+      group: t.projects.filterDescGroup,
+      'course-material': t.projects.filterDescCourseMaterial,
+      learning: t.projects.filterDescLearning,
+      ai: t.projects.filterDescAi,
+      'lang-python': t.projects.filterDescLangPython,
+      'lang-csharp': t.projects.filterDescLangCsharp,
+      'lang-javascript': t.projects.filterDescLangJavascript,
+      'lang-java': t.projects.filterDescLangJava,
+    };
+    return map[filter];
+  })();
 
   return (
     <section className="section" id="projects">
@@ -48,12 +90,38 @@ export default function Projects({ onOpen }: Props) {
               role="tab"
               aria-selected={filter === item.key}
               className={`filter-btn ${filter === item.key ? 'active' : ''}`}
-              onClick={() => setFilter(item.key)}
+              onClick={() => {
+                setFilter(item.key);
+                if (item.key !== 'ai') setAiSub('all');
+              }}
             >
               {item.label}
             </button>
           ))}
         </div>
+
+        {filter === 'ai' && (
+          <div
+            className="projects-toolbar projects-toolbar--sub reveal"
+            role="tablist"
+            aria-label={t.projects.filterAi}
+          >
+            {aiSubs.map((item) => (
+              <button
+                key={item.key}
+                type="button"
+                role="tab"
+                aria-selected={aiSub === item.key}
+                className={`filter-btn filter-btn--sub ${aiSub === item.key ? 'active' : ''}`}
+                onClick={() => setAiSub(item.key)}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        )}
+
+        <p className="projects-filter-blurb reveal">{filterBlurb}</p>
 
         <div className="projects-grid">
           {filtered.map((project) => {

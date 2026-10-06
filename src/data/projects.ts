@@ -2,8 +2,21 @@ import type { Locale } from '../i18n/types';
 
 export type ProjectCategory = 'featured' | 'course';
 
-/** Portfolio filter groups (toolbar to the right of All). */
-export type ProjectGroup = 'own-live' | 'lia' | 'group' | 'course-material' | 'learning';
+/** Primary portfolio filter groups (toolbar to the right of All). */
+export type ProjectGroup =
+  | 'own-live'
+  | 'lia'
+  | 'group'
+  | 'course-material'
+  | 'learning'
+  | 'ai'
+  | 'lang-python'
+  | 'lang-csharp'
+  | 'lang-javascript'
+  | 'lang-java';
+
+/** AI sub-filters shown when the AI group is active. */
+export type AiSubFilter = 'all' | 'ml' | 'dl' | 'llm';
 
 export interface ProjectCopy {
   tagline: string;
@@ -33,12 +46,17 @@ export interface Project {
   copy: Record<'en' | 'sv' | 'sq', ProjectCopy>;
 }
 
-export const PROJECT_GROUPS: Record<ProjectGroup, readonly string[]> = {
+/** Context groups (a project can appear in AI / language filters as well). */
+export const PROJECT_GROUPS: Record<
+  Exclude<ProjectGroup, 'ai' | 'lang-python' | 'lang-csharp' | 'lang-javascript' | 'lang-java'>,
+  readonly string[]
+> = {
   'own-live': ['smartfood', 'gematrior', 'telco-churn', 'diamonds-analysis'],
   lia: ['swiiftly-ai', 'podmanager-lia'],
   group: ['dissatisfiedcustomer', 'husmanskors', 'holidaymaker'],
   'course-material': [
     'python-skript',
+    'ai-ml-exercises',
     'del1-kod',
     'programming1-csharp',
     'nodejs-course',
@@ -46,6 +64,7 @@ export const PROJECT_GROUPS: Record<ProjectGroup, readonly string[]> = {
     'c-introduction',
   ],
   learning: [
+    'crm-system',
     'shoptester',
     'bankomat',
     'uitestning-shoptester',
@@ -57,8 +76,65 @@ export const PROJECT_GROUPS: Record<ProjectGroup, readonly string[]> = {
   ],
 };
 
+/** AI tags — projects may carry more than one (e.g. DL + LLM). */
+export const AI_TAGS: Record<string, readonly AiSubFilter[]> = {
+  smartfood: ['dl', 'llm'],
+  'telco-churn': ['ml'],
+  'diamonds-analysis': ['ml'],
+  'ai-ml-exercises': ['ml', 'dl'],
+  'del1-kod': ['dl', 'llm'],
+  gematrior: ['llm'],
+  'swiiftly-ai': ['llm'],
+  'podmanager-lia': ['llm'],
+};
+
+const LANG_NEEDLES: Record<
+  'lang-python' | 'lang-csharp' | 'lang-javascript' | 'lang-java',
+  readonly string[]
+> = {
+  'lang-python': [
+    'python',
+    'jupyter',
+    'tensorflow',
+    'keras',
+    'scikit',
+    'sklearn',
+    'streamlit',
+    'pandas',
+    'numpy',
+  ],
+  'lang-csharp': ['c#', '.net', 'asp.net', 'xunit'],
+  'lang-javascript': [
+    'javascript',
+    'typescript',
+    'react',
+    'next.js',
+    'node.js',
+    'express',
+    'vite',
+    'jquery',
+  ],
+  'lang-java': ['java'],
+};
+
 export function projectInGroup(project: Project, group: ProjectGroup): boolean {
-  return PROJECT_GROUPS[group].includes(project.id);
+  if (group === 'ai') return Boolean(AI_TAGS[project.id]);
+  if (group.startsWith('lang-')) {
+    const needles = LANG_NEEDLES[group as keyof typeof LANG_NEEDLES] ?? [];
+    return project.tech.some((tech) => {
+      const t = tech.toLowerCase();
+      return needles.some((n) => t.includes(n));
+    });
+  }
+  const ids = PROJECT_GROUPS[group as keyof typeof PROJECT_GROUPS];
+  return ids ? ids.includes(project.id) : false;
+}
+
+export function projectMatchesAi(project: Project, sub: AiSubFilter): boolean {
+  const tags = AI_TAGS[project.id];
+  if (!tags) return false;
+  if (sub === 'all') return true;
+  return tags.includes(sub);
 }
 
 const ph = (color: string, text: string) =>
@@ -376,6 +452,96 @@ const allProjects: Project[] = [
           'Rezultat actionable — jo vetëm score, por hapi i radhës',
           'scikit-learn + Pandas mbi dataset-in Telco Customer Churn',
           'Self-hosted në Hetzner (Docker + Caddy) në churn.editorjakupi.com',
+        ],
+      },
+    },
+  },
+  {
+    id: 'crm-system',
+    title: 'CRM System Testing',
+    year: '2025',
+    featured: false,
+    category: 'course',
+    accent: '4f46e5',
+    github: 'https://github.com/editorjakupi/testning-av-crmsystem',
+    tech: ['React', 'C#', 'ASP.NET Core', 'PostgreSQL', 'xUnit', 'Playwright', 'Postman'],
+    copy: {
+      en: {
+        tagline: 'Full-stack CRM with unit, API, and UI test coverage.',
+        description:
+          'Comprehensive CRM system with React frontend, C# ASP.NET Core backend, and extensive testing: unit tests, API tests with Postman, and UI tests. Manages customers, interactions, and workflows.',
+        highlights: [
+          'Layered full-stack architecture',
+          'PostgreSQL database integration',
+          'Unit, API, and UI test suites',
+          'GitHub Actions CI workflows',
+        ],
+      },
+      sv: {
+        tagline: 'Fullstack CRM med enhets-, API- och UI-testtäckning.',
+        description:
+          'Omfattande CRM-system med React-frontend, C# ASP.NET Core-backend och omfattande testning: enhetstester, API-tester med Postman och UI-tester. Hanterar kunder, interaktioner och arbetsflöden.',
+        highlights: [
+          'Lagerindelad fullstack-arkitektur',
+          'PostgreSQL-databasintegration',
+          'Testsviter för enhet, API och UI',
+          'GitHub Actions CI-workflows',
+        ],
+      },
+      sq: {
+        tagline: 'CRM full-stack me mbulim testesh unit, API dhe UI.',
+        description:
+          'Sistem CRM gjithëpërfshirës me frontend React, backend C# ASP.NET Core dhe testim të gjerë: teste unit, teste API me Postman dhe teste UI. Menaxhon klientë, interaksione dhe workflow.',
+        highlights: [
+          'Arkitekturë full-stack e shtresuar',
+          'Integrim databaze PostgreSQL',
+          'Suite testesh unit, API dhe UI',
+          'CI workflows GitHub Actions',
+        ],
+      },
+    },
+  },
+  {
+    id: 'ai-ml-exercises',
+    title: 'Applied AI Course Work',
+    year: '2025',
+    featured: true,
+    category: 'course',
+    accent: '0f766e',
+    github: 'https://github.com/editorjakupi/ai-applied-ml-course',
+    tech: ['Python', 'Jupyter', 'scikit-learn', 'TensorFlow/Keras', 'Streamlit', 'Pandas'],
+    copy: {
+      en: {
+        tagline: 'ML & DL course exercises plus written theory answers for chapters 1–10.',
+        description:
+          'Curated coursework from AI – teori och tillämpning (NBI): classical ML notebooks (regression, classification, clustering, PCA), weekly deep-learning practice, and my theory answers (Markdown + PDF) for all ten chapters. Textbooks and lecture slides are excluded for copyright reasons. Related knowledge-check and live apps live in separate repos (del1-kod, telco, SmartFood, diamonds).',
+        highlights: [
+          'del1 exercises covering classical ML chapters 1–6',
+          'del2 weekly ANN/CNN/RNN practice notebooks',
+          'Theory answers for chapters 1–10 (MD + combined PDF)',
+          'Emojis stripped; no course books or publisher PDFs',
+        ],
+      },
+      sv: {
+        tagline: 'ML- & DL-kursövningar plus skriftliga teorisvar för kapitel 1–10.',
+        description:
+          'Samlat kursmaterial från AI – teori och tillämpning (NBI): klassiska ML-notebooks (regression, klassificering, klustring, PCA), veckovisa deep learning-övningar och mina teorisvar (Markdown + PDF) för alla tio kapitel. Kursböcker och föreläsningsmaterial är undantagna av upphovsrättsskäl. Kunskapskontroll och live-appar ligger i separata repos (del1-kod, telco, SmartFood, diamonds).',
+        highlights: [
+          'del1-övningar för klassisk ML kapitel 1–6',
+          'del2 veckovisa ANN/CNN/RNN-övningar',
+          'Teorisvar kapitel 1–10 (MD + samlad PDF)',
+          'Emojis borttagna; inga kursböcker eller förlags-PDF:er',
+        ],
+      },
+      sq: {
+        tagline: 'Ushtrime kursi ML & DL plus përgjigje teorie për kapitujt 1–10.',
+        description:
+          'Material kursi i kuruar nga AI – teori och tillämpning (NBI): notebook ML klasik (regresion, klasifikim, clustering, PCA), ushtrime javore deep learning, dhe përgjigjet e mia teorike (Markdown + PDF) për dhjetë kapitujt. Librat e kursit dhe slidet përjashtohen për arsye copyright. Knowledge check dhe app live janë në repo të ndara.',
+        highlights: [
+          'Ushtrime del1 për ML klasik kapitujt 1–6',
+          'Ushtrime javore del2 ANN/CNN/RNN',
+          'Përgjigje teorie kapitujt 1–10 (MD + PDF i kombinuar)',
+          'Emoji të hequra; pa libra kursi ose PDF botuesish',
         ],
       },
     },
