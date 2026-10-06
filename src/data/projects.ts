@@ -62,7 +62,7 @@ export const PROJECT_GROUPS: Record<
   >,
   readonly string[]
 > = {
-  'own-live': ['smartfood', 'gematrior', 'telco-churn', 'diamonds-analysis'],
+  'own-live': ['smartfood', 'gematrior', 'telco-churn', 'diamonds-analysis', 'pi93-ai-assistant'],
   lia: ['swiiftly-ai', 'podmanager-lia'],
   group: ['dissatisfiedcustomer', 'husmanskors', 'holidaymaker'],
   'course-material': [
@@ -97,6 +97,7 @@ export const AI_TAGS: Record<string, readonly Exclude<AiSubFilter, 'all'>[]> = {
   gematrior: ['llm'],
   'swiiftly-ai': ['llm'],
   'podmanager-lia': ['llm'],
+  'pi93-ai-assistant': ['llm'],
 };
 
 type LangGroup = 'lang-python' | 'lang-csharp' | 'lang-javascript' | 'lang-java';
@@ -220,6 +221,7 @@ export const GROUP_SUBFILTERS: Partial<Record<ProjectGroup | 'all', readonly Gro
     { key: 'all' },
     { key: 'products', ids: ['smartfood', 'gematrior'] },
     { key: 'data', ids: ['telco-churn', 'diamonds-analysis'] },
+    { key: 'in-progress', ids: ['pi93-ai-assistant'] },
   ],
   lia: [
     { key: 'all' },
@@ -335,10 +337,71 @@ export function projectImage(project: Project) {
     // Version in the path (not only query) so CDN/browser caches cannot stick on an old PNG.
     return `/project-banners/${project.id}-v${BANNER_VERSION}.png`;
   }
-  return ph(project.accent, project.title.replace(/\s+/g, '+'));
+  return ph(project.accent, project.title);
 }
 
 const allProjects: Project[] = [
+  {
+    id: 'pi93-ai-assistant',
+    title: 'Pi93 AI Assistant',
+    year: '2026',
+    featured: true,
+    category: 'featured',
+    accent: '0f766e',
+    isPrivate: true,
+    tech: [
+      'React 18',
+      'TypeScript',
+      'Vite',
+      'Express',
+      'PostgreSQL',
+      'Docker',
+      'OpenAI',
+      'RAG',
+      'Raspberry Pi',
+    ],
+    copy: {
+      en: {
+        tagline:
+          'In progress — AI ops hub for businesses and personal life-ops, with Raspberry Pi as a target edge client.',
+        description:
+          'Pi93 AI Assistant is my own product in active development: chat and voice into grounded answers (RAG), tools, and workflows. The first vertical is restaurant/hospitality, with a path toward cloud hub + optional thin client on Raspberry Pi. Private repo — not live yet.',
+        highlights: [
+          'Editor-owned AI assistant platform (chat, RAG, voice, workflows)',
+          'First vertical: restaurant / hospitality operations',
+          'Postgres-backed hub with Docker local stack',
+          'Roadmap includes Raspberry Pi / embedded edge client',
+          'In progress — private, not publicly deployed yet',
+        ],
+      },
+      sv: {
+        tagline:
+          'Pågående — AI-ops-hub för företag och personlig life-ops, med Raspberry Pi som edge-klientmål.',
+        description:
+          'Pi93 AI Assistant är min egen produkt under aktiv utveckling: chat och röst till grounded svar (RAG), verktyg och arbetsflöden. Första vertikalen är restaurang/hospitality, med riktning mot moln-hub + valfri tunn klient på Raspberry Pi. Privat repo — inte live ännu.',
+        highlights: [
+          'Egenägd AI-assistentplattform (chat, RAG, röst, arbetsflöden)',
+          'Första vertikal: restaurang / hospitality',
+          'Postgres-backed hub med Docker lokalt',
+          'Roadmap inkluderar Raspberry Pi / embedded edge-klient',
+          'Pågående — privat, inte publikt deployad ännu',
+        ],
+      },
+      sq: {
+        tagline:
+          'Në proces — hub AI ops për biznese dhe life-ops personale, me Raspberry Pi si klient edge.',
+        description:
+          'Pi93 AI Assistant është produkti im në zhvillim aktiv: chat dhe zë drejt përgjigjeve të ankoruara (RAG), mjete dhe workflow. Vertikali i parë është restorant/hospitality, me drejtim drejt hub cloud + klient i hollë opsional në Raspberry Pi. Repo private — ende jo live.',
+        highlights: [
+          'Platformë asistent AI e zotëruar nga Editor (chat, RAG, zë, workflow)',
+          'Vertikali i parë: restorant / hospitality',
+          'Hub me Postgres dhe stack Docker lokal',
+          'Roadmap përfshin Raspberry Pi / klient embedded edge',
+          'Në proces — private, ende jo e deployuar publikisht',
+        ],
+      },
+    },
+  },
   {
     id: 'gematrior',
     title: 'Gematrior',

@@ -28,6 +28,7 @@ function subLabel(t: T, group: Filter, key: GroupSubKey): string {
   const map: Record<string, string | undefined> = {
     products: t.projects.filterSubProducts,
     data: t.projects.filterSubData,
+    'in-progress': t.projects.filterSubInProgress,
     swiiftly: t.projects.filterSubSwiiftly,
     podmanager: t.projects.filterSubPodmanager,
     crm: t.projects.filterSubCrm,
@@ -75,6 +76,7 @@ function filterHeadline(t: T, group: Filter, sub: GroupSubKey): string {
     const map: Record<string, string | undefined> = {
       products: t.projects.filterDescSubProducts,
       data: t.projects.filterDescSubData,
+      'in-progress': t.projects.filterDescSubInProgress,
       swiiftly: t.projects.filterDescSubSwiiftly,
       podmanager: t.projects.filterDescSubPodmanager,
       crm: t.projects.filterDescSubCrm,
@@ -136,6 +138,7 @@ function filterContext(t: T, group: Filter, sub: GroupSubKey): string {
     const map: Record<string, string | undefined> = {
       products: t.projects.filterContextSubProducts,
       data: t.projects.filterContextSubData,
+      'in-progress': t.projects.filterContextSubInProgress,
       swiiftly: t.projects.filterContextSubSwiiftly,
       podmanager: t.projects.filterContextSubPodmanager,
       crm: t.projects.filterContextSubCrm,

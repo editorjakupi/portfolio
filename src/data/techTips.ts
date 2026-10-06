@@ -7,6 +7,134 @@ type TipSet = Record<TipLocale, TechTip>;
 
 /** Hover tip: (1) what it is + how it is used generally (2) how it is used in this case. */
 const PROJECT_TECH_TIPS: Record<string, Record<string, TipSet>> = {
+  'pi93-ai-assistant': {
+    'React 18': {
+      en: {
+        what: 'A UI library used to build interactive component-based web interfaces.',
+        use: 'In this case it is used for the assistant chat UI, admin panels, and ops workflows.',
+      },
+      sv: {
+        what: 'Ett UI-bibliotek som används för att bygga interaktiva komponentbaserade webbgränssnitt.',
+        use: 'I det här fallet används det för assistentens chat-UI, adminpaneler och ops-flöden.',
+      },
+      sq: {
+        what: 'Nje biblioteke UI qe perdoret per te ndertuar nderfaqe web interaktive me komponente.',
+        use: 'Ne kete rast perdoret per UI e chat-it te asistentit, panele admin dhe workflow ops.',
+      },
+    },
+    'TypeScript': {
+      en: {
+        what: 'Typed JavaScript used to catch errors early and keep large codebases safer.',
+        use: 'In this case it is used across the Vite client and Express API contracts.',
+      },
+      sv: {
+        what: 'Typad JavaScript som används för att fånga fel tidigt och hålla stora kodbaser säkrare.',
+        use: 'I det här fallet används det i både Vite-klienten och Express-API-kontrakt.',
+      },
+      sq: {
+        what: 'JavaScript i tipizuar qe perdoret per te kapur gabime heret dhe mbajtur kodebazat me te sigurta.',
+        use: 'Ne kete rast perdoret ne klientin Vite dhe kontrata API Express.',
+      },
+    },
+    'Vite': {
+      en: {
+        what: 'A fast frontend build tool used for modern React/SPA development.',
+        use: 'In this case it is used for the local assistant UI and production client build.',
+      },
+      sv: {
+        what: 'Ett snabbt frontend-byggverktyg som används för modern React/SPA-utveckling.',
+        use: 'I det här fallet används det för assistentens lokala UI och produktionsbuild av klienten.',
+      },
+      sq: {
+        what: 'Nje mjet build frontend i shpejte qe perdoret per zhvillim modern React/SPA.',
+        use: 'Ne kete rast perdoret per UI lokale te asistentit dhe build te klientit.',
+      },
+    },
+    'Express': {
+      en: {
+        what: 'A Node.js web framework used to build HTTP APIs and backend services.',
+        use: 'In this case it is used for assistant query APIs, auth, RAG, and tool endpoints.',
+      },
+      sv: {
+        what: 'Ett Node.js-webbframework som används för HTTP-API:er och backend-tjänster.',
+        use: 'I det här fallet används det för assistent-API:er, auth, RAG och verktygsendpoints.',
+      },
+      sq: {
+        what: 'Nje framework web Node.js qe perdoret per API HTTP dhe sherbime backend.',
+        use: 'Ne kete rast perdoret per API query te asistentit, auth, RAG dhe endpoints mjetesh.',
+      },
+    },
+    'PostgreSQL': {
+      en: {
+        what: 'A relational database used to store structured application data reliably.',
+        use: 'In this case it is used for hub persistence: users, chat, knowledge, and ops state.',
+      },
+      sv: {
+        what: 'En relationell databas som används för att lagra strukturerad appdata pålitligt.',
+        use: 'I det här fallet används det för hub-persistens: användare, chat, knowledge och ops-state.',
+      },
+      sq: {
+        what: 'Nje baze relacionale qe perdoret per te ruajtur te dhena te strukturuara te app-it ne menyre te besueshme.',
+        use: 'Ne kete rast perdoret per persistencen e hub: perdorues, chat, knowledge dhe gjendje ops.',
+      },
+    },
+    'Docker': {
+      en: {
+        what: 'A container platform used to package apps and dependencies for repeatable runs.',
+        use: 'In this case it is used for the local Postgres stack and reproducible hub setup.',
+      },
+      sv: {
+        what: 'En containerplattform som används för att paketera appar och beroenden för reproducerbara körningar.',
+        use: 'I det här fallet används det för lokal Postgres-stack och reproducerbar hub-setup.',
+      },
+      sq: {
+        what: 'Nje platforme kontejneresh qe perdoret per te paketuar app dhe varshmëri per ekzekutim te riprodhueshem.',
+        use: 'Ne kete rast perdoret per stack-un lokal Postgres dhe setup te riprodhueshem te hub.',
+      },
+    },
+    'OpenAI': {
+      en: {
+        what: 'An AI platform used for large language models and related generative APIs.',
+        use: 'In this case it is used for grounded assistant answers, embeddings, and voice-related flows.',
+      },
+      sv: {
+        what: 'En AI-plattform som används för stora språkmodeller och generativa API:er.',
+        use: 'I det här fallet används det för grounded assistent-svar, embeddings och röstrelaterade flöden.',
+      },
+      sq: {
+        what: 'Nje platforme AI qe perdoret per modele te medha gjuhe dhe API gjenerative.',
+        use: 'Ne kete rast perdoret per pergjigje te ankoruara te asistentit, embeddings dhe rrjedha zeri.',
+      },
+    },
+    'RAG': {
+      en: {
+        what: 'Retrieval-Augmented Generation — fetch relevant docs then answer with an LLM.',
+        use: 'In this case it is used so staff questions are answered from business knowledge, not free hallucination.',
+      },
+      sv: {
+        what: 'Retrieval-Augmented Generation — hämta relevanta dokument och svara med en LLM.',
+        use: 'I det här fallet används det så personalfrågor besvaras från verksamhetskunskap, inte fri hallucination.',
+      },
+      sq: {
+        what: 'Retrieval-Augmented Generation — mer dokumente relevante pastaj pergjigju me LLM.',
+        use: 'Ne kete rast perdoret qe pyetjet e stafit te pergjigjen nga njohuria e biznesit, jo hallucinim i lire.',
+      },
+    },
+    'Raspberry Pi': {
+      en: {
+        what: 'A small single-board computer used for embedded and edge deployments.',
+        use: 'In this case it is the planned thin/edge client target for on-site assistant access.',
+      },
+      sv: {
+        what: 'En liten enkorts dator som används för embedded- och edge-deploy.',
+        use: 'I det här fallet är det planerad tunn/edge-klient för assistentåtkomst på plats.',
+      },
+      sq: {
+        what: 'Nje kompjuter i vogel single-board qe perdoret per deploy embedded dhe edge.',
+        use: 'Ne kete rast eshte klienti i hollë/edge i planifikuar per qasje te asistentit ne vend.',
+      },
+    },
+  },
   'gematrior': {
     'Next.js 15': {
       en: {

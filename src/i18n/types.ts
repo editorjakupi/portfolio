@@ -91,6 +91,7 @@ export interface Translations {
     filterSubAll: string;
     filterSubProducts: string;
     filterSubData: string;
+    filterSubInProgress: string;
     filterSubSwiiftly: string;
     filterSubPodmanager: string;
     filterSubCrm: string;
@@ -122,6 +123,7 @@ export interface Translations {
     filterSubDocker: string;
     filterDescSubProducts: string;
     filterDescSubData: string;
+    filterDescSubInProgress: string;
     filterDescSubSwiiftly: string;
     filterDescSubPodmanager: string;
     filterDescSubCrm: string;
@@ -169,6 +171,7 @@ export interface Translations {
     filterContextDocker: string;
     filterContextSubProducts: string;
     filterContextSubData: string;
+    filterContextSubInProgress: string;
     filterContextSubSwiiftly: string;
     filterContextSubPodmanager: string;
     filterContextSubCrm: string;
