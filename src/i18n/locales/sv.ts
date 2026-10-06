@@ -73,12 +73,15 @@ const sv: Translations = {
   projects: {
     label: 'Projekt',
     title: 'Utvalt arbete',
-    subtitle: 'Klicka på ett kort för att öppna hela case studyn. Alla publika repos från min GitHub listas.',
+    subtitle: 'Filtrera efter hur arbetet gjordes — egna live-appar, LIA, grupparbeten, kursmaterial eller lärandemoment.',
     readMore: 'Läs mer',
     private: 'Privat',
     filterAll: 'Alla',
-    filterFeatured: 'Utvalda',
-    filterCourse: 'Kurs & lärande',
+    filterOwnLive: 'Egna & live',
+    filterLia: 'LIA',
+    filterGroup: 'Grupparbeten',
+    filterCourseMaterial: 'Kursmaterial',
+    filterLearning: 'Lärandemoment',
   },
   modal: {
     highlights: 'Höjdpunkter',

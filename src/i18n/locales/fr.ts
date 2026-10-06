@@ -73,12 +73,15 @@ const fr: Translations = {
   projects: {
     label: 'Projets',
     title: 'Travaux sélectionnés',
-    subtitle: 'Cliquez sur une carte pour ouvrir l\'étude de cas complète. Tous les dépôts publics GitHub sont listés.',
+    subtitle: 'Filtrez selon le type de travail — apps live personnelles, LIA, projets de groupe, matériel de cours ou exercices.',
     readMore: 'En savoir plus',
     private: 'Privé',
     filterAll: 'Tous',
-    filterFeatured: 'Sélection',
-    filterCourse: 'Cours & apprentissage',
+    filterOwnLive: 'Perso & live',
+    filterLia: 'LIA',
+    filterGroup: 'Travail de groupe',
+    filterCourseMaterial: 'Matériel de cours',
+    filterLearning: 'Apprentissage',
   },
   modal: {
     highlights: 'Points clés',

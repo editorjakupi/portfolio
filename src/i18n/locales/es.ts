@@ -73,12 +73,15 @@ const es: Translations = {
   projects: {
     label: 'Proyectos',
     title: 'Trabajo seleccionado',
-    subtitle: 'Haz clic en cualquier tarjeta para abrir el caso de estudio completo. Todos los repos públicos de GitHub están listados.',
+    subtitle: 'Filtra según el tipo de trabajo — apps propias en vivo, LIA, proyectos en grupo, material de curso o ejercicios.',
     readMore: 'Leer más',
     private: 'Privado',
     filterAll: 'Todos',
-    filterFeatured: 'Destacados',
-    filterCourse: 'Curso y aprendizaje',
+    filterOwnLive: 'Propios y live',
+    filterLia: 'LIA',
+    filterGroup: 'Trabajo en grupo',
+    filterCourseMaterial: 'Material de curso',
+    filterLearning: 'Aprendizaje',
   },
   modal: {
     highlights: 'Aspectos destacados',

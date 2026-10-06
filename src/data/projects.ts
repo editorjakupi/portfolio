@@ -2,6 +2,9 @@ import type { Locale } from '../i18n/types';
 
 export type ProjectCategory = 'featured' | 'course';
 
+/** Portfolio filter groups (toolbar to the right of All). */
+export type ProjectGroup = 'own-live' | 'lia' | 'group' | 'course-material' | 'learning';
+
 export interface ProjectCopy {
   tagline: string;
   description: string;
@@ -28,6 +31,34 @@ export interface Project {
   /** Background behind contain letterboxing */
   bannerBg?: string;
   copy: Record<'en' | 'sv' | 'sq', ProjectCopy>;
+}
+
+export const PROJECT_GROUPS: Record<ProjectGroup, readonly string[]> = {
+  'own-live': ['smartfood', 'gematrior', 'telco-churn', 'diamonds-analysis'],
+  lia: ['swiiftly-ai', 'podmanager-lia'],
+  group: ['dissatisfiedcustomer', 'husmanskors', 'holidaymaker'],
+  'course-material': [
+    'python-skript',
+    'del1-kod',
+    'programming1-csharp',
+    'nodejs-course',
+    'java-course',
+    'c-introduction',
+    'csharp-example',
+  ],
+  learning: [
+    'shoptester',
+    'bankomat',
+    'uitestning-shoptester',
+    'react-context',
+    'react-router',
+    'first-react',
+    'first-rest-api',
+  ],
+};
+
+export function projectInGroup(project: Project, group: ProjectGroup): boolean {
+  return PROJECT_GROUPS[group].includes(project.id);
 }
 
 const ph = (color: string, text: string) =>
@@ -345,51 +376,6 @@ const allProjects: Project[] = [
           'Rezultat actionable — jo vetëm score, por hapi i radhës',
           'scikit-learn + Pandas mbi dataset-in Telco Customer Churn',
           'Self-hosted në Hetzner (Docker + Caddy) në churn.editorjakupi.com',
-        ],
-      },
-    },
-  },
-  {
-    id: 'crm-system',
-    title: 'CRM System',
-    year: '2025',
-    featured: true,
-    category: 'course',
-    accent: '4f46e5',
-    github: 'https://github.com/editorjakupi/testning-av-crmsystem',
-    tech: ['React', 'C#', 'ASP.NET Core', 'PostgreSQL', 'xUnit', 'Playwright', 'Postman'],
-    copy: {
-      en: {
-        tagline: 'Full-stack CRM with unit, API, and UI test coverage.',
-        description:
-          'Comprehensive CRM system with React frontend, C# ASP.NET Core backend, and extensive testing: unit tests, API tests with Postman, and UI tests. Manages customers, interactions, and workflows.',
-        highlights: [
-          'Layered full-stack architecture',
-          'PostgreSQL database integration',
-          'Unit, API, and UI test suites',
-          'GitHub Actions CI workflows',
-        ],
-      },
-      sv: {
-        tagline: 'Fullstack CRM med enhets-, API- och UI-testtäckning.',
-        description:
-          'Omfattande CRM-system med React-frontend, C# ASP.NET Core-backend och omfattande testning: enhetstester, API-tester med Postman och UI-tester. Hanterar kunder, interaktioner och arbetsflöden.',
-        highlights: [
-          'Lagerindelad fullstack-arkitektur',
-          'PostgreSQL-databasintegration',
-          'Testsviter för enhet, API och UI',
-          'GitHub Actions CI-workflows',
-        ],
-      },
-      sq: {
-        tagline: 'CRM full-stack me mbulim testesh unit, API dhe UI.',
-        description:
-          'Sistem CRM gjithëpërfshirës me frontend React, backend C# ASP.NET Core dhe testim të gjerë: teste unit, teste API me Postman dhe teste UI. Menaxhon klientë, interaksione dhe workflow.',
-        highlights: [
-          'Arkitekturë full-stack e shtresuar',
-          'Integrim databaze PostgreSQL',
-          'Suite testesh unit, API dhe UI',
-          'CI workflows GitHub Actions',
         ],
       },
     },

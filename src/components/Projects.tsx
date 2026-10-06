@@ -1,27 +1,36 @@
 import { useMemo, useState } from 'react';
 import { useLocale } from '../i18n/LocaleContext';
-import { getProjectCopy, projectImage, projects, type Project } from '../data/projects';
+import {
+  getProjectCopy,
+  projectImage,
+  projectInGroup,
+  projects,
+  type Project,
+  type ProjectGroup,
+} from '../data/projects';
 
 interface Props {
   onOpen: (project: Project) => void;
 }
 
-type Filter = 'all' | 'featured' | 'course';
+type Filter = 'all' | ProjectGroup;
 
 export default function Projects({ onOpen }: Props) {
   const { locale, t } = useLocale();
   const [filter, setFilter] = useState<Filter>('all');
 
   const filtered = useMemo(() => {
-    if (filter === 'featured') return projects.filter((p) => p.featured);
-    if (filter === 'course') return projects.filter((p) => p.category === 'course');
-    return projects;
+    if (filter === 'all') return projects;
+    return projects.filter((p) => projectInGroup(p, filter));
   }, [filter]);
 
   const filters: { key: Filter; label: string }[] = [
     { key: 'all', label: t.projects.filterAll },
-    { key: 'featured', label: t.projects.filterFeatured },
-    { key: 'course', label: t.projects.filterCourse },
+    { key: 'own-live', label: t.projects.filterOwnLive },
+    { key: 'lia', label: t.projects.filterLia },
+    { key: 'group', label: t.projects.filterGroup },
+    { key: 'course-material', label: t.projects.filterCourseMaterial },
+    { key: 'learning', label: t.projects.filterLearning },
   ];
 
   return (
@@ -31,11 +40,13 @@ export default function Projects({ onOpen }: Props) {
         <h2 className="section-title reveal">{t.projects.title}</h2>
         <p className="section-subtitle reveal">{t.projects.subtitle}</p>
 
-        <div className="projects-toolbar reveal">
+        <div className="projects-toolbar reveal" role="tablist" aria-label={t.projects.title}>
           {filters.map((item) => (
             <button
               key={item.key}
               type="button"
+              role="tab"
+              aria-selected={filter === item.key}
               className={`filter-btn ${filter === item.key ? 'active' : ''}`}
               onClick={() => setFilter(item.key)}
             >

@@ -73,12 +73,15 @@ const sq: Translations = {
   projects: {
     label: 'Projektet',
     title: 'Punë e zgjedhur',
-    subtitle: 'Kliko çdo kartë për të hapur studimin e plotë. Të gjitha repot publike nga GitHub-i im janë listuar.',
+    subtitle: 'Filtro sipas mënyrës së punës — aplike live personale, LIA, punë grupi, material kursi ose ushtrime mësimore.',
     readMore: 'Lexo më shumë',
     private: 'Privat',
     filterAll: 'Të gjitha',
-    filterFeatured: 'Të zgjedhura',
-    filterCourse: 'Kurs & mësim',
+    filterOwnLive: 'Të miat & live',
+    filterLia: 'LIA',
+    filterGroup: 'Punë grupi',
+    filterCourseMaterial: 'Material kursi',
+    filterLearning: 'Mësim',
   },
   modal: {
     highlights: 'Pikat kryesore',

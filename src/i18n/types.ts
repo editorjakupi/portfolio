@@ -56,8 +56,11 @@ export interface Translations {
     readMore: string;
     private: string;
     filterAll: string;
-    filterFeatured: string;
-    filterCourse: string;
+    filterOwnLive: string;
+    filterLia: string;
+    filterGroup: string;
+    filterCourseMaterial: string;
+    filterLearning: string;
   };
   modal: {
     highlights: string;

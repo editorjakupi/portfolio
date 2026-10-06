@@ -73,12 +73,15 @@ const pl: Translations = {
   projects: {
     label: 'Projekty',
     title: 'Wybrane prace',
-    subtitle: 'Kliknij kartę, aby otworzyć pełne case study. Wszystkie publiczne repozytoria GitHub są wymienione.',
+    subtitle: 'Filtruj według rodzaju pracy — własne aplikacje live, LIA, projekty grupowe, materiały kursowe lub ćwiczenia.',
     readMore: 'Czytaj więcej',
     private: 'Prywatne',
     filterAll: 'Wszystkie',
-    filterFeatured: 'Wyróżnione',
-    filterCourse: 'Kurs i nauka',
+    filterOwnLive: 'Własne i live',
+    filterLia: 'LIA',
+    filterGroup: 'Praca grupowa',
+    filterCourseMaterial: 'Materiały kursowe',
+    filterLearning: 'Nauka',
   },
   modal: {
     highlights: 'Najważniejsze',
