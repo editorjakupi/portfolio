@@ -77,7 +77,7 @@ export const PROJECT_GROUPS: Record<
 };
 
 /** AI tags — projects may carry more than one (e.g. DL + LLM). */
-export const AI_TAGS: Record<string, readonly AiSubFilter[]> = {
+export const AI_TAGS: Record<string, readonly Exclude<AiSubFilter, 'all'>[]> = {
   smartfood: ['dl', 'llm'],
   'telco-churn': ['ml'],
   'diamonds-analysis': ['ml'],
@@ -88,10 +88,9 @@ export const AI_TAGS: Record<string, readonly AiSubFilter[]> = {
   'podmanager-lia': ['llm'],
 };
 
-const LANG_NEEDLES: Record<
-  'lang-python' | 'lang-csharp' | 'lang-javascript' | 'lang-java',
-  readonly string[]
-> = {
+type LangGroup = 'lang-python' | 'lang-csharp' | 'lang-javascript' | 'lang-java';
+
+const LANG_NEEDLES: Record<LangGroup, readonly string[]> = {
   'lang-python': [
     'python',
     'jupyter',
@@ -117,15 +116,43 @@ const LANG_NEEDLES: Record<
   'lang-java': ['java'],
 };
 
+/** Escape a string for use inside a RegExp. */
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/**
+ * Match a tech label against a language needle without false positives
+ * (e.g. "java" must not match "JavaScript").
+ */
+export function techMatchesNeedle(tech: string, needle: string): boolean {
+  const t = tech.toLowerCase();
+  const n = needle.toLowerCase();
+
+  if (n === 'java') {
+    return /(^|[^a-z])java([^a-z]|$)/i.test(tech) && !/javascript/i.test(tech);
+  }
+  // TensorFlow.js / Keras.js are JavaScript — do not count as Python ML stack.
+  if ((n === 'tensorflow' || n === 'keras') && /(\.js\b|tfjs)/i.test(tech)) {
+    return false;
+  }
+  if (n === 'c#') return t.includes('c#');
+  if (n === '.net' || n === 'asp.net') {
+    return /(^|[^a-z])\.?net([^a-z]|$)/i.test(tech) || t.includes('asp.net');
+  }
+  if (n.includes('.')) return t.includes(n);
+
+  return new RegExp(`(^|[^a-z0-9+#])${escapeRegExp(n)}([^a-z0-9+#]|$)`, 'i').test(tech);
+}
+
+export function projectMatchesLanguage(project: Project, group: LangGroup): boolean {
+  const needles = LANG_NEEDLES[group];
+  return project.tech.some((tech) => needles.some((n) => techMatchesNeedle(tech, n)));
+}
+
 export function projectInGroup(project: Project, group: ProjectGroup): boolean {
   if (group === 'ai') return Boolean(AI_TAGS[project.id]);
-  if (group.startsWith('lang-')) {
-    const needles = LANG_NEEDLES[group as keyof typeof LANG_NEEDLES] ?? [];
-    return project.tech.some((tech) => {
-      const t = tech.toLowerCase();
-      return needles.some((n) => t.includes(n));
-    });
-  }
+  if (group.startsWith('lang-')) return projectMatchesLanguage(project, group as LangGroup);
   const ids = PROJECT_GROUPS[group as keyof typeof PROJECT_GROUPS];
   return ids ? ids.includes(project.id) : false;
 }
@@ -135,6 +162,120 @@ export function projectMatchesAi(project: Project, sub: AiSubFilter): boolean {
   if (!tags) return false;
   if (sub === 'all') return true;
   return tags.includes(sub);
+}
+
+/** Secondary filter keys per primary section (always include "all"). */
+export type GroupSubKey = string;
+
+type GroupSubDef = {
+  key: GroupSubKey;
+  /** If omitted, all projects already in the primary group match. */
+  ids?: readonly string[];
+  aiTag?: Exclude<AiSubFilter, 'all'>;
+};
+
+export const GROUP_SUBFILTERS: Partial<Record<ProjectGroup | 'all', readonly GroupSubDef[]>> = {
+  'own-live': [
+    { key: 'all' },
+    { key: 'products', ids: ['smartfood', 'gematrior'] },
+    { key: 'data', ids: ['telco-churn', 'diamonds-analysis'] },
+  ],
+  lia: [
+    { key: 'all' },
+    { key: 'swiiftly', ids: ['swiiftly-ai'] },
+    { key: 'podmanager', ids: ['podmanager-lia'] },
+  ],
+  group: [
+    { key: 'all' },
+    { key: 'crm', ids: ['dissatisfiedcustomer'] },
+    { key: 'dotnet', ids: ['husmanskors', 'holidaymaker'] },
+  ],
+  'course-material': [
+    { key: 'all' },
+    { key: 'ai', ids: ['ai-ml-exercises', 'del1-kod'] },
+    {
+      key: 'languages',
+      ids: [
+        'python-skript',
+        'programming1-csharp',
+        'nodejs-course',
+        'java-course',
+        'c-introduction',
+      ],
+    },
+  ],
+  learning: [
+    { key: 'all' },
+    {
+      key: 'testing',
+      ids: ['crm-system', 'shoptester', 'bankomat', 'uitestning-shoptester'],
+    },
+    {
+      key: 'react',
+      ids: ['react-context', 'react-router', 'first-react', 'first-rest-api'],
+    },
+    { key: 'csharp', ids: ['csharp-example'] },
+  ],
+  ai: [
+    { key: 'all' },
+    { key: 'ml', aiTag: 'ml' },
+    { key: 'dl', aiTag: 'dl' },
+    { key: 'llm', aiTag: 'llm' },
+  ],
+  'lang-python': [
+    { key: 'all' },
+    { key: 'live', ids: ['telco-churn', 'diamonds-analysis'] },
+    { key: 'course', ids: ['ai-ml-exercises', 'del1-kod', 'python-skript'] },
+  ],
+  'lang-csharp': [
+    { key: 'all' },
+    {
+      key: 'testing',
+      ids: ['crm-system', 'shoptester', 'bankomat', 'uitestning-shoptester'],
+    },
+    { key: 'apps', ids: ['husmanskors', 'holidaymaker'] },
+    { key: 'course', ids: ['programming1-csharp', 'csharp-example'] },
+  ],
+  'lang-javascript': [
+    { key: 'all' },
+    {
+      key: 'products',
+      ids: [
+        'smartfood',
+        'gematrior',
+        'swiiftly-ai',
+        'podmanager-lia',
+        'dissatisfiedcustomer',
+        'crm-system',
+      ],
+    },
+    {
+      key: 'learning',
+      ids: [
+        'react-context',
+        'react-router',
+        'first-react',
+        'first-rest-api',
+        'nodejs-course',
+      ],
+    },
+  ],
+  'lang-java': [{ key: 'all' }],
+};
+
+export function projectMatchesSub(
+  project: Project,
+  group: ProjectGroup | 'all',
+  subKey: GroupSubKey,
+): boolean {
+  if (group === 'all' || subKey === 'all') return true;
+  const subs = GROUP_SUBFILTERS[group];
+  if (!subs) return true;
+  const def = subs.find((s) => s.key === subKey);
+  if (!def) return true;
+  if (def.aiTag) return projectMatchesAi(project, def.aiTag);
+  if (def.ids) return def.ids.includes(project.id);
+  return true;
 }
 
 const ph = (color: string, text: string) =>

@@ -2,11 +2,12 @@ import { useMemo, useState } from 'react';
 import { useLocale } from '../i18n/LocaleContext';
 import {
   getProjectCopy,
+  GROUP_SUBFILTERS,
   projectImage,
   projectInGroup,
-  projectMatchesAi,
+  projectMatchesSub,
   projects,
-  type AiSubFilter,
+  type GroupSubKey,
   type Project,
   type ProjectGroup,
 } from '../data/projects';
@@ -17,19 +18,85 @@ interface Props {
 
 type Filter = 'all' | ProjectGroup;
 
+function subLabel(t: ReturnType<typeof useLocale>['t'], group: Filter, key: GroupSubKey): string {
+  if (key === 'all') {
+    if (group === 'ai') return t.projects.filterAiAll;
+    return t.projects.filterSubAll;
+  }
+  const map: Record<string, string | undefined> = {
+    // own-live
+    products: t.projects.filterSubProducts,
+    data: t.projects.filterSubData,
+    // lia
+    swiiftly: t.projects.filterSubSwiiftly,
+    podmanager: t.projects.filterSubPodmanager,
+    // group
+    crm: t.projects.filterSubCrm,
+    dotnet: t.projects.filterSubDotnetApps,
+    // course-material
+    ai: t.projects.filterSubAiCourse,
+    languages: t.projects.filterSubLangCourses,
+    // learning / csharp lang
+    testing: t.projects.filterSubTesting,
+    react: t.projects.filterSubReact,
+    csharp: t.projects.filterSubCsharpBasics,
+    // ai
+    ml: t.projects.filterAiMl,
+    dl: t.projects.filterAiDl,
+    llm: t.projects.filterAiLlm,
+    // languages
+    live: t.projects.filterSubLive,
+    course: t.projects.filterSubCourse,
+    apps: t.projects.filterSubApps,
+    learning: t.projects.filterSubLearning,
+  };
+  return map[key] ?? key;
+}
+
+function subBlurb(t: ReturnType<typeof useLocale>['t'], group: Filter, key: GroupSubKey): string | null {
+  if (group === 'ai') {
+    if (key === 'ml') return t.projects.filterDescAiMl;
+    if (key === 'dl') return t.projects.filterDescAiDl;
+    if (key === 'llm') return t.projects.filterDescAiLlm;
+    return t.projects.filterDescAi;
+  }
+  if (key === 'all') return null;
+  const map: Record<string, string | undefined> = {
+    products: t.projects.filterDescSubProducts,
+    data: t.projects.filterDescSubData,
+    swiiftly: t.projects.filterDescSubSwiiftly,
+    podmanager: t.projects.filterDescSubPodmanager,
+    crm: t.projects.filterDescSubCrm,
+    dotnet: t.projects.filterDescSubDotnetApps,
+    ai: t.projects.filterDescSubAiCourse,
+    languages: t.projects.filterDescSubLangCourses,
+    testing: t.projects.filterDescSubTesting,
+    react: t.projects.filterDescSubReact,
+    csharp: t.projects.filterDescSubCsharpBasics,
+    live: t.projects.filterDescSubLive,
+    course: t.projects.filterDescSubCourse,
+    apps: t.projects.filterDescSubApps,
+    learning: t.projects.filterDescSubLearning,
+  };
+  return map[key] ?? null;
+}
+
 export default function Projects({ onOpen }: Props) {
   const { locale, t } = useLocale();
   const [filter, setFilter] = useState<Filter>('all');
-  const [aiSub, setAiSub] = useState<AiSubFilter>('all');
+  const [sub, setSub] = useState<GroupSubKey>('all');
+
+  const subFilters = useMemo(() => {
+    if (filter === 'all') return [];
+    return [...(GROUP_SUBFILTERS[filter] ?? [])];
+  }, [filter]);
 
   const filtered = useMemo(() => {
     if (filter === 'all') return projects;
-    let list = projects.filter((p) => projectInGroup(p, filter));
-    if (filter === 'ai') {
-      list = list.filter((p) => projectMatchesAi(p, aiSub));
-    }
-    return list;
-  }, [filter, aiSub]);
+    return projects
+      .filter((p) => projectInGroup(p, filter))
+      .filter((p) => projectMatchesSub(p, filter, sub));
+  }, [filter, sub]);
 
   const filters: { key: Filter; label: string }[] = [
     { key: 'all', label: t.projects.filterAll },
@@ -45,35 +112,21 @@ export default function Projects({ onOpen }: Props) {
     { key: 'lang-java', label: t.projects.filterLangJava },
   ];
 
-  const aiSubs: { key: AiSubFilter; label: string }[] = [
-    { key: 'all', label: t.projects.filterAiAll },
-    { key: 'ml', label: t.projects.filterAiMl },
-    { key: 'dl', label: t.projects.filterAiDl },
-    { key: 'llm', label: t.projects.filterAiLlm },
-  ];
+  const primaryBlurb: Record<Filter, string> = {
+    all: t.projects.filterDescAll,
+    'own-live': t.projects.filterDescOwnLive,
+    lia: t.projects.filterDescLia,
+    group: t.projects.filterDescGroup,
+    'course-material': t.projects.filterDescCourseMaterial,
+    learning: t.projects.filterDescLearning,
+    ai: t.projects.filterDescAi,
+    'lang-python': t.projects.filterDescLangPython,
+    'lang-csharp': t.projects.filterDescLangCsharp,
+    'lang-javascript': t.projects.filterDescLangJavascript,
+    'lang-java': t.projects.filterDescLangJava,
+  };
 
-  const filterBlurb = (() => {
-    if (filter === 'ai') {
-      if (aiSub === 'ml') return t.projects.filterDescAiMl;
-      if (aiSub === 'dl') return t.projects.filterDescAiDl;
-      if (aiSub === 'llm') return t.projects.filterDescAiLlm;
-      return t.projects.filterDescAi;
-    }
-    const map: Record<Filter, string> = {
-      all: t.projects.filterDescAll,
-      'own-live': t.projects.filterDescOwnLive,
-      lia: t.projects.filterDescLia,
-      group: t.projects.filterDescGroup,
-      'course-material': t.projects.filterDescCourseMaterial,
-      learning: t.projects.filterDescLearning,
-      ai: t.projects.filterDescAi,
-      'lang-python': t.projects.filterDescLangPython,
-      'lang-csharp': t.projects.filterDescLangCsharp,
-      'lang-javascript': t.projects.filterDescLangJavascript,
-      'lang-java': t.projects.filterDescLangJava,
-    };
-    return map[filter];
-  })();
+  const filterBlurb = subBlurb(t, filter, sub) ?? primaryBlurb[filter];
 
   return (
     <section className="section" id="projects">
@@ -92,7 +145,7 @@ export default function Projects({ onOpen }: Props) {
               className={`filter-btn ${filter === item.key ? 'active' : ''}`}
               onClick={() => {
                 setFilter(item.key);
-                if (item.key !== 'ai') setAiSub('all');
+                setSub('all');
               }}
             >
               {item.label}
@@ -100,22 +153,22 @@ export default function Projects({ onOpen }: Props) {
           ))}
         </div>
 
-        {filter === 'ai' && (
+        {subFilters.length > 1 && (
           <div
             className="projects-toolbar projects-toolbar--sub reveal"
             role="tablist"
-            aria-label={t.projects.filterAi}
+            aria-label={`${filters.find((f) => f.key === filter)?.label ?? ''} subsections`}
           >
-            {aiSubs.map((item) => (
+            {subFilters.map((item) => (
               <button
                 key={item.key}
                 type="button"
                 role="tab"
-                aria-selected={aiSub === item.key}
-                className={`filter-btn filter-btn--sub ${aiSub === item.key ? 'active' : ''}`}
-                onClick={() => setAiSub(item.key)}
+                aria-selected={sub === item.key}
+                className={`filter-btn filter-btn--sub ${sub === item.key ? 'active' : ''}`}
+                onClick={() => setSub(item.key)}
               >
-                {item.label}
+                {subLabel(t, filter, item.key)}
               </button>
             ))}
           </div>
