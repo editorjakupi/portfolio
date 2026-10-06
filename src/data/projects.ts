@@ -14,7 +14,8 @@ export type ProjectGroup =
   | 'lang-csharp'
   | 'lang-javascript'
   | 'lang-java'
-  | 'databases';
+  | 'databases'
+  | 'docker';
 
 /** AI sub-filters shown when the AI group is active. */
 export type AiSubFilter = 'all' | 'ml' | 'dl' | 'llm';
@@ -47,11 +48,17 @@ export interface Project {
   copy: Record<'en' | 'sv' | 'sq', ProjectCopy>;
 }
 
-/** Context groups (a project can appear in AI / language / databases filters as well). */
+/** Context groups (a project can appear in AI / language / data / docker filters as well). */
 export const PROJECT_GROUPS: Record<
   Exclude<
     ProjectGroup,
-    'ai' | 'lang-python' | 'lang-csharp' | 'lang-javascript' | 'lang-java' | 'databases'
+    | 'ai'
+    | 'lang-python'
+    | 'lang-csharp'
+    | 'lang-javascript'
+    | 'lang-java'
+    | 'databases'
+    | 'docker'
   >,
   readonly string[]
 > = {
@@ -93,7 +100,7 @@ export const AI_TAGS: Record<string, readonly Exclude<AiSubFilter, 'all'>[]> = {
 };
 
 type LangGroup = 'lang-python' | 'lang-csharp' | 'lang-javascript' | 'lang-java';
-type TechMatchGroup = LangGroup | 'databases';
+type TechMatchGroup = LangGroup | 'databases' | 'docker';
 
 const LANG_NEEDLES: Record<LangGroup, readonly string[]> = {
   'lang-python': [
@@ -121,14 +128,13 @@ const LANG_NEEDLES: Record<LangGroup, readonly string[]> = {
   'lang-java': ['java'],
 };
 
-/** Databases + Docker (Docker is infra, not a DB — grouped for deploy/data stack browsing). */
+/** True databases / data stores (Docker is its own filter). */
 const DATABASES_NEEDLES = [
   'postgresql',
   'postgres',
   'sqlite',
   'mongodb',
   'mongo',
-  'docker',
   'prisma',
   'sql',
   'ef core',
@@ -138,6 +144,7 @@ const DATABASES_NEEDLES = [
 const TECH_GROUP_NEEDLES: Record<TechMatchGroup, readonly string[]> = {
   ...LANG_NEEDLES,
   databases: DATABASES_NEEDLES,
+  docker: ['docker'],
 };
 
 /** Escape a string for use inside a RegExp. */
@@ -182,7 +189,7 @@ export function projectMatchesLanguage(project: Project, group: LangGroup): bool
 
 export function projectInGroup(project: Project, group: ProjectGroup): boolean {
   if (group === 'ai') return Boolean(AI_TAGS[project.id]);
-  if (group.startsWith('lang-') || group === 'databases') {
+  if (group.startsWith('lang-') || group === 'databases' || group === 'docker') {
     return projectMatchesTechNeedles(project, TECH_GROUP_NEEDLES[group as TechMatchGroup]);
   }
   const ids = PROJECT_GROUPS[group as keyof typeof PROJECT_GROUPS];
@@ -283,7 +290,11 @@ export const GROUP_SUBFILTERS: Partial<Record<ProjectGroup | 'all', readonly Gro
     { key: 'postgresql', needles: ['postgresql', 'postgres', 'prisma'] },
     { key: 'sqlite', needles: ['sqlite'] },
     { key: 'mongodb', needles: ['mongodb', 'mongo'] },
-    { key: 'docker', needles: ['docker'] },
+  ],
+  docker: [
+    { key: 'all' },
+    { key: 'products', ids: ['gematrior', 'smartfood'] },
+    { key: 'data', ids: ['telco-churn', 'diamonds-analysis'] },
   ],
 };
 

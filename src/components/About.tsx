@@ -1,5 +1,6 @@
 import { aboutEducation, aboutExperience, type TimelineItem } from '../data/aboutTimeline';
 import { useLocale } from '../i18n/LocaleContext';
+import SkillChip from './SkillChip';
 
 function TimelineBlock({ title, items }: { title: string; items: TimelineItem[] }) {
   return (
@@ -81,7 +82,7 @@ export default function About() {
                   <h4>{group.title}</h4>
                   <div className="skill-tags">
                     {group.items.map((item) => (
-                      <span key={item}>{item}</span>
+                      <SkillChip key={item} skill={item} locale={locale} />
                     ))}
                   </div>
                 </article>

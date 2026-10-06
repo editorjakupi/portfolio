@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useLocale } from '../i18n/LocaleContext';
 import { getProjectCopy, projectImage, type Project } from '../data/projects';
+import TechChip from './TechChip';
 
 interface Props {
   project: Project;
@@ -77,9 +78,7 @@ export default function ProjectModal({ project, onClose }: Props) {
             <h3>{t.modal.techStack}</h3>
             <div className="modal-tech">
               {project.tech.map((tech) => (
-                <span key={tech} className="chip chip-muted">
-                  {tech}
-                </span>
+                <TechChip key={tech} projectId={project.id} tech={tech} locale={locale} />
               ))}
             </div>
           </div>
