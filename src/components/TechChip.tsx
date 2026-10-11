@@ -11,23 +11,15 @@ interface Props {
   className?: string;
 }
 
-/** Tech pill with a portal tooltip so it never clips behind cards/images or the viewport. */
+/** Tech pill with a portal tooltip kept inside the viewport. */
 export default function TechChip({ projectId, tech, locale, className = 'chip chip-muted' }: Props) {
   const tip = getTechTip(projectId, tech, locale);
   const tipId = useId();
   const [open, setOpen] = useState(false);
-  const { anchorRef, tipRef, coords, place } = usePortalTip(open);
+  const { anchorRef, tipRef, coords } = usePortalTip(open);
 
-  const show = useCallback(() => {
-    place();
-    setOpen(true);
-  }, [place]);
-
+  const show = useCallback(() => setOpen(true), []);
   const hide = useCallback(() => setOpen(false), []);
-
-  const tipTransform = coords.below
-    ? `translate(calc(-50% + ${coords.shiftX}px), 0.55rem)`
-    : `translate(calc(-50% + ${coords.shiftX}px), calc(-100% - 0.55rem))`;
 
   return (
     <>
@@ -36,7 +28,10 @@ export default function TechChip({ projectId, tech, locale, className = 'chip ch
         className={`tech-chip ${className}${tip ? ' tech-chip--tip' : ''}`}
         tabIndex={tip ? 0 : undefined}
         aria-describedby={tip && open ? tipId : undefined}
-        onClick={(event) => event.stopPropagation()}
+        onClick={(event) => {
+          event.stopPropagation();
+          if (tip) setOpen(true);
+        }}
         onKeyDown={(event) => event.stopPropagation()}
         onMouseEnter={tip ? show : undefined}
         onMouseLeave={tip ? hide : undefined}
@@ -51,9 +46,9 @@ export default function TechChip({ projectId, tech, locale, className = 'chip ch
           <span
             ref={tipRef}
             id={tipId}
-            className={`tech-tip tech-tip--portal${coords.below ? ' tech-tip--below' : ''}`}
+            className="tech-tip tech-tip--portal"
             role="tooltip"
-            style={{ top: coords.top, left: coords.left, transform: tipTransform }}
+            style={{ top: coords.top, left: coords.left }}
           >
             <span className="tech-tip__what">{tip.what}</span>
             <span className="tech-tip__use">{tip.use}</span>

@@ -1,61 +1,68 @@
 import { useCallback, useLayoutEffect, useRef, useState } from 'react';
 
 const EDGE_PAD = 10;
+const GAP = 8;
 
 export interface PortalTipCoords {
+  /** CSS `top` — tip’s top edge in viewport px */
   top: number;
+  /** CSS `left` — tip’s left edge in viewport px */
   left: number;
   below: boolean;
-  shiftX: number;
 }
 
-/** Positions a fixed portal tooltip above/below an anchor and keeps it inside the viewport. */
+/** Positions a fixed portal tooltip and clamps it fully inside the viewport. */
 export function usePortalTip(open: boolean) {
   const anchorRef = useRef<HTMLSpanElement>(null);
   const tipRef = useRef<HTMLSpanElement>(null);
   const [coords, setCoords] = useState<PortalTipCoords>({
     top: 0,
-    left: 0,
+    left: EDGE_PAD,
     below: false,
-    shiftX: 0,
   });
 
   const place = useCallback(() => {
-    const el = anchorRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const spaceAbove = rect.top;
-    const estimatedTipH = 120;
-    const below = spaceAbove < estimatedTipH + EDGE_PAD;
-    setCoords({
-      top: below ? rect.bottom : rect.top,
-      left: rect.left + rect.width / 2,
-      below,
-      shiftX: 0,
-    });
+    const anchor = anchorRef.current;
+    const tip = tipRef.current;
+    if (!anchor) return;
+
+    const rect = anchor.getBoundingClientRect();
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    // Prefer above the chip; flip below if not enough room.
+    let below = rect.top < 140;
+    const tipW = tip?.offsetWidth || Math.min(288, vw - EDGE_PAD * 2);
+    const tipH = tip?.offsetHeight || 72;
+
+    let left = rect.left + rect.width / 2 - tipW / 2;
+    left = Math.max(EDGE_PAD, Math.min(left, vw - EDGE_PAD - tipW));
+
+    let top = below ? rect.bottom + GAP : rect.top - tipH - GAP;
+
+    if (!below && top < EDGE_PAD) {
+      below = true;
+      top = rect.bottom + GAP;
+    }
+    if (below && top + tipH > vh - EDGE_PAD) {
+      // Prefer keeping it on-screen even if it overlaps the chip a bit.
+      top = Math.max(EDGE_PAD, vh - EDGE_PAD - tipH);
+    }
+
+    setCoords((prev) =>
+      prev.top === top && prev.left === left && prev.below === below
+        ? prev
+        : { top, left, below },
+    );
   }, []);
 
   useLayoutEffect(() => {
     if (!open) return;
+    // First pass (tip may just have mounted), then remeasure with real size.
     place();
+    const id = requestAnimationFrame(() => place());
+    return () => cancelAnimationFrame(id);
   }, [open, place]);
-
-  useLayoutEffect(() => {
-    if (!open) return;
-    const tip = tipRef.current;
-    if (!tip) return;
-
-    const tipRect = tip.getBoundingClientRect();
-    const vw = window.innerWidth;
-    let shiftX = 0;
-    if (tipRect.left < EDGE_PAD) {
-      shiftX = EDGE_PAD - tipRect.left;
-    } else if (tipRect.right > vw - EDGE_PAD) {
-      shiftX = vw - EDGE_PAD - tipRect.right;
-    }
-
-    setCoords((prev) => (prev.shiftX === shiftX ? prev : { ...prev, shiftX }));
-  }, [open, coords.left, coords.top, coords.below]);
 
   useLayoutEffect(() => {
     if (!open) return;

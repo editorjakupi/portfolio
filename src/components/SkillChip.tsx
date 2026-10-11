@@ -14,18 +14,10 @@ export default function SkillChip({ skill, locale }: Props) {
   const tip = getSkillTip(skill, locale);
   const tipId = useId();
   const [open, setOpen] = useState(false);
-  const { anchorRef, tipRef, coords, place } = usePortalTip(open);
+  const { anchorRef, tipRef, coords } = usePortalTip(open);
 
-  const show = useCallback(() => {
-    place();
-    setOpen(true);
-  }, [place]);
-
+  const show = useCallback(() => setOpen(true), []);
   const hide = useCallback(() => setOpen(false), []);
-
-  const tipTransform = coords.below
-    ? `translate(calc(-50% + ${coords.shiftX}px), 0.5rem)`
-    : `translate(calc(-50% + ${coords.shiftX}px), calc(-100% - 0.5rem))`;
 
   return (
     <>
@@ -38,6 +30,15 @@ export default function SkillChip({ skill, locale }: Props) {
         onMouseLeave={tip ? hide : undefined}
         onFocus={tip ? show : undefined}
         onBlur={tip ? hide : undefined}
+        onClick={
+          tip
+            ? (event) => {
+                // Mobile: tap focuses the chip; keep tip open and avoid card/parent handlers.
+                event.stopPropagation();
+                setOpen(true);
+              }
+            : undefined
+        }
       >
         {skill}
       </span>
@@ -47,9 +48,9 @@ export default function SkillChip({ skill, locale }: Props) {
           <span
             ref={tipRef}
             id={tipId}
-            className={`skill-tip skill-tip--portal${coords.below ? ' skill-tip--below' : ''}`}
+            className="skill-tip skill-tip--portal"
             role="tooltip"
-            style={{ top: coords.top, left: coords.left, transform: tipTransform }}
+            style={{ top: coords.top, left: coords.left }}
           >
             {tip}
           </span>,

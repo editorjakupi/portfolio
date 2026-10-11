@@ -205,10 +205,11 @@ img {
   box-sizing: border-box;
 }
 
-/* Fixed to viewport via portal — transform set inline so it can clamp horizontally. */
+/* Fixed to viewport via portal — left/top are absolute edges (no -50% transform). */
 .tech-tip--portal {
   position: fixed;
   z-index: 10000;
+  transform: none;
 }
 
 .tech-tip__what {
@@ -901,6 +902,7 @@ img {
 .skill-tip--portal {
   position: fixed;
   z-index: 10000;
+  transform: none;
 }
 
 .timeline {
