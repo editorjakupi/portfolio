@@ -1847,7 +1847,7 @@ img {
 .ambient-music__main {
   min-width: 0;
   display: grid;
-  gap: 0.28rem;
+  gap: 0.14rem;
 }
 
 .ambient-music__marquee {
