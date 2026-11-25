@@ -63,7 +63,7 @@ declare global {
           };
         },
       ) => YtPlayer;
-      PlayerState?: { PLAYING: number; PAUSED: number; ENDED: number };
+      PlayerState?: { UNSTARTED: number; ENDED: number; PLAYING: number; PAUSED: number; BUFFERING: number; CUED: number };
     };
     onYouTubeIframeAPIReady?: () => void;
   }
@@ -95,21 +95,16 @@ function loadYtApi(): Promise<void> {
   });
 }
 
-function startPlayback(player: YtPlayer, vol = 70) {
-  try {
-    player.setVolume(vol);
-    player.unMute();
-    player.playVideo();
-  } catch {
-    /* browser may still require a gesture */
-  }
-}
-
-/** Compact mini player — unmuted autoplay as soon as YouTube is ready. */
+/** Compact mini player with reliable play/pause and autoplay on land. */
 export default function AmbientMusic() {
   const { locale } = useLocale();
   const hostRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<YtPlayer | null>(null);
+  /** When true, user paused — do not auto-resume. */
+  const userPausedRef = useRef(false);
+  /** Only auto-kick play during the initial startup window. */
+  const autoStartRef = useRef(true);
+  const volumeRef = useRef(70);
   const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(70);
@@ -119,7 +114,17 @@ export default function AmbientMusic() {
 
   useEffect(() => {
     let cancelled = false;
-    const retryTimers: number[] = [];
+    const timers: number[] = [];
+
+    const playNow = (player: YtPlayer) => {
+      try {
+        player.setVolume(volumeRef.current);
+        if (volumeRef.current > 0) player.unMute();
+        player.playVideo();
+      } catch {
+        /* ignore */
+      }
+    };
 
     loadYtApi().then(() => {
       if (cancelled || !hostRef.current || !window.YT?.Player) return;
@@ -144,24 +149,46 @@ export default function AmbientMusic() {
           onReady: (e) => {
             if (cancelled) return;
             playerRef.current = e.target;
-            startPlayback(e.target, 70);
             setReady(true);
-            // Retry quickly — autoplay sometimes needs a second kick after buffer starts.
-            [120, 400, 900, 1800].forEach((ms) => {
-              retryTimers.push(
+            userPausedRef.current = false;
+            autoStartRef.current = true;
+            playNow(e.target);
+            // Short startup retries only — stop after a few seconds so pause stays paused.
+            [150, 500, 1200].forEach((ms) => {
+              timers.push(
                 window.setTimeout(() => {
-                  if (cancelled || !playerRef.current) return;
-                  startPlayback(playerRef.current, 70);
+                  if (cancelled || userPausedRef.current || !autoStartRef.current) return;
+                  if (playerRef.current) playNow(playerRef.current);
                 }, ms),
               );
             });
+            timers.push(
+              window.setTimeout(() => {
+                autoStartRef.current = false;
+              }, 2500),
+            );
           },
           onStateChange: (e) => {
-            const playingCode = window.YT?.PlayerState?.PLAYING ?? 1;
-            setPlaying(e.data === playingCode);
-            // If cued/paused right after load, kick play again.
-            if (e.data === 5 || e.data === 2) {
-              startPlayback(e.target, 70);
+            const PLAYING = window.YT?.PlayerState?.PLAYING ?? 1;
+            const PAUSED = window.YT?.PlayerState?.PAUSED ?? 2;
+            const CUED = window.YT?.PlayerState?.CUED ?? 5;
+            const ENDED = window.YT?.PlayerState?.ENDED ?? 0;
+
+            if (e.data === PLAYING) {
+              setPlaying(true);
+              // Once we are actually playing, end aggressive auto-start.
+              autoStartRef.current = false;
+              return;
+            }
+
+            if (e.data === PAUSED) {
+              setPlaying(false);
+              return;
+            }
+
+            // Loop / initial cue — only auto-resume if user did not pause.
+            if ((e.data === CUED || e.data === ENDED) && !userPausedRef.current) {
+              playNow(e.target);
             }
           },
         },
@@ -169,18 +196,9 @@ export default function AmbientMusic() {
       playerRef.current = player;
     });
 
-    // Backup: any early gesture also ensures playback (no UI prompt).
-    const kick = () => {
-      if (playerRef.current) startPlayback(playerRef.current, 70);
-    };
-    window.addEventListener('pointerdown', kick, true);
-    window.addEventListener('keydown', kick, true);
-
     return () => {
       cancelled = true;
-      retryTimers.forEach((id) => window.clearTimeout(id));
-      window.removeEventListener('pointerdown', kick, true);
-      window.removeEventListener('keydown', kick, true);
+      timers.forEach((id) => window.clearTimeout(id));
       try {
         playerRef.current?.destroy();
       } catch {
@@ -194,41 +212,65 @@ export default function AmbientMusic() {
     const p = playerRef.current;
     if (!p) return;
     if (playing) {
+      userPausedRef.current = true;
+      autoStartRef.current = false;
       p.pauseVideo();
       setPlaying(false);
     } else {
-      startPlayback(p, volume);
+      userPausedRef.current = false;
+      try {
+        p.setVolume(volumeRef.current);
+        if (volumeRef.current > 0) p.unMute();
+        p.playVideo();
+      } catch {
+        /* ignore */
+      }
+      setPlaying(true);
     }
   };
 
   const restart = () => {
     const p = playerRef.current;
     if (!p) return;
+    userPausedRef.current = false;
     p.seekTo(0, true);
-    startPlayback(p, volume);
+    try {
+      p.setVolume(volumeRef.current);
+      if (volumeRef.current > 0) p.unMute();
+      p.playVideo();
+    } catch {
+      /* ignore */
+    }
+    setPlaying(true);
   };
 
   const seekBy = (delta: number) => {
     const p = playerRef.current;
     if (!p) return;
+    userPausedRef.current = false;
     const now = p.getCurrentTime?.() ?? 0;
     const dur = p.getDuration?.() || Number.POSITIVE_INFINITY;
     const next = Math.max(0, Math.min(dur, now + delta));
     p.seekTo(next, true);
-    startPlayback(p, volume);
+    try {
+      p.setVolume(volumeRef.current);
+      if (volumeRef.current > 0) p.unMute();
+      p.playVideo();
+    } catch {
+      /* ignore */
+    }
+    setPlaying(true);
   };
 
   const onVolume = (value: number) => {
     const p = playerRef.current;
     const next = Math.max(0, Math.min(100, value));
+    volumeRef.current = next;
     setVolume(next);
     if (!p) return;
     p.setVolume(next);
     if (next === 0) p.mute();
-    else {
-      p.unMute();
-      p.playVideo();
-    }
+    else p.unMute();
   };
 
   return (
