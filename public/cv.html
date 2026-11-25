@@ -1266,17 +1266,14 @@
             }
                 ${item.verifyUrl
               ? `<p class="tl-verify"><a href="${item.verifyUrl}" target="_blank" rel="noopener noreferrer">${
-                  String(item.verifyUrl).includes('vu1') || String(item.verifyUrl).includes('credentials/')
+                  item.verifyKind === 'certificate'
                     ? (labels.viewCertificate || labels.verifyDiploma)
                     : labels.verifyDiploma
                 }</a></p>`
               : ''
             }
                 ${
-                  item.verifyUrl &&
-                  (String(item.verifyUrl).includes('nbi-handelsakademin') ||
-                    String(item.verifyUrl).includes('trueoriginal') ||
-                    String(item.verifyUrl).includes('true.nbi'))
+                  item.showEuropass
                     ? `<p class="tl-verify"><a href="${europassPdfForLang(lang)}" target="_blank" rel="noopener noreferrer">${labels.europassTimeline}</a></p>`
               : ''
             }
@@ -1465,12 +1462,21 @@
       });
     }
 
+    function absolutePortfolioHref(href) {
+      const raw = href || '';
+      if (raw.startsWith('/') && !raw.startsWith('//')) {
+        return `${CONTACT.portfolio}${raw}`;
+      }
+      return raw;
+    }
+
     function collectLinks(clone) {
       const cloneRect = clone.getBoundingClientRect();
       return [...clone.querySelectorAll('a[href]')].map((el) => {
         const r = el.getBoundingClientRect();
+        const attr = el.getAttribute('href') || '';
         return {
-          href: el.href,
+          href: absolutePortfolioHref(attr) || el.href,
           top: r.top - cloneRect.top,
           left: r.left - cloneRect.left,
           width: r.width,
@@ -1863,6 +1869,10 @@
       const root = document.getElementById('cv-root').cloneNode(true);
       root.classList.add('page', 'page--export');
       root.querySelectorAll('a[href]').forEach((a) => {
+        const raw = a.getAttribute('href') || '';
+        if (raw.startsWith('/') && !raw.startsWith('//')) {
+          a.setAttribute('href', `${CONTACT.portfolio}${raw}`);
+        }
         a.setAttribute('target', '_blank');
         a.setAttribute('rel', 'noopener noreferrer');
       });

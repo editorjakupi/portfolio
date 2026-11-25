@@ -26,6 +26,10 @@ const CV_SKILLS = [
 const NBI_DIPLOMA_URL =
   "https://true.nbi-handelsakademin.se/examensbevis-nbi-356401-8604/?zone=truecrt&lang=se";
 
+/** Absolute portfolio URL so downloaded CV (HTML/PDF/DOCX) can open the certificate. */
+const VU1_CERTIFICATE_URL =
+  "https://editorjakupi.com/credentials/vu1-utbildningsbevis.png";
+
 const EUROPASS_PDF_SV =
   "https://www.nbi-handelsakademin.se/wp-content/uploads/Europass-MAI24HA-SV.pdf";
 const EUROPASS_PDF_EN =
@@ -96,6 +100,8 @@ window.CV_DATA = {
           sub: "Halmstad, Sweden",
           desc: "Combined modern development in C#, Python and JavaScript with AI and machine learning. Completed courses in OOP, databases, agile development, project management and data-driven applications, along with 24 weeks of internship (LIA).",
           verifyUrl: NBI_DIPLOMA_URL,
+          verifyKind: "diploma",
+          showEuropass: true,
         },
         {
           title: "M.Sc. Computer Engineering — Halmstad University",
@@ -109,7 +115,8 @@ window.CV_DATA = {
           period: "Jun 2021",
           sub: "Göteborg, Sweden",
           desc: "Completed with certificates.",
-          verifyUrl: "/credentials/vu1-utbildningsbevis.png",
+          verifyUrl: VU1_CERTIFICATE_URL,
+          verifyKind: "certificate",
         },
         {
           title: "High School Diploma — Natural Sciences, Sannarpsgymnasiet",
@@ -172,6 +179,8 @@ window.CV_DATA = {
           sub: "Halmstad",
           desc: "Kombinerade modern utveckling i C#, Python och JavaScript med AI och maskininlärning. Kurser i OOP, databaser, agil utveckling, projektledning och datadrivna applikationer, samt 24 veckors LIA.",
           verifyUrl: NBI_DIPLOMA_URL,
+          verifyKind: "diploma",
+          showEuropass: true,
         },
         {
           title: "Civilingenjör datateknik — Halmstads högskola",
@@ -184,7 +193,8 @@ window.CV_DATA = {
           period: "jun 2021",
           sub: "Göteborg",
           desc: "Avslutad med intyg.",
-          verifyUrl: "/credentials/vu1-utbildningsbevis.png",
+          verifyUrl: VU1_CERTIFICATE_URL,
+          verifyKind: "certificate",
         },
         {
           title: "Gymnasieexamen — Naturvetenskap, Sannarpsgymnasiet",
@@ -247,6 +257,8 @@ window.CV_DATA = {
           sub: "Halmstad",
           desc: "Zhvillim modern në C#, Python, JavaScript me AI/ML. Kurse OOP, databaza, agile, menaxhim projektesh dhe 24 javë LIA.",
           verifyUrl: NBI_DIPLOMA_URL,
+          verifyKind: "diploma",
+          showEuropass: true,
         },
         {
           title: "M.Sc. Inxhinieri Kompjuterike — Universiteti i Halmstad",
@@ -259,7 +271,8 @@ window.CV_DATA = {
           period: "qer 2021",
           sub: "Göteborg",
           desc: "E përfunduar me certifikata.",
-          verifyUrl: "/credentials/vu1-utbildningsbevis.png",
+          verifyUrl: VU1_CERTIFICATE_URL,
+          verifyKind: "certificate",
         },
         {
           title: "Diplomë shkolle mesme — Shkenca natyrore, Sannarpsgymnasiet",
@@ -322,6 +335,8 @@ window.CV_DATA = {
           sub: "Halmstad",
           desc: "C#, Python, JavaScript mit KI/ML. OOP, Datenbanken, Agile, Projektmanagement, 24 Wochen LIA.",
           verifyUrl: NBI_DIPLOMA_URL,
+          verifyKind: "diploma",
+          showEuropass: true,
         },
         {
           title: "M.Sc. Computertechnik — Universität Halmstad",
@@ -334,7 +349,8 @@ window.CV_DATA = {
           period: "Jun 2021",
           sub: "Göteborg",
           desc: "Mit Zertifikaten abgeschlossen.",
-          verifyUrl: "/credentials/vu1-utbildningsbevis.png",
+          verifyUrl: VU1_CERTIFICATE_URL,
+          verifyKind: "certificate",
         },
         {
           title: "Gymnasium — Naturwissenschaften, Sannarpsgymnasiet",
@@ -397,6 +413,8 @@ window.CV_DATA = {
           sub: "Halmstad",
           desc: "C#, Python, JavaScript avec IA/ML. POO, bases de données, agile, gestion de projet, 24 semaines LIA.",
           verifyUrl: NBI_DIPLOMA_URL,
+          verifyKind: "diploma",
+          showEuropass: true,
         },
         {
           title: "M.Sc. génie informatique — Université de Halmstad",
@@ -409,7 +427,8 @@ window.CV_DATA = {
           period: "Jun 2021",
           sub: "Göteborg",
           desc: "Certificats obtenus.",
-          verifyUrl: "/credentials/vu1-utbildningsbevis.png",
+          verifyUrl: VU1_CERTIFICATE_URL,
+          verifyKind: "certificate",
         },
         {
           title: "Baccalauréat — Sciences naturelles, Sannarpsgymnasiet",
@@ -472,6 +491,8 @@ window.CV_DATA = {
           sub: "Halmstad",
           desc: "C#, Python, JavaScript con IA/ML. POO, bases de datos, agile, gestión de proyectos, 24 semanas LIA.",
           verifyUrl: NBI_DIPLOMA_URL,
+          verifyKind: "diploma",
+          showEuropass: true,
         },
         {
           title: "M.Sc. ingeniería informática — Universidad de Halmstad",
@@ -484,7 +505,8 @@ window.CV_DATA = {
           period: "Jun 2021",
           sub: "Göteborg",
           desc: "Certificados obtenidos.",
-          verifyUrl: "/credentials/vu1-utbildningsbevis.png",
+          verifyUrl: VU1_CERTIFICATE_URL,
+          verifyKind: "certificate",
         },
         {
           title: "Bachillerato — Ciencias naturales, Sannarpsgymnasiet",
@@ -547,6 +569,8 @@ window.CV_DATA = {
           sub: "Halmstad",
           desc: "C#, Python, JavaScript con IA/ML. OOP, database, agile, project management, 24 settimane LIA.",
           verifyUrl: NBI_DIPLOMA_URL,
+          verifyKind: "diploma",
+          showEuropass: true,
         },
         {
           title: "M.Sc. ingegneria informatica — Università di Halmstad",
@@ -559,7 +583,8 @@ window.CV_DATA = {
           period: "Giu 2021",
           sub: "Göteborg",
           desc: "Certificati ottenuti.",
-          verifyUrl: "/credentials/vu1-utbildningsbevis.png",
+          verifyUrl: VU1_CERTIFICATE_URL,
+          verifyKind: "certificate",
         },
         {
           title:
@@ -623,6 +648,8 @@ window.CV_DATA = {
           sub: "Halmstad",
           desc: "C#, Python, JavaScript z AI/ML. OOP, bazy danych, agile, zarządzanie projektami, 24 tygodnie LIA.",
           verifyUrl: NBI_DIPLOMA_URL,
+          verifyKind: "diploma",
+          showEuropass: true,
         },
         {
           title: "M.Sc. inżynieria komputerowa — Uniw. Halmstad",
@@ -635,7 +662,8 @@ window.CV_DATA = {
           period: "Cze 2021",
           sub: "Göteborg",
           desc: "Ukończone z certyfikatami.",
-          verifyUrl: "/credentials/vu1-utbildningsbevis.png",
+          verifyUrl: VU1_CERTIFICATE_URL,
+          verifyKind: "certificate",
         },
         {
           title: "Matura — Nauki przyrodnicze, Sannarpsgymnasiet",

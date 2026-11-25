@@ -1,8 +1,8 @@
 import type { Locale } from '../i18n/types';
 
-/** Local VU1 security-guard certificate (hosted under /credentials). */
+/** VU1 security-guard certificate hosted on the live portfolio (absolute for CV exports). */
 export const vu1Certificate = {
-  url: '/credentials/vu1-utbildningsbevis.png',
+  url: 'https://editorjakupi.com/credentials/vu1-utbildningsbevis.png',
   label: {
     en: 'View certificate',
     sv: 'Visa utbildningsbevis',
