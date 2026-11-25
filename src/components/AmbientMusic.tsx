@@ -19,6 +19,7 @@ const LABELS = {
     volume: 'Volume',
     hide: 'Hide',
     show: 'Music',
+    tap: 'Tap for sound',
   },
   sv: {
     play: 'Spela',
@@ -29,6 +30,7 @@ const LABELS = {
     volume: 'Volym',
     hide: 'Dölj',
     show: 'Musik',
+    tap: 'Tryck för ljud',
   },
 } as const;
 
@@ -60,10 +62,11 @@ declare global {
           events?: {
             onReady?: (e: { target: YtPlayer }) => void;
             onStateChange?: (e: { data: number; target: YtPlayer }) => void;
+            onError?: (e: { data: number }) => void;
           };
         },
       ) => YtPlayer;
-      PlayerState?: { PLAYING: number; PAUSED: number; ENDED: number };
+      PlayerState?: { PLAYING: number; PAUSED: number; ENDED: number; CUED: number };
     };
     onYouTubeIframeAPIReady?: () => void;
   }
@@ -77,22 +80,39 @@ function loadYtApi(): Promise<void> {
       prev?.();
       resolve();
     };
-    if (!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
+    const existing = document.querySelector('script[src="https://www.youtube.com/iframe_api"]');
+    if (!existing) {
       const s = document.createElement('script');
       s.src = 'https://www.youtube.com/iframe_api';
       s.async = true;
       document.head.appendChild(s);
     }
+    // API may already be mid-load; poll briefly as fallback.
+    const started = Date.now();
+    const tick = () => {
+      if (window.YT?.Player) {
+        resolve();
+        return;
+      }
+      if (Date.now() - started < 8000) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   });
 }
 
-/** Ultra-compact mini player — official YouTube audio, no hosted MP3. */
+/**
+ * Compact mini player. Browsers block unmuted autoplay, so we:
+ * 1) start muted (allowed) as soon as the page loads
+ * 2) unmute + ensure play on the first user gesture anywhere
+ */
 export default function AmbientMusic() {
   const { locale } = useLocale();
   const hostRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<YtPlayer | null>(null);
+  const unlockedRef = useRef(false);
   const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const [needsGesture, setNeedsGesture] = useState(true);
   const [volume, setVolume] = useState(70);
   const [open, setOpen] = useState(true);
   const labels = locale === 'sv' ? LABELS.sv : LABELS.en;
@@ -100,34 +120,70 @@ export default function AmbientMusic() {
 
   useEffect(() => {
     let cancelled = false;
+    let gestureSeen = false;
+
+    const tryUnlock = () => {
+      const p = playerRef.current;
+      if (!p) return false;
+      try {
+        p.setVolume(70);
+        p.unMute();
+        p.playVideo();
+        unlockedRef.current = true;
+        setNeedsGesture(false);
+        return true;
+      } catch {
+        return false;
+      }
+    };
+
+    const onGesture = () => {
+      gestureSeen = true;
+      unlockedRef.current = true;
+      tryUnlock();
+    };
+
+    // Capture phase so we catch the first interaction even if something stops propagation.
+    window.addEventListener('pointerdown', onGesture, true);
+    window.addEventListener('touchstart', onGesture, true);
+    window.addEventListener('keydown', onGesture, true);
+    window.addEventListener('click', onGesture, true);
 
     loadYtApi().then(() => {
       if (cancelled || !hostRef.current || !window.YT?.Player) return;
+
+      const origin = window.location.origin;
       const player = new window.YT.Player(hostRef.current, {
         videoId: YT_VIDEO_ID,
         width: 1,
         height: 1,
         playerVars: {
           autoplay: 1,
+          mute: 1,
           loop: 1,
           playlist: YT_VIDEO_ID,
           controls: 0,
           modestbranding: 1,
           rel: 0,
           playsinline: 1,
+          enablejsapi: 1,
+          origin,
         },
         events: {
           onReady: (e) => {
             if (cancelled) return;
             playerRef.current = e.target;
             e.target.setVolume(70);
-            e.target.unMute();
+            // Muted autoplay is allowed in most browsers — primes the stream immediately.
+            e.target.mute();
             try {
               e.target.playVideo();
             } catch {
-              /* gesture may be required */
+              /* ignore */
             }
             setReady(true);
+            // If user already gestured before the player finished loading, unlock now.
+            if (gestureSeen || unlockedRef.current) tryUnlock();
           },
           onStateChange: (e) => {
             const playingCode = window.YT?.PlayerState?.PLAYING ?? 1;
@@ -138,23 +194,12 @@ export default function AmbientMusic() {
       playerRef.current = player;
     });
 
-    const unlock = () => {
-      const p = playerRef.current;
-      if (!p) return;
-      try {
-        p.unMute();
-        p.playVideo();
-      } catch {
-        /* ignore */
-      }
-    };
-    window.addEventListener('pointerdown', unlock, { once: true });
-    window.addEventListener('keydown', unlock, { once: true });
-
     return () => {
       cancelled = true;
-      window.removeEventListener('pointerdown', unlock);
-      window.removeEventListener('keydown', unlock);
+      window.removeEventListener('pointerdown', onGesture, true);
+      window.removeEventListener('touchstart', onGesture, true);
+      window.removeEventListener('keydown', onGesture, true);
+      window.removeEventListener('click', onGesture, true);
       try {
         playerRef.current?.destroy();
       } catch {
@@ -167,7 +212,9 @@ export default function AmbientMusic() {
   const togglePlay = () => {
     const p = playerRef.current;
     if (!p) return;
-    if (playing) {
+    unlockedRef.current = true;
+    setNeedsGesture(false);
+    if (playing && !p.isMuted?.()) {
       p.pauseVideo();
       setPlaying(false);
     } else {
@@ -179,6 +226,8 @@ export default function AmbientMusic() {
   const restart = () => {
     const p = playerRef.current;
     if (!p) return;
+    unlockedRef.current = true;
+    setNeedsGesture(false);
     p.seekTo(0, true);
     p.unMute();
     p.playVideo();
@@ -187,10 +236,14 @@ export default function AmbientMusic() {
   const seekBy = (delta: number) => {
     const p = playerRef.current;
     if (!p) return;
+    unlockedRef.current = true;
+    setNeedsGesture(false);
+    p.unMute();
     const now = p.getCurrentTime?.() ?? 0;
     const dur = p.getDuration?.() || Number.POSITIVE_INFINITY;
     const next = Math.max(0, Math.min(dur, now + delta));
     p.seekTo(next, true);
+    p.playVideo();
   };
 
   const onVolume = (value: number) => {
@@ -198,9 +251,14 @@ export default function AmbientMusic() {
     const next = Math.max(0, Math.min(100, value));
     setVolume(next);
     if (!p) return;
+    unlockedRef.current = true;
+    setNeedsGesture(false);
     p.setVolume(next);
     if (next === 0) p.mute();
-    else p.unMute();
+    else {
+      p.unMute();
+      p.playVideo();
+    }
   };
 
   return (
@@ -222,12 +280,18 @@ export default function AmbientMusic() {
             />
           </label>
           <div className="ambient-music__main">
-            <div className="ambient-music__marquee" aria-hidden={!playing}>
-              <div className="ambient-music__marquee-track">
-                <span>{marquee}</span>
-                <span>{marquee}</span>
+            {needsGesture ? (
+              <button type="button" className="ambient-music__tap" onClick={togglePlay}>
+                {labels.tap}
+              </button>
+            ) : (
+              <div className="ambient-music__marquee" aria-hidden={!playing}>
+                <div className="ambient-music__marquee-track">
+                  <span>{marquee}</span>
+                  <span>{marquee}</span>
+                </div>
               </div>
-            </div>
+            )}
             <div className="ambient-music__controls">
               <button
                 type="button"
@@ -254,11 +318,11 @@ export default function AmbientMusic() {
                 className="ambient-music__btn ambient-music__btn--main"
                 onClick={togglePlay}
                 disabled={!ready}
-                aria-pressed={playing}
-                aria-label={playing ? labels.pause : labels.play}
-                title={playing ? labels.pause : labels.play}
+                aria-pressed={playing && !needsGesture}
+                aria-label={playing && !needsGesture ? labels.pause : labels.play}
+                title={playing && !needsGesture ? labels.pause : labels.play}
               >
-                {playing ? '❚❚' : '▶'}
+                {playing && !needsGesture ? '❚❚' : '▶'}
               </button>
               <button
                 type="button"
@@ -286,11 +350,14 @@ export default function AmbientMusic() {
         <button
           type="button"
           className="ambient-music__fab"
-          onClick={() => setOpen(true)}
+          onClick={() => {
+            setOpen(true);
+            togglePlay();
+          }}
           aria-label={labels.show}
           title={`${TRACK.title} — ${TRACK.artist}`}
         >
-          ♪ {labels.show}
+          ♪ {needsGesture ? labels.tap : labels.show}
         </button>
       )}
     </div>
