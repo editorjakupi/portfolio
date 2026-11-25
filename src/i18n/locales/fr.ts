@@ -25,14 +25,17 @@ const fr: Translations = {
   },
   about: {
     label: 'À propos',
-    title: 'Des entrepôts au code de production.',
+    title: 'Du logiciel utilisé pour de vrai.',
     p1:
-      'Avant le développement logiciel, j\'ai travaillé en entrepôt, dans la surveillance du stationnement et le support IT — des rôles qui m\'ont appris la discipline, le dépannage sous pression et la fiabilité. Cet état d\'esprit pratique guide aujourd\'hui ma façon d\'écrire du code : structuré, testé et conçu pour de vrais utilisateurs.',
+      'Je construis des systèmes web, IA et produit de l’idée à la production. Un passé en surveillance de parking m’a appris la discipline et le dépannage sous pression. Cet état d’esprit pratique façonne encore mon code : structuré, testé, pensé pour de vrais utilisateurs.',
     p2:
-      'J\'ai étudié le génie informatique à l\'université de Halmstad pendant un an (2021–2022). J\'ai ensuite terminé la formation YH Développeur logiciel avec IA à la NBI Handelsakademin en juin 2026, avec des stages LIA chez PodManager.AI et Swiiftly.',
+      'J’ai étudié le génie informatique à l’université de Halmstad pendant un an (2021–2022). J’ai ensuite terminé la formation YH Développeur logiciel avec IA à la NBI Handelsakademin en juin 2026, avec des stages LIA chez PodManager.AI et Swiiftly.',
     p3:
-      'En dehors du développement, je pratique le trading retail sur matières premières — analyse de marché, discipline du risque et prise de décision structurée dans l\'incertitude.',
+      'Depuis octobre 2026 je dirige Pi93 AB (IT et services associés) — j’y mets le temps disponible et fais grandir produits et idées.',
+    p4:
+      'Au-delà du développement, je pratique le trading de matières premières en privé — avec un accent sur l’analyse de marché, la discipline de risque et des décisions structurées sous incertitude.',
     skillsTitle: 'Compétences techniques',
+    skillsSubtitle: 'Technologies avec lesquelles j’ai travaillé ou construit.',
     timelineTitle: 'Expérience',
     educationTitle: 'Formation',
     skillGroups: [
@@ -42,15 +45,15 @@ const fr: Translations = {
       },
       {
         title: 'Frontend & mobile',
-        items: ['React', 'Next.js', 'React Native', 'Vite', 'jQuery'],
+        items: ['React', 'Next.js', 'React Native', 'Vite', 'Astro', 'jQuery'],
       },
       {
         title: 'Backend & APIs',
         items: ['Node.js', 'FastAPI', '.NET', 'REST APIs', 'Express'],
       },
       {
-        title: 'IA & données',
-        items: ['Machine Learning', 'RAG', 'Intégration LLM', 'Whisper', 'Azure Speech', 'TensorFlow/Keras', 'Streamlit'],
+        title: 'IA & data',
+        items: ['Machine Learning', 'RAG', 'LLM Integration', 'Whisper', 'Azure Speech', 'TensorFlow/Keras', 'Streamlit'],
       },
       {
         title: 'Outils & DevOps',
@@ -58,15 +61,11 @@ const fr: Translations = {
       },
       {
         title: 'Temps réel & cloud',
-        items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Azure Blob Storage'],
+        items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Prisma', 'Azure Blob Storage'],
       },
       {
-        title: 'Autre',
-        items: ['Support IT', 'Microsoft Office'],
-      },
-      {
-        title: 'Au-delà du code',
-        items: ['Matières premières', 'Analyse de marché', 'Discipline du risque'],
+        title: 'Au-delà du développement',
+        items: ['Matières premières', 'Analyse de marché', 'Discipline de risque'],
       },
     ],
   },

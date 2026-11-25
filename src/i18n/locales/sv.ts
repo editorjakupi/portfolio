@@ -25,14 +25,17 @@ const sv: Translations = {
   },
   about: {
     label: 'Om mig',
-    title: 'Från lagergolv till produktionskod.',
+    title: 'Kod som används på riktigt.',
     p1:
-      'Innan mjukvaruutveckling arbetade jag på lager, med parkeringsövervakning och IT-support — roller som lärde mig disciplin, felsökning under press och att leverera pålitligt. Det praktiska arbetssättet präglar hur jag skriver kod idag: strukturerat, testat och byggt för riktiga användare.',
+      'Jag bygger webb-, AI- och produktlösningar från idé till drift. Tidigare arbetade jag med parkeringsövervakning — det gav disciplin och ett praktiskt sätt att lösa problem under press. Idag skriver jag kod som är strukturerad, testad och byggd för riktiga användare.',
     p2:
       'Jag läste datateknik vid Högskolan i Halmstad under ett år (2021–2022). Därefter gick jag YH-utbildningen Mjukvaruutvecklare med AI vid NBI Handelsakademin, som jag avslutade i juni 2026, med LIA hos PodManager.AI och Swiiftly.',
     p3:
+      'Sedan oktober 2026 driver jag Pi93 AB (IT och relaterade tjänster) — jag lägger den tid jag kan på bolaget och bygger vidare produkter och idéer över tid.',
+    p4:
       'Utöver utveckling ägnar jag mig åt privat retail-handel med fokus på råvaror och CFD — med betoning på riskhantering, marknadsanalys och disciplinerat beslutsfattande under osäkerhet.',
     skillsTitle: 'Tekniska färdigheter',
+    skillsSubtitle: 'Dessa har jag jobbat med eller byggt med.',
     timelineTitle: 'Erfarenhet',
     educationTitle: 'Utbildning',
     skillGroups: [
@@ -42,7 +45,7 @@ const sv: Translations = {
       },
       {
         title: 'Frontend & mobil',
-        items: ['React', 'Next.js', 'React Native', 'Vite', 'jQuery'],
+        items: ['React', 'Next.js', 'React Native', 'Vite', 'Astro', 'jQuery'],
       },
       {
         title: 'Backend & API:er',
@@ -58,11 +61,7 @@ const sv: Translations = {
       },
       {
         title: 'Realtid & moln',
-        items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Azure Blob Storage'],
-      },
-      {
-        title: 'Övrigt',
-        items: ['IT-support', 'Microsoft Office'],
+        items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Prisma', 'Azure Blob Storage'],
       },
       {
         title: 'Utöver utveckling',

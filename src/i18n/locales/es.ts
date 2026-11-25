@@ -25,14 +25,17 @@ const es: Translations = {
   },
   about: {
     label: 'Sobre mí',
-    title: 'Del almacén al código de producción.',
+    title: 'Software que se usa de verdad.',
     p1:
-      'Antes del desarrollo de software trabajé en almacenes, control de aparcamiento y soporte IT — roles que me enseñaron disciplina, resolución de problemas bajo presión y entrega fiable. Esa mentalidad práctica define hoy cómo escribo código: estructurado, probado y pensado para usuarios reales.',
+      'Construyo sistemas web, de IA y de producto de la idea a producción. El trabajo previo en control de aparcamiento me dio disciplina y calma al resolver problemas bajo presión. Esa mentalidad práctica sigue marcando cómo escribo código: estructurado, probado y pensado para usuarios reales.',
     p2:
       'Estudié ingeniería informática en la Universidad de Halmstad durante un año (2021–2022). Después completé la formación YH Desarrollador de software con IA en NBI Handelsakademin en junio 2026, con LIA en PodManager.AI y Swiiftly.',
     p3:
-      'Además del desarrollo, practico trading retail en materias primas — análisis de mercado, disciplina de riesgo y decisiones estructuradas bajo incertidumbre.',
+      'Desde octubre 2026 dirijo Pi93 AB (IT y servicios relacionados) — dedico el tiempo que puedo a la empresa y a crecer productos e ideas.',
+    p4:
+      'Más allá del desarrollo, opero trading minorista de materias primas con foco en análisis de mercado, disciplina de riesgo y decisiones estructuradas bajo incertidumbre.',
     skillsTitle: 'Habilidades técnicas',
+    skillsSubtitle: 'Tecnologías con las que he trabajado o construido.',
     timelineTitle: 'Experiencia',
     educationTitle: 'Formación',
     skillGroups: [
@@ -42,7 +45,7 @@ const es: Translations = {
       },
       {
         title: 'Frontend y móvil',
-        items: ['React', 'Next.js', 'React Native', 'Vite', 'jQuery'],
+        items: ['React', 'Next.js', 'React Native', 'Vite', 'Astro', 'jQuery'],
       },
       {
         title: 'Backend y APIs',
@@ -50,22 +53,18 @@ const es: Translations = {
       },
       {
         title: 'IA y datos',
-        items: ['Machine Learning', 'RAG', 'Integración LLM', 'Whisper', 'Azure Speech', 'TensorFlow/Keras', 'Streamlit'],
+        items: ['Machine Learning', 'RAG', 'LLM Integration', 'Whisper', 'Azure Speech', 'TensorFlow/Keras', 'Streamlit'],
       },
       {
         title: 'Herramientas y DevOps',
         items: ['Docker', 'Git', 'GitHub', 'Git Bash', 'Postman', 'HTTPie', 'VS Code', 'JetBrains Toolbox', 'Cursor', 'Scrum', 'CI/CD'],
       },
       {
-        title: 'Tiempo real y cloud',
-        items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Azure Blob Storage'],
+        title: 'Tiempo real y nube',
+        items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Prisma', 'Azure Blob Storage'],
       },
       {
-        title: 'Otros',
-        items: ['Soporte IT', 'Microsoft Office'],
-      },
-      {
-        title: 'Más allá del código',
+        title: 'Más allá del desarrollo',
         items: ['Materias primas', 'Análisis de mercado', 'Disciplina de riesgo'],
       },
     ],

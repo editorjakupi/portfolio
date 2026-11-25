@@ -25,14 +25,17 @@ const pl: Translations = {
   },
   about: {
     label: 'O mnie',
-    title: 'Od magazynu do kodu produkcyjnego.',
+    title: 'Oprogramowanie używane na serio.',
     p1:
-      'Zanim zająłem się programowaniem, pracowałem w magazynie, przy nadzorze parkingów i wsparcia IT — role, które nauczyły mnie dyscypliny, rozwiązywania problemów pod presją i niezawodnej realizacji. To praktyczne podejście kształtuje dziś mój sposób pisania kodu: uporządkowany, testowany i stworzony dla prawdziwych użytkowników.',
+      'Buduję systemy web, AI i produktowe od pomysłu do produkcji. Wcześniejsza praca przy kontroli parkowania nauczyła mnie dyscypliny i spokojnego rozwiązywania problemów pod presją. To praktyczne podejście nadal kształtuje mój kod: uporządkowany, testowany i budowany dla prawdziwych użytkowników.',
     p2:
       'Studiowałem inżynierię komputerową na Uniwersytecie w Halmstad przez rok (2021–2022). Następnie ukończyłem YH Software Developer with AI w NBI Handelsakademin w czerwcu 2026, z praktykami LIA w PodManager.AI i Swiiftly.',
     p3:
-      'Poza programowaniem zajmuję się handlem detalicznym surowcami — analiza rynku, dyscyplina ryzyka i uporządkowane decyzje w warunkach niepewności.',
+      'Od października 2026 prowadzę Pi93 AB (IT i powiązane usługi) — inwestuję dostępny czas i rozwijam produkty oraz pomysły.',
+    p4:
+      'Poza rozwojem zajmuję się prywatnie handlem surowcami — z naciskiem na analizę rynku, dyscyplinę ryzyka i uporządkowane decyzje w warunkach niepewności.',
     skillsTitle: 'Umiejętności techniczne',
+    skillsSubtitle: 'Technologie, z którymi pracowałem lub budowałem.',
     timelineTitle: 'Doświadczenie',
     educationTitle: 'Edukacja',
     skillGroups: [
@@ -42,30 +45,26 @@ const pl: Translations = {
       },
       {
         title: 'Frontend i mobile',
-        items: ['React', 'Next.js', 'React Native', 'Vite', 'jQuery'],
+        items: ['React', 'Next.js', 'React Native', 'Vite', 'Astro', 'jQuery'],
       },
       {
         title: 'Backend i API',
-        items: ['Node.js', 'FastAPI', '.NET', 'REST API', 'Express'],
+        items: ['Node.js', 'FastAPI', '.NET', 'REST APIs', 'Express'],
       },
       {
         title: 'AI i dane',
-        items: ['Machine Learning', 'RAG', 'Integracja LLM', 'Whisper', 'Azure Speech', 'TensorFlow/Keras', 'Streamlit'],
+        items: ['Machine Learning', 'RAG', 'LLM Integration', 'Whisper', 'Azure Speech', 'TensorFlow/Keras', 'Streamlit'],
       },
       {
         title: 'Narzędzia i DevOps',
         items: ['Docker', 'Git', 'GitHub', 'Git Bash', 'Postman', 'HTTPie', 'VS Code', 'JetBrains Toolbox', 'Cursor', 'Scrum', 'CI/CD'],
       },
       {
-        title: 'Real-time i chmura',
-        items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Azure Blob Storage'],
+        title: 'Realtime i chmura',
+        items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Prisma', 'Azure Blob Storage'],
       },
       {
-        title: 'Inne',
-        items: ['Wsparcie IT', 'Microsoft Office'],
-      },
-      {
-        title: 'Poza kodem',
+        title: 'Poza rozwojem',
         items: ['Surowce', 'Analiza rynku', 'Dyscyplina ryzyka'],
       },
     ],

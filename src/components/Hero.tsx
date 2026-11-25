@@ -34,15 +34,29 @@ export default function Hero() {
             >
               {t.hero.downloadCv}
             </a>
-            <a
-              className="hero-europass-badge"
-              href={europassUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {europassLabel}
-            </a>
-            <DiplomaQrBadge className="hero-diploma-qr" />
+            <div className="hero-badges" aria-label="Credentials">
+              <a
+                className="hero-square-badge hero-europass-square"
+                href={europassUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={europassLabel}
+                aria-label={europassLabel}
+              >
+                <span className="hero-square-badge__label">Europass</span>
+              </a>
+              <DiplomaQrBadge className="hero-diploma-qr" />
+              <a
+                className="hero-square-badge hero-pi93-badge"
+                href="https://pi93.se"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Pi93 AB"
+                aria-label="Pi93 AB"
+              >
+                <img src="/brand/pi93-mark.png" alt="" width={40} height={40} loading="lazy" />
+              </a>
+            </div>
           </div>
           <div className="hero-meta">
             <span>

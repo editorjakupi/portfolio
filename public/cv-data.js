@@ -1,37 +1,26 @@
 const CV_SKILLS = [
+  "TypeScript / JavaScript",
+  "React / Next.js",
+  "Node.js / Express",
+  "Python / FastAPI",
   "C# / .NET",
   "Java",
-  "Node.js",
-  "JavaScript",
-  "jQuery",
-  "Express.js",
-  "TypeScript",
-  "React",
   "HTML & CSS",
-  "Next.js",
-  "Python",
-  "AI / ML / Deep Learning",
   "SQL (PostgreSQL)",
   "NoSQL (MongoDB)",
-  "FastAPI",
   "REST APIs",
+  "AI / ML / Deep Learning",
+  "RAG / LLM",
+  "React Native",
+  "Astro / Vite",
   "Docker",
   "WebRTC",
-  "React Native",
-  "Vite",
-  "Postman",
-  "HTTPie",
-  "VS Code",
-  "JetBrains Toolbox",
-  "Cursor",
-  "Git",
-  "GitHub",
-  "Git Bash",
+  "Git / GitHub",
   "DevOps / CI/CD",
   "Scrum",
-  "IT Support",
-  "Microsoft Office",
-  "VU1 Security Training",
+  "Postman / HTTPie",
+  "VS Code / JetBrains / Cursor",
+  "VU1 Security Training"
 ];
 
 const NBI_DIPLOMA_URL =
@@ -61,7 +50,7 @@ window.CV_DATA = {
     en: {
       subtitle: "Software Developer · AI Specialist",
       profile:
-        "Creative software developer with strong problem-solving skills and a focus on building user-friendly and efficient systems. I work well in teams, communicate clearly, and adapt quickly to new technologies and workflows. I also have experience in the security sector through parking enforcement work and security guard training.",
+        "Creative software developer with strong problem-solving skills and a focus on building user-friendly and efficient systems. I work well in teams, communicate clearly, and adapt quickly to new technologies and workflows. Founder of Pi93 AB (IT and related services). Background also includes parking enforcement and security guard training.",
       sections: {
         profile: "Summary",
         experience: "Experience",
@@ -72,6 +61,14 @@ window.CV_DATA = {
         traits: "Characteristics",
       },
       experience: [
+        {
+          title: "Founder — Pi93 AB",
+          period: "Oct 2026 – Present",
+          sub: "Halmstad, Sweden · Own company",
+          linkUrl: "https://pi93.se",
+          linkLabel: "Pi93 AB",
+          desc: "Founded and run Pi93 AB (org.nr 559605-1853): IT consulting and related services, company website (pi93.se), and products such as pi93guide and the Pi93 AI Assistant. I put as much time into the company as I can and build products end-to-end.",
+        },
         {
           title: "AI Intern — Swiiftly POS",
           period: "Mar 2026 – May 2026",
@@ -85,22 +82,10 @@ window.CV_DATA = {
           desc: "Completed my LIA internship at PodManager.AI with a focus on full-stack development using Next.js, React, TypeScript, FastAPI, and MongoDB. Contributed to AI-powered audio editing, transcription (Whisper, Azure Speech), real-time recording via Socket.io, and secure file management in Azure Blob Storage.",
         },
         {
-          title: "IT Support Technician — Simple Solutions IT",
-          period: "Jul 2022 – May 2024",
-          sub: "Halmstad, Sweden · Part-time / on demand",
-          desc: "Part-time IT support at a small Halmstad company. Assisted customers with troubleshooting, internet installations, and Windows system maintenance.",
-        },
-        {
           title: "Parking Officer — Aimo Park",
           period: "Sep 2018 – Jul 2021",
           sub: "Halmstad, Sweden",
           desc: "Parking surveillance and issuing fees, plus technical maintenance of ticket machines and installing signage when needed.",
-        },
-        {
-          title: "Warehouse Worker — Biltema",
-          period: "Sep 2015 – Jul 2018",
-          sub: "Halmstad, Sweden · Part-time / on-call",
-          desc: "Warehouse operations: loading and unloading trucks, and pallet management based on item numbers and orders.",
         },
       ],
       education: [
@@ -124,6 +109,7 @@ window.CV_DATA = {
           period: "Jun 2021",
           sub: "Göteborg, Sweden",
           desc: "Completed with certificates.",
+          verifyUrl: "/credentials/vu1-utbildningsbevis.png",
         },
         {
           title: "High School Diploma — Natural Sciences, Sannarpsgymnasiet",
@@ -140,7 +126,7 @@ window.CV_DATA = {
     sv: {
       subtitle: "Mjukvaruutvecklare · AI-specialist",
       profile:
-        "Kreativ mjukvaruutvecklare med stark problemlösningsförmåga och fokus på användarvänliga och effektiva system. Jag arbetar bra i team, kommunicerar tydligt och anpassar mig snabbt till nya tekniker och arbetsflöden. Erfarenhet från säkerhetsbranschen genom parkeringsövervakning och väktarutbildning.",
+        "Kreativ mjukvaruutvecklare med stark problemlösningsförmåga och fokus på användarvänliga och effektiva system. Jag arbetar bra i team, kommunicerar tydligt och anpassar mig snabbt till nya tekniker och arbetsflöden. Grundare av Pi93 AB (IT och relaterade tjänster). Erfarenhet även från parkeringsövervakning och väktarutbildning.",
       sections: {
         profile: "Sammanfattning",
         experience: "Erfarenhet",
@@ -151,6 +137,14 @@ window.CV_DATA = {
         traits: "Egenskaper",
       },
       experience: [
+        {
+          title: "Grundare — Pi93 AB",
+          period: "okt 2026 – nu",
+          sub: "Halmstad · Eget bolag",
+          linkUrl: "https://pi93.se",
+          linkLabel: "Pi93 AB",
+          desc: "Grundat och driver Pi93 AB (org.nr 559605-1853): IT-konsult och relaterade tjänster, företagssajt (pi93.se) samt produkter som pi93guide och Pi93 AI Assistant. Jag lägger så mycket tid jag kan på bolaget och bygger produkter från ax till limpa.",
+        },
         {
           title: "AI-praktikant — Swiiftly POS",
           period: "mar 2026 – maj 2026",
@@ -164,22 +158,10 @@ window.CV_DATA = {
           desc: "Genomförde LIA hos PodManager.AI med fokus på fullstack i Next.js, React, TypeScript, FastAPI och MongoDB. Bidrog till AI-driven ljudredigering, transkription (Whisper, Azure Speech), realtidsinspelning via Socket.io och säker filhantering i Azure Blob Storage.",
         },
         {
-          title: "IT-supporttekniker — Simple Solutions IT",
-          period: "juli 2022 – maj 2024",
-          sub: "Halmstad · Deltid / vid behov",
-          desc: "Deltids-IT-support på ett mindre företag i Halmstad. Hjälpte kunder med felsökning, internetinstallationer och underhåll av Windows-miljöer.",
-        },
-        {
           title: "Parkeringsvakt — Aimo Park",
           period: "sep 2018 – juli 2021",
           sub: "Halmstad",
           desc: "Parkeringsövervakning och avgifter, samt tekniskt underhåll av biljettautomater och uppsättning av skyltar vid behov.",
-        },
-        {
-          title: "Lagerarbetare — Biltema",
-          period: "sep 2015 – juli 2018",
-          sub: "Halmstad · Deltid / vid behov",
-          desc: "Lagerarbete: lastning och lossning av lastbilar samt pallhantering enligt artikelnummer och beställningar.",
         },
       ],
       education: [
@@ -202,6 +184,7 @@ window.CV_DATA = {
           period: "jun 2021",
           sub: "Göteborg",
           desc: "Avslutad med intyg.",
+          verifyUrl: "/credentials/vu1-utbildningsbevis.png",
         },
         {
           title: "Gymnasieexamen — Naturvetenskap, Sannarpsgymnasiet",
@@ -218,7 +201,7 @@ window.CV_DATA = {
     sq: {
       subtitle: "Zhvillues Softueri · Specialist AI",
       profile:
-        "Zhvillues kreativ softueri me aftësi të forta zgjidhjeje problemesh dhe fokus në sisteme miqësore dhe efikase. Punoj mirë në ekip, komunikoj qartë dhe adaptohem shpejt. Përvojë në sektorin e sigurisë përmes monitorimit të parkimit dhe trajnimit të rojes.",
+        "Zhvillues kreativ softueri me aftësi të forta zgjidhjeje problemesh dhe fokus në sisteme miqësore dhe efikase. Punoj mirë në ekip, komunikoj qartë dhe adaptohem shpejt. Themelues i Pi93 AB (IT dhe shërbime të lidhura). Përvojë edhe nga mbikëqyrja e parkimit dhe trajnimi i rojes.",
       sections: {
         profile: "Përmbledhje",
         experience: "Përvoja",
@@ -229,6 +212,14 @@ window.CV_DATA = {
         traits: "Karakteristikat",
       },
       experience: [
+        {
+          title: "Themelues — Pi93 AB",
+          period: "tet 2026 – tani",
+          sub: "Halmstad · Kompani e vetë",
+          linkUrl: "https://pi93.se",
+          linkLabel: "Pi93 AB",
+          desc: "Themelova dhe drejtoj Pi93 AB (org.nr 559605-1853): konsultim IT dhe shërbime të lidhura, website kompanie (pi93.se), dhe produkte si pi93guide dhe Pi93 AI Assistant. I kushtoj kompanisë aq kohë sa mundem dhe ndërtoj produkte nga fillimi deri te prodhimi.",
+        },
         {
           title: "Praktikant AI — Swiiftly POS",
           period: "mar 2026 – maj 2026",
@@ -242,22 +233,10 @@ window.CV_DATA = {
           desc: "Kam përfunduar praktikën LIA në PodManager.AI me fokus në zhvillim full-stack: Next.js, React, TypeScript, FastAPI dhe MongoDB. Kontribova në redaktimin audio me AI, transkriptim (Whisper, Azure Speech), regjistrim në kohë reale me Socket.io dhe menaxhim të sigurt të skedarëve në Azure Blob Storage.",
         },
         {
-          title: "Teknik IT — Simple Solutions IT",
-          period: "kor 2022 – maj 2024",
-          sub: "Halmstad · Me kohë të pjesshme",
-          desc: "Support IT me kohë të pjesshme në një kompani të vogël në Halmstad. Ndihmova klientët me zgjidhje problemesh, instalime interneti dhe mirëmbajtje të sistemeve Windows.",
-        },
-        {
           title: "Roje parkimi — Aimo Park",
           period: "sht 2018 – kor 2021",
           sub: "Halmstad",
           desc: "Monitorim parkimesh dhe tarifa, plus mirëmbajtje teknike e makinerave të biletave dhe vendosje e tabelave kur nevojitej.",
-        },
-        {
-          title: "Punëtor magazine — Biltema",
-          period: "sht 2015 – kor 2018",
-          sub: "Halmstad · Me kohë të pjesshme",
-          desc: "Operacione magazine: ngarkim dhe shkarkim kamionësh, dhe menaxhim paletash sipas numrave të artikujve dhe porosive.",
         },
       ],
       education: [
@@ -280,6 +259,7 @@ window.CV_DATA = {
           period: "qer 2021",
           sub: "Göteborg",
           desc: "E përfunduar me certifikata.",
+          verifyUrl: "/credentials/vu1-utbildningsbevis.png",
         },
         {
           title: "Diplomë shkolle mesme — Shkenca natyrore, Sannarpsgymnasiet",
@@ -296,7 +276,7 @@ window.CV_DATA = {
     de: {
       subtitle: "Softwareentwickler · KI-Spezialist",
       profile:
-        "Kreativer Softwareentwickler mit starken Problemlösungsfähigkeiten und Fokus auf benutzerfreundliche, effiziente Systeme. Teamfähig, klare Kommunikation, schnelle Anpassung an neue Technologien. Erfahrung im Sicherheitssektor durch Parküberwachung und Wachschutz-Ausbildung.",
+        "Kreativer Softwareentwickler mit starken Problemlösungsfähigkeiten und Fokus auf benutzerfreundliche, effiziente Systeme. Teamfähig, klare Kommunikation, schnelle Anpassung an neue Technologien. Gründer von Pi93 AB (IT und verwandte Dienste). Erfahrung auch aus Parkraumüberwachung und Wachschutz-Ausbildung.",
       sections: {
         profile: "Zusammenfassung",
         experience: "Berufserfahrung",
@@ -307,6 +287,14 @@ window.CV_DATA = {
         traits: "Eigenschaften",
       },
       experience: [
+        {
+          title: "Gründer — Pi93 AB",
+          period: "Okt 2026 – heute",
+          sub: "Halmstad · Eigenes Unternehmen",
+          linkUrl: "https://pi93.se",
+          linkLabel: "Pi93 AB",
+          desc: "Gegründet und führe Pi93 AB (Org.nr 559605-1853): IT-Beratung und verwandte Dienste, Firmenwebsite (pi93.se) sowie Produkte wie pi93guide und Pi93 AI Assistant. Ich investiere so viel Zeit wie möglich und baue Produkte end-to-end.",
+        },
         {
           title: "KI-Praktikant — Swiiftly POS",
           period: "Mär 2026 – Mai 2026",
@@ -320,22 +308,10 @@ window.CV_DATA = {
           desc: "LIA-Praktikum bei PodManager.AI mit Fokus auf Full-Stack-Entwicklung in Next.js, React, TypeScript, FastAPI und MongoDB. Mitwirkung an KI-gestützter Audiobearbeitung, Transkription (Whisper, Azure Speech), Echtzeit-Aufnahme via Socket.io und sicherer Dateiverwaltung in Azure Blob Storage.",
         },
         {
-          title: "IT-Support — Simple Solutions IT",
-          period: "Jul 2022 – Mai 2024",
-          sub: "Halmstad · Teilzeit",
-          desc: "Teilzeit-IT-Support in einem kleinen Unternehmen in Halmstad. Kundenbetreuung bei Fehlerbehebung, Internetinstallationen und Windows-Wartung.",
-        },
-        {
           title: "Parkraumüberwachung — Aimo Park",
           period: "Sep 2018 – Jul 2021",
           sub: "Halmstad",
           desc: "Parküberwachung und Gebühren, plus technische Wartung von Automaten und Beschilderung bei Bedarf.",
-        },
-        {
-          title: "Lagerarbeiter — Biltema",
-          period: "Sep 2015 – Jul 2018",
-          sub: "Halmstad · Teilzeit",
-          desc: "Lagerarbeit: Be- und Entladen von LKW sowie Palettenverwaltung nach Artikelnummern und Bestellungen.",
         },
       ],
       education: [
@@ -358,6 +334,7 @@ window.CV_DATA = {
           period: "Jun 2021",
           sub: "Göteborg",
           desc: "Mit Zertifikaten abgeschlossen.",
+          verifyUrl: "/credentials/vu1-utbildningsbevis.png",
         },
         {
           title: "Gymnasium — Naturwissenschaften, Sannarpsgymnasiet",
@@ -374,7 +351,7 @@ window.CV_DATA = {
     fr: {
       subtitle: "Développeur logiciel · Spécialiste IA",
       profile:
-        "Développeur créatif avec de solides compétences en résolution de problèmes et un focus sur des systèmes efficaces et conviviaux. Travail d'équipe, communication claire, adaptation rapide. Expérience sécurité via surveillance de parkings et formation de garde.",
+        "Développeur créatif avec de solides compétences en résolution de problèmes et un focus sur des systèmes efficaces et conviviaux. Travail d'équipe, communication claire, adaptation rapide. Fondateur de Pi93 AB (IT et services associés). Expérience aussi en surveillance de parkings et formation de garde.",
       sections: {
         profile: "Résumé",
         experience: "Expérience",
@@ -385,6 +362,14 @@ window.CV_DATA = {
         traits: "Qualités",
       },
       experience: [
+        {
+          title: "Fondateur — Pi93 AB",
+          period: "Oct 2026 – aujourd’hui",
+          sub: "Halmstad · Entreprise propre",
+          linkUrl: "https://pi93.se",
+          linkLabel: "Pi93 AB",
+          desc: "Fondateur et dirigeant de Pi93 AB (org.nr 559605-1853) : conseil IT et services associés, site entreprise (pi93.se), et produits (pi93guide, Pi93 AI Assistant). J’y mets autant de temps que possible et construis les produits de bout en bout.",
+        },
         {
           title: "Stagiaire IA — Swiiftly POS",
           period: "Mar 2026 – Mai 2026",
@@ -398,22 +383,10 @@ window.CV_DATA = {
           desc: "Stage LIA chez PodManager.AI axé sur le full-stack : Next.js, React, TypeScript, FastAPI et MongoDB. Contribution à l’édition audio IA, la transcription (Whisper, Azure Speech), l’enregistrement temps réel via Socket.io et la gestion sécurisée des fichiers dans Azure Blob Storage.",
         },
         {
-          title: "Support IT — Simple Solutions IT",
-          period: "Jul 2022 – Mai 2024",
-          sub: "Halmstad · Temps partiel",
-          desc: "Support IT à temps partiel dans une petite entreprise à Halmstad. Aide aux clients pour le dépannage, les installations internet et la maintenance Windows.",
-        },
-        {
           title: "Agent de surveillance — Aimo Park",
           period: "Sep 2018 – Jul 2021",
           sub: "Halmstad",
           desc: "Surveillance des parkings et amendes, plus maintenance technique des automates et signalisation si nécessaire.",
-        },
-        {
-          title: "Magasinier — Biltema",
-          period: "Sep 2015 – Jul 2018",
-          sub: "Halmstad · Temps partiel",
-          desc: "Opérations d’entrepôt : chargement et déchargement de camions, gestion des palettes selon numéros d’articles et commandes.",
         },
       ],
       education: [
@@ -436,6 +409,7 @@ window.CV_DATA = {
           period: "Jun 2021",
           sub: "Göteborg",
           desc: "Certificats obtenus.",
+          verifyUrl: "/credentials/vu1-utbildningsbevis.png",
         },
         {
           title: "Baccalauréat — Sciences naturelles, Sannarpsgymnasiet",
@@ -452,7 +426,7 @@ window.CV_DATA = {
     es: {
       subtitle: "Desarrollador de software · Especialista en IA",
       profile:
-        "Desarrollador creativo con fuertes habilidades de resolución de problemas y enfoque en sistemas eficientes y fáciles de usar. Trabajo en equipo, comunicación clara y adaptación rápida. Experiencia en seguridad mediante vigilancia de aparcamientos y formación de vigilante.",
+        "Desarrollador creativo con fuertes habilidades de resolución de problemas y enfoque en sistemas eficientes y fáciles de usar. Trabajo en equipo, comunicación clara y adaptación rápida. Fundador de Pi93 AB (IT y servicios relacionados). Experiencia también en control de aparcamiento y formación de vigilante.",
       sections: {
         profile: "Resumen",
         experience: "Experiencia",
@@ -463,6 +437,14 @@ window.CV_DATA = {
         traits: "Cualidades",
       },
       experience: [
+        {
+          title: "Fundador — Pi93 AB",
+          period: "Oct 2026 – presente",
+          sub: "Halmstad · Empresa propia",
+          linkUrl: "https://pi93.se",
+          linkLabel: "Pi93 AB",
+          desc: "Fundé y dirijo Pi93 AB (org.nr 559605-1853): consultoría IT y servicios relacionados, web de empresa (pi93.se) y productos como pi93guide y Pi93 AI Assistant. Dedico el tiempo que puedo a la empresa y construyo productos de extremo a extremo.",
+        },
         {
           title: "Prácticas IA — Swiiftly POS",
           period: "Mar 2026 – May 2026",
@@ -476,22 +458,10 @@ window.CV_DATA = {
           desc: "Completé mis prácticas LIA en PodManager.AI con enfoque full-stack: Next.js, React, TypeScript, FastAPI y MongoDB. Contribuí a edición de audio con IA, transcripción (Whisper, Azure Speech), grabación en tiempo real con Socket.io y gestión segura de archivos en Azure Blob Storage.",
         },
         {
-          title: "Técnico IT — Simple Solutions IT",
-          period: "Jul 2022 – May 2024",
-          sub: "Halmstad · Tiempo parcial",
-          desc: "Soporte IT a tiempo parcial en una pequeña empresa en Halmstad. Ayuda a clientes con resolución de problemas, instalaciones de internet y mantenimiento de Windows.",
-        },
-        {
           title: "Control de aparcamiento — Aimo Park",
           period: "Sep 2018 – Jul 2021",
           sub: "Halmstad",
           desc: "Vigilancia de aparcamientos y multas, además de mantenimiento técnico de máquinas expendedoras y señalización cuando era necesario.",
-        },
-        {
-          title: "Operario de almacén — Biltema",
-          period: "Sep 2015 – Jul 2018",
-          sub: "Halmstad · Tiempo parcial",
-          desc: "Operaciones de almacén: carga y descarga de camiones, y gestión de palés según números de artículo y pedidos.",
         },
       ],
       education: [
@@ -514,6 +484,7 @@ window.CV_DATA = {
           period: "Jun 2021",
           sub: "Göteborg",
           desc: "Certificados obtenidos.",
+          verifyUrl: "/credentials/vu1-utbildningsbevis.png",
         },
         {
           title: "Bachillerato — Ciencias naturales, Sannarpsgymnasiet",
@@ -530,7 +501,7 @@ window.CV_DATA = {
     it: {
       subtitle: "Sviluppatore software · Specialista IA",
       profile:
-        "Sviluppatore creativo con solide capacità di problem solving e focus su sistemi efficienti e user-friendly. Lavoro di squadra, comunicazione chiara, rapido adattamento. Esperienza nel settore sicurezza tramite sorveglianza parcheggi e formazione guardia.",
+        "Sviluppatore creativo con solide capacità di problem solving e focus su sistemi efficienti e usabili. Lavoro di squadra, comunicazione chiara, adattamento rapido. Fondatore di Pi93 AB (IT e servizi correlati). Esperienza anche nel controllo parcheggi e formazione di vigilanza.",
       sections: {
         profile: "Riassunto",
         experience: "Esperienza",
@@ -541,6 +512,14 @@ window.CV_DATA = {
         traits: "Qualità",
       },
       experience: [
+        {
+          title: "Fondatore — Pi93 AB",
+          period: "Ott 2026 – oggi",
+          sub: "Halmstad · Azienda propria",
+          linkUrl: "https://pi93.se",
+          linkLabel: "Pi93 AB",
+          desc: "Ho fondato e gestisco Pi93 AB (org.nr 559605-1853): consulenza IT e servizi correlati, sito aziendale (pi93.se) e prodotti come pi93guide e Pi93 AI Assistant. Investo tutto il tempo possibile e costruisco i prodotti end-to-end.",
+        },
         {
           title: "Tirocinio IA — Swiiftly POS",
           period: "Mar 2026 – Mag 2026",
@@ -554,22 +533,10 @@ window.CV_DATA = {
           desc: "Completato lo stage LIA presso PodManager.AI con focus full-stack: Next.js, React, TypeScript, FastAPI e MongoDB. Contributo a editing audio IA, trascrizione (Whisper, Azure Speech), registrazione in tempo reale via Socket.io e gestione sicura dei file in Azure Blob Storage.",
         },
         {
-          title: "Tecnico IT — Simple Solutions IT",
-          period: "Lug 2022 – Mag 2024",
-          sub: "Halmstad · Part-time",
-          desc: "Supporto IT part-time in una piccola azienda a Halmstad. Assistenza clienti per troubleshooting, installazioni internet e manutenzione Windows.",
-        },
-        {
           title: "Addetto parcheggi — Aimo Park",
           period: "Set 2018 – Lug 2021",
           sub: "Halmstad",
           desc: "Sorveglianza parcheggi e multe, più manutenzione tecnica degli automi e segnaletica quando necessario.",
-        },
-        {
-          title: "Magazziniere — Biltema",
-          period: "Set 2015 – Lug 2018",
-          sub: "Halmstad · Part-time",
-          desc: "Operazioni di magazzino: carico e scarico camion, gestione pallet in base a codici articolo e ordini.",
         },
       ],
       education: [
@@ -592,6 +559,7 @@ window.CV_DATA = {
           period: "Giu 2021",
           sub: "Göteborg",
           desc: "Certificati ottenuti.",
+          verifyUrl: "/credentials/vu1-utbildningsbevis.png",
         },
         {
           title:
@@ -609,7 +577,7 @@ window.CV_DATA = {
     pl: {
       subtitle: "Programista · Specjalista AI",
       profile:
-        "Kreatywny programista z silnymi umiejętnościami rozwiązywania problemów i naciskiem na przyjazne, efektywne systemy. Praca zespołowa, jasna komunikacja, szybka adaptacja. Doświadczenie w branży ochrony przez nadzór parkingów i szkolenie ochrony.",
+        "Kreatywny programista z mocnymi umiejętnościami rozwiązywania problemów i naciskiem na użyteczne, wydajne systemy. Praca zespołowa, jasna komunikacja, szybka adaptacja. Założyciel Pi93 AB (IT i powiązane usługi). Doświadczenie także z kontroli parkowania i szkolenia ochrony.",
       sections: {
         profile: "Podsumowanie",
         experience: "Doświadczenie",
@@ -620,6 +588,14 @@ window.CV_DATA = {
         traits: "Cechy",
       },
       experience: [
+        {
+          title: "Założyciel — Pi93 AB",
+          period: "Paź 2026 – teraz",
+          sub: "Halmstad · Własna firma",
+          linkUrl: "https://pi93.se",
+          linkLabel: "Pi93 AB",
+          desc: "Założyłem i prowadzę Pi93 AB (org.nr 559605-1853): konsulting IT i powiązane usługi, strona firmowa (pi93.se) oraz produkty jak pi93guide i Pi93 AI Assistant. Inwestuję tyle czasu, ile mogę, i buduję produkty end-to-end.",
+        },
         {
           title: "Staż AI — Swiiftly POS",
           period: "Mar 2026 – Maj 2026",
@@ -633,22 +609,10 @@ window.CV_DATA = {
           desc: "Ukończyłem praktyki LIA w PodManager.AI z naciskiem na full-stack: Next.js, React, TypeScript, FastAPI i MongoDB. Współtworzyłem edycję audio z AI, transkrypcję (Whisper, Azure Speech), nagrywanie w czasie rzeczywistym przez Socket.io i bezpieczne zarządzanie plikami w Azure Blob Storage.",
         },
         {
-          title: "Technik IT — Simple Solutions IT",
-          period: "Lip 2022 – Maj 2024",
-          sub: "Halmstad · Część etatu",
-          desc: "Wsparcie IT w niepełnym wymiarze w małej firmie w Halmstad. Pomoc klientom w rozwiązywaniu problemów, instalacjach internetu i utrzymaniu Windows.",
-        },
-        {
           title: "Kontrola parkowania — Aimo Park",
           period: "Wrz 2018 – Lip 2021",
           sub: "Halmstad",
           desc: "Nadzór parkingów i mandaty, a także konserwacja techniczna automatów biletowych i oznakowanie w razie potrzeby.",
-        },
-        {
-          title: "Pracownik magazynu — Biltema",
-          period: "Wrz 2015 – Lip 2018",
-          sub: "Halmstad · Część etatu",
-          desc: "Praca magazynowa: za- i rozładunek ciężarówek oraz zarządzanie paletami według numerów artykułów i zamówień.",
         },
       ],
       education: [
@@ -671,6 +635,7 @@ window.CV_DATA = {
           period: "Cze 2021",
           sub: "Göteborg",
           desc: "Ukończone z certyfikatami.",
+          verifyUrl: "/credentials/vu1-utbildningsbevis.png",
         },
         {
           title: "Matura — Nauki przyrodnicze, Sannarpsgymnasiet",

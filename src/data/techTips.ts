@@ -7,6 +7,250 @@ type TipSet = Record<TipLocale, TechTip>;
 
 /** Hover tip: (1) what it is + how it is used generally (2) how it is used in this case. */
 const PROJECT_TECH_TIPS: Record<string, Record<string, TipSet>> = {
+  portfolio: {
+    'React 18': {
+      en: {
+        what: 'A UI library used to build interactive component-based web interfaces.',
+        use: 'In this case it powers the portfolio SPA: hero, filters, modals, and localized sections.',
+      },
+      sv: {
+        what: 'Ett UI-bibliotek som används för att bygga interaktiva komponentbaserade webbgränssnitt.',
+        use: 'I det här fallet driver det portfolio-SPA:n: hero, filter, modaler och lokaliserade sektioner.',
+      },
+      sq: {
+        what: 'Nje biblioteke UI qe perdoret per te ndertuar nderfaqe web interaktive me komponente.',
+        use: 'Ne kete rast fuqizon SPA e portofolit: hero, filtra, modale dhe seksione te lokalizuara.',
+      },
+    },
+    TypeScript: {
+      en: {
+        what: 'Typed JavaScript used to catch errors early and keep large codebases safer.',
+        use: 'In this case it types project data, i18n keys, and component props across the site.',
+      },
+      sv: {
+        what: 'Typad JavaScript som används för att fånga fel tidigt och hålla stora kodbaser säkrare.',
+        use: 'I det här fallet typas projektdata, i18n-nycklar och komponentprops över hela sajten.',
+      },
+      sq: {
+        what: 'JavaScript i tipizuar qe perdoret per te kapur gabime heret dhe mbajtur kodebazat me te sigurta.',
+        use: 'Ne kete rast tipizon te dhenat e projekteve, celesa i18n dhe props te komponenteve.',
+      },
+    },
+    Vite: {
+      en: {
+        what: 'A fast frontend build tool used for modern React/SPA development.',
+        use: 'In this case it builds the static production bundle served behind nginx/Caddy.',
+      },
+      sv: {
+        what: 'Ett snabbt frontend-byggverktyg som används för modern React/SPA-utveckling.',
+        use: 'I det här fallet bygger det den statiska produktionsbundlen som serveras bakom nginx/Caddy.',
+      },
+      sq: {
+        what: 'Nje mjet build frontend i shpejte qe perdoret per zhvillim modern React/SPA.',
+        use: 'Ne kete rast nderton bundle-in statik te prodhimit qe sherbehet pas nginx/Caddy.',
+      },
+    },
+    Docker: {
+      en: {
+        what: 'A container platform used to package apps and dependencies for repeatable runs.',
+        use: 'In this case it packages the portfolio image deployed on the Hetzner VPS.',
+      },
+      sv: {
+        what: 'En containerplattform som används för att paketera appar och beroenden för reproducerbara körningar.',
+        use: 'I det här fallet paketerar det portfolio-imagen som deployas på Hetzner-VPS:en.',
+      },
+      sq: {
+        what: 'Nje platforme kontejneresh qe perdoret per te paketuar app dhe varshmëri per ekzekutim te riprodhueshem.',
+        use: 'Ne kete rast paketon imazhin e portofolit qe deploy-het ne VPS Hetzner.',
+      },
+    },
+    Caddy: {
+      en: {
+        what: 'A reverse proxy and TLS terminator used to route and secure web traffic.',
+        use: 'In this case it terminates HTTPS and routes editorjakupi.com to the portfolio container.',
+      },
+      sv: {
+        what: 'En reverse proxy och TLS-terminator som används för att routa och säkra webbtrafik.',
+        use: 'I det här fallet terminerar den HTTPS och routar editorjakupi.com till portfolio-containern.',
+      },
+      sq: {
+        what: 'Nje reverse proxy dhe terminator TLS qe perdoret per te routuar dhe siguruar trafikun web.',
+        use: 'Ne kete rast terminon HTTPS dhe routon editorjakupi.com te kontejneri i portofolit.',
+      },
+    },
+    nginx: {
+      en: {
+        what: 'A web server used to serve static files and reverse-proxy application traffic.',
+        use: 'In this case it serves the Vite static build inside the portfolio Docker image.',
+      },
+      sv: {
+        what: 'En webbserver som används för att servera statiska filer och reverse-proxyn applikationstrafik.',
+        use: 'I det här fallet serverar den Vite-bygget inuti portfolio-Dockerimagen.',
+      },
+      sq: {
+        what: 'Nje web server qe perdoret per te sherbyer skedare statike dhe reverse-proxy te trafikut te app.',
+        use: 'Ne kete rast sherben build-in Vite brenda imazhit Docker te portofolit.',
+      },
+    },
+  },
+  'pi93-ab-website': {
+    'Next.js 16': {
+      en: {
+        what: 'A full-stack React framework used to build web apps with UI, APIs, and routing.',
+        use: 'In this case it runs the Pi93 AB company site: App Router pages, APIs, and admin flows.',
+      },
+      sv: {
+        what: 'Ett fullstack React-ramverk som används för att bygga webbappar med UI, API:er och routing.',
+        use: 'I det här fallet kör det Pi93 AB:s företagssajt: App Router-sidor, API:er och adminflöden.',
+      },
+      sq: {
+        what: 'Nje framework full-stack React qe perdoret per te ndertuar app web me UI, API dhe routing.',
+        use: 'Ne kete rast ekzekuton site-in e kompanise Pi93 AB: faqe App Router, API dhe flukse admin.',
+      },
+    },
+    TypeScript: {
+      en: {
+        what: 'Typed JavaScript used to catch errors early and keep large codebases safer.',
+        use: 'In this case it types forms, Prisma models, and service pages on pi93.se.',
+      },
+      sv: {
+        what: 'Typad JavaScript som används för att fånga fel tidigt och hålla stora kodbaser säkrare.',
+        use: 'I det här fallet typas formulär, Prisma-modeller och tjänstesidor på pi93.se.',
+      },
+      sq: {
+        what: 'JavaScript i tipizuar qe perdoret per te kapur gabime heret dhe mbajtur kodebazat me te sigurta.',
+        use: 'Ne kete rast tipizon forma, modele Prisma dhe faqe sherbimesh ne pi93.se.',
+      },
+    },
+    Prisma: {
+      en: {
+        what: 'An ORM used to talk to SQL databases from application code with typed models.',
+        use: 'In this case it maps leads, contact data, and admin records to PostgreSQL.',
+      },
+      sv: {
+        what: 'En ORM som används för att prata med SQL-databaser från appkod med typade modeller.',
+        use: 'I det här fallet mappar den leads, kontaktdata och adminposter till PostgreSQL.',
+      },
+      sq: {
+        what: 'Nje ORM qe perdoret per te komunikuar me databaza SQL nga kodi i app-it me modele te tipizuara.',
+        use: 'Ne kete rast mapon leads, te dhena kontakti dhe rekorde admin ne PostgreSQL.',
+      },
+    },
+    PostgreSQL: {
+      en: {
+        what: 'A relational database used to store structured application data reliably.',
+        use: 'In this case it stores company-site leads and operational data for Pi93 AB.',
+      },
+      sv: {
+        what: 'En relationell databas som används för att lagra strukturerad appdata pålitligt.',
+        use: 'I det här fallet lagrar den leads och driftsdata för Pi93 AB:s sajt.',
+      },
+      sq: {
+        what: 'Nje baze relacionale qe perdoret per te ruajtur te dhena te strukturuara te app-it ne menyre te besueshme.',
+        use: 'Ne kete rast ruan leads dhe te dhena operative per site-in e Pi93 AB.',
+      },
+    },
+    Tailwind: {
+      en: {
+        what: 'A utility-first CSS framework used to style interfaces quickly and consistently.',
+        use: 'In this case it styles the Pi93 marketing pages, forms, and layout system.',
+      },
+      sv: {
+        what: 'Ett utility-first CSS-ramverk som används för att styla gränssnitt snabbt och konsekvent.',
+        use: 'I det här fallet stylar det Pi93:s marketingsidor, formulär och layoutsystem.',
+      },
+      sq: {
+        what: 'Nje framework CSS utility-first qe perdoret per te stiluar nderfaqe shpejt dhe ne menyre te qendrueshme.',
+        use: 'Ne kete rast stilon faqet marketing te Pi93, format dhe sistemin e layout.',
+      },
+    },
+    Resend: {
+      en: {
+        what: 'An email API used to send transactional messages from applications.',
+        use: 'In this case it delivers contact and career form emails from pi93.se.',
+      },
+      sv: {
+        what: 'Ett e-post-API som används för att skicka transaktionsmail från applikationer.',
+        use: 'I det här fallet skickar det kontakt- och karriärformulär från pi93.se.',
+      },
+      sq: {
+        what: 'Nje API email qe perdoret per te derguar mesazhe tranzaksionale nga aplikacionet.',
+        use: 'Ne kete rast dergon email nga format e kontaktit dhe karrieres ne pi93.se.',
+      },
+    },
+  },
+  pi93guide: {
+    'Astro 5': {
+      en: {
+        what: 'A content-first web framework used for fast static and hybrid sites with optional islands.',
+        use: 'In this case it builds pi93guide.com guides, compares, and category pages from MDX collections.',
+      },
+      sv: {
+        what: 'Ett content-first webbramverk som används för snabba statiska och hybrida sajter med valfria öar.',
+        use: 'I det här fallet bygger det pi93guide.com-guider, jämförelser och kategorisidor från MDX-collections.',
+      },
+      sq: {
+        what: 'Nje framework web content-first qe perdoret per site statike/hibride te shpejta me ishuj opsionale.',
+        use: 'Ne kete rast nderton guida, krahasime dhe faqe kategorish te pi93guide.com nga koleksione MDX.',
+      },
+    },
+    TypeScript: {
+      en: {
+        what: 'Typed JavaScript used to catch errors early and keep large codebases safer.',
+        use: 'In this case it types Astro components, content schemas, and React islands.',
+      },
+      sv: {
+        what: 'Typad JavaScript som används för att fånga fel tidigt och hålla stora kodbaser säkrare.',
+        use: 'I det här fallet typas Astro-komponenter, content-scheman och React-öar.',
+      },
+      sq: {
+        what: 'JavaScript i tipizuar qe perdoret per te kapur gabime heret dhe mbajtur kodebazat me te sigurta.',
+        use: 'Ne kete rast tipizon komponente Astro, skema permbajtjeje dhe ishuj React.',
+      },
+    },
+    React: {
+      en: {
+        what: 'A UI library used to build interactive component-based web interfaces.',
+        use: 'In this case it powers interactive islands: search, quiz, sticky CTA, and affiliate events.',
+      },
+      sv: {
+        what: 'Ett UI-bibliotek som används för att bygga interaktiva komponentbaserade webbgränssnitt.',
+        use: 'I det här fallet driver det interaktiva öar: sök, quiz, sticky CTA och affiliate-events.',
+      },
+      sq: {
+        what: 'Nje biblioteke UI qe perdoret per te ndertuar nderfaqe web interaktive me komponente.',
+        use: 'Ne kete rast fuqizon ishuj interaktive: kerkim, quiz, sticky CTA dhe evente affiliate.',
+      },
+    },
+    MDX: {
+      en: {
+        what: 'Markdown with JSX used to author rich content pages alongside components.',
+        use: 'In this case guide and comparison articles are written as MDX content collections.',
+      },
+      sv: {
+        what: 'Markdown med JSX som används för att skriva rikt innehåll tillsammans med komponenter.',
+        use: 'I det här fallet skrivs guide- och jämförelseartiklar som MDX content collections.',
+      },
+      sq: {
+        what: 'Markdown me JSX qe perdoret per te shkruar permbajtje te pasur bashke me komponente.',
+        use: 'Ne kete rast artikujt e guides dhe krahasimeve shkruhen si koleksione MDX.',
+      },
+    },
+    Node: {
+      en: {
+        what: 'A JavaScript runtime used to run server-side code and APIs.',
+        use: 'In this case the Astro Node adapter serves /go affiliate wrappers and analytics events.',
+      },
+      sv: {
+        what: 'En JavaScript-runtime som används för serverkod och API:er.',
+        use: 'I det här fallet serverar Astro Node-adaptern /go affiliate-wrappers och analytics-events.',
+      },
+      sq: {
+        what: 'Nje runtime JavaScript qe perdoret per kod server dhe API.',
+        use: 'Ne kete rast adapteri Astro Node sherben /go affiliate wrappers dhe evente analytics.',
+      },
+    },
+  },
   'pi93-ai-assistant': {
     'React 18': {
       en: {

@@ -6,6 +6,7 @@ import ProjectModal from './components/ProjectModal';
 import References from './components/References';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import AmbientMusic from './components/AmbientMusic';
 import type { Project } from './data/projects';
 import { useEffect, useState } from 'react';
 
@@ -30,6 +31,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <AmbientMusic />
       {active && <ProjectModal project={active} onClose={() => setActive(null)} />}
     </>
   );

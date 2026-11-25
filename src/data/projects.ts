@@ -62,7 +62,16 @@ export const PROJECT_GROUPS: Record<
   >,
   readonly string[]
 > = {
-  'own-live': ['smartfood', 'gematrior', 'telco-churn', 'diamonds-analysis', 'pi93-ai-assistant'],
+  'own-live': [
+    'portfolio',
+    'pi93guide',
+    'pi93-ab-website',
+    'smartfood',
+    'gematrior',
+    'telco-churn',
+    'diamonds-analysis',
+    'pi93-ai-assistant',
+  ],
   lia: ['swiiftly-ai', 'podmanager-lia'],
   group: ['dissatisfiedcustomer', 'husmanskors', 'holidaymaker'],
   'course-material': [
@@ -125,6 +134,7 @@ const LANG_NEEDLES: Record<LangGroup, readonly string[]> = {
     'express',
     'vite',
     'jquery',
+    'astro',
   ],
   'lang-java': ['java'],
 };
@@ -219,7 +229,7 @@ type GroupSubDef = {
 export const GROUP_SUBFILTERS: Partial<Record<ProjectGroup | 'all', readonly GroupSubDef[]>> = {
   'own-live': [
     { key: 'all' },
-    { key: 'products', ids: ['smartfood', 'gematrior'] },
+    { key: 'products', ids: ['smartfood', 'gematrior', 'pi93-ab-website', 'pi93guide', 'portfolio'] },
     { key: 'data', ids: ['telco-churn', 'diamonds-analysis'] },
     { key: 'in-progress', ids: ['pi93-ai-assistant'] },
   ],
@@ -320,7 +330,7 @@ const ph = (color: string, text: string) =>
   `https://placehold.co/800x420/${color}/f8fafc?text=${encodeURIComponent(text)}&font=dm-sans`;
 
 /** Prefer a local banner when present; otherwise colored placeholder. */
-const BANNER_VERSION = '10';
+const BANNER_VERSION = '13';
 
 const bannerIds = new Set([
   'gematrior',
@@ -329,6 +339,9 @@ const bannerIds = new Set([
   'podmanager-lia',
   'telco-churn',
   'diamonds-analysis',
+  'portfolio',
+  'pi93-ab-website',
+  'pi93guide',
 ]);
 
 export function projectImage(project: Project) {
@@ -341,6 +354,156 @@ export function projectImage(project: Project) {
 }
 
 const allProjects: Project[] = [
+  {
+    id: 'portfolio',
+    title: 'Editor Jakupi Portfolio',
+    year: '2026',
+    featured: true,
+    category: 'featured',
+    accent: '0f172a',
+    demo: 'https://editorjakupi.com',
+    github: 'https://github.com/editorjakupi/portfolio',
+    bannerPosition: 'center top',
+    tech: ['React 18', 'TypeScript', 'Vite', 'Docker', 'Caddy', 'nginx'],
+    copy: {
+      en: {
+        tagline: 'This website — my projects, CV and contact in one place.',
+        description:
+          'The site you are on now. It shows my work with filters, opens project details, and includes a printable CV. Built with React and hosted on my own server so I control deploy and updates myself.',
+        highlights: [
+          'Project list with filters and detail views',
+          'CV page you can print or save',
+          'Several languages in the interface',
+          'Self-hosted on Hetzner with Docker',
+          'Live at editorjakupi.com',
+        ],
+      },
+      sv: {
+        tagline: 'Den här webbplatsen — mina projekt, CV och kontakt på ett ställe.',
+        description:
+          'Sajten du är på nu. Här syns mitt arbete med filter, projektdetaljer och ett CV du kan skriva ut. Byggd i React och hostad på min egen server så jag styr deploy och uppdateringar själv.',
+        highlights: [
+          'Projektlista med filter och detaljvyer',
+          'CV-sida som går att skriva ut eller spara',
+          'Flera språk i gränssnittet',
+          'Self-hostad på Hetzner med Docker',
+          'Live på editorjakupi.com',
+        ],
+      },
+      sq: {
+        tagline: 'Ky website — projektet, CV dhe kontakti në një vend.',
+        description:
+          'Site-i ku je tani. Tregon punën time me filtra, detaje projektesh dhe një CV që mund ta printosh. Ndërtuar me React dhe hostuar në serverin tim që ta kontrolloj deploy dhe përditësimet vetë.',
+        highlights: [
+          'Listë projektesh me filtra dhe pamje detaje',
+          'Faqe CV për print ose ruajtje',
+          'Disa gjuhë në ndërfaqe',
+          'Self-hosted në Hetzner me Docker',
+          'Live te editorjakupi.com',
+        ],
+      },
+    },
+  },
+  {
+    id: 'pi93-ab-website',
+    title: 'Pi93 AB Website',
+    year: '2026',
+    featured: true,
+    category: 'featured',
+    accent: '134e4a',
+    demo: 'https://pi93.se',
+    bannerPosition: 'center 12%',
+    tech: ['Next.js 16', 'TypeScript', 'Prisma', 'PostgreSQL', 'Tailwind', 'Resend'],
+    copy: {
+      en: {
+        tagline: 'Company website for Pi93 AB — IT and related services from Halmstad.',
+        description:
+          'The public site for my company Pi93 AB. Visitors can read about services, get in touch, and browse company pages. I built and run it myself and put as much time into it as I can.',
+        highlights: [
+          'Live company site at pi93.se',
+          'Service and contact pages with email',
+          'Database for leads and admin data',
+          'IT services plus åkeri / fleet pages',
+          'Built and maintained as founder',
+        ],
+      },
+      sv: {
+        tagline: 'Företagssajt för Pi93 AB — IT och relaterade tjänster från Halmstad.',
+        description:
+          'Den publika sajten för mitt bolag Pi93 AB. Besökare kan läsa om tjänster, kontakta bolaget och se företagssidor. Jag har byggt och driver den själv och lägger så mycket tid jag kan.',
+        highlights: [
+          'Live företagssajt på pi93.se',
+          'Tjänst- och kontaktsidor med e-post',
+          'Databas för leads och admin',
+          'IT-tjänster plus åkeri-/fleet-sidor',
+          'Byggd och underhållen som grundare',
+        ],
+      },
+      sq: {
+        tagline: 'Website kompanie për Pi93 AB — IT dhe shërbime të lidhura nga Halmstad.',
+        description:
+          'Site-i publik i kompanisë time Pi93 AB. Vizitorët lexojnë për shërbimet, kontaktojnë dhe shohin faqet e kompanisë. E kam ndërtuar dhe e drejtoj vetë dhe i kushtoj aq kohë sa mundem.',
+        highlights: [
+          'Site kompanie live te pi93.se',
+          'Faqe shërbimesh dhe kontakti me email',
+          'Databazë për leads dhe admin',
+          'Shërbime IT plus faqe åkeri/fleet',
+          'Ndërtuar dhe mirëmbajtur si themelues',
+        ],
+      },
+    },
+  },
+  {
+    id: 'pi93guide',
+    title: 'Pi93 Guide',
+    year: '2026',
+    featured: true,
+    category: 'featured',
+    accent: '1e3a8a',
+    demo: 'https://pi93guide.com',
+    bannerPosition: 'center top',
+    bannerFit: 'contain',
+    bannerBg: '#f1f5f9',
+    tech: ['Astro 5', 'TypeScript', 'React', 'MDX', 'Node'],
+    copy: {
+      en: {
+        tagline: 'Buying guides that help people choose products — without selling stock ourselves.',
+        description:
+          'Pi93 Guide explains products in plain language (for example e-bikes, EV chargers, robot vacuums). Readers get honest comparisons and links to shops. We do not keep inventory — the site helps people buy right, and runs under Pi93 AB.',
+        highlights: [
+          'Clear guides and side-by-side comparisons',
+          'Search, quizzes and category pages for visitors',
+          'Links out to stores (affiliate model)',
+          'Written in Swedish and English',
+          'Live at pi93guide.com under Pi93 AB',
+        ],
+      },
+      sv: {
+        tagline: 'Köpguider som hjälper folk välja rätt — utan att vi själva säljer lager.',
+        description:
+          'Pi93 Guide förklarar produkter på ett enkelt sätt (till exempel elcyklar, laddboxar och robotdammsugare). Läsare får ärliga jämförelser och länkar till butiker. Vi har inget eget lager — sajten hjälper till att köpa rätt, och drivs via Pi93 AB.',
+        highlights: [
+          'Tydliga guider och jämförelser sida vid sida',
+          'Sök, quiz och kategorisidor för besökare',
+          'Länkar vidare till butiker (affiliatemodell)',
+          'Skrivet på svenska och engelska',
+          'Live på pi93guide.com under Pi93 AB',
+        ],
+      },
+      sq: {
+        tagline: 'Guida blerjeje që ndihmojnë njerëzit të zgjedhin — pa shitur inventar vetë.',
+        description:
+          'Pi93 Guide shpjegon produkte me gjuhë të thjeshtë (p.sh. biçikleta elektrike, karikues EV, robotfshesë). Lexuesit marrin krahasime të ndershme dhe lidhje te dyqanet. Nuk mbajmë stok — site-i ndihmon të blesh drejt, dhe operohet nën Pi93 AB.',
+        highlights: [
+          'Guida të qarta dhe krahasime krah për krah',
+          'Kërkim, quiz dhe faqe kategorish për vizitorë',
+          'Lidhje te dyqanet (model affiliate)',
+          'Shkruar në suedisht dhe anglisht',
+          'Live te pi93guide.com nën Pi93 AB',
+        ],
+      },
+    },
+  },
   {
     id: 'pi93-ai-assistant',
     title: 'Pi93 AI Assistant',
@@ -1402,12 +1565,15 @@ for (const project of allProjects) {
 
 /** Showcase order, then other live demos, then the rest. */
 const showcaseOrder: Record<string, number> = {
-  smartfood: 1,
-  gematrior: 2,
-  'telco-churn': 3,
-  'diamonds-analysis': 4,
-  'swiiftly-ai': 5,
-  'podmanager-lia': 6,
+  portfolio: 1,
+  pi93guide: 2,
+  'pi93-ab-website': 3,
+  smartfood: 4,
+  gematrior: 5,
+  'telco-churn': 6,
+  'diamonds-analysis': 7,
+  'swiiftly-ai': 8,
+  'podmanager-lia': 9,
 };
 
 export const projects: Project[] = [...allProjects].sort((a, b) => {

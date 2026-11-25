@@ -25,14 +25,17 @@ const en: Translations = {
   },
   about: {
     label: 'About',
-    title: 'From warehouse floors to production code.',
+    title: 'Software that ships for real users.',
     p1:
-      'Before software development, I worked in warehouses, parking enforcement, and IT support — roles that taught me discipline, troubleshooting under pressure, and how to deliver reliably. That hands-on mindset now shapes how I write code: structured, tested, and built for real users.',
+      'I build web, AI, and product systems from idea to production. Earlier parking-enforcement work taught me discipline and calm troubleshooting under pressure. That practical mindset still shapes how I write code: structured, tested, and built for real users.',
     p2:
       'I studied computer engineering at Halmstad University for one year (2021–2022). I then completed the higher vocational programme Software Developer with AI at NBI Handelsakademin in June 2026, with LIA internships at PodManager.AI and Swiiftly.',
     p3:
+      'Since October 2026 I run Pi93 AB (IT and related services) — putting the time I can into the company and growing products and ideas over time.',
+    p4:
       'Beyond development, I pursue retail commodities trading with a focus on market analysis, risk discipline, and structured decision-making under uncertainty.',
     skillsTitle: 'Technical skills',
+    skillsSubtitle: 'These are technologies I have worked with or built with.',
     timelineTitle: 'Experience',
     educationTitle: 'Education',
     skillGroups: [
@@ -42,7 +45,7 @@ const en: Translations = {
       },
       {
         title: 'Frontend & Mobile',
-        items: ['React', 'Next.js', 'React Native', 'Vite', 'jQuery'],
+        items: ['React', 'Next.js', 'React Native', 'Vite', 'Astro', 'jQuery'],
       },
       {
         title: 'Backend & APIs',
@@ -58,11 +61,7 @@ const en: Translations = {
       },
       {
         title: 'Real-time & Cloud',
-        items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Azure Blob Storage'],
-      },
-      {
-        title: 'Professional',
-        items: ['IT Support', 'Microsoft Office'],
+        items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Prisma', 'Azure Blob Storage'],
       },
       {
         title: 'Beyond development',

@@ -25,14 +25,17 @@ const sq: Translations = {
   },
   about: {
     label: 'Rreth meje',
-    title: 'Nga magazinat te kodi i prodhimit.',
+    title: 'Software që përdoret me të vërtetë.',
     p1:
-      'Para zhvillimit të softuerit punova në magazina, monitorimin e parkimit dhe IT support — role që më mësojnë disiplinë, zgjidhjen e problemeve nën presion dhe dorëzimin e besueshëm. Ky mentalitet praktik formon mënyrën si shkruaj kod sot: i strukturuar, i testuar dhe i ndërtuar për përdorues realë.',
+      'Ndërtoj sisteme web, AI dhe produktesh nga ideja te prodhimi. Puna e mëparshme në mbikëqyrje parkimi më dha disiplinë dhe qetësi në zgjidhjen e problemeve nën presion. Ajo mentalitet praktik ende formon si shkruaj kod: i strukturuar, i testuar dhe për përdorues reale.',
     p2:
       'Kam studiuar inxhinieri kompjuterike në Universitetin e Halmstad për një vit (2021–2022). Pastaj përfundova arsimin profesional Software Developer with AI në NBI Handelsakademin në qershor 2026, me praktika LIA te PodManager.AI dhe Swiiftly.',
     p3:
-      'Përveç zhvillimit, merrem me tregtinë retail të lëndëve të para — analizë tregu, disiplinë rreziku dhe vendime të strukturuara në pasiguri.',
+      'Që nga tetori 2026 drejtoj Pi93 AB (IT dhe shërbime të lidhura) — i kushtoj kohën që mundem kompanisë dhe rrit produkte e ide me kalimin e kohës.',
+    p4:
+      'Përtej zhvillimit, ndjek tregtim privat të lëndëve të para me fokus në analizë tregu, disiplinë risku dhe vendimmarrje të strukturuar nën pasiguri.',
     skillsTitle: 'Aftësi teknike',
+    skillsSubtitle: 'Këto janë teknologji me të cilat kam punuar ose ndërtuar.',
     timelineTitle: 'Përvoja',
     educationTitle: 'Edukimi',
     skillGroups: [
@@ -42,15 +45,15 @@ const sq: Translations = {
       },
       {
         title: 'Frontend & mobile',
-        items: ['React', 'Next.js', 'React Native', 'Vite', 'jQuery'],
+        items: ['React', 'Next.js', 'React Native', 'Vite', 'Astro', 'jQuery'],
       },
       {
         title: 'Backend & API',
         items: ['Node.js', 'FastAPI', '.NET', 'REST API', 'Express'],
       },
       {
-        title: 'AI & të dhëna',
-        items: ['Mësim makinerik', 'RAG', 'Integrim LLM', 'Whisper', 'Azure Speech', 'TensorFlow/Keras', 'Streamlit'],
+        title: 'AI & data',
+        items: ['Mësim makinerik', 'RAG', 'LLM Integration', 'Whisper', 'Azure Speech', 'TensorFlow/Keras', 'Streamlit'],
       },
       {
         title: 'Mjete & DevOps',
@@ -58,15 +61,11 @@ const sq: Translations = {
       },
       {
         title: 'Real-time & cloud',
-        items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Azure Blob Storage'],
-      },
-      {
-        title: 'Të tjera',
-        items: ['Support IT', 'Microsoft Office'],
+        items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Prisma', 'Azure Blob Storage'],
       },
       {
         title: 'Përtej zhvillimit',
-        items: ['Lëndë të para', 'Analizë tregu', 'Disiplinë rreziku'],
+        items: ['Lëndë të para', 'Analizë tregu', 'Disiplinë risku'],
       },
     ],
   },

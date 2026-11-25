@@ -25,14 +25,17 @@ const it: Translations = {
   },
   about: {
     label: 'Chi sono',
-    title: 'Dal magazzino al codice di produzione.',
+    title: 'Software usato sul serio.',
     p1:
-      'Prima dello sviluppo software ho lavorato in magazzino, sorveglianza parcheggi e supporto IT — ruoli che mi hanno insegnato disciplina, troubleshooting sotto pressione e affidabilità. Questo approccio pratico guida oggi il mio modo di scrivere codice: strutturato, testato e pensato per utenti reali.',
+      'Costruisco sistemi web, AI e di prodotto dall’idea alla produzione. Il lavoro precedente nel controllo parcheggi mi ha insegnato disciplina e troubleshooting sotto pressione. Quell’approccio pratico guida ancora come scrivo codice: strutturato, testato e pensato per utenti reali.',
     p2:
-      'Ho studiato ingegneria informatica all\'Università di Halmstad per un anno (2021–2022). Poi ho completato la formazione YH Software Developer with AI alla NBI Handelsakademin a giugno 2026, con LIA presso PodManager.AI e Swiiftly.',
+      'Ho studiato ingegneria informatica all’Università di Halmstad per un anno (2021–2022). Poi ho completato la formazione YH Software Developer with AI alla NBI Handelsakademin a giugno 2026, con LIA presso PodManager.AI e Swiiftly.',
     p3:
-      'Oltre allo sviluppo, mi dedico al trading retail su materie prime — analisi di mercato, disciplina del rischio e decisioni strutturate nell\'incertezza.',
+      'Da ottobre 2026 gestisco Pi93 AB (IT e servizi correlati) — ci metto il tempo che posso e faccio crescere prodotti e idee.',
+    p4:
+      'Oltre allo sviluppo, mi occupo privatamente di trading su materie prime con focus su analisi di mercato, disciplina del rischio e decisioni strutturate sotto incertezza.',
     skillsTitle: 'Competenze tecniche',
+    skillsSubtitle: 'Tecnologie con cui ho lavorato o costruito.',
     timelineTitle: 'Esperienza',
     educationTitle: 'Formazione',
     skillGroups: [
@@ -42,30 +45,26 @@ const it: Translations = {
       },
       {
         title: 'Frontend e mobile',
-        items: ['React', 'Next.js', 'React Native', 'Vite', 'jQuery'],
+        items: ['React', 'Next.js', 'React Native', 'Vite', 'Astro', 'jQuery'],
       },
       {
         title: 'Backend e API',
-        items: ['Node.js', 'FastAPI', '.NET', 'REST API', 'Express'],
+        items: ['Node.js', 'FastAPI', '.NET', 'REST APIs', 'Express'],
       },
       {
-        title: 'IA e dati',
-        items: ['Machine Learning', 'RAG', 'Integrazione LLM', 'Whisper', 'Azure Speech', 'TensorFlow/Keras', 'Streamlit'],
+        title: 'AI e data',
+        items: ['Machine Learning', 'RAG', 'LLM Integration', 'Whisper', 'Azure Speech', 'TensorFlow/Keras', 'Streamlit'],
       },
       {
-        title: 'Strumenti e DevOps',
+        title: 'Tool e DevOps',
         items: ['Docker', 'Git', 'GitHub', 'Git Bash', 'Postman', 'HTTPie', 'VS Code', 'JetBrains Toolbox', 'Cursor', 'Scrum', 'CI/CD'],
       },
       {
         title: 'Real-time e cloud',
-        items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Azure Blob Storage'],
+        items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Prisma', 'Azure Blob Storage'],
       },
       {
-        title: 'Altro',
-        items: ['Supporto IT', 'Microsoft Office'],
-      },
-      {
-        title: 'Oltre allo sviluppo',
+        title: 'Oltre lo sviluppo',
         items: ['Materie prime', 'Analisi di mercato', 'Disciplina del rischio'],
       },
     ],

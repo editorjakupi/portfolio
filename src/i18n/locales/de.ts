@@ -25,14 +25,17 @@ const de: Translations = {
   },
   about: {
     label: 'Über mich',
-    title: 'Vom Lagerboden zum Produktionscode.',
+    title: 'Software, die wirklich genutzt wird.',
     p1:
-      'Bevor ich Software entwickelte, arbeitete ich in Lagern, der Parküberwachung und im IT-Support — Tätigkeiten, die mir Disziplin, Fehlersuche unter Druck und zuverlässige Lieferung lehrten. Diese praktische Einstellung prägt heute, wie ich Code schreibe: strukturiert, getestet und für echte Nutzer gebaut.',
+      'Ich baue Web-, KI- und Produktsysteme von der Idee bis zum Betrieb. Frühere Parkraumüberwachung hat mir Disziplin und ruhiges Troubleshooting unter Druck gegeben. Diese praktische Haltung prägt heute, wie ich Code schreibe: strukturiert, getestet und für echte Nutzer gebaut.',
     p2:
       'Ich habe ein Jahr Computertechnik an der Universität Halmstad studiert (2021–2022). Danach habe ich die YH-Ausbildung Softwareentwickler mit KI an der NBI Handelsakademin im Juni 2026 abgeschlossen, mit LIA bei PodManager.AI und Swiiftly.',
     p3:
-      'Neben der Softwareentwicklung betreibe ich privaten Retail-Handel mit Schwerpunkt auf Rohstoffe — Marktanalyse, Risikodisziplin und strukturierte Entscheidungen unter Unsicherheit.',
+      'Seit Oktober 2026 führe ich Pi93 AB (IT und verwandte Dienste) — ich investiere die Zeit, die ich kann, und baue Produkte und Ideen weiter.',
+    p4:
+      'Neben der Entwicklung beschäftige ich mich privat mit Rohstoffhandel — mit Fokus auf Marktanalyse, Risikodisziplin und strukturierte Entscheidungen unter Unsicherheit.',
     skillsTitle: 'Technische Fähigkeiten',
+    skillsSubtitle: 'Damit habe ich gearbeitet oder gebaut.',
     timelineTitle: 'Berufserfahrung',
     educationTitle: 'Ausbildung',
     skillGroups: [
@@ -42,15 +45,15 @@ const de: Translations = {
       },
       {
         title: 'Frontend & Mobile',
-        items: ['React', 'Next.js', 'React Native', 'Vite', 'jQuery'],
+        items: ['React', 'Next.js', 'React Native', 'Vite', 'Astro', 'jQuery'],
       },
       {
         title: 'Backend & APIs',
         items: ['Node.js', 'FastAPI', '.NET', 'REST APIs', 'Express'],
       },
       {
-        title: 'KI & Daten',
-        items: ['Machine Learning', 'RAG', 'LLM-Integration', 'Whisper', 'Azure Speech', 'TensorFlow/Keras', 'Streamlit'],
+        title: 'AI & Data',
+        items: ['Machine Learning', 'RAG', 'LLM Integration', 'Whisper', 'Azure Speech', 'TensorFlow/Keras', 'Streamlit'],
       },
       {
         title: 'Tools & DevOps',
@@ -58,14 +61,10 @@ const de: Translations = {
       },
       {
         title: 'Echtzeit & Cloud',
-        items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Azure Blob Storage'],
+        items: ['WebRTC', 'Socket.io', 'MongoDB', 'PostgreSQL', 'Prisma', 'Azure Blob Storage'],
       },
       {
-        title: 'Sonstiges',
-        items: ['IT-Support', 'Microsoft Office'],
-      },
-      {
-        title: 'Neben der Entwicklung',
+        title: 'Über die Entwicklung hinaus',
         items: ['Rohstoffe', 'Marktanalyse', 'Risikodisziplin'],
       },
     ],

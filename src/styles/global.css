@@ -527,41 +527,85 @@ img {
   flex-shrink: 0;
 }
 
-.hero-europass-badge {
+.hero-badges {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-left: 0.25rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid rgba(148, 163, 184, 0.22);
+  flex-shrink: 0;
+}
+
+.hero-square-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.78rem 0.95rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  line-height: 1.2;
+  width: 52px;
+  height: 52px;
+  padding: 0.2rem;
+  border-radius: 10px;
   text-decoration: none;
-  white-space: nowrap;
   flex-shrink: 0;
-  color: #bfdbfe;
-  background: rgba(37, 99, 235, 0.14);
-  border: 1px solid rgba(96, 165, 250, 0.38);
-  transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition);
 }
 
-.hero-europass-badge:hover {
+.hero-europass-square {
+  background: rgba(37, 99, 235, 0.14);
+  border: 1px solid rgba(96, 165, 250, 0.38);
+  color: #bfdbfe;
+}
+
+.hero-europass-square:hover {
   background: rgba(37, 99, 235, 0.22);
   border-color: rgba(147, 197, 253, 0.55);
   box-shadow: 0 8px 22px rgba(37, 99, 235, 0.14);
   transform: translateY(-1px);
 }
 
+.hero-square-badge__label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+  letter-spacing: 0.01em;
+  padding: 0 0.1rem;
+}
+
+.hero-pi93-badge {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  overflow: hidden;
+}
+
+.hero-pi93-badge:hover {
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 8px 22px rgba(212, 175, 55, 0.12);
+  transform: translateY(-1px);
+}
+
+.hero-pi93-badge img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
 .hero-diploma-qr.diploma-qr-badge {
-  padding: 0.28rem;
+  width: 52px;
+  height: 52px;
+  padding: 0.2rem;
   border-radius: 10px;
   flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .hero-diploma-qr .diploma-qr-badge__img {
-  width: 52px;
-  height: 52px;
-  padding: 2px;
+  width: 100%;
+  height: 100%;
+  padding: 1px;
+  box-sizing: border-box;
 }
 
 .hero-meta {
@@ -772,6 +816,13 @@ img {
 
 .about-text p:last-child {
   margin-bottom: 0;
+}
+
+.about-skills-note {
+  margin: 0 0 0.85rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--text-dim);
 }
 
 .section-about .about-text .about-text-note {
@@ -1525,39 +1576,46 @@ img {
   }
 
   .hero-actions {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     width: 100%;
   }
 
-  .hero-actions .btn,
-  .hero-europass-badge {
-    width: 100%;
+  .hero-actions .btn {
+    flex: 1 1 calc(50% - 0.5rem);
+    min-width: 0;
     min-height: 2.85rem;
     padding: 0.55rem 0.45rem;
     font-size: 0.76rem;
     text-align: center;
     white-space: normal;
     line-height: 1.25;
-  }
-
-  .hero-europass-badge {
     border-radius: 12px;
   }
 
-  .hero-actions .btn {
-    border-radius: 12px;
+  .hero-badges {
+    flex: 1 1 100%;
+    justify-content: flex-start;
+    margin-left: 0;
+    padding-left: 0;
+    border-left: 0;
+    gap: 0.55rem;
   }
 
+  .hero-square-badge,
   .hero-diploma-qr.diploma-qr-badge {
-    grid-column: 1 / -1;
-    justify-self: center;
-  }
-
-  .hero-diploma-qr .diploma-qr-badge__img {
     width: 48px;
     height: 48px;
+  }
+
+  .hero-meta {
+    font-size: 0.8rem;
+    gap: 0.25rem 0.5rem;
+  }
+
+  .about-skills-note {
+    font-size: 0.78rem;
   }
 }
 
@@ -1565,11 +1623,6 @@ img {
   .hero-grid {
     grid-template-columns: 1.15fr 0.85fr;
     gap: 2.5rem;
-  }
-
-  .hero-diploma-qr .diploma-qr-badge__img {
-    width: 56px;
-    height: 56px;
   }
 
   .hero-visual {
@@ -1660,8 +1713,7 @@ img {
 }
 
 @media (max-width: 380px) {
-  .hero-actions .btn,
-  .hero-europass-badge {
+  .hero-actions .btn {
     font-size: 0.7rem;
     min-height: 2.65rem;
     padding: 0.5rem 0.35rem;
@@ -1739,5 +1791,178 @@ img {
 
   .nav-brand:hover .nav-avatar {
     transform: scale(1.06);
+  }
+}
+
+/* Ultra-compact music player — official YouTube audio, no hosted MP3 */
+.ambient-music {
+  position: fixed;
+  right: 0.85rem;
+  bottom: 0.85rem;
+  z-index: 90;
+}
+
+.ambient-music__host,
+.ambient-music__host iframe {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border: 0;
+}
+
+.ambient-music__card {
+  display: grid;
+  grid-template-columns: 1.1rem minmax(0, 11.5rem);
+  gap: 0.4rem;
+  align-items: stretch;
+  padding: 0.4rem 0.45rem 0.4rem 0.35rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(45, 212, 191, 0.32);
+  background: rgba(8, 12, 11, 0.94);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+}
+
+.ambient-music__vol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.ambient-music__vol input[type='range'] {
+  writing-mode: vertical-lr;
+  direction: rtl;
+  width: 0.85rem;
+  height: 3.4rem;
+  padding: 0;
+  margin: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.ambient-music__main {
+  min-width: 0;
+  display: grid;
+  gap: 0.28rem;
+}
+
+.ambient-music__marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.ambient-music__marquee-track {
+  display: inline-flex;
+  width: max-content;
+  animation: ambient-marquee 14s linear infinite;
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.ambient-music__marquee-track span {
+  padding-right: 1.25rem;
+}
+
+@keyframes ambient-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.ambient-music__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.12rem;
+}
+
+.ambient-music__btn {
+  width: 1.55rem;
+  height: 1.55rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.62rem;
+  line-height: 1;
+}
+
+.ambient-music__btn--main {
+  width: 1.75rem;
+  height: 1.75rem;
+  background: rgba(45, 212, 191, 0.12);
+  color: var(--accent);
+}
+
+.ambient-music__hide {
+  margin-left: auto;
+  opacity: 0.7;
+}
+
+.ambient-music__btn:hover:not(:disabled) {
+  color: var(--accent);
+  background: rgba(45, 212, 191, 0.1);
+}
+
+.ambient-music__btn:disabled {
+  opacity: 0.4;
+}
+
+.ambient-music__fab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(45, 212, 191, 0.35);
+  background: rgba(10, 16, 14, 0.94);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.ambient-music__fab:hover {
+  color: var(--accent);
+  border-color: rgba(45, 212, 191, 0.55);
+}
+
+@media (max-width: 640px) {
+  .ambient-music {
+    right: max(0.55rem, env(safe-area-inset-right));
+    bottom: max(0.55rem, env(safe-area-inset-bottom));
+  }
+
+  .ambient-music__card {
+    grid-template-columns: 1rem minmax(0, min(10.2rem, calc(100vw - 2rem)));
+    padding: 0.35rem 0.4rem 0.35rem 0.3rem;
+  }
+
+  .ambient-music__vol input[type='range'] {
+    height: 3rem;
+  }
+
+  .ambient-music__fab {
+    font-size: 0.68rem;
+    padding: 0.38rem 0.65rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-music__marquee-track {
+    animation: none;
   }
 }

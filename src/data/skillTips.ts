@@ -44,6 +44,21 @@ const SKILL_TIPS: Record<string, Record<TipLocale, string>> = {
     sv: 'Stilmallsspråk som används för att layouta och styla webbgränssnitt.',
     sq: 'Gjuhe stilesh qe perdoret per layout dhe stil te nderfaqeve web.',
   },
+  'Astro': {
+    en: 'A content-first web framework used for fast static and hybrid sites with optional interactive islands.',
+    sv: 'Ett content-first webbramverk som används för snabba statiska och hybrida sajter med valfria interaktiva öar.',
+    sq: 'Nje framework web content-first qe perdoret per site statike/hibride te shpejta me ishuj interaktive opsionale.',
+  },
+  'Prisma': {
+    en: 'An ORM used to talk to SQL databases from application code with typed models.',
+    sv: 'En ORM som används för att prata med SQL-databaser från appkod med typade modeller.',
+    sq: 'Nje ORM qe perdoret per te komunikuar me databaza SQL nga kodi i app-it me modele te tipizuara.',
+  },
+  'OpenAI': {
+    en: 'An AI platform used for large language models and related generative APIs.',
+    sv: 'En AI-plattform som används för stora språkmodeller och generativa API:er.',
+    sq: 'Nje platforme AI qe perdoret per modele te medha gjuhe dhe API gjenerative.',
+  },
   'React': {
     en: 'A UI library used to build interactive component-based web interfaces.',
     sv: 'Ett UI-bibliotek som används för att bygga interaktiva, komponentbaserade webbgränssnitt.',
@@ -275,6 +290,8 @@ const SKILL_ALIASES: Record<string, string> = {
   'Disciplina del rischio': 'Risk discipline',
   'Dyscyplina ryzyka': 'Risk discipline',
   'Disiplinë rreziku': 'Risk discipline',
+  'Disiplinë risku': 'Risk discipline',
+  'Discipline de risque': 'Risk discipline',
 };
 
 export function getSkillTip(skill: string, locale: Locale): string | undefined {

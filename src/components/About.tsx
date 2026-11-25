@@ -13,8 +13,18 @@ function TimelineBlock({ title, items }: { title: string; items: TimelineItem[] 
               <p className="timeline-period">{item.period}</p>
               <p className="timeline-title">{item.title}</p>
               <p className="timeline-place">{item.place}</p>
-              {item.verifyUrl || item.europassUrl ? (
+              {item.verifyUrl || item.europassUrl || item.linkUrl ? (
                 <div className="timeline-links">
+                  {item.linkUrl ? (
+                    <a
+                      className="timeline-verify"
+                      href={item.linkUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {item.linkLabel ?? item.linkUrl}
+                    </a>
+                  ) : null}
                   {item.verifyUrl ? (
                     <a
                       className="timeline-verify"
@@ -64,7 +74,8 @@ export default function About() {
               <div className="about-text">
                 <p>{t.about.p1}</p>
                 <p>{t.about.p2}</p>
-                <p className="about-text-note">{t.about.p3}</p>
+                <p>{t.about.p3}</p>
+                <p className="about-text-note">{t.about.p4}</p>
               </div>
             </div>
 
@@ -76,6 +87,7 @@ export default function About() {
 
           <aside className="about-skills reveal reveal-delay-1">
             <h3 className="section-label">{t.about.skillsTitle}</h3>
+            <p className="about-skills-note">{t.about.skillsSubtitle}</p>
             <div className="skills-grid">
               {t.about.skillGroups.map((group) => (
                 <article key={group.title} className="skill-group">
