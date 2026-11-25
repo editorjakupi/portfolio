@@ -1815,7 +1815,7 @@ img {
 
 .ambient-music__card {
   display: grid;
-  grid-template-columns: 1.1rem minmax(0, 11.5rem);
+  grid-template-columns: 1.1rem minmax(0, 10rem);
   gap: 0.4rem;
   align-items: stretch;
   padding: 0.4rem 0.45rem 0.4rem 0.35rem;
@@ -1847,7 +1847,7 @@ img {
 .ambient-music__main {
   min-width: 0;
   display: grid;
-  gap: 0.14rem;
+  gap: 0.28rem;
 }
 
 .ambient-music__marquee {
@@ -1947,7 +1947,7 @@ img {
   }
 
   .ambient-music__card {
-    grid-template-columns: 1rem minmax(0, min(10.2rem, calc(100vw - 2rem)));
+    grid-template-columns: 1rem minmax(0, min(8.7rem, calc(100vw - 2rem)));
     padding: 0.35rem 0.4rem 0.35rem 0.3rem;
   }
 
