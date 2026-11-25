@@ -28,7 +28,7 @@ export default function Hero() {
             </a>
             <a
               className="btn btn-secondary"
-              href="/cv.html"
+              href="/cv.html?v=20261125c"
               target="_blank"
               rel="noopener noreferrer"
             >

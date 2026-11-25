@@ -39,7 +39,7 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
-          <a href="/cv.html" target="_blank" rel="noopener noreferrer">
+          <a href="/cv.html?v=20261125c" target="_blank" rel="noopener noreferrer">
             {t.nav.cv}
           </a>
         </nav>
@@ -90,7 +90,7 @@ export default function Navbar() {
             {link.label}
           </a>
         ))}
-        <a href="/cv.html" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
+        <a href="/cv.html?v=20261125c" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
           {t.nav.cv}
         </a>
         <a href={profile.github} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
