@@ -330,7 +330,7 @@ const ph = (color: string, text: string) =>
   `https://placehold.co/800x420/${color}/f8fafc?text=${encodeURIComponent(text)}&font=dm-sans`;
 
 /** Prefer a local banner when present; otherwise colored placeholder. */
-const BANNER_VERSION = '13';
+const BANNER_VERSION = '14';
 
 const bannerIds = new Set([
   'gematrior',
@@ -412,7 +412,7 @@ const allProjects: Project[] = [
     category: 'featured',
     accent: '134e4a',
     demo: 'https://pi93.se',
-    bannerPosition: 'center 12%',
+    bannerPosition: 'center center',
     tech: ['Next.js 16', 'TypeScript', 'Prisma', 'PostgreSQL', 'Tailwind', 'Resend'],
     copy: {
       en: {
