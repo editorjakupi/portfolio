@@ -1583,7 +1583,8 @@ img {
   }
 
   .hero-actions .btn {
-    flex: 1 1 calc(50% - 0.5rem);
+    flex: 1 1 calc(50% - 0.25rem);
+    max-width: calc(50% - 0.25rem);
     min-width: 0;
     min-height: 2.85rem;
     padding: 0.55rem 0.45rem;
@@ -1595,18 +1596,20 @@ img {
   }
 
   .hero-badges {
-    flex: 1 1 100%;
+    flex: 0 0 auto;
     justify-content: flex-start;
+    align-items: center;
     margin-left: 0;
-    padding-left: 0;
-    border-left: 0;
-    gap: 0.55rem;
+    padding-left: 0.65rem;
+    border-left: 1px solid rgba(148, 163, 184, 0.22);
+    gap: 0.4rem;
+    min-width: 0;
   }
 
   .hero-square-badge,
   .hero-diploma-qr.diploma-qr-badge {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
   }
 
   .hero-meta {
@@ -1717,6 +1720,16 @@ img {
     font-size: 0.7rem;
     min-height: 2.65rem;
     padding: 0.5rem 0.35rem;
+  }
+
+  .hero-square-badge,
+  .hero-diploma-qr.diploma-qr-badge {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero-badges {
+    gap: 0.3rem;
   }
 
   .hero-title {
